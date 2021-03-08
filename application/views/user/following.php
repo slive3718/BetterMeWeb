@@ -35,8 +35,9 @@
             $dob=$val->dob;
             $pic_status=$val->user_picture_status;
             $sex=$val->sex;
+
                  ?>
-                <div class="td" id="f-name-l"><span><?= Ucfirst($firstName)?></span></div>
+                <div class="td" id="f-name-l"><span><?=(isset($firstName) && !empty($firstName))?$firstName:$username?></span></div>
                 <div class="td" id="i-links">
                     <div class="tb">
                         <div class="td" id="m-td">
@@ -109,7 +110,7 @@
                                                 }
                                         ?>
                                         <tr>
-                                        <td class=""><?=Ucfirst($user->first_name),' ',ucfirst($user->last_name),' ',(isset($user->account_type)&&($user->account_type)=='M')?'<a class="text-primary">(Mentor)</a>':''?></td>
+                                        <td class=""><?=(isset($user->first_name,$user->last_name) && !empty($user->first_name)&& !empty($user->last_name))?Ucfirst($user->first_name):Ucfirst($user->username),' ',ucfirst($user->last_name),' ',(isset($user->account_type)&&($user->account_type)=='M')?'<a class="text-primary">(Mentor)</a>':''?></td>
                                         <td class=""> <!-- --> <?php if (isset($subs) && $subs==$user->userId && $status=='1'){
                                         ?><a href="<?= base_url().'user/follow_user/'.$user->userId?>" class="button-follow"><span class="fa fa-check btn btn-danger btn-sm"></span></a> <?php
                                         }else{
