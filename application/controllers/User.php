@@ -199,7 +199,7 @@ class User extends CI_Controller
             $data['profpic']=$profpic;
 
             $data['page_title']="View Community Post";
-            $this->load->view('user/templates/header');
+            $this->load->view('user/templates/header', $data);
             $this->load->view('user/viewThisCommunityPost', $data);
             $this->load->view('user/templates/footer');
         } else {
