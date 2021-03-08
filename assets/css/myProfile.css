@@ -89,7 +89,7 @@ main {
 
 header {
     padding: 15px 20px;
-    background-color: #4267b2;
+    background-color: #28A745;
 }
 
 #logo {
@@ -108,10 +108,10 @@ header {
 #search-form form {
     position: relative;
     width: 280px;
-    font-size: 16px;
+    font-size: 9px;
     padding: 8px 15px;
     padding-right: 37px;
-    background-color: #3b5ca0;
+    background-color: gray;
     border-radius: 20px;
     margin-left: 15px;
 }
@@ -311,6 +311,7 @@ header {
 
 #main-content {
     padding: 55px 0px 0px 55px;
+    background-color: #BBEAD2;
 }
 
 #l-col,
