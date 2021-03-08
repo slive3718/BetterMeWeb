@@ -134,7 +134,8 @@ class User extends CI_Controller
                 }
             }
         } else {
-            echo "please fill all inputs";
+            $this->session->set_flashdata('msgerror', 'Fill up all fields');
+        	redirect(base_url().'admin/viewSignUp');
         }
     }
 
@@ -198,7 +199,7 @@ class User extends CI_Controller
             $data['profpic']=$profpic;
 
             $data['page_title']="View Community Post";
-            $this->load->view('user/templates/header');
+            $this->load->view('user/templates/header', $data);
             $this->load->view('user/viewThisCommunityPost', $data);
             $this->load->view('user/templates/footer');
         } else {
