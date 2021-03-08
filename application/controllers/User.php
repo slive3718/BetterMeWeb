@@ -134,7 +134,8 @@ class User extends CI_Controller
                 }
             }
         } else {
-            echo "please fill all inputs";
+            $this->session->set_flashdata('msgerror', 'Fill up all fields');
+        	redirect(base_url().'admin/viewSignUp');
         }
     }
 
