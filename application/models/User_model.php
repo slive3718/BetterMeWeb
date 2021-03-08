@@ -470,8 +470,8 @@ function followUser($userId){
     // print_r($qstr);exit;
     if ($qstr->num_rows() >=1){
         // print_r("here");exit;
-        echo "duplicate";
-        exit;
+        $set=array('follower_id'=>$sessId,'following_id'=>$userId,'subscribe'=>'0');
+        return $this->db->insert('tblfollow', $set); 
     }else{
         $set=array('follower_id'=>$sessId,'following_id'=>$userId,'subscribe'=>'1');
         return $this->db->insert('tblfollow', $set); 
