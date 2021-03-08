@@ -123,9 +123,9 @@
                                     foreach ($images as $name) {
                                         $extension = explode('.',$name);
                                         if(isset($extension) && !empty($extension)){
-                                    // if($extension[1]=="JPG" || $extension[1]=="PNG" || $extension[1]=="JPEG" || $extension[1]=="GIF" ||
-                                        // $extension[1]=="jpg" || $extension[1]=="png" || $extension[1]=="jpeg" || $extension[1]=="gif"
-                                        //  ){ 
+                                    if($extension[1]=="JPG" || $extension[1]=="PNG" || $extension[1]=="JPEG" || $extension[1]=="GIF" ||
+                                        $extension[1]=="jpg" || $extension[1]=="png" || $extension[1]=="jpeg" || $extension[1]=="gif"
+                                         ){ 
                                         if ($i<=9) {
                                             $i++;
                                             $extension = explode('.', $name);
