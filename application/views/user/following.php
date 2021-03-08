@@ -104,13 +104,14 @@
                                                         if ($folloStat->following_id == $user->userId){
                                                             // echo $user->userId,$folloStat->subscribe;
                                                            $subs=$folloStat->following_id;
+                                                           $status = $folloStat->subscribe;
                                                         }
                                                 }
                                         ?>
                                         <tr>
                                         <td class=""><?=Ucfirst($user->first_name),' ',ucfirst($user->last_name),' ',(isset($user->account_type)&&($user->account_type)=='M')?'<a class="text-primary">(Mentor)</a>':''?></td>
-                                        <td class=""> <!-- --> <?php if (isset($subs) && $subs==$user->userId){
-                                        ?><a href="<?= base_url().'user/unfollow_user/'.$user->userId?>" class="button-follow"><span class="fa fa-check btn btn-danger btn-sm"></span></a> <?php
+                                        <td class=""> <!-- --> <?php if (isset($subs) && $subs==$user->userId && $status=='1'){
+                                        ?><a href="<?= base_url().'user/follow_user/'.$user->userId?>" class="button-follow"><span class="fa fa-check btn btn-danger btn-sm"></span></a> <?php
                                         }else{
                                             ?> <a href="<?= base_url().'user/follow_user/'.$user->userId?>" class="button-follow"><span class="fa fa-plus btn btn-success btn-sm"></span></a> <?php
                                         }?>
