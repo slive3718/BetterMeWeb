@@ -217,7 +217,7 @@ public function viewFullDiet($post_id){
         $posts=$this->admin_model->get_dietPlanFull($post_id);
         $data['rows']=$posts;
         $data['page_title']= "View Full Diet Description";
-        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/header', $data);
         $this->load->view('admin/viewFullDietPlan', $data);
         $this->load->view('templates/footer');
     }else{
@@ -536,7 +536,7 @@ public function view_this_community_post($community_post_id){
         $data['rows']=$posts;
         $data['comments']=$comments;
         $data['page_title']= "View Community";
-        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/header', $data);
         $this->load->view('admin/viewThisCommunityPost', $data);
         $this->load->view('admin/templates/footer');
     }else{
@@ -611,7 +611,7 @@ public function viewArchiveDiet(){
         $posts=$this->admin_model->get_archiveDietPlan();
         $data['rows']=$posts;
         $data['page_title']= "View Archive Diets";
-        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/header', $data);
         $this->load->view('admin/viewArchiveDietPlans', $data);
         $this->load->view('templates/footer');
     }
@@ -626,7 +626,7 @@ public function viewArchiveDiet(){
         $community_posts=$this->admin_model->get_archivedCommunityThread();
         $data['community_posts']=$community_posts;
         $data['page_title']= "View Archive Community Thread";
-              $this->load->view('admin/templates/header');
+              $this->load->view('admin/templates/header', $data);
             $this->load->view('admin/viewArchivedCommunityThread',$data);
             $this->load->view('admin/templates/footer');
         }
