@@ -68,12 +68,12 @@ if (isset($rows)) {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Confirm Delete? <?= $post_id?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">Confirm Restore? <?= $post_id?></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-   
+  
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancel</button>
         <button type="button" class="btn btn-primary" onclick="window.location.href='<?= base_url().'admin/restore_post/'.$post_id?>'">Confirm</button>
