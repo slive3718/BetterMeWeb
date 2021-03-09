@@ -649,6 +649,23 @@ $image_arr = array();
 
  }
 
+ 
+ public function follow_user_Jquery(){
+     $post=$this->input->post();
+    $userId=$post['userId'];
+    $sessId=$this->session->userdata('id');
+    if ($sessId) {
+        $data['user_info']=$this->user_model->followUser($userId);
+    if($data){
+        echo "success";
+    }else{
+        echo "error"; 
+    }
+        
+    }
+       
+
+ }
 
 
 }

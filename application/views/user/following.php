@@ -1,13 +1,15 @@
 
-<script type="text/javascript" src="<?=base_url()?>/assets/js/myProfile.js" ></script>
+<script
+			  src="https://code.jquery.com/jquery-3.6.0.min.js"
+			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			  crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>/assets/css/myProfile.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="jquery-3.5.1.min.js"></script>
-<link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
+
 
 <main>
         <div id="device-bar-2">
@@ -35,8 +37,9 @@
             $dob=$val->dob;
             $pic_status=$val->user_picture_status;
             $sex=$val->sex;
+
                  ?>
-                <div class="td" id="f-name-l"><span><?= Ucfirst($firstName)?></span></div>
+                <div class="td" id="f-name-l"><span><?=(isset($firstName) && !empty($firstName))?$firstName:$username?></span></div>
                 <div class="td" id="i-links">
                     <div class="tb">
                         <div class="td" id="m-td">
@@ -109,11 +112,11 @@
                                                 }
                                         ?>
                                         <tr>
-                                        <td class=""><?=Ucfirst($user->first_name),' ',ucfirst($user->last_name),' ',(isset($user->account_type)&&($user->account_type)=='M')?'<a class="text-primary">(Mentor)</a>':''?></td>
+                                        <td class=""><?=(isset($user->first_name,$user->last_name) && !empty($user->first_name)&& !empty($user->last_name))?Ucfirst($user->first_name):Ucfirst($user->username),' ',ucfirst($user->last_name),' ',(isset($user->account_type)&&($user->account_type)=='M')?'<a class="text-primary">(Mentor)</a>':''?></td>
                                         <td class=""> <!-- --> <?php if (isset($subs) && $subs==$user->userId && $status=='1'){
-                                        ?><a href="<?= base_url().'user/follow_user/'.$user->userId?>" class="button-follow"><span class="fa fa-check btn btn-danger btn-sm"></span></a> <?php
+                                        ?><a data-session-id="<?= $user->userId ?>" class="button-unfollow"><span id ="button-unfollow" class="fa fa-check btn btn-danger btn-sm"></span></a> <?php
                                         }else{
-                                            ?> <a href="<?= base_url().'user/follow_user/'.$user->userId?>" class="button-follow"><span class="fa fa-plus btn btn-success btn-sm"></span></a> <?php
+                                            ?> <a data-session-id="<?= $user->userId ?>" class="button-follow"><span class="fa fa-plus btn btn-success btn-sm"></span></a> <?php
                                         }?>
                                          <!-- --> <a href="<?=base_url().'user/visit_profile/'.$user->userId?>" class="button-visit"><span class="fa fa-user btn-primary btn-sm"></span></a></td>
                                         </tr>
@@ -137,33 +140,36 @@
         <div id="device-bar-2"><i class=""></i></div>
     </main>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
+    <!--  -->
     <script type="text/javascript">
-      $(document).ready(function () {
-$('.btn-click').on('click',function(){
-    alert('hi');
+$(document).ready(function () {
+$('.button-unfollow').on('click',function(){
+
+    var userId=$(this).data("session-id");
+    let href = $(this).attr('href-url');
+    $.post("<?= base_url() ?>user/follow_user_Jquery/",{"userId":userId},function (response){
+                        if(response=="success"){
+                            alert('unfollowed');
+                            $('#button-unfollow').toggleClass('fa fa-plus btn btn-success btn-sm');
+                            location.reload();
+                        }
+                    });
+
 });
-    //     $(".button-post").on("click",function(){
-
-      
-    //       var postContent= $("input.whats-on-ur-mind").val();
-    //     // var page_link = $(location).attr('href');
-        
-    //     // var page_name = "Sessions";
-    //     $.ajax({
-    //         url: "<?=base_url()?>user/create_profile_post",
-    //         type: "post",
-    //         data: {'content': postContent},
-    //         dataType: "json",
-    //         success: function (data) {
-    //             Swal.fire('Post Success').then(function(){
-    //                 $('input.whats-on-ur-mind').val("");
-    //                 location.reload();
-    //             }); 
-    //         }
-    //     });
-    // });
-
     });
+    $(document).ready(function () {
+$('.button-follow').on('click',function(){
 
+    var userId=$(this).data("session-id");
+    let href = $(this).attr('href-url');
+    $.post("<?= base_url() ?>user/follow_user_Jquery/",{"userId":userId},function (response){
+                        if(response=="success"){
+                            alert('Followed');
+                            $('#button-unfollow').toggleClass('fa fa-check btn btn-danger btn-sm');
+                            location.reload();
+                        }
+                    });
+
+});
+    });
     </script>

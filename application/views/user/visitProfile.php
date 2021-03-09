@@ -35,6 +35,7 @@
             $dob=$val->dob;
             $pic_status=$val->user_picture_status;
             $sex=$val->sex;
+            $userId=$val->userId;
                  ?>
                 <div class="td" id="f-name-l"><span><?= Ucfirst($firstName)?></span></div>
                 <div class="td" id="i-links">
@@ -199,7 +200,7 @@
                             <div class="tb">
                                 <div class="td" id="p-c-i"> <?php
                 if (isset($pic_status)){ ?>
-                     <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" class="avatar img-circle img-thumbnail" style="height:50px;width:50px"  alt="profile pic">
+                     <img src="<?=base_url().'./uploads/profilepic/profile'.$val->userId?>.jpg" class="avatar img-circle img-thumbnail" style="height:50px;width:50px"  alt="profile pic">
                <?php }else{
                    ?>
                     <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" style="height:50px;width:50px"  alt="profile pic">
@@ -252,7 +253,7 @@
                             <div class="tb">
                                 <a href="#" class="td p-p-pic"><?php
                 if (isset($pic_status)){ ?>
-                     <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" class="avatar img-circle img-thumbnail" style="height:50px;width:50px"  alt="profile pic">
+                     <img src="<?=base_url().'./uploads/profilepic/profile'.$userId?>.jpg" class="avatar img-circle img-thumbnail" style="height:50px;width:50px"  alt="profile pic">
                <?php }else{
                    ?>
                     <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" style="height:50px;width:50px"  alt="profile pic">

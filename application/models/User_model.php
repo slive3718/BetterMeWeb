@@ -464,14 +464,31 @@ function followUser($userId){
     $sessId=$this->session->userdata['id'];
     $this->db->select('*');
     $this->db->from('tblfollow');
-    $this->db->where('follower_id',$sessId);
-    $this->db->where('following_id',$userId);
+    $this->db->where('follower_id=',$sessId);
+    $this->db->where('following_id=',$userId);
     $qstr=$this->db->get();
     // print_r($qstr);exit;
     if ($qstr->num_rows() >=1){
+        foreach($qstr->result() as $res){
+            // print_r($res);exit;
+            if($res->subscribe==1){
+                $this->db->select('*');
+                $this->db->from('tblfollow');
+                $this->db->where('follower_id=',$sessId);
+                $this->db->where('following_id=',$userId);
+                $set=array('follower_id'=>$sessId,'following_id'=>$userId,'subscribe'=>'0');
+                return $this->db->update('tblfollow', $set); 
+            }else{
+                $this->db->select('*');
+                $this->db->from('tblfollow');
+                $this->db->where('follower_id=',$sessId);
+                $this->db->where('following_id=',$userId);
+                $set=array('follower_id'=>$sessId,'following_id'=>$userId,'subscribe'=>'1');
+                return $this->db->update('tblfollow', $set); 
+            }
+        }
         // print_r("here");exit;
-        $set=array('follower_id'=>$sessId,'following_id'=>$userId,'subscribe'=>'0');
-        return $this->db->update('tblfollow', $set); 
+      
     }else{
         $set=array('follower_id'=>$sessId,'following_id'=>$userId,'subscribe'=>'1');
         return $this->db->insert('tblfollow', $set); 
