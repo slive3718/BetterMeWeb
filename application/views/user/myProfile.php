@@ -151,30 +151,6 @@
                         </div>
                     </div>
                     </div>
-                    <div class="l-cnt l-mrg" >
-                        <div class="cnt-label">
-                            <i class="l-i" id="l-i-k"></i>
-                            <span>Did You Know<i id="k-nm">1</i></span>
-                        </div>
-                        <div>
-                            <div class="q-ad-c">
-                                <a href="#" class="q-ad">
-                                    <img src="https://imagizer.imageshack.com/img923/1849/4TnLy1.png">
-                                    <span>My favorite superhero is...</span>
-                                </a>
-                            </div>
-                            <div class="q-ad-c">
-                                <a href="#" class="q-ad" id="add_q">
-                                    <i class="material-icons">add</i>
-                                    <span>Add Answer</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="t-box ">
-                        <a href="#">Privacy</a> <a href="#">Terms</a> <a href="#">Advertising</a> <a href="#">Ad Choices</a> <a href="#">Cookies</a> <span id="t-more">More<i class="material-icons">arrow_drop_down</i></span>
-                     
-                    </div>
                 </div>
                 <div class="td" id="m-col">
                     <div class="m-mrg card" id="p-tabs">
@@ -183,7 +159,7 @@
                                 <div class="tb" id="p-tabs-m">
                                     <div class="td active"> <a href="<?=base_url().'user/myProfile'?>" class=""><i class="fa fa-clock-o"></i><span>TIMELINE</span></a></div>
                                     <div class="td"><a href="<?=base_url().'user/following'?>" class="" ><i class="fa fa-user-plus"></i><span>Following</span></a></div>
-                                    <div class="td"><a href="<?=base_url().'user/followers'?>" class=""><i class="fa fa-users"></i><span>Followers</span> </a></div>
+                                    <div class="td"><a href="<?=base_url().'user/followed_user'?>" class=""><i class="fa fa-users"></i><span>Followers</span> </a></div>
                                 </div>
                             </div>
                             <!-- <div class="td" id="p-tab-m"><i class="material-icons">keyboard_arrow_down</i></div> -->
@@ -296,7 +272,9 @@
                                     $image_name=$post->image_name;
                                     $images=explode('/',$image_name);
                                         foreach ($images as $name) {
+                                            if(strpos($name,'/')!==false){
                                             $extension = explode('.',$name);
+                                            }
                                             // print_r($extension[1]);
                                             // exit;
                                             // echo $name; ?>
@@ -324,6 +302,7 @@
                                                 echo '</div><div class="row">'; 
                                         }}
                             ?>
+                            
                              </div> 
                              </div>
                         </div>
