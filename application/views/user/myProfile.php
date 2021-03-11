@@ -184,7 +184,7 @@
                         <form
                         method="post"
                         action="<?=base_url()?>user/do_upload"
-                        enctype="multipart/form-data" accept="image/*">
+                        enctype="multipart/form-data">
                         <div class="Small" id="c-inp">
                             <textarea
                                 name="content"

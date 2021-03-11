@@ -101,11 +101,8 @@
                             </div>
                                 <table class="table" >
                                
-                                <?php $a=0;
-                                 if (isset($val->getAllusersToFollow) && !empty($val->getAllusersToFollow)){
-                                    foreach ($val->getAllusersToFollow as $user) 
-                                    if ($a++ < 5)
-                                    {
+                                <?php if (isset($val->getAllusersToFollow) && !empty($val->getAllusersToFollow)){
+                                    foreach ($val->getAllusersToFollow as $user){
                                                 foreach($val->getFollowtbl as $folloStat){
                                                         if ($folloStat->following_id == $user->userId){
                                                             // echo $user->userId,$folloStat->subscribe;
@@ -123,6 +120,8 @@
                                         }?>
                                          <!-- --> <a href="<?=base_url().'user/visit_profile/'.$user->userId?>" class="button-visit"><span class="fa fa-user btn-primary btn-sm"></span></a></td>
                                         </tr>
+                                       
+                                        
                                         <?php
                                     }
                                 }?>
@@ -145,10 +144,12 @@
     <script type="text/javascript">
 $(document).ready(function () {
 $('.button-unfollow').on('click',function(){
+
     var userId=$(this).data("session-id");
     let href = $(this).attr('href-url');
     $.post("<?= base_url() ?>user/follow_user_Jquery/",{"userId":userId},function (response){
                         if(response=="success"){
+                            alert('unfollowed');
                             $('#button-unfollow').toggleClass('fa fa-plus btn btn-success btn-sm');
                             location.reload();
                         }
@@ -163,6 +164,7 @@ $('.button-follow').on('click',function(){
     let href = $(this).attr('href-url');
     $.post("<?= base_url() ?>user/follow_user_Jquery/",{"userId":userId},function (response){
                         if(response=="success"){
+                            alert('Followed');
                             $('#button-unfollow').toggleClass('fa fa-check btn btn-danger btn-sm');
                             location.reload();
                         }
