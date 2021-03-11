@@ -21,13 +21,13 @@ class User_model extends CI_Model
 
     public function signUpUser($username,$password,$email,$account_type){
         
-        $data = [
+        $datas = array (
             'username'=> $username,
             'email'=>$email,
             'password'=>password_hash($password, PASSWORD_DEFAULT),
             'account_type'=>$account_type
-            ];
-            return $this->db->insert('tblusers', $data);
+		);
+            return $this->db->insert('tblusers', $datas);
     }
 
     public function loginValidation($uname, $pword)
