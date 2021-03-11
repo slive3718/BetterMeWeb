@@ -660,11 +660,8 @@ $image_arr = array();
         echo "success";
     }else{
         echo "error"; 
+    }    
     }
-        
-    }
-       
-
  }
 
  public function followed_user(){
@@ -672,6 +669,4 @@ $image_arr = array();
     
     $this->load->view('user/followedUser',$data);
     }
-    
-
 }
