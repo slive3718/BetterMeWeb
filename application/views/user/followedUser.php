@@ -27,7 +27,7 @@
 
 <main>
     <div id="device-bar-2">
-        <!-- <button></button> <button></button> <button></button> --> HELLO
+        <!-- <button></button> <button></button> <button></button> -->
     </div>
     <div class="tb card">
         <?php 
