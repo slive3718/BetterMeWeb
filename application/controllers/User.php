@@ -546,12 +546,9 @@ class User extends CI_Controller
     );
         $last_post=$this->user_model->get_post_id();
         if ($last_post){
-
             $result=$this->db->insert("profile_post", $int_array);
-        
+            $result_id=$this->db->insert_id();
         }
-  
-
         if ($result) {
             print_r($result);
         } else {
@@ -649,7 +646,6 @@ $image_arr = array();
 
  }
 
- 
  public function follow_user_Jquery(){
      $post=$this->input->post();
     $userId=$post['userId'];
@@ -660,12 +656,13 @@ $image_arr = array();
         echo "success";
     }else{
         echo "error"; 
+    }  
     }
-        
-    }
-       
-
  }
 
+public function followed_user(){
+$data['followedUsersDatas']=$this->user_model->getAllFollowedUserPosts();
 
+$this->load->view('user/followedUser',$data);
+}
 }
