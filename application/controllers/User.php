@@ -660,12 +660,12 @@ $image_arr = array();
         echo "success";
     }else{
         echo "error"; 
+    }    
     }
-        
-    }
-       
-
  }
 
-
+ public function followed_user(){
+    $data['followedUsersDatas']=$this->user_model->getAllFollowedUserPosts();
+    $this->load->view('user/followedUser',$data);
+    }
 }
