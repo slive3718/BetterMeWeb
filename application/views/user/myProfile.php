@@ -25,7 +25,7 @@
                     </form>
                 </div> 
                 <?php foreach ($user_info as $val){
-                  
+                //   print($val->getAllProfilePost->post_images->result());exit;
             $id=$this->session->userdata('id');
             $username=$val->username;
             $firstName=$val->first_name;
@@ -111,41 +111,7 @@
                         <div id="photos">
                         <div class="container">
                         <div>
-                         <?php 
-                         $numOfCols = 3;
-                         $rowCount = 0;
-                         $bootstrapColWidth = 4 / $numOfCols;
-                         $i=1;
-                           if (isset($val->getAllProfilePost) && !empty($val->getAllProfilePost)) {
-                               foreach ($val->getAllProfilePost as $post) {
-                                $image_name=$post->image_name;
-                                $images=explode('/',$image_name);
-                                    foreach ($images as $name) {
-                                        $extension = explode('.',$name);
-                                        if(isset($extension) && !empty($extension)){
-                                    
-                                        if ($i<=9) {
-                                            $i++;
-                                            $extension = explode('.', $name);
-                                            if ($rowCount % $numOfCols == 0) { ?> <div class="row"> <?php }
-                                            $rowCount++; ?>  
-                                     <div class="col-md-<?php echo $bootstrapColWidth; ?>">
-                                     <div class="thumbnail">
-                                     
-                                           <img src="<?=base_url().'./uploads/posts/'.$name?>" style="width:100px;height:100px;">  
-                                           </div>
-        </div>
-                                        <?php
-                                         if ($rowCount % $numOfCols == 0) { ?> </div> <?php
-                                    }
-                                        }
-                                        }
-                                    }
-                                    
-                            }
-                        echo "</div>";
-                    }
-                         ?>
+                        
                         
                         </div>
                         </div>
@@ -183,7 +149,7 @@
                }?></div>
                         <form
                         method="post"
-                        action="<?=base_url()?>user/do_upload"
+                        action="<?=base_url()?>user/add_new_post"
                         enctype="multipart/form-data">
                         <div class="Small" id="c-inp">
                             <textarea
@@ -242,7 +208,6 @@
                                 <i class="fa fa-calendar"></i>
                                 <span>Date</span>
                             </div>
-
                         </div>
                         <div class="dropdown dropleft">
                         <a class=" btn-m fa fa-cogs" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -260,50 +225,20 @@
                            
                             <a href="#" class="">
                                 <div class="container" >
-                            <div class="row">
-                            <?php 
-                             $numOfCols = 3;
-                             $rowCount = 0;
-                             $bootstrapColWidth = 4 / $numOfCols;
-                            
-                                // print_r(count($val->getAllImages));
-                                // exit;
-                               
-                                    $image_name=$post->image_name;
-                                    $images=explode('/',$image_name);
-                                        foreach ($images as $name) {
-                                            if(strpos($name,'/')!==false){
-                                            $extension = explode('.',$name);
-                                            }
-                                            // print_r($extension[1]);
-                                            // exit;
-                                            // echo $name; ?>
-                                <div class="col-md-<?=$bootstrapColWidth;?> " >
-                                <div class="thumbnail">
-                                  
-                                <?php if($extension[1]=="JPG"||$extension[1]=="PNG"||$extension[1]=="JPEG"||$extension[1]=="GIF"||
-                                $extension[1]=="jpg"||$extension[1]=="png"||$extension[1]=="jpeg"||$extension[1]=="gif"
-                                 ){ ?>
-                                <img src="<?=base_url().'./uploads/posts/'.$name?>" style="width:200px;height:200px;"> 
-                                <?php }else{
-                                    ?>
-                                    <div>
-                                    <video width="400" controls>
-                                    <source src="<?=base_url().'./uploads/posts/'.$name?>" type="video/mp4">
-                                    </video>
-                                    </div>
-                                    <?php
-                                }?>
-                                </div>
-                                </div>
+
+                                        <?php
+                                   foreach($val->getAllProfilePost as $pp){
+                                    foreach($pp->post_images as $each_post_images){
+                                        if($each_post_images->post_id == $post->post_id){ ?>
+                                                
+                                <img src="<?=base_url().'./uploads/posts/'.$each_post_images->image_name?>">
                                 <?php
-                                       $rowCount++;
-                                            if ($rowCount % $numOfCols == 0) {
-                                                echo '</div><div class="row">'; 
-                                        }}
-                            ?>
-                            
-                             </div> 
+                                         }
+                                     }
+								   }
+                                    
+                                ?>
+                     
                              </div>
                         </div>
                             </a>

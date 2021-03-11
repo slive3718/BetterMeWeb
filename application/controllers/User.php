@@ -546,7 +546,6 @@ class User extends CI_Controller
     );
         $last_post=$this->user_model->get_post_id();
         if ($last_post){
-
             $result=$this->db->insert("profile_post", $int_array);
         
         }
@@ -668,4 +667,58 @@ $image_arr = array();
     $data['followedUsersDatas']=$this->user_model->getAllFollowedUserPosts();
     $this->load->view('user/followedUser',$data);
     }
-}
+
+public function add_new_post(){
+        $post = $this->input->post();
+        $id=$this->session->userdata('id');
+        $config['upload_path']          = './uploads/posts';
+        $config['allowed_types']        = 'jpg|png|jpeg|';
+        $config['max_size']             = 100000;
+        $config['max_width']            = 100000;
+        $config['max_height']           = 100000;
+        $datestring = "%Y-%m-%d %h:%i:%s";
+
+        
+        $dataInfo = array();
+        $files = $_FILES;
+        $cpt = count($_FILES['userfile']['name']);
+        $cpt = count($_FILES['userfile']['name']);
+        for($i=0; $i<$cpt; $i++)
+        {           
+            $_FILES['userfile']['name']= $files['userfile']['name'][$i];
+            $_FILES['userfile']['type']= $files['userfile']['type'][$i];
+            $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+            $_FILES['userfile']['error']= $files['userfile']['error'][$i];
+            $_FILES['userfile']['size']= $files['userfile']['size'][$i];    
+    
+            $this->upload->initialize($config);
+            $this->upload->do_upload();
+            $dataInfo[] = $this->upload->data();
+        }
+
+    
+        // print_r(implode('/',$image_arr));
+        // exit;
+    
+        $int_array = array(
+            'content' => $post['content'],
+            'user_id'=>$id,
+            'date'=> date('Y-m-d'),
+        );
+       
+         $result=$this->db->insert("profile_post", $int_array);
+         $res_id=$this->db->insert_id();
+                if($res_id){
+                    $image_arr = array();
+                    foreach ($dataInfo as $info) {
+                            $image_name=($info['file_name']);
+                            // array_push($image_arr,$image_name);
+                            $result=$this->db->insert("tblimages", array('image_name'=>$image_name,'post_id'=>$res_id,'user_id'=>$id,'date_created'=>date('Y-m-d')));
+                    }
+                
+                }
+
+            }
+
+
+        }

@@ -350,6 +350,7 @@ function getAllProfileInfo(){
     $this->db->from('tblusers');
     $this->db->where('userId',$userid);
     $qstr=$this->db->get();
+
     //$query=$this->db->query($qstr);
     if ($qstr->num_rows() > 0) {
         $return_array= array();
@@ -357,9 +358,10 @@ function getAllProfileInfo(){
             $val->getAllProfilePost= $this->getAllProfilePost($val->userId);
             $val->getAllusersToFollow=$this->getAllusersToFollow();
             $val->getFollowtbl=$this->getFollowtbl($val->userId);
-           
             // $val->getAllImages=$this->getAllImages($val->userId);
             $return_array[] = $val;
+            // echo '<pre>';
+            // print_r($return_array);
         }
          return $return_array;
     } else {
@@ -372,11 +374,16 @@ function getAllProfileInfo(){
  function getAllProfilePost($userid){
     
     $this->db->select('*');
-    $this->db->from('profile_post');
-    $this->db->where('user_id', $userid);
+    $this->db->from('profile_post pp');
+    $this->db->where('pp.user_id', $userid);
     $qstr=$this->db->get();  
     if ($qstr->num_rows()>0) {
-        return $qstr->result();
+        $return_array=array();
+        foreach($qstr->result() as $val){
+            $val->post_images =$this->getImagePerPost($val->post_id);
+            $return_array[]=$val;
+        }
+        return  $return_array;
     } else {
         return '';
     }
@@ -521,6 +528,7 @@ function getAllFollowedUserPosts(){
             // print_r($val->following_id);exit;
             $val->getAllProfilePost= $this->getAllProfilePost($val->user_id);
             $val->followingUsers=$this->getAllSubscribe($val->following_id);
+ 
             // print_r($val->following_id);
         }
     // print_r($qstr->result());
@@ -536,6 +544,19 @@ function getAllSubscribe($userid){
             return $qstr->result();
         }
     
+}
+
+function getImagePerPost($post_id){
+    $this->db->select('*');
+    $this->db->from('tblimages');
+    $this->db->where('post_id',$post_id);
+    $qstr = $this->db->get();
+if ($qstr){
+    return $qstr->result();
+}
+    else{
+        return '';
+    }
 }
 
 
