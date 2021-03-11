@@ -667,5 +667,11 @@ $image_arr = array();
 
  }
 
+ public function followed_user(){
+    $data['followedUsersDatas']=$this->user_model->getAllFollowedUserPosts();
+    
+    $this->load->view('user/followedUser',$data);
+    }
+    
 
 }

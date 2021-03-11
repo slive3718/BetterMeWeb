@@ -506,4 +506,38 @@ function getFollowtbl($sessId){
     return $qstr->result();
 }
 
+function getAllFollowedUserPosts(){
+    // select * from profile_post join tblusers on profile_post.user_id=tblusers.userId
+    //  join  tblfollow on profile_post.user_id=tblfollow.follower_id 
+    //  where tblfollow.follower_id=93 and tblfollow.subscribe=1
+    $sessId=$this->session->userdata['id'];
+    $this->db->select('*');
+    $this->db->from('profile_post s');
+    $this->db->join('tblfollow f','s.user_id=f.follower_id');
+    // $this->db->where('f.follower_id',$sessId);
+    $this->db->where('f.subscribe=',1);
+    $qstr= $this->db->get();
+        foreach($qstr->result() as $val){
+            // print_r($val->following_id);exit;
+            $val->getAllProfilePost= $this->getAllProfilePost($val->user_id);
+            $val->followingUsers=$this->getAllSubscribe($val->following_id);
+            // print_r($val->following_id);
+        }
+    // print_r($qstr->result());
+    return $qstr->result();
+}
+function getAllSubscribe($userid){
+        $this->db->select('*');
+        $this->db->from('profile_post p');
+        $this->db->join('tblusers u','p.user_id=u.userId');
+        $this->db->where('user_id',$userid);
+        $qstr=$this->db->get();
+        if ($qstr->result()>0){
+            return $qstr->result();
+        }
+    
+}
+
+
+
 }
