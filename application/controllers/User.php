@@ -135,7 +135,7 @@ class User extends CI_Controller
             }
         } else {
             $this->session->set_flashdata('msgerror', 'Fill up all fields');
-        	redirect(base_url().'admin/viewSignUp');
+        	redirect(base_url().'user/viewSignUp');
         }
     }
 
@@ -295,7 +295,7 @@ class User extends CI_Controller
             $result = $this->user_model->updateMyProfileInfo($field, $id);
 
             if ($result) {
-                $this->session->set_flashdata('msgsuccess', "Post successfully deleted.");
+                $this->session->set_flashdata('msgsuccess', "Profile successfully updated.");
 
                 redirect(base_url('user/viewMyProfileInfo'));
             } else {
@@ -649,6 +649,23 @@ $image_arr = array();
 
  }
 
+ 
+ public function follow_user_Jquery(){
+     $post=$this->input->post();
+    $userId=$post['userId'];
+    $sessId=$this->session->userdata('id');
+    if ($sessId) {
+        $data['user_info']=$this->user_model->followUser($userId);
+    if($data){
+        echo "success";
+    }else{
+        echo "error"; 
+    }
+        
+    }
+       
+
+ }
 
 
 }
