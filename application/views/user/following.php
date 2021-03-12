@@ -66,7 +66,7 @@
         </header>
         <div id="profile-upper">
             <div id="profile-banner-image">
-                <img src="https://imagizer.imageshack.com/img921/9628/VIaL8H.jpg" alt="Banner image">
+                <img src="https://imagizer.imageshack.com/img924/8210/3cMvFg.jpg" alt="Banner image">
             </div>
             <div id="profile-d">
                 <div id="profile-pic" class="card Regular shadow">
