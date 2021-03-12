@@ -23,7 +23,7 @@
 	<header>
 		<div class="tb">
 			<div>
-				<center><a href="<?= base_url() . 'user/homepage/' ?>">Better Me</a></center>
+				<center><a style="font-weight: bold" class="btn btn-s btn-success rounded" href="<?= base_url() . 'user/homepage/' ?>">Better Me</a></center>
 			</div>
 			<div class="td" id="search-form" style="float:left;">
 				<form method="get" action="#">
@@ -44,8 +44,8 @@ as $val){
 			$pic_status = $val->user_picture_status;
 			$sex = $val->sex;
 			?>
-			<div class="td" id="f-name-l"><span><a style="color:white" class="btn btn-s btn-success rounded"
-												   href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></span>
+			<div class="td" id="f-name-l"><span><a style="font-weight: bold" class="btn btn-s btn-success rounded"
+			href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></span>
 			</div>
 			<div class="td" id="i-links">
 				<div class="tb">
