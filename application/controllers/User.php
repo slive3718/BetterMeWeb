@@ -633,7 +633,7 @@ $image_arr = array();
  public function visit_profile($profile_id){
     $userid=$this->session->userdata('id');
     if ($userid) {
-        $data['user_info']=$this->user_model->getAllProfileInfo();
+        $data['user_info']=$this->user_model->getAllProfileInfo($profile_id);
         $data['page_title']="Profile Visit";
         $this->load->view("user/templates/headerProfile", $data);
         $this->load->view('user/visitProfile',$data);
