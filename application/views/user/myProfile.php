@@ -23,7 +23,7 @@
 	<header>
 		<div class="tb">
 			<div>
-				<center><a href="<?= base_url() . 'user/homepage/' ?>" style="color:black;">Better Me</a></center>
+				<center><a href="<?= base_url() . 'user/homepage/' ?>">Better Me</a></center>
 			</div>
 			<div class="td" id="search-form" style="float:left;">
 				<form method="get" action="#">
@@ -76,7 +76,7 @@ as $val){
 	</header>
 	<div id="profile-upper">
 		<div id="profile-banner-image">
-			<img src="https://imagizer.imageshack.com/img922/9173/shsXv3.jpg" alt="Banner image">
+			<img src="https://imagizer.imageshack.com/img923/1930/9qMQHq.jpg" alt="Banner image">
 		</div>
 		<div id="profile-d">
 			<div id="profile-pic" class="card Regular shadow">
