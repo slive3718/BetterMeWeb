@@ -456,7 +456,7 @@ function getVisitProfileInfo($profile_id){
         foreach ($qstr->result() as $val){
             $val->getAllProfilePost= $this->getAllProfilePost($profile_id);
             $val->getAllusersToFollow=$this->getAllusersToFollow();
-            // $val->getAllImages=$this->getAllImages($val->userId);
+             $val->getImagePerPost=$this->getImagePerPost($val->userId);
             $return_array[] = $val;
         }
          return $return_array;
