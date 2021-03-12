@@ -94,6 +94,7 @@ as $val){
 			<div id="u-name"><?= Ucfirst($firstName), ' ', Ucfirst($lastName) ?></div>
 			<div class="tb" id="m-btns">
 				<div class="td">
+					<div class="m-btn"><i class="material-icons">Change Timeline Piture</i><span></span></div>
 				</div>
 			</div>
 		</div>
