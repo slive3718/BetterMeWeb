@@ -44,7 +44,7 @@ as $val){
 			$pic_status = $val->user_picture_status;
 			$sex = $val->sex;
 			?>
-			<div class="td" id="f-name-l"><span><a style="color:white" class="btn btn-s btn-success rounded"
+			<div class="td" id="f-name-l"><span><a style="color:white"
 												   href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></span>
 			</div>
 			<div class="td" id="i-links">
