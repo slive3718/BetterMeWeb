@@ -30,20 +30,21 @@
                         <button type="submit"><i class="material-icons">search</i></button>
                     </form>
                 </div> 
-                <?php foreach ($user_info as $val){
-                  
-            $id=$this->session->userdata('id');
-            $username=$val->username;
-            $firstName=$val->first_name;
-            $middleName=$val->middle_name;
-            $lastName=$val->last_name;
-            $email=$val->email;
-            $dob=$val->dob;
-            $pic_status=$val->user_picture_status;
-            $sex=$val->sex;
+
+			<?php foreach ($user_info as $val){
+			//   print($val->getAllProfilePost->post_images->result());exit;
+			$id = $this->session->userdata('id');
+			$username = $val->username;
+			$firstName = $val->first_name;
+			$middleName = $val->middle_name;
+			$lastName = $val->last_name;
+			$email = $val->email;
+			$dob = $val->dob;
+			$pic_status = $val->user_picture_status;
+			$sex = $val->sex;
 			?>
-			<div class="td" id="f-name-l"><span><a style="font-weight: bold" class="btn btn-s btn-success rounded"
-			href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></span>
+			<div class="td" id="f-name-l"><a style="font-weight: bold" class="btn btn-s btn-success rounded"
+			href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a>
 			</div>
 			<div class="td" id="i-links">
 				<div class="tb">
