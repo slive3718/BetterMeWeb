@@ -517,6 +517,8 @@ class User extends CI_Controller
             $data['user_info']=$this->user_model->getAllProfileInfo();
    
             // $this->load->view("user/templates/header");
+            $data['page_title']="Follow People";
+            $this->load->view("user/templates/headerProfile", $data);
             $this->load->view("user/following", $data);
             // $this->load->view("user/templates/footer");
         }
@@ -531,6 +533,8 @@ class User extends CI_Controller
             $data['user_info']=$this->user_model->get_my_Profileinfo($session_id);
     
             // $this->load->view("user/templates/header");
+            $data['page_title']="My Followers";
+            $this->load->view("user/templates/headerProfile", $data);
             $this->load->view("user/followers", $data);
             // $this->load->view("user/templates/footer");
         }
@@ -633,6 +637,8 @@ $image_arr = array();
         // print_r($data['user_info']);exit;
         // $data['profile_post_info']=$this->user_model->get_my_Profileinfo($userid);
         // $this->load->view("user/templates/header");
+        $data['page_title']="Profile Visit";
+        $this->load->view("user/templates/headerProfile", $data);
         $this->load->view('user/visitProfile',$data);
         // $this->load->view("user/templates/footer");
     }
@@ -666,6 +672,8 @@ $image_arr = array();
 
  public function followed_user(){
     $data['followedUsersDatas']=$this->user_model->getAllFollowedUserPosts();
+    $data['page_title']="Followed People";
+    $this->load->view("user/templates/headerProfile", $data);
     $this->load->view('user/followedUser',$data);
     }
 
