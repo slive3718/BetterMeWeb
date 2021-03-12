@@ -83,7 +83,6 @@
                         <div class="m-btn"><i class="material-icons">Change Timeline Piture</i><span></span></div>
                     </div>
                 </div>
-                <div id="edit-profile"><i class="material-icons">camera_alt</i></div>
             </div>
             <div id="black-grd"></div>
         </div>
