@@ -17,7 +17,7 @@
         </div>
         <header>
             <div class="tb"> 
-                <div>   <a href="<?= base_url().'user/homepage/'?>">Better Me</a></div>
+                <div>   <a style="font-weight: bold" class="btn btn-s btn-success rounded" href="<?= base_url().'user/homepage/'?>">Better Me</a></div>
                 <div class="td" id="search-form">
                     <form method="get" action="#">
                         <input type="text" placeholder="Better Me Search">
