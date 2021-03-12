@@ -31,7 +31,10 @@
                     </form>
                 </div> 
 
-			<?php foreach ($user_info as $val){
+			<?php
+			if(isset($user_info)&& !empty($user_info)){
+
+			foreach ($user_info as $val){
 			//   print($val->getAllProfilePost->post_images->result());exit;
 			$id = $this->session->userdata('id');
 			$username = $val->username;
@@ -286,12 +289,11 @@
 				} ?>
 				<div clas="fa-3x"><i class="fas fa-sync fa-spin"></i></div>
 			</div>
-
 		</div>
 	</div>
 	<?php
 	}
-	
+	}
 	?>
 	<div id="device-bar-2"><i class="fab fa-apple"></i></div>
 </main>
