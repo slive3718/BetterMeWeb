@@ -15,18 +15,6 @@
 <script src="jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
 
-<main>
-	<div id="device-bar-2">
-		<!-- <button></button>
-		<button></button>
-		<button></button> -->
-	</div>
-
-
-
-
-	<div id="device-bar-2"><i class=""></i></div>
-</main>
 
 
 <main>
@@ -116,20 +104,15 @@
 		 $followed_content = $followDatas->content;
 		$followDatas->first_name;
 		$followDatas->last_name;
+//		print_r($followDatas->user_id);
 		?>
 	<div class="m-mrg card Regular shadow" style="width:80%;margin:auto" id="">
 	<div>
 		<div class="post card Regular shadow">
 			<div class="tb">
 				<a href="#" class="td p-p-pic">
-
-						<img src=""
-							 class="" style="height:50px;width:50px" alt="profile pic">
-
-
-						<img src="">
-
-					} ?></a>
+						<img src="<?=base_url().'./uploads/profilepic/profile'.$followDatas->user_id.'.jpg'?>" class="" style="height:50px;width:50px" alt="profile pic">
+				</a>
 				<div class="td p-r-hdr">
 					<div class="p-u-info">
 						<a href="#"></a>
@@ -157,12 +140,12 @@
 			</label>
 			<div class="d-flex justify-content-center">
 
+			?>
 				<a href="#" class="">
 					<div class="container">
-
-
-
-
+						<?php 	foreach ($followDatas->getImagePerPost as $followedImagePost) {
+							?><img src = "<?= base_url() . './uploads/posts/' . $followedImagePost->image_name; ?>" style="width:300px" >
+							<?php }?>
 					</div>
 			</div>
 			</a>

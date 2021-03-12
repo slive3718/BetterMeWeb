@@ -671,6 +671,7 @@ $image_arr = array();
  }
 
  public function followed_user(){
+    $data['user_info']=$this->user_model->getAllProfileInfo();
     $data['followedUsersDatas']=$this->user_model->getAllFollowedUserPosts();
     $data['page_title']="Followed People";
     $this->load->view("user/templates/headerProfile", $data);
