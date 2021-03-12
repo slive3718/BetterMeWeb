@@ -147,7 +147,7 @@
 								<div class="td"><a href="<?= base_url() . 'user/following' ?>" class=""><i
 												class="fa fa-user-plus"></i><span>Following</span></a></div>
 								<div class="td"><a href="<?= base_url() . 'user/followed_user' ?>" class=""><i
-												class="fa fa-users"></i><span>Followers</span> </a></div>
+												class="fa fa-users"></i><span>Followed Users</span> </a></div>
 							</div>
 						</div>
 						<!-- <div class="td" id="p-tab-m"><i class="material-icons">keyboard_arrow_down</i></div> -->
