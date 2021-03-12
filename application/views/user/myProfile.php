@@ -15,34 +15,32 @@
 <link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
 
 <main>
-	<div id="device-bar-2">
-		<!-- <button></button>
-		<button></button>
-		<button></button> -->
-	</div>
-	<header>
-		<div class="tb">
-			<div>
-				<center><a style="font-weight: bold" class="btn btn-s btn-success rounded" href="<?= base_url() . 'user/homepage/' ?>">Better Me</a></center>
-			</div>
-			<div class="td" id="search-form" style="float:left;">
-				<form method="get" action="#">
-					<input type="text" placeholder="Better Me Search">
-					<button type="submit"><i class="material-icons">search</i></button>
-				</form>
-			</div>
-			<?php foreach ($user_info
-as $val){
-			//   print($val->getAllProfilePost->post_images->result());exit;
-			$id = $this->session->userdata('id');
-			$username = $val->username;
-			$firstName = $val->first_name;
-			$middleName = $val->middle_name;
-			$lastName = $val->last_name;
-			$email = $val->email;
-			$dob = $val->dob;
-			$pic_status = $val->user_picture_status;
-			$sex = $val->sex;
+        <div id="device-bar-2">
+            <!-- <button></button>
+            <button></button>
+            <button></button> -->
+        </div>
+        <header>
+            <div class="tb"> 
+                <div>   <a style="font-weight: bold" class="btn btn-s btn-success rounded"
+                href="<?= base_url().'user/homepage/'?>" >Better Me</a></div>
+                <div class="td" id="search-form">
+                    <form method="get" action="#">
+                        <input type="text" placeholder="Better Me Search">
+                        <button type="submit"><i class="material-icons">search</i></button>
+                    </form>
+                </div> 
+                <?php foreach ($user_info as $val){
+                  
+            $id=$this->session->userdata('id');
+            $username=$val->username;
+            $firstName=$val->first_name;
+            $middleName=$val->middle_name;
+            $lastName=$val->last_name;
+            $email=$val->email;
+            $dob=$val->dob;
+            $pic_status=$val->user_picture_status;
+            $sex=$val->sex;
 			?>
 			<div class="td" id="f-name-l"><span><a style="font-weight: bold" class="btn btn-s btn-success rounded"
 			href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></span>
