@@ -503,7 +503,7 @@ class User extends CI_Controller
             $data['user_info']=$this->user_model->getAllProfileInfo();
             // $data['profile_post_info']=$this->user_model->get_my_Profileinfo($userid);
             $data['page_title']="My Profile";
-            $this->load->view("user/templates/header", $data);
+            $this->load->view("user/templates/headerProfile", $data);
             $this->load->view("user/myProfile", $data);
             // $this->load->view("user/templates/footer");
         }
