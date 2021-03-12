@@ -15,24 +15,23 @@
 <link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
 
 <main>
-	<div id="device-bar-2">
-		<!-- <button></button>
-		<button></button>
-		<button></button> -->
-	</div>
-	<header>
-		<div class="tb">
-			<div>
-				<center><a href="<?= base_url() . 'user/homepage/' ?>">Better Me</a></center>
-			</div>
-			<div class="td" id="search-form" style="float:left;">
-				<form method="get" action="#">
-					<input type="text" placeholder="Better Me Search">
-					<button type="submit"><i class="material-icons">search</i></button>
-				</form>
-			</div>
-			<?php if(isset($user_info) && !empty($user_info)){
-			foreach ($user_info as $val){
+        <div id="device-bar-2">
+            <!-- <button></button>
+            <button></button>
+            <button></button> -->
+        </div>
+        <header>
+            <div class="tb"> 
+                <div>   <a style="font-weight: bold" class="btn btn-s btn-success rounded"
+                href="<?= base_url().'user/homepage/'?>" >Better Me</a></div>
+                <div class="td" id="search-form">
+                    <form method="get" action="#">
+                        <input type="text" placeholder="Better Me Search">
+                        <button type="submit"><i class="material-icons">search</i></button>
+                    </form>
+                </div> 
+
+			<?php foreach ($user_info as $val){
 			//   print($val->getAllProfilePost->post_images->result());exit;
 			$id = $this->session->userdata('id');
 			$username = $val->username;
@@ -44,7 +43,8 @@
 			$pic_status = $val->user_picture_status;
 			$sex = $val->sex;
 			?>
-			<div class="td" id="f-name-l"><span><a style="color:white" class="btn btn-s btn-success rounded" href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></span>
+			<div class="td" id="f-name-l"><a style="font-weight: bold" class="btn btn-s btn-success rounded"
+			href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a>
 			</div>
 			<div class="td" id="i-links">
 				<div class="tb">
@@ -75,7 +75,7 @@
 	</header>
 	<div id="profile-upper">
 		<div id="profile-banner-image">
-			<img src="https://imagizer.imageshack.com/img921/9628/VIaL8H.jpg" alt="Banner image">
+			<img src="https://imagizer.imageshack.com/img924/8210/3cMvFg.jpg" alt="Banner image">
 		</div>
 		<div id="profile-d">
 			<div id="profile-pic" class="card Regular shadow">
@@ -96,7 +96,6 @@
 					<div class="m-btn"><i class="material-icons">Change Timeline Piture</i><span></span></div>
 				</div>
 			</div>
-			<div id="edit-profile"><i class="material-icons">camera_alt</i></div>
 		</div>
 		<div id="black-grd"></div>
 	</div>
@@ -229,7 +228,7 @@
 										<div class="td p-r-hdr">
 											<div class="p-u-info">
 												<a href="#"><?= Ucfirst($firstName), " ", Ucfirst($lastName) ?></a>
-												shared a post <a href="#">Himalaya Singh</a>
+			
 											</div>
 											<div class="p-dt">
 												<i class="fa fa-calendar"></i>

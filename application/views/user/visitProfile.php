@@ -17,7 +17,7 @@
         </div>
         <header>
             <div class="tb"> 
-                <div>   <a href="<?= base_url().'user/homepage/'?>">Better Me</a></div>
+                <div>   <a style="font-weight: bold" class="btn btn-s btn-success rounded" href="<?= base_url().'user/homepage/'?>">Better Me</a></div>
                 <div class="td" id="search-form">
                     <form method="get" action="#">
                         <input type="text" placeholder="Better Me Search">
@@ -64,7 +64,7 @@
         </header>
         <div id="profile-upper">
             <div id="profile-banner-image">
-                <img src="https://imagizer.imageshack.com/img921/9628/VIaL8H.jpg" alt="Banner image">
+                <img src="https://imagizer.imageshack.com/img924/8210/3cMvFg.jpg" alt="Banner image">
             </div>
             <div id="profile-d">
                 <div id="profile-pic" class="card Regular shadow">
@@ -83,7 +83,6 @@
                         <div class="m-btn"><i class="material-icons">Change Timeline Piture</i><span></span></div>
                     </div>
                 </div>
-                <div id="edit-profile"><i class="material-icons">camera_alt</i></div>
             </div>
             <div id="black-grd"></div>
         </div>
