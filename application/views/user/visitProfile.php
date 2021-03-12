@@ -21,7 +21,8 @@
         </div>
         <header>
             <div class="tb"> 
-                <div>   <a style="font-weight: bold" class="btn btn-s btn-success rounded" href="<?= base_url().'user/homepage/'?>">Better Me</a></div>
+                <div>   <a style="font-weight: bold" class="btn btn-s btn-success rounded" 
+                href="<?= base_url().'user/homepage/'?>">Better Me</a></div>
                 <div class="td" id="search-form">
                     <form method="get" action="#">
                         <input type="text" placeholder="Better Me Search">
@@ -41,7 +42,8 @@
             $sex=$val->sex;
             $userId=$val->userId;
                  ?>
-                <div class="td" id="f-name-l"><span><?= Ucfirst($firstName)?></span></div>
+                <div><a style="font-weight: bold" class="btn btn-s btn-success rounded"
+                href="<?= base_url().'user/homepage/'?>" >Home</a></div>
                 <div class="td" id="i-links">
                     <div class="tb">
                         <div class="td" id="m-td">
