@@ -291,7 +291,7 @@
 	</div>
 	<?php
 	}
-	}
+	
 	?>
 	<div id="device-bar-2"><i class="fab fa-apple"></i></div>
 </main>
