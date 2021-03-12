@@ -139,8 +139,6 @@
 				<?=	$followed_content ?>
 			</label>
 			<div class="d-flex justify-content-center">
-
-			?>
 				<a href="#" class="">
 					<div class="container">
 						<?php 	foreach ($followDatas->getImagePerPost as $followedImagePost) {
