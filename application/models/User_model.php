@@ -514,17 +514,16 @@ function getFollowtbl($sessId){
 }
 
 function getAllFollowedUserPosts(){
-    // select * from profile_post join tblusers on profile_post.user_id=tblusers.userId
-    //  join  tblfollow on profile_post.user_id=tblfollow.follower_id 
-    //  where tblfollow.follower_id=93 and tblfollow.subscribe=1
+
     $sessId=$this->session->userdata['id'];
     $this->db->select('*');
     $this->db->from('profile_post s');
     $this->db->join('tblfollow f','s.user_id=f.following_id');
     $this->db->join('tblusers u' , 's.user_id=u.userId');
     // $this->db->where('f.follower_id',$sessId);
+	$this->db->where('f.follower_id',$sessId);
+    $this->db->where('f.subscribe=','1');
 	$this->db->order_by('s.date','desc');
-    $this->db->where('f.subscribe=',1);
     $qstr= $this->db->get();
 
     if($qstr){

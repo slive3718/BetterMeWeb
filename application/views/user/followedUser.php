@@ -115,11 +115,11 @@
 				</a>
 				<div class="td p-r-hdr">
 					<div class="p-u-info">
-						<a href="#"></a>
-						<?= $followDatas->first_name,$followDatas->last_name?>  a post <a href="#">Himalaya Singh</a>
+						<a href="#"><?= $followDatas->first_name,' ',$followDatas->last_name?></a>
+						 Shared a post
 					</div>
 					<div class="p-dt">
-						<i class="fa fa-calendar"></i>
+						<i class="fa fa-calendar"><?=$followDatas->date?></i>
 						<span>Date</span>
 					</div>
 				</div>
