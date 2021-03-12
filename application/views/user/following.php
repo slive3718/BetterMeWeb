@@ -39,8 +39,8 @@
             $sex=$val->sex;
 
                  ?>
-                <div class="td" id="f-name-l"><a style="color:white" class="btn btn-s btn-success rounded"
-				href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></div>
+                <div class="td" id="f-name-l"><span><a style="color:white" class="btn btn-s btn-success rounded"
+				href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></span></div>
                 <div class="td" id="i-links">
                     <div class="tb">
                         <div class="td" id="m-td">
