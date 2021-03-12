@@ -31,8 +31,8 @@
 					<button type="submit"><i class="material-icons">search</i></button>
 				</form>
 			</div>
-			<?php foreach ($user_info
-as $val){
+			<?php if(isset($user_info) && !empty($user_info)){
+			foreach ($user_info as $val){
 			//   print($val->getAllProfilePost->post_images->result());exit;
 			$id = $this->session->userdata('id');
 			$username = $val->username;
@@ -44,8 +44,7 @@ as $val){
 			$pic_status = $val->user_picture_status;
 			$sex = $val->sex;
 			?>
-			<div class="td" id="f-name-l"><span><a style="color:white" class="btn btn-s btn-success rounded"
-												   href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></span>
+			<div class="td" id="f-name-l"><span><a style="color:white" class="btn btn-s btn-success rounded" href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></span>
 			</div>
 			<div class="td" id="i-links">
 				<div class="tb">
@@ -293,7 +292,7 @@ as $val){
 	</div>
 	<?php
 	}
-
+	}
 	?>
 	<div id="device-bar-2"><i class="fab fa-apple"></i></div>
 </main>

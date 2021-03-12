@@ -179,13 +179,13 @@ public function add_profilePic($id, $date_picuploaded, $file_name){
    
    
     if ($qstr->num_rows() > 0) {
-        $data = [
+        $data = array (
            'p_user_id'=> $id,
            'p_name'=> $file_name,
        
            'p_dateuploaded'=> $date_picuploaded,
         
-           ];
+		);
    
         return $this->db->update('profilepic', $data);
            
@@ -197,13 +197,13 @@ public function add_profilePic($id, $date_picuploaded, $file_name){
         $this->session->set_flashdata('msgerror', 'Fields cannot be empty');
         exit;
     } else {
-        $data = [
+        $data = array(
            'p_user_id'=> $id,
            'p_name'=> $file_name,
        
            'p_dateuploaded'=> $date_picuploaded,
         
-           ];
+		);
    
         return $this->db->insert('profilepic', $data);
            
@@ -303,13 +303,13 @@ public function updateMyComment($comment_id,$field){
 public function add_community_comment($community_comment,$date_created,$community_post_id){
 
 
-    $data = [
+    $data = array(
         'comment_content'=> $community_comment,
         'comment_date'=>$date_created,
         'comment_user_id'=>$this->session->userdata('id'),
         'community_id'=>$community_post_id,
   
-        ];
+					);
 
         print_r($data);
     return $this->db->insert('tblcommunitycomments', $data);   
@@ -520,19 +520,28 @@ function getAllFollowedUserPosts(){
     $sessId=$this->session->userdata['id'];
     $this->db->select('*');
     $this->db->from('profile_post s');
-    $this->db->join('tblfollow f','s.user_id=f.follower_id');
+    $this->db->join('tblfollow f','s.user_id=f.following_id');
+    $this->db->join('tblusers u' , 's.user_id=u.userId');
     // $this->db->where('f.follower_id',$sessId);
+	$this->db->order_by('s.date','desc');
     $this->db->where('f.subscribe=',1);
     $qstr= $this->db->get();
-        foreach($qstr->result() as $val){
-            // print_r($val->following_id);exit;
-            $val->getAllProfilePost= $this->getAllProfilePost($val->user_id);
-            $val->followingUsers=$this->getAllSubscribe($val->following_id);
- 
-            // print_r($val->following_id);
-        }
+
+    if($qstr){
+		$return_array= array();
+		foreach($qstr->result() as $val){
+			// print_r($val->following_id);exit;
+//			$val->getFollowedInfo= $this->getFollowedInfo($val->following_id);
+			$val->getImagePerPost= $this->getImagePerPost($val->post_id);
+			$return_array[]=$val;
+		}
+		return $return_array;
+	}else{
+    	return '';
+	}
+
     // print_r($qstr->result());
-    return $qstr->result();
+    return '';
 }
 function getAllSubscribe($userid){
         $this->db->select('*');
@@ -541,6 +550,7 @@ function getAllSubscribe($userid){
         $this->db->where('user_id',$userid);
         $qstr=$this->db->get();
         if ($qstr->result()>0){
+
             return $qstr->result();
         }
     
