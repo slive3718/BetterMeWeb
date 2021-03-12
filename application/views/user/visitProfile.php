@@ -42,8 +42,8 @@
             $sex=$val->sex;
             $userId=$val->userId;
                  ?>
-                <div><a style="font-weight: bold" class="btn btn-s btn-success rounded"
-                href="<?= base_url().'user/homepage/'?>" >Home</a></div>
+               <div class="td" id="f-name-l"><a style="font-weight: bold" class="btn btn-s btn-success rounded"
+				href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></div>
                 <div class="td" id="i-links">
                     <div class="tb">
                         <div class="td" id="m-td">
