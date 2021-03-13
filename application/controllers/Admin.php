@@ -652,4 +652,9 @@ public function viewArchiveDiet(){
         }
     }
 
+    public function reviewProfilePosts(){
+		$data['all_profile_posts']=$this->admin_model->getAllProfilePosts();
+		$this->load->view('admin/reviewProfilePosts',$data);
+
+	}
 }
