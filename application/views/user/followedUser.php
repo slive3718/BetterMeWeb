@@ -19,9 +19,6 @@
 
 <main>
 	<div id="device-bar-2">
-		<!-- <button></button>
-		<button></button>
-		<button></button> -->
 	</div>
 	<header>
 		<div class="tb">
@@ -80,25 +77,6 @@
 			</div>
 		</div>
 	</header>
-<!--	--><?php
-//	foreach ($followedUsersDatas as $followDatas) { ?>
-<!--		<div class="card shadow ">-->
-<!--		<div>-->
-<!--		--><?php
-//
-//		echo $followed_content = $followDatas->content;
-//		echo $followDatas->first_name;
-//		echo $followDatas->last_name;
-//		foreach ($followDatas->getImagePerPost as $followeImagePost) {
-//			echo $followeImagePost->image_name;
-//
-//			?>
-<!--			</div>-->
-<!---->
-<!--			</div>-->
-<!--			--><?php
-//		}
-//	} ?>
 	<?php
 	if (isset($followedUsersDatas) && !empty($followedUsersDatas)){
 	foreach ($followedUsersDatas as $followDatas) {
@@ -146,7 +124,6 @@
 					</div>
 			</div>
 			</a>
-
 			<div>
 				<div class="p-acts">
 					<div class="p-act like"><i class="fa fa-thumbs-up"></i><span>25</span></div>
