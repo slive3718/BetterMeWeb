@@ -1,124 +1,153 @@
-
-<html lang="en">
+<html>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-	<!-- <link rel = "stylesheet" type = "text/css" 
-   href = "<?php echo base_url(); ?>assets/css/top-nav.css">
-   
-   <script type = 'text/javascript' src = "<?php echo base_url(); 
-   ?>asstes/js/top-nav.js"></script> -->
- <link rel = "stylesheet" type = "text/css" 
- 
- href = "<?php echo base_url(); ?>assets/css/bootstrap.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
- 
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css"
 
+		  href="<?php echo base_url(); ?>assets/css/bootstrap.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+		  integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+		  crossorigin="anonymous"/>
 
-	<title><?php if ($page_title){
-		echo "$page_title";
-	}?>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+			crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+			crossorigin="anonymous"></script>
+	<!-- start: META -->
+
+	<!-- end: META -->
+
+	<!-- start: GOOGLE FONTS -->
+	<link rel="stylesheet" href="<?= base_url() ?>assets/css/googlefonts.css">
+	<!--<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />-->
+	<!-- end: GOOGLE FONTS -->
+	<!-- start: MAIN CSS -->
+	<link rel="stylesheet" href="<?= base_url() ?>assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?= base_url() ?>assets/vendor/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?= base_url() ?>assets/vendor/themify-icons/themify-icons.min.css">
+	<link href="<?= base_url() ?>assets/vendor/animate.css/animate.min.css" rel="stylesheet" media="screen">
+	<link href="<?= base_url() ?>assets/vendor/perfect-scrollbar/perfect-scrollbar.min.css" rel="stylesheet"
+		  media="screen">
+	<link href="<?= base_url() ?>assets/vendor/switchery/switchery.min.css" rel="stylesheet" media="screen">
+	<!-- end: MAIN CSS -->
+	<!-- start: CLIP-TWO CSS -->
+	<link rel="stylesheet" href="<?= base_url() ?>assets/css/styles.css">
+	<link rel="stylesheet" href="<?= base_url() ?>assets/css/plugins.css">
+	<link rel="stylesheet" href="<?= base_url() ?>assets/css/themes/theme-1.css" id="skin_color"/>
+	<!-- end: CLIP-TWO CSS -->
+	<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+	<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+
+	<link href="<?= base_url() ?>assets/vendor/select2/select2.min.css" rel="stylesheet" media="screen">
+	<link href="<?= base_url() ?>assets/vendor/DataTables/css/DT_bootstrap.css" rel="stylesheet" media="screen">
+	<link href="<?= base_url() ?>assets/vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet"
+		  media="screen">
+	<link href="<?= base_url() ?>assets/vendor/bootstrap-datepicker/bootstrap-datepicker3.standalone.min.css"
+		  rel="stylesheet" media="screen">
+	<link href="<?= base_url() ?>assets/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css"
+		  rel="stylesheet" media="screen">
+	<!-- iCheck for checkboxes and radio inputs -->
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/vendor/iCheck/all.css"/>
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/vendor/iCheck/minimal/blue.css"/>
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>front_assets/css/custom.css" media="screen"/>
+
+	<link href="<?= base_url() ?>assets/alertify/alertify.core.css" rel="stylesheet" type="text/css"/>
+	<link href="<?= base_url() ?>assets/alertify/alertify.default.css" rel="stylesheet" type="text/css"/>
+	<link href="<?= base_url() ?>assets/css/myset.css" rel="stylesheet" type="text/css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="assets/toggel/css/on-off-switch.css"/> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="<?= base_url() ?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<title>
+		<?php
+		if (isset($page_title) && !empty($page_title)) {
+			if ($page_title) {
+				echo "$page_title";
+			}
+		} ?>
 	</title>
 </head>
 
-<body>
+
 <div id="" class="">
-    <nav class="navbar navbar-expand-md navbar-light bg-success">
-        <a class="navbar-brand" href="<?php echo base_url('admin/homepage') ?>">BetterMe</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav" >
-            <ul class="navbar-nav mr-auto">
-          
-            </ul>
-            <?php if (isset($this->session->userdata['id'])){
+	<nav class="navbar navbar-expand-md navbar-light bg-success">
+		<a class="navbar-brand" href="<?php echo base_url('admin/homepage') ?>">BetterMe</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav mr-auto">
 
-            ?>
-            <div class="dropleft show mr-20">
-  <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   <span class="fa fa-caret-down mr-3" aria-hidden="true"> </span>
-  </a>
+			</ul>
+			<?php if (isset($this->session->userdata['id'])) {
 
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+				?>
+				<div class="dropleft show mr-20">
+					<a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+					   aria-expanded="false">
+						<span class="fa fa-caret-down mr-3" aria-hidden="true"> </span>
+					</a>
 
-
-    <a class="dropdown-item" href="<?php echo base_url('admin/viewDiet') ?>">Review/Manage Diet Plan Posts</a>
-    <a class="dropdown-item" href="<?php echo base_url('admin/review_community_thread') ?>">Review Thread Posts</a>
-    <a class="dropdown-item" href="<?php echo base_url('admin/viewArchiveDiet') ?>">View Archived Posts</a>
-    <a class="dropdown-item" href="<?php echo base_url('admin/viewArchivedCommunityThread') ?>">View Archived Community Thread</a>
-    <a class="dropdown-item" href="<?php echo base_url('admin/logout')?>">LogOut</a>
-  </div>
-</div>
-<?php
-}
-else{
-?>
-    <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href=""></a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('admin/viewLogin') ?>">Login</a>
-                </li>
-               
-            </ul>
-          
-<?php 
-}
-?>
-           <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href=""></a>
-                </li>
-                
-                <li class="nav-item">
-                    <?php if (isset($this->session->userdata['id'])){
-                        echo (ucfirst($this->session->userdata['uname']));
-                    }else {
-                        ?>
-                         <a class="nav-link" href="<?php echo base_url('admin/viewSignUp') ?>">Register</a>
-                    <?php
-                    }?>
-                   
-                
-                
-                </li>
-               
-            </ul>
-        </div>
-    </nav>
-</div>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
 
-    <!-- <a href="<?php echo base_url('admin/homepage') ?>">Home</a>
+						<a class="dropdown-item" href="<?php echo base_url('admin/viewDiet') ?>">Review/Manage Diet Plan
+							Posts</a>
+						<a class="dropdown-item" href="<?php echo base_url('admin/review_community_thread') ?>">Review
+							Thread Posts</a>
+						<a class="dropdown-item" href="<?php echo base_url('admin/viewArchiveDiet') ?>">View Archived
+							Posts</a>
+						<a class="dropdown-item" href="<?php echo base_url('admin/viewArchivedCommunityThread') ?>">View
+							Archived Community Thread</a>
+						<a class="dropdown-item" href="<?php echo base_url('admin/reviewProfilePosts') ?>">Review Users
+							Profile Posts</a>
+						<a class="dropdown-item" href="<?php echo base_url('admin/logout') ?>">LogOut</a>
+					</div>
+				</div>
+				<?php
+			} else {
+				?>
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href=""></a>
+					</li>
 
-        <div class="nav-item dropdown">
-            <button class="nav-link dropdown-toggle">File 
-      <i class="fa fa-caret-down"></i>
-    </button>
-            <div class="nav-item dropdown">
-               
-                <a href="">Motivational Posts</a>
-                <a href="">View Diet Plans</a>
-				
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url('admin/viewLogin') ?>">Login</a>
+					</li>
 
-              
-            </div>
-            
+				</ul>
 
+				<?php
+			}
+			?>
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href=""></a>
+				</li>
+
+				<li class="nav-item">
+					<?php if (isset($this->session->userdata['id'])) {
+						echo(ucfirst($this->session->userdata['uname']));
+					} else {
+						?>
+						<a class="nav-link" href="<?php echo base_url('admin/viewSignUp') ?>">Register</a>
+						<?php
+					} ?>
+
+				</li>
+			</ul>
 		</div>
-		<a href="<?php echo base_url('admin/logout') ?>">LogOut</a> -->
-
-	</div>
-	
-    </head>
+	</nav>
+</div>
+</div>
+</head>
+</html>
 	
 
   

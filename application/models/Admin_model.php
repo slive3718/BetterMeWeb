@@ -324,4 +324,19 @@ class Admin_model extends CI_Model
 		}
 	}
 
+	function archive_user_profile_post($postId){
+		$this->db->select('*');
+		$this->db->from('profile_post');
+		$this->db->where('post_id',$postId);
+			$post=array(
+			'archive'=>1,
+			);
+		$qstr=$this->db->update('profile_post',$post);
+		if($qstr){
+			return $qstr;
+		}else{
+			return '';
+		}
+	}
+
 }

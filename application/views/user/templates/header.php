@@ -32,13 +32,13 @@
 </style>
 
 
-	<title><?php if ($page_title){
+	<title><?php if (isset($page_title)){
 		echo "$page_title";
 	}?>
 	</title>
-</head>
 
-<body>
+
+
 <div id="" class="">
     <nav class="navbar navbar-expand-md navbar-light bg-success">
         <a style="font-weight:bold;" class="btn btn-s btn-success rounded"class="navbar-brand"
