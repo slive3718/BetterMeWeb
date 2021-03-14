@@ -22,12 +22,12 @@ class Admin_model extends CI_Model
 	public function signUpAdmin($username, $password, $email, $account_type)
 	{
 
-		$data = [
+		$data = array(
 			'username' => $username,
 			'email' => $email,
 			'password' => password_hash($password, PASSWORD_DEFAULT),
 			'account_type' => $account_type
-		];
+			);
 		return $this->db->insert('tblusers', $data);
 	}
 
@@ -95,7 +95,7 @@ class Admin_model extends CI_Model
 	public function add_post($post_type, $user_id, $post_title, $date_created, $post_content, $routine_count, $routine_format, $file_name, $fullpath, $target_audience)
 	{
 
-		$data = [
+		$data = array(
 			'post_image_name' => $file_name,
 			'post_type' => $post_type,
 			'post_user_id' => $user_id,
@@ -106,7 +106,7 @@ class Admin_model extends CI_Model
 			'routine_format' => $routine_format,
 			'post_image_url' => $fullpath,
 			'targetAudiendce' => $target_audience,
-		];
+		);
 		print_r($data);
 		return $this->db->insert('tblposts', $data);
 	}
@@ -189,11 +189,11 @@ class Admin_model extends CI_Model
 
 	public function upload($file_name)
 	{
-		$data = [
+		$data = array (
 
 			'post_image_name' => $file_name,
 
-		];
+		);
 
 		return $this->db->insert('tblposts', $data);
 	}
@@ -228,13 +228,13 @@ class Admin_model extends CI_Model
 	public function add_community_comment($community_comment, $date_created, $community_post_id)
 	{
 
-		$data = [
+		$data = array(
 			'comment_content' => $community_comment,
 			'comment_date' => $date_created,
 			'comment_user_id' => $this->session->userdata('id'),
 			'community_id' => $community_post_id,
 
-		];
+	);
 
 		print_r($data);
 		return $this->db->insert('tblcommunitycomments', $data);
@@ -312,13 +312,13 @@ class Admin_model extends CI_Model
 	}
 
 	function getAllProfilePosts(){
-		$this->db->select('*');
-		$this->db->from('profile_post');
+		$this->db->select('pp.*');
+		$this->db->select('a.archive_status');
+		$this->db->from('profile_post pp');
+		$this->db->join('tblarchive a','pp.post_id=a.post_id','left');
 		$qstr=$this->db->get();
 		if ($qstr->num_rows() > 0){
-
 			return $qstr->result();
-
 		}else{
 			return '';
 		}
@@ -326,17 +326,28 @@ class Admin_model extends CI_Model
 
 	function archive_user_profile_post($postId){
 		$this->db->select('*');
-		$this->db->from('profile_post');
+		$this->db->from('tblarchive');
 		$this->db->where('post_id',$postId);
+		$qstr=$this->db->get();
+
+		if ($qstr->num_rows() > 0 ){
 			$post=array(
-			'archive'=>1,
-			);
-		$qstr=$this->db->update('profile_post',$post);
-		if($qstr){
-			return $qstr;
+				'archive_status'=>1,
+				'archive_message'=>'This post is archived by the administrator and being reviewed');
+			$qstr1=$this->db->update('tblarchive',$post);
+
+			return $qstr1;
 		}else{
-			return '';
+			$post=array(
+				'post_id'=>$postId,
+				'archive_status'=>1,
+				'archive_message'=>'This post is archived by the administrator and being reviewed',
+			);
+			$qstr2=$this->db->insert('tblarchive',$post);
+			return $qstr2;
 		}
+		return '';
+
 	}
 
 }

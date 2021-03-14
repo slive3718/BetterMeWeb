@@ -18,14 +18,26 @@
 				</thead>
 				<tbody>
 				<?php if (isset($all_profile_posts) && !empty($all_profile_posts)): ?>
+<!--					--><?php //echo "<pre>";
+//					print_r($all_profile_posts);
+//					echo "</pre>";?>
 					<?php foreach ($all_profile_posts as $profile_post): ?>
+
 
 						<tr>
 							<td><?= $profile_post->post_id ?></td>
 							<td><?= $profile_post->date ?></td>
 							<td><?= $profile_post->content ?></td>
-							<td><?= (isset($profile_post->archive) && ($profile_post->archive)!=0)?'Archived':'Showed'?></td>
-							<td><a data-sessions-id="<?=$profile_post->post_id;?>" class="btn btn-primary btn-sm">Edit</a> <a data-sessions-id="<?=$profile_post->post_id?>" class="btn btn-danger btn-sm" id="archive">Archive</a></td>
+							<td><?= (isset($profile_post->archive_status) && ($profile_post->archive_status)!=0)?'Archived':'Showed'?></td>
+							<td>
+								<a data-sessions-id="<?=$profile_post->post_id;?>" class="btn btn-primary btn-sm">Edit</a>
+								<?php if(($profile_post->archive_status)!=0):?>
+									<a data-sessions-id="<?=$profile_post->post_id?>" class="btn btn-success btn-sm" id="allow"><span class="fa fa-check"></span>Allow</a>
+								<?php else: ?>
+									<a data-sessions-id="<?=$profile_post->post_id?>" class="btn btn-danger btn-sm" id="archive"><span class="fa fa-times"></span>Archive</a>
+								<?php endif; ?>
+
+							</td>
 						</tr>
 					<?php endforeach; ?>
 				<?php endif; ?>
