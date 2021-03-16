@@ -11,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--===============================================================================================-->
         <link rel="icon" type="image/png" href="<?= base_url();?>assets/images">
+        <link rel="shortcut icon" href="<?= base_url();?>assets/images/Smile.png">
         <!--===============================================================================================-->
         <link
             rel="stylesheet"
