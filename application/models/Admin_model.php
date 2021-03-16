@@ -318,12 +318,30 @@ class Admin_model extends CI_Model
 		$this->db->join('tblarchive a','pp.post_id=a.post_id','left');
 		$qstr=$this->db->get();
 		if ($qstr->num_rows() > 0){
-			return $qstr->result();
+			$result_array=array();
+			foreach($qstr->result() as $val){
+				$val->get_post_images=$this->get_post_images($val->post_id);
+
+				$result_array[]=$val;
+			}
+			return $result_array;
 		}else{
 			return '';
 		}
 	}
 
+	function get_post_images($post_id){
+		$this->db->select('*');
+		$this->db->from('tblimages');
+		$this->db->where('post_id',$post_id);
+		$qstr=$this->db->get();
+
+		if ($qstr->num_rows()>0){
+			return $qstr->result();
+		}else{
+			return '';
+		}
+	}
 	function archive_user_profile_post($postId){
 		$this->db->select('*');
 		$this->db->from('tblarchive');

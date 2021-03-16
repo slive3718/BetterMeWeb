@@ -13,6 +13,7 @@
 					<th>Date</th>
 					<th>Content</th>
 					<th>Status</th>
+					<th>Images</th>
 					<th>Option</th>
 				</tr>
 				</thead>
@@ -29,6 +30,14 @@
 							<td><?= $profile_post->date ?></td>
 							<td><?= $profile_post->content ?></td>
 							<td><?= (isset($profile_post->archive_status) && ($profile_post->archive_status)!=0)?'Archived':'Showed'?></td>
+							<td><?php
+								foreach($profile_post->get_post_images as  $images){
+									?>
+									<img src="<?= base_url().'./uploads/posts/'.$images->image_name;?>" style="width:20px;height:20px">
+									<?php
+								}
+								?>
+							</td>
 							<td>
 								<a data-sessions-id="<?=$profile_post->post_id;?>" class="btn btn-primary btn-sm">Edit</a>
 								<?php if(($profile_post->archive_status)!=0):?>
@@ -38,6 +47,7 @@
 								<?php endif; ?>
 
 							</td>
+
 						</tr>
 					<?php endforeach; ?>
 				<?php endif; ?>
