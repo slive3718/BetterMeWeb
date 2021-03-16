@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/css/main.css">
-	<link rel="shortcut icon" href="<?= base_url();?>https://imagizer.imageshack.com/img922/1415/9MVrM6.png">
+	<link rel="shortcut icon" <img src="https://imagizer.imageshack.com/img922/1415/9MVrM6.png">
 <!--===============================================================================================-->
 </head>
 <body>
