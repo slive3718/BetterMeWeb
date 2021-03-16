@@ -189,9 +189,9 @@ public function add_profilePic($id, $date_picuploaded, $file_name){
    
         return $this->db->update('profilepic', $data);
            
-        $data['userpic']=[
+        $data['userpic']= array(
                'user_picture_status'=>'1'
-           ];
+	);
                
         return $this->db->update('tblusers', $data['userpic']);
         $this->session->set_flashdata('msgerror', 'Fields cannot be empty');
@@ -207,9 +207,9 @@ public function add_profilePic($id, $date_picuploaded, $file_name){
    
         return $this->db->insert('profilepic', $data);
            
-        $data['userpic']=[
+        $data['userpic']=array (
                'user_picture_status'=>'1'
-           ];
+		);
                
         return $this->db->insert('tblusers', $data['userpic']);
         $this->session->set_flashdata('msgerror', 'Fields cannot be empty');
@@ -219,9 +219,9 @@ public function add_profilePic($id, $date_picuploaded, $file_name){
 
 
 public function profilePic_Status($id){
-    $data=[
+    $data=array(
         'user_picture_status'=>'1'
-    ];
+	);
         
     $this->db->where('userId', $id);
         return $this->db->update('tblusers', $data);
@@ -233,12 +233,12 @@ public function profilePic_Status($id){
 
 public function post_thread($title,$desciption,$date_created){
     $id=$this->session->userdata('id');
-    $data = [
+    $data = array(
         'thread_user_id'=>$id,
         'thread_title'=> $title,
         'thread_content'=>$desciption,
         'thread_date'=>$date_created
-        ];  
+);
         print_r($data);
         return $this->db->insert('tblcommunity', $data);
 }
