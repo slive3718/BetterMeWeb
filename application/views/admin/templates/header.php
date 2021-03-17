@@ -61,7 +61,7 @@
 	<link href="<?= base_url() ?>assets/css/myset.css" rel="stylesheet" type="text/css"/>
 	<!-- <link rel="stylesheet" type="text/css" href="assets/toggel/css/on-off-switch.css"/> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="<?= base_url() ?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<title>
 		<?php

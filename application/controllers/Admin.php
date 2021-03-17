@@ -290,7 +290,9 @@ public function update_dietPlan(){
 
 
 
-public function archive_post($post_id){
+public function archive_post(){
+		$post=$this->input->post();
+		$post_id=$post['sessionId'];
     $archive="1";
     $field = array(
     'archive'=>$archive,
@@ -299,11 +301,11 @@ public function archive_post($post_id){
     if ($result) {
         $this->session->set_flashdata('msgsuccess', "Post successfully deleted.");
        $this->session->set_flashdata('tempid',$post_id);
-       redirect(base_url('admin/viewDiet'));
+		   echo 'success';
     } else {
        $this->session->set_flashdata('msgwarn', "No changes made in your comment");
        $this->session->set_flashdata('tempid',$post_id);
-       redirect(base_url('admin/viewDiet'));
+     echo 'error';
     }   
 }
 
