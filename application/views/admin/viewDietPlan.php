@@ -91,12 +91,12 @@
 		$('#myTable').on('click', '#archive', function () {
 			var sessionId = $(this).data('sessions-id');
 			console.log(sessionId);
-			alertify.confirm("Are you sure you want to delete this session?", function (e) {
+			alertify.confirm("Are you sure you want to delete this Diet Plan?", function (e) {
 				if (e) {
 					$.post("<?=base_url()?>admin/archive_post/", {"sessionId": sessionId}, function (response) {
 						if (response == "success") {
-							alertify.success('Post Archived!');
-							location.reload('3000');
+							alertify.success('Diet Plan Archived!');
+							window.setTimeout(function(){location.reload()},2000)
 						}
 					});
 				}

@@ -309,7 +309,10 @@ public function archive_post(){
     }   
 }
 
-public function restore_post($post_id){
+public function restore_post()
+{
+	$post=$this->input->post();
+	$post_id=$post['sessionId'];
     $archive="0";
     $field = array(
     'archive'=>$archive,
@@ -318,11 +321,11 @@ public function restore_post($post_id){
     if ($result) {
         $this->session->set_flashdata('msgsuccess', "Post successfully restored.");
        $this->session->set_flashdata('tempid',$post_id);
-       redirect(base_url('admin/viewDiet'));
+       echo "success";
     } else {
        $this->session->set_flashdata('msgwarn', "No changes made");
        $this->session->set_flashdata('tempid',$post_id);
-       redirect(base_url('admin/viewDiet'));  
+		echo "error";
     } 
 }
 

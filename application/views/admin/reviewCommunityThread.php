@@ -66,13 +66,13 @@
 		$('#myTable').on('click','#archive',function(){
 			var sessionId=$(this).data('sessions-id');
 			console.log(sessionId);
-			alertify.confirm("Are you sure you want to delete this session?", function (e) {
+			alertify.confirm("Are you sure you want to delete this Thread ?", function (e) {
 				if (e)
 				{
 					$.post("<?=base_url()?>admin/archiveProfilePost/",{"sessionId":sessionId},function (response){
 						if(response=="success"){
-							alertify.success('Post Archived!');
-							location.reload('3000');
+							alertify.success('Thread Archived!');
+							window.setTimeout(function(){location.reload()},2000)
 						}
 					});
 				}
