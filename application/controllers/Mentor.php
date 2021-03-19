@@ -297,7 +297,7 @@ public function viewFullDiet($post_id){
 
 public function addDietPlan(){
     if (isset($this->session->userdata['id'])) {
-        $data['page_title']="Add Diet";
+        $data['page_title']="Add Diet Plan";
         $this->load->view('templates/header', $data);
         $this->load->view('mentor/addDietPlan');
         $this->load->view('templates/footer');
