@@ -48,18 +48,18 @@
                             
                             <tr>
                                 <td> <label>Types of Diet </label>
-                                <select name="activity_type">
+                                <select name="type_of_diet">
                                 <option value=""></option>
 
-                                <option name="activity_type" value="Intermittent Fasting">Intermittent Fasting</option>
-                                <option name="activity_type" value="Zone Diet">Zone Diet</option>
-                                <option name="activity_type" value="Paleo Diet">Paleo Diet</option>
-                                    <option name="activity_type" value="Paleo Diet">Paleo Diet</option>
-                                    <option name="activity_type" value="Blood Type Diet">Blood Type Diet</option>
-                                    <option name="activity_type" value="Vegan Diet">Vegan Diet</option>
-                                    <option name="activity_type" value="South Beach Diet">South Beach Diet</option>
-                                    <option name="activity_type" value="Mediterranean Diet">Mediterranean Diet</option>
-                                    <option name="activity_type" value="Food Diet">Raw Food Diet</option>
+                                <option name="type_of_diet" value="Intermittent Fasting">Intermittent Fasting</option>
+                                <option name="type_of_diet" value="Zone Diet">Zone Diet</option>
+                                <option name="type_of_diet" value="Paleo Diet">Paleo Diet</option>
+                                    <option name="type_of_diet" value="Paleo Diet">Paleo Diet</option>
+                                    <option name="type_of_diet" value="Blood Type Diet">Blood Type Diet</option>
+                                    <option name="type_of_diet" value="Vegan Diet">Vegan Diet</option>
+                                    <option name="type_of_diet" value="South Beach Diet">South Beach Diet</option>
+                                    <option name="type_of_diet" value="Mediterranean Diet">Mediterranean Diet</option>
+                                    <option name="type_of_diet" value="Food Diet">Raw Food Diet</option>
                                    
                                 </select>
                             
@@ -86,4 +86,3 @@
             
 
 
-                    

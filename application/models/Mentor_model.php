@@ -82,7 +82,7 @@ public function get_session_data(){
     return $result;
 }
 
-public function add_post($post_type,$user_id,$post_title,$date_created,$post_content,$routine_count,$routine_format,$file_name,$fullpath,$activity_type){
+public function add_post($post_type,$user_id,$post_title,$date_created,$post_content,$routine_count,$routine_format,$file_name,$fullpath,$type_of_diet){
 
     $data = [
         'post_image_name'=> $file_name,
@@ -94,7 +94,7 @@ public function add_post($post_type,$user_id,$post_title,$date_created,$post_con
         'routine_count'=>$routine_count,
         'routine_format'=>$routine_format,
         'post_image_url'=>$fullpath,
-        'activity_type'=>$activity_type,
+        'type_of_diet'=>$type_of_diet,
         ];  
   
         return $this->db->insert('tblposts', $data);

@@ -364,7 +364,7 @@ public function do_addPost(){
 
     $post_type=$this->input->post("post_type");
     $user_id=$this->input->post("user_id");
-    $activity_type=$this->input->post("diet_type");
+    $type_of_diet=$this->input->post("diet_type");
     $post_title=$this->input->post("post_title");
     $post_content=$this->input->post("post_content");
     
@@ -428,7 +428,6 @@ public function upload(){
 
 public function temp_add(){
 
-
     $config['upload_path']          = './uploads/images/';
     $config['allowed_types']        = 'gif|jpg|png';
     $config['max_size']             = 100000;
@@ -455,7 +454,7 @@ public function temp_add(){
         $target_audience = $this->input->post("targetAudience");
         $post_type=$this->input->post("post_type");
         $user_id=$this->input->post("user_id");
-        $activity_type=$this->input->post("diet_type");
+        $type_of_diet=$this->input->post("diet_type");
         $post_title=$this->input->post("post_title");
         $post_content=$this->input->post("post_content");
         $routine_format=$this->input->post("routine_format");
@@ -480,7 +479,7 @@ public function temp_add(){
         $date_created=mdate($datestring, $time);
         $post_type=$this->input->post("post_type");
         $user_id=$this->input->post("user_id");
-        $activity_type=$this->input->post("diet_type");
+        $type_of_diet=$this->input->post("diet_type");
         $post_title=$this->input->post("post_title");
         $post_content=$this->input->post("post_content");
         $routine_format=$this->input->post("routine_format");
@@ -492,18 +491,12 @@ public function temp_add(){
                 $this->session->set_flashdata('msgsuccess', 'Diet Plan Successfully Created');
                 redirect(base_url().'admin/viewDiet');
             }else{
-                echo "hi";
+                echo "error";
             }
         }
     }
     
 }
-
-
-public function view_community(){
-    
-}
-
 
 
 public function view_this_community_post($community_post_id){

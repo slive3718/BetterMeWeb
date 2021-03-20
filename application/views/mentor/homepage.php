@@ -27,10 +27,10 @@
             $post_user_id = $row['post_user_id'];
             $post_type = $row['post_type'];
             $image_id = $row['image_id'];
-            $activity_type = $row['activity_type'];
+            $type_of_diet = $row['type_of_diet'];
             $posts_user_name=$row['username'];
             $pic_status=$row['user_picture_status'];
-            $diet_type=$row['activity_type'];
+            $diet_type=$row['type_of_diet'];
         ?>
 
     <?php

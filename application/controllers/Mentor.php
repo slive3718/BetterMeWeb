@@ -32,9 +32,6 @@ class Mentor extends CI_Controller {
 
      
      public function validateUser(){
-       
-      
-
 
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
@@ -48,14 +45,11 @@ class Mentor extends CI_Controller {
             if ($this->mentor_model->loginValidation($uname, $pword)) {
                 $session_data = array(
                                   'uname'=>$uname,
-                                  
                                 );
                            
                 $this->session->set_userdata($session_data);
                 redirect(base_url(). 'mentor/check_session');      
-                
-            
-                
+
             }
             else{
                 $this->session->set_flashdata('msgerror', 'Invalid Username and Password');
@@ -146,9 +140,6 @@ class Mentor extends CI_Controller {
     
     }
 
-
-  
-
  public function homepage(){
     
         $posts=$this->mentor_model->get_dietPlan();
@@ -166,12 +157,8 @@ class Mentor extends CI_Controller {
       
         $this->load->view('templates/footer');
 
-      
-   
-    
 
  }
-
 
 
     public function gotoUser(){
@@ -240,7 +227,6 @@ $this->load->view('mentor/motivationalPosts',$data);
 
 $this->load->view('templates/footer');
 }
-
 
 public function edit_Diet($post_id){
     if (isset($this->session->userdata['id'])) {
@@ -394,29 +380,20 @@ public function update_dietPlan(){
 
 
 
-public function archive_post($post_id){
+public function archive_post(){
     if (isset($this->session->userdata['id'])) {
-  
-    $archive="1";
+    	$post_id= $this->input->post('postId');
  
     $field = array(
-   
-    'archive'=>$archive,
+    'archive'=>'1',
     );
 
     $result = $this->mentor_model->archive_post($field, $post_id);
 
     if ($result) {
-        $this->session->set_flashdata('msgsuccess', "Post successfully deleted.");
-       $this->session->set_flashdata('tempid',$post_id);
-       redirect(base_url('mentor/viewDiet'));
-        
-      
+    	echo "success";
     } else {
-       $this->session->set_flashdata('msgwarn', "No changes made in your comment");
-       $this->session->set_flashdata('tempid',$post_id);
-       redirect(base_url('mentor/viewDiet'));
-     
+       echo "error";
     } 
 } else{
     redirect(base_url().'mentor/logout');
@@ -446,7 +423,7 @@ public function do_addPost(){
 
         $post_type=$this->input->post("post_type");
         $user_id=$this->input->post("user_id");
-        $activity_type=$this->input->post("diet_type");
+        $type_of_diet=$this->input->post("diet_type");
         $post_title=$this->input->post("post_title");
         $post_content=$this->input->post("post_content");
     
@@ -457,7 +434,7 @@ public function do_addPost(){
 
         if ($post_type && $user_id && $post_content && $post_title) {
             echo"here";
-            $data['inserted']=$this->mentor_model->add_post($post_type, $user_id, $post_title, $date_created, $post_content, $routine_count, $routine_format, $activity_type);
+            $data['inserted']=$this->mentor_model->add_post($post_type, $user_id, $post_title, $date_created, $post_content, $routine_count, $routine_format, $type_of_diet);
             print_r($data);
             if ($data) {
                 $this->session->set_flashdata('msgsuccess', 'Diet Plan Successfully Created');
@@ -564,7 +541,7 @@ public function temp_add(){
     
         $post_type=$this->input->post("post_type");
         $user_id=$this->input->post("user_id");
-        $activity_type=$this->input->post("activity_type");
+        $type_of_diet=$this->input->post("type_of_diet");
         $post_title=$this->input->post("post_title");
         $post_content=htmlspecialchars($this->input->post("post_content"));
         
@@ -575,7 +552,7 @@ public function temp_add(){
     
         if ($post_type && $user_id && $post_content && $post_title ){
             $fullpath="betterMe_Ci3/".$config['upload_path'].$file_name;
-            $data['inserted']=$this->mentor_model->add_post($post_type,$user_id,$post_title,$date_created,$post_content,$routine_count,$routine_format,$file_name,$fullpath,$activity_type);
+            $data['inserted']=$this->mentor_model->add_post($post_type,$user_id,$post_title,$date_created,$post_content,$routine_count,$routine_format,$file_name,$fullpath,$type_of_diet);
                 print_r($data);
             if ($data){
         
@@ -600,7 +577,7 @@ public function temp_add(){
     
         $post_type=$this->input->post("post_type");
         $user_id=$this->input->post("user_id");
-        $activity_type=$this->input->post("activity_type");
+        $type_of_diet=$this->input->post("type_of_diet");
         $post_title=$this->input->post("post_title");
         $post_content=htmlspecialchars($this->input->post("post_content"));
         
@@ -612,7 +589,7 @@ public function temp_add(){
         if ($post_type && $user_id && $post_content && $post_title ){
             
     
-            $data['inserted']=$this->mentor_model->add_post($post_type,$user_id,$post_title,$date_created,$post_content,$routine_count,$routine_format,$activity_type);
+            $data['inserted']=$this->mentor_model->add_post($post_type,$user_id,$post_title,$date_created,$post_content,$routine_count,$routine_format,$type_of_diet);
                 print_r($data);
             if ($data){
         
