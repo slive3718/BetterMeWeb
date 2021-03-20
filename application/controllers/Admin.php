@@ -376,10 +376,8 @@ echo $post_content;
     if ($post_type && $user_id && $post_content && $post_title ){
      echo"here";
         $data['inserted']=$this->admin_model->add_post($post_type,$user_id,$post_title,$date_created,$post_content,$routine_count,$routine_format);
-            print_r($data);
         if ($data){
             $this->session->set_flashdata('msgsuccess', 'Diet Plan Successfully Created');
-                   
                     redirect(base_url().'admin/viewDiet');
         }else{
             echo "hi";
@@ -408,35 +406,21 @@ public function upload(){
     $config['max_width']            = 100000;
     $config['max_height']           = 100000;
     $config['overwrite']           = false;
- 
-    
 
     $datestring = "%Y-%m-%d %h:%i:%s";
     $dateposted =mdate($datestring);   
-    
-  
-   
-
 
     $this->upload->initialize($config);
 
     $this->upload->do_upload('userfile');
-    //   if (! $this->upload->do_upload('userfile')) {
-
 
     $this->load->view('admin/formUpload');
 
-    //  } else {
-     
     $data = array('upload_data' => $this->upload->data());
     $file_name=$this->upload->data('file_name');
     if (isset($file_name)) {
         $this->admin_model->upload($id,$file_name);
-        
-     
     }
-        
-      
     redirect('admin/viewUpload');
 }
 
@@ -444,9 +428,7 @@ public function upload(){
 
 public function temp_add(){
 
-    // $config['upload_path'] = './assets/images/';
-    //	$config['allowed_types'] = '*';
-    
+
     $config['upload_path']          = './uploads/images/';
     $config['allowed_types']        = 'gif|jpg|png';
     $config['max_size']             = 100000;
@@ -460,13 +442,9 @@ public function temp_add(){
     $this->upload->initialize($config);
 
     $this->upload->do_upload('userfile');
-    //   if (! $this->upload->do_upload('userfile')) {
-
 
     $this->load->view('admin/formUpload');
 
-    //  } else {
-     
     $data = array('upload_data' => $this->upload->data());
     $file_name=$this->upload->data('file_name');
     if (isset($file_name)) {
@@ -486,13 +464,11 @@ public function temp_add(){
         if ($post_type && $user_id && $post_content && $post_title ){
             $fullpath="betterMe_Ci3/".$config['upload_path'].$file_name;
             $data['inserted']=$this->admin_model->add_post($post_type,$user_id,$post_title,$date_created,$post_content,$routine_count,$routine_format,$file_name,$fullpath,$target_audience);
-                print_r($data);
             if ($data){
                 $this->session->set_flashdata('msgsuccess', 'Diet Plan Successfully Created');
-                  
-                   //     redirect(base_url().'admin/viewDiet');
+				redirect(base_url().'admin/viewDiet');
             }else{
-                echo "hi";
+            	echo "error";
             }
         }
     }
@@ -512,11 +488,9 @@ public function temp_add(){
     echo $post_content;
         if ($post_type && $user_id && $post_content && $post_title ){
             $data['inserted']=$this->admin_model->add_post($post_type,$user_id,$post_title,$date_created,$post_content,$routine_count,$routine_format,$fullpath);
-                print_r($data);
             if ($data){
                 $this->session->set_flashdata('msgsuccess', 'Diet Plan Successfully Created');
-                       
-                        redirect(base_url().'admin/viewDiet');
+                redirect(base_url().'admin/viewDiet');
             }else{
                 echo "hi";
             }

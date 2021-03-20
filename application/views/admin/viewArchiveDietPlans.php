@@ -90,23 +90,3 @@
 		})
 	});
 </script>
-
-
-
-
-
-<!--                    --><?php //if ($this->session->flashdata('msgsuccess')){
-//                      echo ' <div class="btn success"> '. $this->session->flashdata('msgsuccess') .' <div class="btn success"> ';
-//                    } ?>
-<!--             -->
-<!--               -->
-<!--                    --><?php //if ($this->session->flashdata('msgwarn')){
-//                          ?><!--    <div class="btn success"> --><?php //echo ' <div class="btn btn-warning">'. $this->session->flashdata('msgsuccess');
-//                        echo $this->session->flashdata('msgwarn');
-//                        ?><!--    </div> --><?php //   }?>
-<!--                </div>-->
-<!--                    </center>-->
-<!--                    --><?php //$post_type="DietPlan";
-//
-//?><!--<br>-->
-

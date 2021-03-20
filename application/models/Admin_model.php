@@ -107,7 +107,6 @@ class Admin_model extends CI_Model
 			'post_image_url' => $fullpath,
 			'targetAudiendce' => $target_audience,
 		);
-		print_r($data);
 		return $this->db->insert('tblposts', $data);
 	}
 
@@ -236,7 +235,6 @@ class Admin_model extends CI_Model
 
 	);
 
-		print_r($data);
 		return $this->db->insert('tblcommunitycomments', $data);
 
 	}

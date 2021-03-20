@@ -19,12 +19,7 @@
 				</thead>
 				<tbody>
 				<?php if (isset($all_profile_posts) && !empty($all_profile_posts)): ?>
-<!--					--><?php //echo "<pre>";
-//					print_r($all_profile_posts);
-//					echo "</pre>";?>
 					<?php foreach ($all_profile_posts as $profile_post): ?>
-
-
 						<tr>
 							<td><?= $profile_post->post_id ?></td>
 							<td><?= $profile_post->date ?></td>
@@ -32,8 +27,6 @@
 							<td><?= (isset($profile_post->archive_status) && ($profile_post->archive_status)!=0)?'Archived':'Showed'?></td>
 							<td><?php
 								if (isset($profile_post->get_post_images) && !empty($profile_post->get_post_images)){
-
-
 								foreach($profile_post->get_post_images as  $images){
 									?>
 									<img src="<?= base_url().'./uploads/posts/'.$images->image_name;?>" style="width:20px;height:20px">
@@ -43,15 +36,12 @@
 								?>
 							</td>
 							<td>
-								<a data-sessions-id="<?=$profile_post->post_id;?>" class="btn btn-primary btn-sm">Edit</a>
 								<?php if(($profile_post->archive_status)!=0):?>
 									<a data-sessions-id="<?=$profile_post->post_id?>" class="btn btn-success btn-sm" id="allow"><span class="fa fa-check"></span>Allow</a>
 								<?php else: ?>
 									<a data-sessions-id="<?=$profile_post->post_id?>" class="btn btn-danger btn-sm" id="archive"><span class="fa fa-times"></span>Archive</a>
 								<?php endif; ?>
-
 							</td>
-
 						</tr>
 					<?php endforeach; ?>
 				<?php endif; ?>
