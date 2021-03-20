@@ -641,19 +641,17 @@ public function viewArchiveDiet(){
         }
 
       
-    public function restoreCommunityThread($threadId){
+    public function restoreCommunityThread(){
+			$threadId = $this->input->post('sessionId');
             $archive=0;
             $field = array(
             'archive_status'=>$archive,
             );
             $result = $this->admin_model->archive_community_thread($field, $threadId);
             if ($result) {
-                $this->session->set_flashdata('msgsuccess', "Post successfully restored.");    
-               redirect(base_url('admin/review_community_thread'));
+              	echo 'success';
             } else {
-               $this->session->set_flashdata('msgwarn', "No changes made");
-             
-               redirect(base_url('admin/review_community_thread')); 
+              	echo 'error';
         }
     }
 
