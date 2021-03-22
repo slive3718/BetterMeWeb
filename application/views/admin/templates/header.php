@@ -37,6 +37,7 @@
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/styles.css">
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/plugins.css">
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/themes/theme-1.css" id="skin_color"/>
+	<link rel="shortcut icon" href="<?= base_url();?>assets/images/Smile.png">
 	<!-- end: CLIP-TWO CSS -->
 	<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
 	<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
