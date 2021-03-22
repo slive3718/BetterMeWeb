@@ -85,7 +85,7 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav mr-auto">
+			<ul class="navbar-nav mr-auto float-right">
 			</ul>
 			<?php if (isset($this->session->userdata['id'])) {
 				?>
