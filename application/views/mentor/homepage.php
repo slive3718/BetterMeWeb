@@ -74,7 +74,7 @@
 				</div>
 
 				<div class="card" style="width:30rem;height:30rem">
-
+					<a href="<?= base_url('mentor/viewFullDiet/' . $post_id)?>">
 					<div class="container">
 						<?php foreach ($row->images as $images) {
 							?>
@@ -82,7 +82,7 @@
 								 alt="Card image cap" style="">
 						<?php } ?>
 					</div>
-
+					</a>
 					<div class="card-body">
 						<div class="rounded card shadow"style="background-color: #28A745; color:white;text-align: center">
 							<h5 class="card-title d-flex justify-content-center"><?= $post_title ?></h5>
