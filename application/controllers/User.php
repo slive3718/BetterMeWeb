@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class User extends CI_Controller
 {
@@ -104,7 +104,6 @@ class User extends CI_Controller
             $confirmpassword= $this->input->post('confirmpassword');
             $email= $this->input->post('email');
             $account_type= $this->input->post('account_type');
-            ;
         }
 
         if ($username && $password && $email && $confirmpassword) {
@@ -216,10 +215,6 @@ class User extends CI_Controller
 
             $data['page_title']= "Diet Post";
 
-       
-
-        
-        
             $this->load->view('user/templates/header', $data);
             $this->load->view('user/viewFullDietPlan', $data);
             $this->load->view('user/templates/footer');
@@ -236,7 +231,7 @@ class User extends CI_Controller
             $current_user = $this->session->userdata('id');
             $myInfo=$this->user_model->get_my_Profileinfo($current_user);
             $data['myInfo']=$myInfo;
-            $data['page_title']="My Profile";
+            $data['page_title']="Profile Settings";
             $this->load->view('user/templates/header', $data);
             $this->load->view('user/myProfileInfo', $data);
             $this->load->view('user/templates/footer');
@@ -502,7 +497,8 @@ class User extends CI_Controller
         if ($userid) {
             $data['user_info']=$this->user_model->getAllProfileInfo();
             // $data['profile_post_info']=$this->user_model->get_my_Profileinfo($userid);
-            // $this->load->view("user/templates/header");
+            $data['page_title']="My Profile";
+            $this->load->view("user/templates/headerProfile", $data);
             $this->load->view("user/myProfile", $data);
             // $this->load->view("user/templates/footer");
         }
@@ -516,6 +512,8 @@ class User extends CI_Controller
             $data['user_info']=$this->user_model->getAllProfileInfo();
    
             // $this->load->view("user/templates/header");
+            $data['page_title']="Follow People";
+            $this->load->view("user/templates/headerProfile", $data);
             $this->load->view("user/following", $data);
             // $this->load->view("user/templates/footer");
         }
@@ -530,6 +528,8 @@ class User extends CI_Controller
             $data['user_info']=$this->user_model->get_my_Profileinfo($session_id);
     
             // $this->load->view("user/templates/header");
+            $data['page_title']="My Followers";
+            $this->load->view("user/templates/headerProfile", $data);
             $this->load->view("user/followers", $data);
             // $this->load->view("user/templates/footer");
         }
@@ -546,16 +546,13 @@ class User extends CI_Controller
     );
         $last_post=$this->user_model->get_post_id();
         if ($last_post){
-
             $result=$this->db->insert("profile_post", $int_array);
         
         }
-  
-
         if ($result) {
-            print_r($result);
+            echo "success";
         } else {
-            echo "else";
+            echo "error";
         }
     
 } 
@@ -630,9 +627,8 @@ $image_arr = array();
     $userid=$this->session->userdata('id');
     if ($userid) {
         $data['user_info']=$this->user_model->getVisitProfileInfo($profile_id);
-        // print_r($data['user_info']);exit;
-        // $data['profile_post_info']=$this->user_model->get_my_Profileinfo($userid);
-        // $this->load->view("user/templates/header");
+        $data['page_title']="Profile Visit";
+        $this->load->view("user/templates/headerProfile", $data);
         $this->load->view('user/visitProfile',$data);
         // $this->load->view("user/templates/footer");
     }
@@ -665,7 +661,64 @@ $image_arr = array();
  }
 
  public function followed_user(){
+    $data['user_info']=$this->user_model->getAllProfileInfo();
     $data['followedUsersDatas']=$this->user_model->getAllFollowedUserPosts();
+    $data['page_title']="Followed People";
+    $this->load->view("user/templates/headerProfile", $data);
     $this->load->view('user/followedUser',$data);
     }
-}
+
+public function add_new_post(){
+        $post = $this->input->post();
+        $id=$this->session->userdata('id');
+        $config['upload_path']          = './uploads/posts';
+        $config['allowed_types']        = 'jpg|png|jpeg|';
+        $config['max_size']             = 100000;
+        $config['max_width']            = 100000;
+        $config['max_height']           = 100000;
+        $datestring = "%Y-%m-%d %h:%i:%s";
+
+        
+        $dataInfo = array();
+        $files = $_FILES;
+        $cpt = count($_FILES['userfile']['name']);
+        $cpt = count($_FILES['userfile']['name']);
+        for($i=0; $i<$cpt; $i++)
+        {           
+            $_FILES['userfile']['name']= $files['userfile']['name'][$i];
+            $_FILES['userfile']['type']= $files['userfile']['type'][$i];
+            $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+            $_FILES['userfile']['error']= $files['userfile']['error'][$i];
+            $_FILES['userfile']['size']= $files['userfile']['size'][$i];    
+    
+            $this->upload->initialize($config);
+            $this->upload->do_upload();
+            $dataInfo[] = $this->upload->data();
+        }
+
+    
+        // print_r(implode('/',$image_arr));
+        // exit;
+    
+        $int_array = array(
+            'content' => $post['content'],
+            'user_id'=>$id,
+            'date'=> date('Y-m-d'),
+        );
+       
+         $result=$this->db->insert("profile_post", $int_array);
+         $res_id=$this->db->insert_id();
+                if($res_id){
+                    $image_arr = array();
+                    foreach ($dataInfo as $info) {
+                            $image_name=($info['file_name']);
+                            // array_push($image_arr,$image_name);
+                            $result=$this->db->insert("tblimages", array('image_name'=>$image_name,'post_id'=>$res_id,'user_id'=>$id,'date_created'=>date('Y-m-d')));
+                    }
+                
+                }
+
+            }
+
+
+        }

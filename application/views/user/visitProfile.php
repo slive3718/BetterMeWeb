@@ -1,4 +1,8 @@
-
+<?php
+//echo'<pre>';
+//print_r($user_info);
+//
+//?>
 <script type="text/javascript" src="<?=base_url()?>/assets/js/myProfile.js" ></script>
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>/assets/css/myProfile.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -17,7 +21,8 @@
         </div>
         <header>
             <div class="tb"> 
-                <div>   <a href="<?= base_url().'user/homepage/'?>">Better Me</a></div>
+                <div>   <a style="font-weight: bold" class="btn btn-s btn-success rounded" 
+                href="<?= base_url().'user/homepage/'?>">BetterMe</a></div>
                 <div class="td" id="search-form">
                     <form method="get" action="#">
                         <input type="text" placeholder="Better Me Search">
@@ -37,7 +42,8 @@
             $sex=$val->sex;
             $userId=$val->userId;
                  ?>
-                <div class="td" id="f-name-l"><span><?= Ucfirst($firstName)?></span></div>
+               <div class="td" id="f-name-l"><a style="font-weight: bold" class="btn btn-s btn-success rounded"
+				href="<?= base_url() . 'user/myProfile/' . $id ?>">Home</a></div>
                 <div class="td" id="i-links">
                     <div class="tb">
                         <div class="td" id="m-td">
@@ -64,7 +70,7 @@
         </header>
         <div id="profile-upper">
             <div id="profile-banner-image">
-                <img src="https://imagizer.imageshack.com/img921/9628/VIaL8H.jpg" alt="Banner image">
+                <img src="https://imagizer.imageshack.com/img924/8210/3cMvFg.jpg" alt="Banner image">
             </div>
             <div id="profile-d">
                 <div id="profile-pic" class="card Regular shadow">
@@ -80,10 +86,9 @@
                 <div id="u-name"><?= Ucfirst($firstName),' ',Ucfirst($lastName)?></div>
                 <div class="tb" id="m-btns">
                     <div class="td">
-                        <div class="m-btn"><i class="material-icons">Change Timeline Piture</i><span></span></div>
+                         <!--<div class="m-btn"><i class="material-icons">Change Timeline Piture</i><span></span></div>-->
                     </div>
                 </div>
-                <div id="edit-profile"><i class="material-icons">camera_alt</i></div>
             </div>
             <div id="black-grd"></div>
         </div>
@@ -112,43 +117,8 @@
                         <div id="photos">
                         <div class="container">
                         <div>
-                         <?php 
-                         $numOfCols = 3;
-                         $rowCount = 0;
-                         $bootstrapColWidth = 4 / $numOfCols;
-                         $i=1;
-                           if (isset($val->getAllProfilePost) && !empty($val->getAllProfilePost)) {
-                               foreach ($val->getAllProfilePost as $post) {
-                                $image_name=$post->image_name;
-                                $images=explode('/',$image_name);
-                                    foreach ($images as $name) {
-                                        $extension = explode('.',$name);
-                                    if($extension[1]=="JPG"||$extension[1]=="PNG"||$extension[1]=="JPEG"||$extension[1]=="GIF"||
-                                        $extension[1]=="jpg"||$extension[1]=="png"||$extension[1]=="jpeg"||$extension[1]=="gif"
-                                         ){ 
-                                        if ($i<=9) {
-                                            $i++;
-                                            $extension = explode('.', $name);
-                                            if ($rowCount % $numOfCols == 0) { ?> <div class="row"> <?php }
-                                            $rowCount++; ?>  
-                                     <div class="col-md-<?php echo $bootstrapColWidth; ?>">
-                                     <div class="thumbnail">
-                                     
-                                           <img src="<?=base_url().'./uploads/posts/'.$name?>" style="width:100px;height:100px;">  
-                                           </div>
-        </div>
-                                        <?php
-                                         if ($rowCount % $numOfCols == 0) { ?> </div> <?php
-                                    }
-                                        }
-                                        }
-                                    }
-                            }
-                        echo "</div>";
-                    }
-                         ?>
-                        
-                        </div>
+
+						</div>
                         </div>
                     </div>
                     </div>
@@ -242,7 +212,7 @@
                     <!-- -->
                     </div>
                     
-                  <?php 
+                  <?php
 
                     if(isset($val->getAllProfilePost) && !empty($val->getAllProfilePost)){
                       foreach ($val->getAllProfilePost as $post){
@@ -282,53 +252,17 @@
                             </div>
                             <label class="tb " readonly><center><?=$content?></center></label>
                             <div class="d-flex justify-content-center">
-                           
-                            <a href="#" class="">
-                                <div class="container" >
-                            <div class="row">
-                            <?php 
-                             $numOfCols = 3;
-                             $rowCount = 0;
-                             $bootstrapColWidth = 4 / $numOfCols;
-                            
-                                // print_r(count($val->getAllImages));
-                                // exit;
-                               
-                                    $image_name=$post->image_name;
-                                    $images=explode('/',$image_name);
-                                        foreach ($images as $name) {
-                                            $extension = explode('.',$name);
-                                            // print_r($extension[1]);
-                                            // exit;
-                                            // echo $name; ?>
-                                <div class="col-md-<?=$bootstrapColWidth;?> " >
-                                <div class="thumbnail">
-                                  
-                                <?php if($extension[1]=="JPG"||$extension[1]=="PNG"||$extension[1]=="JPEG"||$extension[1]=="GIF"||
-                                $extension[1]=="jpg"||$extension[1]=="png"||$extension[1]=="jpeg"||$extension[1]=="gif"
-                                 ){ ?>
-                                <img src="<?=base_url().'./uploads/posts/'.$name?>" style="width:200px;height:200px;"> 
-                                <?php }else{
-                                    ?>
-                                    <div>
-                                    <video width="400" controls>
-                                    <source src="<?=base_url().'./uploads/posts/'.$name?>" type="video/mp4">
-                                    </video>
-                                    </div>
-                                    <?php
-                                }?>
-                                </div>
-                                </div>
-                                <?php
-                                       $rowCount++;
-                                            if ($rowCount % $numOfCols == 0) {
-                                                echo '</div><div class="row">'; 
-                                        }}
-                            ?>
-                             </div> 
-                             </div>
-                        </div>
-                            </a>
+
+								<a href="#" class="">
+									<div class="container">
+										<?php foreach ($post->post_images as $images) {
+											?>
+											<img src="<?= base_url() . './uploads/posts/' . $images->image_name ?>">
+											<?php
+										} ?>
+									</div>
+							</div>
+							</a>
                           
                             <div>
                                 <div class="p-acts">

@@ -226,7 +226,7 @@ public function viewFullDiet($post_id){
 }
 
 public function addDietPlan(){
-    $data['page_title']= "Homepage";
+    $data['page_title']= "Add Diet Plan";
     $this->load->view('admin/templates/header',$data);
     $this->load->view('admin/addDietPlan');
     $this->load->view('templates/footer');
@@ -290,7 +290,9 @@ public function update_dietPlan(){
 
 
 
-public function archive_post($post_id){
+public function archive_post(){
+		$post=$this->input->post();
+		$post_id=$post['sessionId'];
     $archive="1";
     $field = array(
     'archive'=>$archive,
@@ -299,15 +301,18 @@ public function archive_post($post_id){
     if ($result) {
         $this->session->set_flashdata('msgsuccess', "Post successfully deleted.");
        $this->session->set_flashdata('tempid',$post_id);
-       redirect(base_url('admin/viewDiet'));
+		   echo 'success';
     } else {
        $this->session->set_flashdata('msgwarn', "No changes made in your comment");
        $this->session->set_flashdata('tempid',$post_id);
-       redirect(base_url('admin/viewDiet'));
+     echo 'error';
     }   
 }
 
-public function restore_post($post_id){
+public function restore_post()
+{
+	$post=$this->input->post();
+	$post_id=$post['sessionId'];
     $archive="0";
     $field = array(
     'archive'=>$archive,
@@ -316,11 +321,11 @@ public function restore_post($post_id){
     if ($result) {
         $this->session->set_flashdata('msgsuccess', "Post successfully restored.");
        $this->session->set_flashdata('tempid',$post_id);
-       redirect(base_url('admin/viewDiet'));
+       echo "success";
     } else {
        $this->session->set_flashdata('msgwarn', "No changes made");
        $this->session->set_flashdata('tempid',$post_id);
-       redirect(base_url('admin/viewDiet'));  
+		echo "error";
     } 
 }
 
@@ -359,7 +364,7 @@ public function do_addPost(){
 
     $post_type=$this->input->post("post_type");
     $user_id=$this->input->post("user_id");
-    $activity_type=$this->input->post("diet_type");
+    $type_of_diet=$this->input->post("diet_type");
     $post_title=$this->input->post("post_title");
     $post_content=$this->input->post("post_content");
     
@@ -371,10 +376,8 @@ echo $post_content;
     if ($post_type && $user_id && $post_content && $post_title ){
      echo"here";
         $data['inserted']=$this->admin_model->add_post($post_type,$user_id,$post_title,$date_created,$post_content,$routine_count,$routine_format);
-            print_r($data);
         if ($data){
             $this->session->set_flashdata('msgsuccess', 'Diet Plan Successfully Created');
-                   
                     redirect(base_url().'admin/viewDiet');
         }else{
             echo "hi";
@@ -403,35 +406,21 @@ public function upload(){
     $config['max_width']            = 100000;
     $config['max_height']           = 100000;
     $config['overwrite']           = false;
- 
-    
 
     $datestring = "%Y-%m-%d %h:%i:%s";
     $dateposted =mdate($datestring);   
-    
-  
-   
-
 
     $this->upload->initialize($config);
 
     $this->upload->do_upload('userfile');
-    //   if (! $this->upload->do_upload('userfile')) {
-
 
     $this->load->view('admin/formUpload');
 
-    //  } else {
-     
     $data = array('upload_data' => $this->upload->data());
     $file_name=$this->upload->data('file_name');
     if (isset($file_name)) {
         $this->admin_model->upload($id,$file_name);
-        
-     
     }
-        
-      
     redirect('admin/viewUpload');
 }
 
@@ -439,9 +428,6 @@ public function upload(){
 
 public function temp_add(){
 
-    // $config['upload_path'] = './assets/images/';
-    //	$config['allowed_types'] = '*';
-    
     $config['upload_path']          = './uploads/images/';
     $config['allowed_types']        = 'gif|jpg|png';
     $config['max_size']             = 100000;
@@ -455,13 +441,9 @@ public function temp_add(){
     $this->upload->initialize($config);
 
     $this->upload->do_upload('userfile');
-    //   if (! $this->upload->do_upload('userfile')) {
-
 
     $this->load->view('admin/formUpload');
 
-    //  } else {
-     
     $data = array('upload_data' => $this->upload->data());
     $file_name=$this->upload->data('file_name');
     if (isset($file_name)) {
@@ -472,7 +454,7 @@ public function temp_add(){
         $target_audience = $this->input->post("targetAudience");
         $post_type=$this->input->post("post_type");
         $user_id=$this->input->post("user_id");
-        $activity_type=$this->input->post("diet_type");
+        $type_of_diet=$this->input->post("diet_type");
         $post_title=$this->input->post("post_title");
         $post_content=$this->input->post("post_content");
         $routine_format=$this->input->post("routine_format");
@@ -481,13 +463,11 @@ public function temp_add(){
         if ($post_type && $user_id && $post_content && $post_title ){
             $fullpath="betterMe_Ci3/".$config['upload_path'].$file_name;
             $data['inserted']=$this->admin_model->add_post($post_type,$user_id,$post_title,$date_created,$post_content,$routine_count,$routine_format,$file_name,$fullpath,$target_audience);
-                print_r($data);
             if ($data){
                 $this->session->set_flashdata('msgsuccess', 'Diet Plan Successfully Created');
-                  
-                   //     redirect(base_url().'admin/viewDiet');
+				redirect(base_url().'admin/viewDiet');
             }else{
-                echo "hi";
+            	echo "error";
             }
         }
     }
@@ -499,7 +479,7 @@ public function temp_add(){
         $date_created=mdate($datestring, $time);
         $post_type=$this->input->post("post_type");
         $user_id=$this->input->post("user_id");
-        $activity_type=$this->input->post("diet_type");
+        $type_of_diet=$this->input->post("diet_type");
         $post_title=$this->input->post("post_title");
         $post_content=$this->input->post("post_content");
         $routine_format=$this->input->post("routine_format");
@@ -507,24 +487,16 @@ public function temp_add(){
     echo $post_content;
         if ($post_type && $user_id && $post_content && $post_title ){
             $data['inserted']=$this->admin_model->add_post($post_type,$user_id,$post_title,$date_created,$post_content,$routine_count,$routine_format,$fullpath);
-                print_r($data);
             if ($data){
                 $this->session->set_flashdata('msgsuccess', 'Diet Plan Successfully Created');
-                       
-                        redirect(base_url().'admin/viewDiet');
+                redirect(base_url().'admin/viewDiet');
             }else{
-                echo "hi";
+                echo "error";
             }
         }
     }
     
 }
-
-
-public function view_community(){
-    
-}
-
 
 
 public function view_this_community_post($community_post_id){
@@ -636,20 +608,47 @@ public function viewArchiveDiet(){
         }
 
       
-    public function restoreCommunityThread($threadId){
+    public function restoreCommunityThread(){
+			$threadId = $this->input->post('sessionId');
             $archive=0;
             $field = array(
             'archive_status'=>$archive,
             );
             $result = $this->admin_model->archive_community_thread($field, $threadId);
             if ($result) {
-                $this->session->set_flashdata('msgsuccess', "Post successfully restored.");    
-               redirect(base_url('admin/review_community_thread'));
+              	echo 'success';
             } else {
-               $this->session->set_flashdata('msgwarn', "No changes made");
-             
-               redirect(base_url('admin/review_community_thread')); 
+              	echo 'error';
         }
     }
 
+    public function reviewProfilePosts(){
+		$data['all_profile_posts']=$this->admin_model->getAllProfilePosts();
+        $data['page_title']="Review Profile Posts";
+		$this->load->view('admin/templates/header', $data);
+		$this->load->view('admin/reviewProfilePosts',$data);
+
+	}
+	public function archiveProfilePost(){
+		$post=$this->input->post();
+		$postId=$post['sessionId'];
+		$qstr = $this->admin_model->archive_user_profile_post($postId);
+	    if ($qstr){
+			echo"success";
+		}else{
+	    	echo "error";
+		}
+
+	}
+	public function allowProfilePost(){
+		$post=$this->input->post();
+		$postId=$post['sessionId'];
+		$qstr = $this->admin_model->allow_user_profile_post($postId);
+		if ($qstr){
+			echo"success";
+		}else{
+			echo "error";
+		}
+
+	}
 }

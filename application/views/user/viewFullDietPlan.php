@@ -18,17 +18,17 @@
 <?php
 if (isset($rows)) {
     foreach($rows as $row){
-      $image_name=$row['post_image_name'];
-        $post_id = $row['post_id'];
-    $post_title = $row['post_title'];
-    $post_content = $row['post_content'];
-    $date_posted = $row['date_posted'];
-    $routine_count = $row['routine_count'];
-    $routine_format = $row['routine_format'];
-    $post_user_id = $row['post_user_id'];
-    $post_type = $row['post_type'];
-    $image_id = $row['image_id'];
-    $activity_type = $row['activity_type'];
+
+        $post_id = $row->post_id;
+    $post_title = $row->post_title;
+    $post_content = $row->post_content;
+    $date_posted = $row->date_posted;
+    $routine_count = $row->routine_count;
+    $routine_format = $row->routine_format;
+    $post_user_id = $row->post_user_id;
+    $post_type = $row->post_type;
+
+    $type_of_diet = $row->type_of_diet;
 
       $current_user=$this->session->userdata('id');
    
@@ -49,7 +49,11 @@ if (isset($rows)) {
 
 <div class="" >
     <div class="card" style="width: 50rem;">
-  <img class="card-img-top" style="height:500px" src="<?=base_url().'uploads/images/'.$image_name?>" alt="Card image cap">
+		<?php foreach ($row->images as $images) {
+			?>
+			<img class="" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
+				 alt="Card image cap" style="">
+		<?php } ?>
   <div class="card-body">
     <h5 class="card-title"><?= $post_title ?></h5>
     <p class="card-text"><?php if(isset($post_content)){
