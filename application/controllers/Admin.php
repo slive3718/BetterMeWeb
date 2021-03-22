@@ -706,6 +706,7 @@ public function viewArchiveDiet(){
 				$image_name=($info['file_name']);
 				// array_push($image_arr,$image_name);
 				$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'image_post_type'=>'diet_plan','post_id'=>$res_id,'user_id'=>$id,'date_created'=>date('Y-m-d')));
+                redirect(base_url('admin/viewDiet'));
 			}
 		}
 	}
