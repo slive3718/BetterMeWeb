@@ -457,4 +457,75 @@ class Admin_model extends CI_Model
 
 	}
 
+
+	public function post_thread($title, $desciption, $date_created)
+	{
+		$id = $this->session->userdata('id');
+		$data = array(
+			'thread_user_id' => $id,
+			'thread_title' => $title,
+			'thread_content' => $desciption,
+			'thread_date' => $date_created
+		);
+		print_r($data);
+		return $this->db->insert('tblcommunity', $data);
+	}
+
+
+	public function get_myComment($comment_id)
+	{
+
+		$qstr = $this->db->query("SELECT * from tblcommunitycomments where comment_id = $comment_id");
+
+
+		if ($qstr->num_rows() > 0) {
+			$result = $qstr->result_array();
+		} else {
+			$result = null;
+		}
+		return $result;
+	}
+
+	public function updateMyComment($comment_id, $field)
+	{
+		$this->db->where('comment_id', $comment_id);
+		$this->db->update('tblcommunitycomments', $field);
+		// echo $this->db->last_query();
+
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
+	public function get_myCommunityThread($community_id)
+	{
+		$qstr = $this->db->query("SELECT * from tblcommunity where community_id = $community_id");
+
+
+		if ($qstr->num_rows() > 0) {
+			$result = $qstr->result_array();
+		} else {
+			$result = null;
+		}
+		return $result;
+	}
+
+
+	public function updateMyThread($thread_id, $field)
+	{
+		$this->db->where('community_id', $thread_id);
+		$this->db->update('tblcommunity', $field);
+		// echo $this->db->last_query();
+
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
 }

@@ -709,4 +709,139 @@ public function viewArchiveDiet(){
 			}
 		}
 	}
+
+	public function create_thread(){
+		if (isset($this->session->userdata['id'])) {
+			$data['page_title']="Create Thread";
+			$this->load->view('templates/header', $data);
+			$this->load->view('admin/createThread');
+		}else{
+			redirect(base_url('admin/logout'));
+		}
+	}
+
+	public function post_thread(){
+		if (isset($this->session->userdata['id'])) {
+			$datestring = '%Y-%m-%d %h:%i:%s';
+			$time = time();
+
+			$date_created=mdate($datestring, $time);
+
+			$title=$this->input->post('title');
+			$description=$this->input->post('description');
+
+			$result=$this->admin_model->post_thread($title,$description,$date_created);
+			if ($result){
+				$this->session->set_flashdata('msgsuccess_c',"Save Success");
+				redirect(base_url('admin/homepage'));
+			}else{
+				$this->session->set_flashdata('msgerror',"Save unsuccessfull");
+			}
+		}else{
+			redirect(base_url('admin/logout'));
+		}
+	}
+
+
+
+	public function editMyComment($comment_id){
+		if (isset($this->session->userdata['id'])) {
+
+			$current_user = $this->session->userdata('id');
+			$myComments=$this->admin_model->get_myComment($comment_id);
+			$data['myComments']=$myComments;
+			$data['page_title']="Edit Comment";
+			$this->load->view('templates/header',$data);
+			$this->load->view('admin/editMyComment',$data);
+			$this->load->view('templates/footer');
+		}
+
+	}
+
+	public function updateMyComment($comment_id){
+		if (isset($this->session->userdata['id'])) {
+			$comment_content=$this->input->post('community_comment');
+			$community_post_id=$this->input->post('community_id');
+
+			// $height=$this->input->post('height');
+
+			$field = array(
+
+				'comment_content'=>$comment_content,
+			);
+			$result = $this->admin_model->updateMyComment($comment_id, $field);
+
+			if ($result) {
+				$this->session->set_flashdata('msgsuccess', "Comment successfully updated.");
+
+				redirect(base_url('admin/view_this_community_post/'.$community_post_id));
+			} else {
+				$this->session->set_flashdata('msgwarn', "No changes made");
+
+				redirect(base_url('admin/view_this_community_post/'.$community_post_id));
+			}
+		}else{
+			redirect(base_url('admin/logout'));
+		}
+	}
+
+
+	public function editMyCommunityThread($community_id){
+		if (isset($this->session->userdata['id'])) {
+
+			$current_user = $this->session->userdata('id');
+			$myThread=$this->admin_model->get_myCommunityThread($community_id);
+			$data['myThread']=$myThread;
+			$data['page_title']="Edit My Thread";
+			$this->load->view('templates/header',$data);
+			$this->load->view('admin/editMyThread',$data);
+			$this->load->view('templates/footer');
+		}
+		else {
+			redirect(base_url('admin/logout'));
+		}
+	}
+
+	public function updateMyThread($thread_id){
+		if (isset($this->session->userdata['id'])) {
+			$thread_content=$this->input->post('description');
+			$thread_title=$this->input->post('title');
+
+			// $height=$this->input->post('height');
+
+			$field = array(
+				'thread_title'=>$thread_title,
+				'thread_content'=>$thread_content,
+
+			);
+			$result = $this->admin_model->updateMyThread($thread_id, $field);
+
+			if ($result) {
+				$this->session->set_flashdata('msgsuccess', "Comment successfully updated.");
+
+				redirect(base_url('admin/view_this_community_post/'.$thread_id));
+			} else {
+				$this->session->set_flashdata('msgwarn', "No changes made");
+
+				redirect(base_url('admin/view_this_community_post/'.$thread_id));
+			}
+		}else{
+			redirect(base_url('admin/logout'));
+		}
+	}
+
+	public function deleteMyComment($comment_id){
+		if (isset($this->session->userdata['id'])) {
+			$comment_id =  $this->uri->segment(3);
+			$thread_id=  $this->uri->segment(4);
+			$this->db->delete('tblcommunitycomments', array('comment_id' => $comment_id));
+
+			redirect(base_url('admin/view_this_community_post/'.$thread_id));
+		}else{
+			redirect(base_url('admin/logout'));
+		}
+	}
+
+
+
 }
