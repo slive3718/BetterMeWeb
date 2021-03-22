@@ -22,6 +22,7 @@
 
 	<!-- start: GOOGLE FONTS -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/googlefonts.css">
+	<link rel="shortcut icon" href="<?= base_url();?>assets/images/Smile.png">
 	<!--<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />-->
 	<!-- end: GOOGLE FONTS -->
 	<!-- start: MAIN CSS -->
