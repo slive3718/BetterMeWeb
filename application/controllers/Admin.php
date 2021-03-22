@@ -651,4 +651,62 @@ public function viewArchiveDiet(){
 		}
 
 	}
+
+	public function add_new_plan(){
+		$post = $this->input->post();
+		$id=$this->session->userdata('id');
+		$config['upload_path']          = './uploads/posts';
+		$config['allowed_types']        = 'jpg|png|jpeg|';
+		$config['max_size']             = 100000;
+		$config['max_width']            = 100000;
+		$config['max_height']           = 100000;
+
+
+
+		$dataInfo = array();
+		$files = $_FILES;
+		$cpt = count($_FILES['userfile']['name']);
+		$cpt = count($_FILES['userfile']['name']);
+		for($i=0; $i<$cpt; $i++)
+		{
+			$_FILES['userfile']['name']= $files['userfile']['name'][$i];
+			$_FILES['userfile']['type']= $files['userfile']['type'][$i];
+			$_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+			$_FILES['userfile']['error']= $files['userfile']['error'][$i];
+			$_FILES['userfile']['size']= $files['userfile']['size'][$i];
+
+			$this->upload->initialize($config);
+			$this->upload->do_upload();
+			$dataInfo[] = $this->upload->data();
+		}
+
+		$user_id= $this->session->userdata('id');
+//
+		$datestring = date('Y-m-d h:i:s');
+		$time = time();
+		$date_created=mdate($datestring, $time);
+
+		$int_array = array(
+			'post_title'=>$post['post_title'],
+			'post_content'=> $post['post_content'],
+			'date_posted'=>$date_created,
+			'routine_count'=>$post['routine_count'],
+			'routine_format'=>$post['routine_format'],
+			'post_user_id'=>$user_id,
+			'post_type'=>$post['thread_type'],
+			'type_of_diet'=>$post['type_of_diet'],
+			'target_audience'=>$post['target_audience'],
+		);
+
+		$result=$this->db->insert("tblposts", $int_array);
+		$res_id=$this->db->insert_id();
+		if($res_id){
+			$image_arr = array();
+			foreach ($dataInfo as $info) {
+				$image_name=($info['file_name']);
+				// array_push($image_arr,$image_name);
+				$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'image_post_type'=>'diet_plan','post_id'=>$res_id,'user_id'=>$id,'date_created'=>date('Y-m-d')));
+			}
+		}
+	}
 }

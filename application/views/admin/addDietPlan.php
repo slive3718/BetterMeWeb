@@ -1,81 +1,84 @@
-<form action="<?= base_url() . 'admin/temp_add' ?>" method="POST" enctype="multipart/form-data">
-	<center>
-		<table style="margin-top:80px;">
-			<tr>
-				<td>
-			<tr>
-				<td><label hidden>Thread</label>
-					<input class="form-control" type="text" name="post_type" value="Diet_Plan" readonly hidden></td>
-			</tr>
-			<tr>
-				<td>
-					<label hidden>userId</label>
-					<input class="form-control" type="text" name="user_id" value="<?= (isset($this->session->userdata['id']))? $this->session->userdata['id']:'' ?>" readonly hidden>
-				</td>
-			</tr>
-			<td>
-				<tr>
-					<td><label>Diet Title</label><input class="form-control" type="text" name="post_title"
-														placeholder="Title"></td>
-				</tr>
-				<tr>
-					<!-- <td><input type="date" name="date_range"></td> -->
-				</tr>
-				<tr>
-					<td><label>Diet Plan </label><select class="form-control" name="routine_format">
-							<option name="routine_format" value="Day">Day</option>
-							<option name="routine_format" value="Month">Month</option>
-							<option name="routine_format" value="Year">Year</option>
-						</select>
-						<input class="form-control" type="text" name="routine_count"
-							   placeholder="number of year|month|day|">
 
-					</td>
-				</tr>
-				<tr>
-					<td><label>Types of Diet </label>
-						<select name="type_of_diet">
-							<option value=""></option>
-							<option name="type_of_diet" value="Intermittent Fasting">Intermittent Fasting</option>
-							<option name="type_of_diet" value="Zone Diet">Zone Diet</option>
-							<option name="type_of_diet" value="Paleo Diet">Paleo Diet</option>
-							<option name="type_of_diet" value="Paleo Diet">Paleo Diet</option>
-							<option name="type_of_diet" value="Blood Type Diet">Blood Type Diet</option>
-							<option name="type_of_diet" value="Vegan Diet">Vegan Diet</option>
-							<option name="type_of_diet" value="South Beach Diet">South Beach Diet</option>
-							<option name="type_of_diet" value="Mediterranean Diet">Mediterranean Diet</option>
-							<option name="type_of_diet" value="Food Diet">Raw Food Diet</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<select name="targetAudience" class="form-control">
-							<option name="targetAudience" value="Adults">Adults</option>
-							<option name="targetAudience" value="Teens"> Teens</option>
-							<option name="targetAudience" value="Kids">Kids</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<textarea name="post_content" class="form-control" id="" cols="100" rows="10"
-								  placeholder="Diet Content" id="post_content"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="file" name="userfile" size="20"
-							   oninput="pic.src=window.URL.createObjectURL(this.files[0])"/>
-						<img id="pic" style="width:150px;height:150px"/>
-					</td>
-				</tr>
-				<tr>
-					<td><input type="submit" name="submit" id="">
-						<input type="reset" name="reset"></td>
-				</tr>
-		</table>
-</form>
-            
+<style>
+	.m-indent {
+		margin: 20px;
+	}
+</style>
+<div class="container-fluid card shadow" style="width:100vh">
+	<div class="m-indent" style="">
+		<form method="POST" action="<?= base_url().'admin/add_new_plan'?>" enctype="multipart/form-data">
 
+			<div class="form-group">
+				<label for="thread_type">Thread</label>
+				<select name="thread_type" class="form-control">
+					<option name="thread_type" value="Diet_Plan">Diet Plan</option>
+					<option name="thread_type" value="Exercise">Exercise</option>
+				</select>
+			</div>
 
+			<div class="form-group">
+				<label for="">Post Title</label>
+				<input name="post_title" type="text" class="form-control" id="" placeholder="">
+			</div>
+
+			<div class="form-group">
+				<label for="">Type Of Diet</label>
+				<select class="form-control" name="type_of_diet">
+					<option value="">No Selection</option>
+					<option name="type_of_diet" value="Intermittent Fasting">Intermittent Fasting</option>
+					<option name="type_of_diet" value="Zone Diet">Zone Diet</option>
+					<option name="type_of_diet" value="Paleo Diet">Paleo Diet</option>
+					<option name="type_of_diet" value="Paleo Diet">Paleo Diet</option>
+					<option name="type_of_diet" value="Blood Type Diet">Blood Type Diet</option>
+					<option name="type_of_diet" value="Vegan Diet">Vegan Diet</option>
+					<option name="type_of_diet" value="South Beach Diet">South Beach Diet</option>
+					<option name="type_of_diet" value="Mediterranean Diet">Mediterranean Diet</option>
+					<option name="type_of_diet" value="Food Diet">Raw Food Diet</option>
+				</select>
+			</div>
+
+			<div class="form-row">
+				<div class="col">
+					<label for=""> Plan Track (Optional)</label>
+					<select class="form-control" name="routine_format">
+						<option name="routine_format" value="Day">Day</option>
+						<option name="routine_format" value="Month">Month</option>
+						<option name="routine_format" value="Year">Year</option>
+					</select>
+				</div>
+				<div class="col">
+					<label for="">Number of: Days|Months|Years</label>
+					<input name="routine_count" class="form-control" type="number" class="form-inline" id=""
+						   placeholder="">
+				</div>
+				<div class="col">
+					<label for="target_audience">Suitable for:</label>
+					<select name="target_audience" class="form-control">
+						<option name="target_audience" value="Kids">Kids</option>
+						<option name="target_audience" value="Adult">Teens</option>
+						<option name="target_audience" value="Adult">Adult</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="">Post Content</label>
+				<textarea name="post_content" rows="10" class="form-control" id="" placeholder=""></textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="userfile">Select Image</label>
+				<input type="file" name="userfile[]" size="20"
+					   oninput="pic.src=window.URL.createObjectURL(this.files[0])"
+					   multiple="multiple"
+				/>
+				<img id="pic" style="width:150px;height:150px"/>
+			</div>
+			<div style="float:right">
+				<button type="reset" class="btn btn-primary btn-sm">Reset</button>
+				<button type="submit" class="btn btn-success btn-sm">Submit</button>
+			</div>
+
+		</form>
+	</div>
+</div>
