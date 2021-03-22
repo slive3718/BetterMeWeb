@@ -713,7 +713,7 @@ public function viewArchiveDiet(){
 	public function create_thread(){
 		if (isset($this->session->userdata['id'])) {
 			$data['page_title']="Create Thread";
-			$this->load->view('templates/header', $data);
+			$this->load->view('admin/templates/header', $data);
 			$this->load->view('admin/createThread');
 		}else{
 			redirect(base_url('admin/logout'));
@@ -751,7 +751,7 @@ public function viewArchiveDiet(){
 			$myComments=$this->admin_model->get_myComment($comment_id);
 			$data['myComments']=$myComments;
 			$data['page_title']="Edit Comment";
-			$this->load->view('templates/header',$data);
+			$this->load->view('admin/templates/header',$data);
 			$this->load->view('admin/editMyComment',$data);
 			$this->load->view('templates/footer');
 		}
@@ -793,7 +793,7 @@ public function viewArchiveDiet(){
 			$myThread=$this->admin_model->get_myCommunityThread($community_id);
 			$data['myThread']=$myThread;
 			$data['page_title']="Edit My Thread";
-			$this->load->view('templates/header',$data);
+			$this->load->view('admin/templates/header',$data);
 			$this->load->view('admin/editMyThread',$data);
 			$this->load->view('templates/footer');
 		}
@@ -851,7 +851,7 @@ public function viewArchiveDiet(){
 			$myInfo=$this->admin_model->get_my_Profileinfo($current_user);
 			$data['myInfo']=$myInfo;
 			$data['page_title']="My Profile";
-			$this->load->view('templates/header',$data);
+			$this->load->view('admin/templates/header',$data);
 			$this->load->view('admin/myProfile',$data);
 			$this->load->view('templates/footer');
 
@@ -867,7 +867,7 @@ public function viewArchiveDiet(){
 			$myInfo=$this->admin_model->get_my_Profileinfo($current_user);
 			$data['myInfo']=$myInfo;
 			$data['page_title']="My Profile";
-			$this->load->view('templates/header',$data);
+			$this->load->view('admin/templates/header',$data);
 			$this->load->view('admin/editMyProfile',$data);
 			$this->load->view('templates/footer');
 
