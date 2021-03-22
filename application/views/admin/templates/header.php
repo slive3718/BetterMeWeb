@@ -89,6 +89,22 @@
 			</ul>
 			<?php if (isset($this->session->userdata['id'])) {
 			?>
+			 <ul class="navbar-nav" style="float:right;>
+                <li class="nav-item">
+                    <a class="nav-link" href=""></a>
+                </li>
+                
+                <li class="nav-item">
+                    <?php if (isset($this->session->userdata['id'])){
+                        echo (ucfirst($this->session->userdata['uname']));
+                    }else {
+                        ?>
+                         <a class="nav-link" href="<?php echo base_url('admin/viewSignUp') ?>">Register</a>
+                    <?php
+                    }?>
+                </li>
+               
+            </ul>
 				<div class="dropleft show mr-20 float-right">
 					<a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
 					   aria-expanded="false">
@@ -129,7 +145,7 @@
 				<?php
 			}
 			?>
-			 <ul class="navbar-nav" style="float:right;>
+			<ul class="navbar-nav">
 				<li class="nav-item">
 					<a class="nav-link" href=""></a>
 				</li>
