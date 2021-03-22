@@ -9,8 +9,8 @@
 				<?php
 				if (isset($rows)) {
 				foreach($rows as $row) {
-					$post_id = $row['post_id'];
-					$post_type = $row['post_type'];
+					$post_id = $row->post_id;
+					$post_type = $row->post_type;
 				}}
 				?>
 				<button style="" class="btn btn-sm btn-success"onclick="document.location='<?= base_url().'admin/addDietPlan/'.$post_type?>'">Add Diet Plan</button></div>
@@ -30,17 +30,17 @@
 
 				if (isset($rows)) {
 				foreach($rows as $row){
-				$image_name=$row['post_image_name'];
-				$post_id = $row['post_id'];
-				$post_title = $row['post_title'];
-				$post_content = $row['post_content'];
-				$date_posted = $row['date_posted'];
-				$routine_count = $row['routine_count'];
-				$routine_format = $row['routine_format'];
-				$post_user_id = $row['post_user_id'];
-				$post_type = $row['post_type'];
-				$image_id = $row['image_id'];
-				$type_of_diet = $row['type_of_diet'];
+
+				$post_id = $row->post_id;
+				$post_title = $row->post_title;
+				$post_content = $row->post_content;
+				$date_posted = $row->date_posted;
+				$routine_count = $row->routine_count;
+				$routine_format = $row->routine_format;
+				$post_user_id = $row->post_user_id;
+				$post_type = $row->post_type;
+
+				$type_of_diet = $row->type_of_diet;
 				?>
 				<tr>
 					<td class="font-weight-bold"> <?=$post_title ?></td>
@@ -52,7 +52,11 @@
 					<td><?= $date_posted ?></td>
 					<td>
 
-						<img style="width:100px;height:100px;"class="img-thumbnail" src="<?=base_url().'uploads/images/'.$image_name?>">
+						<?php foreach ($row->images as $images) {
+							?>
+							<img class="" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
+								 alt="Card image cap" style="width:40px;height:40px">
+						<?php } ?>
 
 					</td>
 					<td> <a data-sessions-id="<?= $post_id?>" class="restore-post btn btn-sm btn-success" >Restore</a>

@@ -1,6 +1,3 @@
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css"/>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
 
 <div class="container-fluid border card shadow"
 	 style="width:80%;margin-top:30px;padding-top:20px;padding-bottom: 20px;">
@@ -21,7 +18,7 @@
 					<th scope="col"> Post Content</th>
 					<th scope="col"> Date Posted</th>
 					<th scope="col"> Image</th>
-					<th scope="col" colspan="2"> Option</th>
+					<th scope="col" > Option</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -30,17 +27,17 @@
 
 				if (isset($rows)) {
 					foreach ($rows as $row) {
-						$image_name = $row['post_image_name'];
-						$post_id = $row['post_id'];
-						$post_title = $row['post_title'];
-						$post_content = $row['post_content'];
-						$date_posted = $row['date_posted'];
-						$routine_count = $row['routine_count'];
-						$routine_format = $row['routine_format'];
-						$post_user_id = $row['post_user_id'];
-						$post_type = $row['post_type'];
-						$image_id = $row['image_id'];
-						$type_of_diet = $row['type_of_diet'];
+
+						$post_id = $row->post_id;
+						$post_title = $row->post_title;
+						$post_content = $row->post_content;
+						$date_posted = $row->date_posted;
+						$routine_count = $row->routine_count;
+						$routine_format = $row->routine_format;
+						$post_user_id = $row->post_user_id;
+						$post_type = $row->post_type;
+
+						$type_of_diet = $row->type_of_diet;
 
 						$current_id = $this->session->userdata('id');
 						if ($post_user_id == $current_id) {
@@ -57,15 +54,17 @@
 								</td>
 								<td><?= $date_posted ?></td>
 								<td>
-									<img style="width:100px;height:100px;" class="img-thumbnail"
-										 src="<?= base_url() . 'uploads/images/' . $image_name ?>">
+									<?php foreach ($row->images as $images) {
+										?>
+										<img class="" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
+											 alt="Card image cap" style="width:40px;height:40px">
+									<?php } ?>
 								</td>
 								<td><a href="<?= base_url() . 'mentor/edit_Diet/' . $post_id ?>"
-									   class="btn  btn-sm btn-primary">Edit</a></td>
-								<td>
-									<button data-post-id="<?=$post_id?>" type="button" class="btn btn-sm btn-danger delete-post">
-										Delete
-									</button>
+									   class="btn  btn-sm btn-primary">Edit</a>
+								<button data-post-id="<?= $row->post_id?>" type="button" class="btn btn-sm btn-danger delete-post">
+									Delete
+								</button>
 								</td>
 
 							</tr>
@@ -80,8 +79,7 @@
 		</div>
 	</div>
 </div>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="<?= base_url() . '/assets/alertify/alertify.js' ?>"></script>
+
 <script>
 	$(document).ready(function () {
 		$('.table').DataTable();

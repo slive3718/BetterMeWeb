@@ -640,4 +640,15 @@ public function viewArchiveDiet(){
 		}
 
 	}
+	public function allowProfilePost(){
+		$post=$this->input->post();
+		$postId=$post['sessionId'];
+		$qstr = $this->admin_model->allow_user_profile_post($postId);
+		if ($qstr){
+			echo"success";
+		}else{
+			echo "error";
+		}
+
+	}
 }

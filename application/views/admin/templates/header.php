@@ -1,7 +1,5 @@
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css"
 
 		  href="<?php echo base_url(); ?>assets/css/bootstrap.css">
@@ -63,6 +61,12 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script src="<?= base_url() .'/assets/alertify/alertify.js?v=1' ?>"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css"/>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
 	<title>
 		<?php
 		if (isset($page_title) && !empty($page_title)) {

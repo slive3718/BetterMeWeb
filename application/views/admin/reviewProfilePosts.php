@@ -61,12 +61,32 @@
 		$('#myTable').on('click','#archive',function(){
 			var sessionId=$(this).data('sessions-id');
 			console.log(sessionId);
+
 			alertify.confirm("Are you sure you want to delete this Profile Post?", function (e) {
 				if (e)
 				{
 					$.post("<?=base_url()?>admin/archiveProfilePost/",{"sessionId":sessionId},function (response){
 						if(response=="success"){
 							alertify.success('Post Archived!');
+							window.setTimeout(function(){location.reload()},2000)
+						}
+					});
+				}
+			});
+		})
+	});
+
+	$(document).ready(function(){
+		$('#myTable').on('click','#allow',function(){
+			var sessionId=$(this).data('sessions-id');
+			console.log(sessionId);
+
+			alertify.confirm("Are you sure you want to delete this Profile Post?", function (e) {
+				if (e)
+				{
+					$.post("<?=base_url()?>admin/allowProfilePost/",{"sessionId":sessionId},function (response){
+						if(response=="success"){
+							alertify.success('Post Restored!');
 							window.setTimeout(function(){location.reload()},2000)
 						}
 					});

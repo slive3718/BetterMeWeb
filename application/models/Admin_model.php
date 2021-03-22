@@ -125,21 +125,79 @@ class Admin_model extends CI_Model
 		return $result;
 	}
 
-	public function get_dietPlanFull($post_id)
-	{
-		$qstr = $this->db->get('tblposts');
-		$qstr = $this->db->get_where('tblposts', array('post_type' => 'Diet_Plan', 'post_id' => $post_id));
-		//$query=$this->db->query($qstr);
 
+	public function get_dietPlan()
+	{
+		$this->db->select('*');
+		$this->db->from('tblposts p');
+		$this->db->join('tblusers u', 'p.post_user_id=u.userId');
+		$this->db->where('p.archive !=', 1);
+		$this->db->order_by('p.date_posted', 'desc');
+		$qstr = $this->db->get();
+//    $qstr=$this->db->query("SELECT * FROM tblposts LEFT JOIN tblusers on tblposts.post_user_id=tblusers.userId where tblposts.archive != 1 order by tblposts.date_posted desc");
+		$sess_id = $this->session->userdata('id');
 
 		if ($qstr->num_rows() > 0) {
-			$result = $qstr->result_array();
+			$return_array = array();
+			foreach ($qstr->result() as $val)
+			{
+				$val->images = $this->get_diet_plan_images($val->post_id);
+			}
+		}
+		$sess_id = $this->session->userdata('id');
+
+		if ($qstr->num_rows() > 0) {
+			$result = $qstr->result();
 		} else {
 			$result = null;
 		}
 		return $result;
 	}
 
+	function get_diet_plan_images($post_id)
+	{
+
+		$this->db->select('*');
+		$this->db->from('tblimages');
+		$this->db->where('post_id', $post_id);
+		$this->db->where('image_post_type', 'diet_plan');
+		$this->db->limit(4);
+		$qstr = $this->db->get();
+		if ($qstr) {
+			return $qstr->result();
+		} else {
+			return '';
+		}
+	}
+
+	public function get_dietPlanFull($post_id)
+	{
+		$this->db->select('*');
+		$this->db->from('tblposts p');
+		$this->db->join('tblusers u','p.post_user_id=u.userId');
+		$this->db->where ('p.archive !=',1);
+		$this->db->where('post_id',$post_id);
+
+		$this->db->order_by('p.date_posted','desc');
+		$qstr=$this->db->get();
+
+		if ($qstr->num_rows() > 0 ){
+			$return_array = array();
+			foreach($qstr->result() as $val){
+
+				$val->images= $this->get_diet_plan_images($val->post_id);
+			}
+
+		}
+		$sess_id = $this->session->userdata('id');
+
+		if ($qstr->num_rows() > 0) {
+			$result = $qstr->result();
+		} else {
+			$result = null;
+		}
+		return $result;
+	}
 
 	public function edit_diet($post_id)
 	{
@@ -170,21 +228,6 @@ class Admin_model extends CI_Model
 		}
 	}
 
-
-	public function get_dietPlan()
-	{
-		$qstr = $this->db->query("SELECT * FROM tblposts LEFT JOIN tblusers on tblposts.post_user_id=tblusers.userId where tblposts.archive != 1 order by tblposts.date_posted desc");
-		// $qstr=$this->db->get_where('tblposts', array('post_type'=> 'Diet_Plan','archive'=>'0' ));
-		//$query=$this->db->query($qstr);
-
-
-		if ($qstr->num_rows() > 0) {
-			$result = $qstr->result_array();
-		} else {
-			$result = null;
-		}
-		return $result;
-	}
 
 	public function upload($file_name)
 	{
@@ -282,18 +325,34 @@ class Admin_model extends CI_Model
 
 	}
 
+
 	public function get_archiveDietPlan()
 	{
-		$qstr = $this->db->query("SELECT * FROM tblposts LEFT JOIN tblusers on tblposts.post_user_id=tblusers.userId where tblposts.archive > 0");
+		$this->db->select('*');
+		$this->db->from('tblposts p');
+		$this->db->join('tblusers u', 'p.post_user_id=u.userId');
+		$this->db->where('p.archive', 1);
+		$this->db->order_by('p.date_posted', 'desc');
+		$qstr = $this->db->get();
+//    $qstr=$this->db->query("SELECT * FROM tblposts LEFT JOIN tblusers on tblposts.post_user_id=tblusers.userId where tblposts.archive != 1 order by tblposts.date_posted desc");
+		$sess_id = $this->session->userdata('id');
 
 		if ($qstr->num_rows() > 0) {
-			$result = $qstr->result_array();
+			$return_array = array();
+			foreach ($qstr->result() as $val)
+			{
+				$val->images = $this->get_diet_plan_images($val->post_id);
+			}
+		}
+		$sess_id = $this->session->userdata('id');
+
+		if ($qstr->num_rows() > 0) {
+			$result = $qstr->result();
 		} else {
 			$result = null;
 		}
 		return $result;
 	}
-
 
 	public function get_archivedCommunityThread()
 	{
@@ -341,15 +400,17 @@ class Admin_model extends CI_Model
 		}
 	}
 	function archive_user_profile_post($postId){
+
 		$this->db->select('*');
 		$this->db->from('tblarchive');
-		$this->db->where('post_id',$postId);
+		$this->db->where('post_id=',$postId);
 		$qstr=$this->db->get();
 
 		if ($qstr->num_rows() > 0 ){
 			$post=array(
 				'archive_status'=>1,
 				'archive_message'=>'This post is archived by the administrator and being reviewed');
+			$this->db->where('post_id=',$postId);
 			$qstr1=$this->db->update('tblarchive',$post);
 
 			return $qstr1;
@@ -359,6 +420,36 @@ class Admin_model extends CI_Model
 				'archive_status'=>1,
 				'archive_message'=>'This post is archived by the administrator and being reviewed',
 			);
+			$this->db->where('post_id=',$postId);
+			$qstr2=$this->db->insert('tblarchive',$post);
+			return $qstr2;
+		}
+		return '';
+
+	}
+
+
+	function allow_user_profile_post($postId){
+		$this->db->select('*');
+		$this->db->from('tblarchive');
+		$this->db->where('post_id=',$postId);
+		$qstr=$this->db->get();
+
+		if ($qstr->num_rows() > 0 ){
+			$post=array(
+				'archive_status'=>0,
+				'archive_message'=>'Reviewed');
+			$this->db->where('post_id=',$postId);
+			$qstr1=$this->db->update('tblarchive',$post);
+
+			return $qstr1;
+		}else{
+			$post=array(
+				'post_id'=>$postId,
+				'archive_status'=>0,
+				'archive_message'=>'Reviewed',
+			);
+			$this->db->where('post_id=',$postId);
 			$qstr2=$this->db->insert('tblarchive',$post);
 			return $qstr2;
 		}

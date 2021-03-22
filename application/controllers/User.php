@@ -104,7 +104,6 @@ class User extends CI_Controller
             $confirmpassword= $this->input->post('confirmpassword');
             $email= $this->input->post('email');
             $account_type= $this->input->post('account_type');
-            ;
         }
 
         if ($username && $password && $email && $confirmpassword) {
@@ -216,10 +215,6 @@ class User extends CI_Controller
 
             $data['page_title']= "Diet Post";
 
-       
-
-        
-        
             $this->load->view('user/templates/header', $data);
             $this->load->view('user/viewFullDietPlan', $data);
             $this->load->view('user/templates/footer');
@@ -554,12 +549,10 @@ class User extends CI_Controller
             $result=$this->db->insert("profile_post", $int_array);
         
         }
-  
-
         if ($result) {
-            print_r($result);
+            echo "success";
         } else {
-            echo "else";
+            echo "error";
         }
     
 } 
