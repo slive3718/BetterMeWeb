@@ -99,7 +99,8 @@
 
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-
+						<a class="dropdown-item" href="<?php echo base_url('admin/viewMyProfile') ?>">View My Profile
+						</a>
 						<a class="dropdown-item" href="<?php echo base_url('admin/viewDiet') ?>">Review/Manage Diet Plan
 							Posts</a>
 						<a class="dropdown-item" href="<?php echo base_url('admin/review_community_thread') ?>">Review

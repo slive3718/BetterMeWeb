@@ -528,4 +528,112 @@ class Admin_model extends CI_Model
 	}
 
 
+
+	public function get_my_Profileinfo($current_user)
+	{
+
+		$qstr = $this->db->get('tblusers');
+		$qstr = $this->db->get_where('tblusers', array('userId' => $current_user));
+		//$query=$this->db->query($qstr);
+		if ($qstr->num_rows() > 0) {
+			$result = $qstr->result_array();
+		} else {
+			$result = null;
+		}
+		return $result;
+	}
+
+
+	public function updateMyProfile($field, $id)
+	{
+
+		$this->db->where('userId', $id);
+		$this->db->update('tblusers', $field);
+		// echo $this->db->last_query();
+
+		if ($this->db->affected_rows() == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
+	public function add_profilePic($id, $date_picuploaded, $file_name)
+	{
+
+		$qstr = $this->db->query("SELECT * FROM profilepic where p_user_id = $id");
+
+
+		if ($qstr->num_rows() > 0) {
+			$data = array(
+				'p_user_id' => $id,
+				'p_name' => $file_name,
+
+				'p_dateuploaded' => $date_picuploaded,
+
+			);
+
+			return $this->db->update('profilepic', $data);
+
+			$data['userpic'] = array(
+				'user_picture_status' => '1'
+			);
+
+			return $this->db->update('tblusers', $data['userpic']);
+			$this->session->set_flashdata('msgerror', 'Fields cannot be empty');
+			exit;
+		} else {
+			$data = array(
+				'p_user_id' => $id,
+				'p_name' => $file_name,
+
+				'p_dateuploaded' => $date_picuploaded,
+
+			);
+
+			return $this->db->insert('profilepic', $data);
+
+			$data['userpic'] = array(
+				'user_picture_status' => '1'
+			);
+
+			return $this->db->insert('tblusers', $data['userpic']);
+			$this->session->set_flashdata('msgerror', 'Fields cannot be empty');
+			exit;
+		}
+
+
+	}
+
+
+	public function profilePic_Status($id)
+	{
+		$data = array(
+			'user_picture_status' => '1'
+		);
+
+		$this->db->where('userId', $id);
+		return $this->db->update('tblusers', $data);
+
+		$this->session->set_flashdata('msgerror', 'Fields cannot be empty');
+		exit;
+	}
+
+
+	public function model_show_profilepic()
+	{
+		$qstr = $this->db->query('SELECT * from profilepic');
+
+
+		if ($qstr->num_rows() > 0) {
+			$result = $qstr->result_array();
+		} else {
+			$result = null;
+		}
+		return $result;
+	}
+
+
+
 }

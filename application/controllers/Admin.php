@@ -844,4 +844,157 @@ public function viewArchiveDiet(){
 
 
 
+	public function viewMyProfile(){
+		if (isset($this->session->userdata['id'])){
+
+			$current_user = $this->session->userdata('id');
+			$myInfo=$this->admin_model->get_my_Profileinfo($current_user);
+			$data['myInfo']=$myInfo;
+			$data['page_title']="My Profile";
+			$this->load->view('templates/header',$data);
+			$this->load->view('admin/myProfile',$data);
+			$this->load->view('templates/footer');
+
+		}else{
+			redirect(base_url('admin/logout'));
+		}
+
+	}
+	public function editMyProfile(){
+		if (isset($this->session->userdata['id'])){
+
+			$current_user = $this->session->userdata('id');
+			$myInfo=$this->admin_model->get_my_Profileinfo($current_user);
+			$data['myInfo']=$myInfo;
+			$data['page_title']="My Profile";
+			$this->load->view('templates/header',$data);
+			$this->load->view('admin/editMyProfile',$data);
+			$this->load->view('templates/footer');
+
+		}else{
+			redirect(base_url('admin/logout'));
+		}
+
+	}
+
+	public function updateMyProfile($id){
+		if (isset($this->session->userdata['id'])) {
+			print_r($id);
+			$username=$this->input->post('uname');
+			$firstName=$this->input->post('fname');
+			$middleName=$this->input->post('mname');
+			$lastName=$this->input->post('lname');
+			$email=$this->input->post('email');
+			$dob=$this->input->post('dob');
+			$sex=$this->input->post('sex');
+			$password=$this->input->post('pword');
+			$age=$this->input->post('age');
+			$city=$this->input->post('city');
+			$province=$this->input->post('province');
+			$contact=$this->input->post('contact_no');
+			// $weight=$this->input->post('weight');
+			// $height=$this->input->post('height');
+
+			$field = array(
+				'username'=>$username,
+				'email'=>$email,
+				'first_name'=>$firstName,
+				'middle_name'=>$middleName,
+				'last_name'=>$lastName,
+				'dob'=>$dob,
+				// 'password'=>$password,
+				'age'=>$age,
+				'sex'=>$sex,
+				'city'=>$city,
+				'province'=>$province,
+				'contact'=>$contact,
+			);
+			$result = $this->admin_model->updateMyProfile($field, $id);
+
+			if ($result) {
+				$this->session->set_flashdata('msgsuccess', "Post successfully deleted.");
+
+				redirect(base_url('admin/viewMyProfile'));
+			} else {
+				$this->session->set_flashdata('msgwarn', "No changes made");
+
+				redirect(base_url('admin/viewMyProfile'));
+			}
+		}
+		else{
+			redirect(base_url('admin/logout'));
+		}
+
+	}
+
+
+	function upload_profilePic(){
+
+		$this->load->view('admin/uploadProfilePic');
+
+
+	}
+
+
+	public function do_upload_profilepic()
+	{
+		$id=$this->session->userdata('id');
+		// $config['upload_path'] = './assets/images/';
+		//	$config['allowed_types'] = '*';
+
+		$config['upload_path']          = './uploads/profilepic';
+		$config['allowed_types']        = 'jpg';
+		$config['max_size']             = 100000;
+		$config['max_width']            = 100000;
+		$config['max_height']           = 100000;
+		$config['overwrite']           = true;
+		$config['file_name']           = 'profile'.$id;
+
+
+		$datestring = "%Y-%m-%d %h:%i:%s";
+		$date_picuploaded =mdate($datestring);
+
+
+
+
+
+		$this->upload->initialize($config);
+
+		$this->upload->do_upload('userfile');
+		//   if (! $this->upload->do_upload('userfile')) {
+
+
+		//  } else {
+
+		$data = array('upload_data' => $this->upload->data());
+		$file_name=$this->upload->data('file_name');
+		if (isset($file_name)) {
+			$this->admin_model->add_profilePic($id, $date_picuploaded, $file_name);
+			$this->admin_model->profilePic_Status($id);
+
+			$this->session->set_flashdata('msgsuccess', "Profile Picture Update Success.");
+			redirect(base_url('admin/viewMyProfile'));
+
+		}
+
+
+		//  redirect('admin/viewMyProfile');
+	}
+
+	public function show_profilepic(){
+
+		$profile_picture=$this->admin_model->model_show_profilepic();
+		$data['profile_picture']=$profile_picture;
+
+		foreach ($profile_picture as $picture){
+			$filename=$picture['p_name'];
+			echo '<img src="'.base_url().'./uploads/profilepic/'.$filename.'" width="350px" height="120px"></a></div>';
+		}
+
+
+	}
+
+
+
+
 }
