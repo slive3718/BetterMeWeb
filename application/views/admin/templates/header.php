@@ -85,11 +85,11 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav mr-auto" style="float-right">
-			
+			<ul class="navbar-nav mr-auto">
+			</ul>
 			<?php if (isset($this->session->userdata['id'])) {
 				?>
-			</ul>
+				
 				<div class="dropleft show mr-20 float-right">
 					<a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
 					   aria-expanded="false">
