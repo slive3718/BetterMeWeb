@@ -852,7 +852,7 @@ public function viewArchiveDiet(){
 			$myInfo=$this->admin_model->get_my_Profileinfo($current_user);
 			$data['myInfo']=$myInfo;
 			$data['page_title']="My Profile";
-			$this->load->view('admin/templates/header',$data);
+            $this->load->view('templates/header',$data);
 			$this->load->view('admin/myProfile',$data);
 			$this->load->view('templates/footer');
 
