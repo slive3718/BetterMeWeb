@@ -91,7 +91,7 @@
 			<?php if (isset($this->session->userdata['id'])) {
 
 				?>
-				<div class="dropleft show mr-20 float-left">
+				<div class="dropleft show mr-20 float-right">
 					<a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
 					   aria-expanded="false">
 						<span class="fa fa-caret-down mr-3" aria-hidden="true"> </span>
