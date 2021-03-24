@@ -18,7 +18,7 @@
 
 			<div class="form-group">
 				<label for="">Post Title</label>
-				<input name="post_title" type="text" class="form-control" id="" placeholder="">
+				<input name="post_title" type="text" class="form-control" id="" placeholder="" required>
 			</div>
 
 			<div class="form-group">
@@ -40,7 +40,8 @@
 			<div class="form-row">
 				<div class="col">
 					<label for=""> Plan Track (Optional)</label>
-					<select class="form-control" name="routine_format">
+					<select class="form-control" name="routine_format" id="plan_track">
+						<option value="">No Selection</option>
 						<option name="routine_format" value="Day">Day</option>
 						<option name="routine_format" value="Month">Month</option>
 						<option name="routine_format" value="Year">Year</option>
@@ -48,12 +49,13 @@
 				</div>
 				<div class="col">
 					<label for="">Number of: Days|Months|Years</label>
-					<input name="routine_count" class="form-control" type="number" class="form-inline" id=""
+					<input name="routine_count" class="form-control" type="number" class="form-inline" id="num_day"
 						   placeholder="">
 				</div>
 				<div class="col">
 					<label for="target_audience">Suitable for:</label>
 					<select name="target_audience" class="form-control">
+						<option value="">No Selection</option>
 						<option name="target_audience" value="Kids">Kids</option>
 						<option name="target_audience" value="Adult">Teens</option>
 						<option name="target_audience" value="Adult">Adult</option>
@@ -76,9 +78,12 @@
 			</div>
 			<div style="float:right">
 				<button type="reset" class="btn btn-primary btn-sm">Reset</button>
-				<button type="submit" class="btn btn-success btn-sm">Submit</button>
+				<button type="submit" class="btn btn-success btn-sm" id="submit">Submit</button>
 			</div>
 
 		</form>
 	</div>
 </div>
+<script>
+
+</script>

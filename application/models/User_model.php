@@ -120,7 +120,8 @@ class User_model extends CI_Model
 		$this->db->from('tblimages');
 		$this->db->where('post_id', $post_id);
 		$this->db->where('image_post_type','diet_plan');
-		$this->db->limit(4);
+		$this->db->where('image_name!=','');
+		$this->db->limit(6);
 		$qstr = $this->db->get();
 		if ($qstr) {
 			return $qstr->result();
