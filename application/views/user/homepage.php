@@ -9,11 +9,15 @@
 	.container .image {
 		width: 50%;
 
+
 	}
 
 	.container img {
 		width: calc(100% - (150px * 2));
 		margin: 20px;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
 	}
 </style>
 <div style="width:70%;padding-right:30px;" class="">
@@ -42,7 +46,7 @@
 			$type_of_diet = $row->type_of_diet;
 			$posts_user_name = $row->username;
 			$pic_status = $row->user_picture_status;
-			$diet_type = $row->type_of_diet;
+
 			?>
 
 			<?php
@@ -74,33 +78,35 @@
 				</div>
 
 				<div class="card" style="width:30rem;height:30rem">
-					<a href="<?= base_url('user/viewFullDiet/' . $post_id)?>">
-					<div class="container">
-						<?php foreach ($row->images as $images) {
-							?>
-							<img class="" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
-								 alt="Card image cap" style="">
-						<?php } ?>
+					<div style="width:30rem;height:30rem">
+						<a href="<?= base_url('user/viewFullDiet/' . $post_id)?>">
+							<div class="container" >
+								<?php foreach ($row->images as $images) {
+									?>
+									<img class="" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
+										 alt="Card image cap" style="">
+								<?php } ?>
+							</div>
+						</a>
 					</div>
-					</a>
 					<div class="card-body">
 						<div class="rounded card shadow"style="background-color: #28A745; color:white;text-align: center">
-							<h5 class="card-title d-flex justify-content-center"><?= $post_title ?></h5>
-
-
-						<p>
-						<center> Type of Diet: <?= $diet_type ?></center>
-						</p>
-
-						<p class="card-text ">
-							<?php if (strlen($post_content) > 300) {
-								$firstdesc = substr($post_content, 0, 150);
-								echo $firstdesc . '<a class=" stretched-link" href="' . base_url('user/viewFullDiet/' . $post_id) . '">...see more </a>';
-							} else {
-								echo $post_content;
-							}
-							?>
-						</p>
+							<div style="margin-left:10px;margin-right: 5px">
+								<h5 class="card-title d-flex justify-content-center"><?= $post_title ?></h5>
+								<div>
+									<?= (isset($type_of_diet) && !empty($type_of_diet))? '<span style="float:left">Type of Diet: </span><span style="float:right">'.$type_of_diet.'</span><br>':''?>
+									<?= ((isset($routine_count) && !empty($routine_count)) && (isset($routine_format) && !empty($routine_format)))? '<span style="float:left">Routine: </span><span style="float:right">'.$routine_count.' '.$routine_format.'</span><br>':'';?>
+								</div>
+								<p class="card-text ">
+									<?php if (strlen($post_content) > 300) {
+										$firstdesc = substr($post_content, 0, 150);
+										echo $firstdesc . '<a class=" stretched-link" href="' . base_url('user/viewFullDiet/' . $post_id) . '">...see more </a>';
+									} else {
+										echo $post_content;
+									}
+									?>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -46,7 +46,7 @@
 			$type_of_diet = $row->type_of_diet;
 			$posts_user_name = $row->username;
 			$pic_status = $row->user_picture_status;
-			$diet_type = $row->type_of_diet;
+
 			?>
 
 			<?php
@@ -91,22 +91,22 @@
 				</div>
 					<div class="card-body">
 						<div class="rounded card shadow"style="background-color: #28A745; color:white;text-align: center">
+							<div style="margin-left:10px;margin-right: 5px">
 							<h5 class="card-title d-flex justify-content-center"><?= $post_title ?></h5>
-
-
-							<p>
-							<center> Type of Diet: <?= $diet_type ?></center>
-							</p>
-
+							<div>
+								<?= (isset($type_of_diet) && !empty($type_of_diet))? '<span style="float:left">Type of Diet: </span><span style="float:right">'.$type_of_diet.'</span><br>':''?>
+								<?= ((isset($routine_count) && !empty($routine_count)) && (isset($routine_format) && !empty($routine_format)))? '<span style="float:left">Routine: </span><span style="float:right">'.$routine_count.' '.$routine_format.'</span><br>':'';?>
+							</div>
 							<p class="card-text ">
 								<?php if (strlen($post_content) > 300) {
-									$firstdesc = substr($post_content, 0, 150);
+										$firstdesc = substr($post_content, 0, 150);
 									echo $firstdesc . '<a class=" stretched-link" href="' . base_url('admin/viewFullDiet/' . $post_id) . '">...see more </a>';
 								} else {
 									echo $post_content;
 								}
 								?>
 							</p>
+						</div>
 						</div>
 					</div>
 				</div>
