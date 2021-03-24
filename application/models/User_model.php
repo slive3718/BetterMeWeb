@@ -128,6 +128,20 @@ class User_model extends CI_Model
 			return '';
 		}
 	}
+	function get_diet_plan_images_all($post_id){
+
+		$this->db->select('*');
+		$this->db->from('tblimages');
+		$this->db->where('post_id', $post_id);
+		$this->db->where('image_post_type','diet_plan');
+		$qstr = $this->db->get();
+		if ($qstr) {
+			return $qstr->result();
+		} else {
+			return '';
+		}
+	}
+
 
 
 	public function get_dietPlanFull($post_id)
@@ -145,7 +159,7 @@ class User_model extends CI_Model
 			$return_array = array();
 			foreach($qstr->result() as $val){
 
-				$val->images= $this->get_diet_plan_images($val->post_id);
+				$val->images= $this->get_diet_plan_images_all($val->post_id);
 			}
 
 		}
