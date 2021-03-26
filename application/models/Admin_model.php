@@ -650,6 +650,18 @@ class Admin_model extends CI_Model
 		return $result;
 	}
 
+	function getImagesInPost($post_id){
 
+	$this->db->select ('*');
+	$this->db->from ('tblimages');
+	$this->db->where ('post_id',$post_id);
+	$result= $this->db->get();
+
+	if($result->result() > 0 ){
+		return $result;
+	}else{
+		return 'no image';
+	}
+	}
 
 }

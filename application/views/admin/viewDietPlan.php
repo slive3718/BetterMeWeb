@@ -1,23 +1,33 @@
 
-
-	<?php if ($this->session->flashdata('msgsuccess')) {
-		echo ' <div class="btn success"> ' . $this->session->flashdata('msgsuccess') . ' <div class="btn success"> ';
-	} ?>
-	<?php if ($this->session->flashdata('msgwarn')) {
-		?>
-		<div class="btn success"> <?php echo ' <div class="btn btn-warning">' . $this->session->flashdata('msgsuccess');
-			echo $this->session->flashdata('msgwarn');
-			?>    </div> <?php } ?>
-	</div>
-
 <?php $post_type = "DietPlan";
 ?>
+	<style>
+		h2 {
+			color: #008000;
+			font-family: 'Raleway', sans-serif;
+			font-size: 40px;
+			font-weight: 800;
+			line-height: 72px;
+			margin: 0 0 24px;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		.jumbotron{
+			padding-bottom: 20px;
+		}
+	</style>
 <div class="container-fluid border card shadow"
 	 style="width:80%;margin-top:30px;padding-top:20px;padding-bottom: 20px;">
+	<div class="jumbotron text-center">
+	 <?= ($this->session->flashdata('msgsuccess'))?'<div class="btn btn-success">'.($this->session->flashdata('msgsuccess')).'</div>':''?>
+	 <?= ($this->session->flashdata('msgwarn'))?'<div class="btn btn-warning"> '.($this->session->flashdata('msgwarn')).'</div>':''?>
+		<h2>Manage Diet Plan</h2>
+	<button style="margin-left:20px;width:200px; float:right" class="btn btn-sm btn-success"
+			onclick="document.location='<?= base_url() . 'admin/addDietPlan/' . $post_type ?>'">Add Diet Plan
+	</button>
+	</div>
 	<div class="row">
-		<button style="margin-left:20px" class="btn btn-sm btn-success"
-				onclick="document.location='<?= base_url() . 'admin/addDietPlan/' . $post_type ?>'">Add Diet Plan
-		</button>
+
 		<div class="col-md-12 table-responsive">
 			<table id="myTable" class="table table-bordered table-striped text-center">
 				<thead>
@@ -52,7 +62,7 @@
 							$firstdesc = substr($post_content, 0, 150);
 							echo $firstdesc . '<a href="' . base_url('admin/viewFullDiet/' . $post_id) . '">...see more </a>';
 						} else {
-							echo $post_content;
+							echo $post_content .'<br>'. '<a href="' . base_url('admin/viewFullDiet/' . $post_id) . '">view full </a>';
 						} ?>
 					</td>
 					<td><?= $date_posted ?></td>
