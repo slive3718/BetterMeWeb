@@ -703,7 +703,7 @@ public function add_new_post(){
        
          $result=$this->db->insert("profile_post", $int_array);
          $res_id=$this->db->insert_id();
-                if($res_id){
+                if($dataInfo){
                     $image_arr = array();
                     foreach ($dataInfo as $info) {
                             $image_name=($info['file_name']);

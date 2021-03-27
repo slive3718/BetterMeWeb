@@ -344,7 +344,7 @@ public function addDietPlan(){
 		$this->db->where('post_id',$post_id);
 		$result=$this->db->update("tblposts", $int_array);
 
-		if($result){
+		if($dataInfo){
 			$image_arr = array();
 			foreach ($dataInfo as $info) {
 				$image_name=($info['file_name']);
@@ -891,7 +891,7 @@ $this->load->view('mentor/uploadProfilePic');
 
 		$result=$this->db->insert("tblposts", $int_array);
 		$res_id=$this->db->insert_id();
-		if($res_id){
+		if($dataInfo){
 			$image_arr = array();
 			foreach ($dataInfo as $info) {
 				$image_name=($info['file_name']);

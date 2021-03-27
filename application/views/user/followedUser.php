@@ -119,7 +119,7 @@
 				<a href="#" class="">
 					<div class="container">
 						<?php 	foreach ($followDatas->getImagePerPost as $followedImagePost) {
-							?><img src = "<?= base_url() . './uploads/posts/' . $followedImagePost->image_name; ?>" style="width:300px" >
+							?><img src = "<?= base_url() . './uploads/profile_posts/' . $followedImagePost->image_name; ?>" style="width:300px" >
 							<?php }?>
 					</div>
 			</div>
