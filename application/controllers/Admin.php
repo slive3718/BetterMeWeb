@@ -226,10 +226,14 @@ public function viewFullDiet($post_id){
 }
 
 public function addDietPlan(){
-    $data['page_title']= "Add Diet Plan";
-    $this->load->view('admin/templates/header',$data);
-    $this->load->view('admin/addDietPlan');
-    $this->load->view('templates/footer');
+	if (isset($this->session->userdata['id'])) {
+    	$data['page_title']= "Add Diet Plan";
+    	$this->load->view('admin/templates/header',$data);
+    	$this->load->view('admin/addDietPlan');
+    	$this->load->view('templates/footer');
+	} else{
+        redirect(base_url().'admin/logout');
+    }
 }
 
 
