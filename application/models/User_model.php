@@ -643,5 +643,43 @@ class User_model extends CI_Model
 		}
 	}
 
+	function remove_myProfilePost($post_id){
+		$this->db->select('*');
+		$this->db->from('profile_post');
+		$this->db->where('post_id',$post_id);
+		$this->db->delete();
+
+	}
+
+	function get_editMyProfilePost($post_id){
+		$this->db->select('pp.*');
+		$this->db->select('u.user_picture_status');
+		$this->db->from('profile_post pp');
+		$this->db->join('tblusers u','pp.user_id= u.userId');
+		$this->db->where('post_id',$post_id);
+		$result= $this->db->get();
+
+		if ($result){
+			return $result->result();
+		}else{
+			return '';
+		}
+
+	}
+
+
+	function getImagesInPost($post_id){
+
+		$this->db->select ('*');
+		$this->db->from ('tblimages');
+		$this->db->where ('post_id',$post_id);
+		$result= $this->db->get();
+
+		if($result->result() > 0 ){
+			return $result;
+		}else{
+			return 'no image';
+		}
+	}
 
 }
