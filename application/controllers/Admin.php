@@ -357,7 +357,7 @@ public function archive_community_thread($community_id){
     );
     $result = $this->admin_model->archive_community_thread($field, $community_id);
     if ($result) {
-        $this->session->set_flashdata('msgsuccess', "Post successfully restored.");  
+        $this->session->set_flashdata('msgsuccess', "Post successfully Archived.");  
        redirect(base_url('admin/review_community_thread'));  
     } else {
        $this->session->set_flashdata('msgwarn', "No changes made");  
