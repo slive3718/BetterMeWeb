@@ -102,6 +102,7 @@ class User_model extends CI_Model
 
 				$val->images= $this->get_diet_plan_images($val->post_id);
 				$val->getLikeStatus = $this->getLikeStatus($val->post_id);
+				$val->getLikeCount = $this->getLikeCount($val->post_id);
 			}
 
 		}
@@ -740,5 +741,19 @@ class User_model extends CI_Model
 		}else{
 			return '';
 		}
+	}
+	function getLikeCount($post_id){
+		$this->db->select('*');
+		$this->db->from ('tbllikes');
+		$this->db->where ('like_post_id',$post_id);
+		$this->db->where ('like_status=','1');
+		$getDb = $this->db->get();
+
+		if($getDb->num_rows() > 0){
+			 return $getDb->num_rows();
+		}else{
+			return '';
+		}
+
 	}
 }

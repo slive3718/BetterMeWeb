@@ -48,8 +48,10 @@
 			$posts_user_name = $row->username;
 			$pic_status = $row->user_picture_status;
 
-			foreach($row->getLikeStatus as $getLike){
-				$like = $getLike->like_status;
+			if(isset($row->getLikeStatus) && !empty($row->getLikeStatus)){
+				foreach($row->getLikeStatus as $getLike){
+					$like = $getLike->like_status;
+				}
 			}
 			?>
 
@@ -116,7 +118,7 @@
 				</div>
 				<div class="like p-2 cursor"  id="like-id_<?=$post_id?>" style="cursor: pointer; <?= (isset($like) && !empty($like)==1)?'color:blue':''?>; " data-post_id="<?=$post_id?>" >
 					<i class="fa fa-thumbs-o-up" ></i>
-					<span class="ml-1"> Like</span></div>
+					<span class="ml-1"> Like</span> <span><?=(isset($row->getLikeCount) && ($row->getLikeCount)!=0)?$row->getLikeCount:''?></span></div>
 			</div>
 			<?php
 		}
