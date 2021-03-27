@@ -319,7 +319,7 @@ public function archive_post(){
     );
     $result = $this->admin_model->archive_post($field, $post_id);
     if ($result) {
-        $this->session->set_flashdata('msgsuccess', "Post successfully deleted.");
+        $this->session->set_flashdata('msgsuccess', "Post successfully Archived.");
        $this->session->set_flashdata('tempid',$post_id);
 		   echo 'success';
     } else {
