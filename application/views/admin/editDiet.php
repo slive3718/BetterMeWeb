@@ -184,11 +184,15 @@ if ($posts) {
 			var base_img_url = '<?= base_url() . 'uploads/posts/'?>';
 			var imageId = ($(this).attr('data-image_id'));
 
-			$.post(delete_image_url, {'postId': postId, 'imageId': imageId}, function (success) {
-				if (success) {
-					alertify.success('deleted');
-					$('.class_image_id_' + imageId).hide();
-					$('#class_image_id_' + imageId).hide();
+			alertify.confirm("Are you sure you want to delete this Diet Plan?", function (yes) {
+				if (yes) {
+					$.post(delete_image_url, {'postId': postId, 'imageId': imageId}, function (success) {
+						if (success) {
+							alertify.success('deleted');
+							$('.class_image_id_' + imageId).hide();
+							$('#class_image_id_' + imageId).hide();
+						}
+					});
 				}
 			});
 		});
