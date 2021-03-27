@@ -77,7 +77,7 @@
 					<td><a href="<?= base_url() . 'admin/edit_Diet/' . $post_id ?>"
 						   class="btn  btn-sm btn-primary"><span class="fa fa-edit"></span>Edit</a></td>
 					<td>
-						<button data-sessions-id="<?=$post_id?>" class="archive btn btn-danger btn-sm" id="archive"><span class="fa fa-trash-o"></span>Delete
+						<button data-sessions-id="<?=$post_id?>" class="archive btn btn-danger btn-sm" id="archive"><span class="fa fa-trash-o"></span>Archive
 						</button>
 					</td>
 				</tr>
