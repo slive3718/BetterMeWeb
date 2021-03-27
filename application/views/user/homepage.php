@@ -1,3 +1,4 @@
+
 <style>
 
 	.container {
@@ -47,6 +48,9 @@
 			$posts_user_name = $row->username;
 			$pic_status = $row->user_picture_status;
 
+			foreach($row->getLikeStatus as $getLike){
+				$like = $getLike->like_status;
+			}
 			?>
 
 			<?php
@@ -110,6 +114,9 @@
 						</div>
 					</div>
 				</div>
+				<div class="like p-2 cursor"  id="like-id_<?=$post_id?>" style="cursor: pointer; <?= (isset($like) && !empty($like)==1)?'color:blue':''?>; " data-post_id="<?=$post_id?>" >
+					<i class="fa fa-thumbs-o-up" ></i>
+					<span class="ml-1"> Like</span></div>
 			</div>
 			<?php
 		}
@@ -194,3 +201,24 @@
 
 	</div>
 </div>
+<script>
+	$(document).ready(function (){
+		$('.like').on('click',function(){
+			var postId = $(this).attr('data-post_id');
+			console.log(postId);
+			var base_url= "<?= base_url().'user/likeHomepagePost'?>";
+
+			$.post(base_url,{'postId':postId},function(response){
+					if(response == "like"){
+
+						$('#like-id_'+postId).css('color','blue');
+					}else if (response == "unlike"){
+						$('#like-id_'+postId).css('color','black');
+					}else{
+
+					}
+			});
+		});
+	});
+
+</script>

@@ -832,4 +832,17 @@ public function add_new_post(){
 
 	}
 
+
+	public function likeHomepagePost(){
+    	$post=$this->input->post();
+    	$post_id=$post['postId'];
+    	$result=$this->user_model->likeHomepagePost($post_id);
+		if($result=="2"){
+			echo 'like';
+		}else if ($result=='1'){
+			echo 'unlike';
+		}else{
+			echo 'error';
+		}
+	}
 }

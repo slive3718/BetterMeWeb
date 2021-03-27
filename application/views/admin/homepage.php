@@ -20,11 +20,8 @@
 		display: block;
 	}
 </style>
-<div style="width:70%;padding-right:30px;" class="">
-
-
+<div style="width:90%;padding-right:30px;" class="">
 	<?php
-
 	$current_user = $this->session->userdata('id');
 
 	if (isset($rows)) {
@@ -46,7 +43,7 @@
 			$type_of_diet = $row->type_of_diet;
 			$posts_user_name = $row->username;
 			$pic_status = $row->user_picture_status;
-
+			$target_audience = $row->target_audience;
 			?>
 
 			<?php
@@ -76,8 +73,7 @@
 					} ?>
 					<div>Date Posted: <?= $date_posted ?></div>
 				</div>
-
-				<div class="card" style="width:30rem;height:30rem">
+				<div class="card" style="width:30rem;height:35rem">
 					<div style="width:30rem;height:30rem">
 					<a href="<?= base_url('admin/viewFullDiet/' . $post_id)?>">
 					<div class="container" >
@@ -90,13 +86,14 @@
 					</a>
 				</div>
 					<div class="card-body">
-						<div class="rounded card shadow"style="background-color: #28A745; color:white;text-align: center">
+						<div class="rounded card shadow"style="background-color: #28A745; color:white;text-align: center; width:28rem;height:15rem"">
 							<div style="margin-left:10px;margin-right: 5px">
 							<h5 class="card-title d-flex justify-content-center"><?= $post_title ?></h5>
 							<div>
 								<?= (isset($type_of_diet) && !empty($type_of_diet))? '<span style="float:left">Type of Diet: </span><span style="float:right">'.$type_of_diet.'</span><br>':''?>
 								<?= ((isset($routine_count) && !empty($routine_count)) && (isset($routine_format) && !empty($routine_format)))? '<span style="float:left">Routine: </span><span style="float:right">'.$routine_count.' '.$routine_format.'</span><br>':'';?>
-							</div>
+								<?= ((isset($target_audience) && !empty($target_audience)) && (isset($target_audience) && !empty($target_audience)))? '<span style="float:left">Good For: </span><span style="float:right">'.$target_audience.' '.$target_audience.'</span><br>':'';?>
+							</div><br>
 							<p class="card-text ">
 								<?php if (strlen($post_content) > 300) {
 										$firstdesc = substr($post_content, 0, 150);
@@ -107,7 +104,9 @@
 								?>
 							</p>
 						</div>
+
 						</div>
+
 					</div>
 				</div>
 			</div>
@@ -115,10 +114,7 @@
 		}
 	} ?>
 
-</div>
-</div>
 <div>
-
 	<div class="shadow-lg p-3 mb-5 ml-5" style="display:inline-block;">
 		<div class="card" style="width: 25rem; height:60rem">
 			<?php if ($this->session->flashdata('msgsuccess_c')) {

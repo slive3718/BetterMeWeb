@@ -101,6 +101,7 @@ class User_model extends CI_Model
 			foreach($qstr->result() as $val){
 
 				$val->images= $this->get_diet_plan_images($val->post_id);
+				$val->getLikeStatus = $this->getLikeStatus($val->post_id);
 			}
 
 		}
@@ -303,7 +304,7 @@ class User_model extends CI_Model
 			'thread_content' => $desciption,
 			'thread_date' => $date_created
 		);
-		print_r($data);
+
 		return $this->db->insert('tblcommunity', $data);
 	}
 
@@ -375,7 +376,7 @@ class User_model extends CI_Model
 
 		);
 
-		print_r($data);
+
 		return $this->db->insert('tblcommunitycomments', $data);
 
 	}
@@ -682,4 +683,62 @@ class User_model extends CI_Model
 		}
 	}
 
+	function likeHomepagePost($post_id){
+		$this->db->select ('*');
+		$this->db->from ('tbllikes');
+		$this->db->where ('like_post_id',$post_id);
+		$this->db->where ('like_from_id',$this->session->userdata('id'));
+		$getDb = $this->db->get();
+
+		if ($getDb->num_rows() > 0 ){
+			foreach($getDb->result() as $db){
+				$status=$db->like_status;
+			}
+			if($status=='1'){
+				$int_array = array(
+					'like_status'=>'0',
+				);
+
+				$this->db->where ('like_post_id',$post_id);
+				$this->db->where ('like_from_id',$this->session->userdata('id'));
+				$this->db->update('tbllikes',$int_array);
+				return '1';
+			}else{
+				$int_array = array(
+					'like_status'=>'1',
+				);
+
+				$this->db->where ('like_post_id',$post_id);
+				$this->db->where ('like_from_id',$this->session->userdata('id'));
+				$this->db->update('tbllikes',$int_array);
+				return '2';
+			}
+
+		}else{
+			$int_array = array(
+				'like_from_id'=>$this->session->userdata('id'),
+				'like_post_id'=>$post_id,
+				'like_status'=>'1',
+			);
+			$this->db->insert('tbllikes',$int_array);
+			return '2';
+		}
+		return '';
+	}
+
+	function getLikeStatus($post_id){
+		$this->db->select ('like_status');
+		$this->db->from ('tbllikes');
+		$this->db->where ('like_post_id',$post_id);
+		$this->db->where ('like_from_id',$this->session->userdata('id'));
+		$getDb = $this->db->get();
+
+		if($getDb->num_rows() >0){
+
+			return $getDb->result();
+
+		}else{
+			return '';
+		}
+	}
 }
