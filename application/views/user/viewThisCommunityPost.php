@@ -146,7 +146,7 @@ $current_user = $this->session->userdata('id');
                             <?php }?>
 
                             <textarea
-                                class="form-control ml-1 shadow-none textarea" wrap="hard" rows="8" cols="8"
+                                class="form-control ml-1 shadow-none textarea" wrap="hard" rows="5" cols="5"
                                 name="community_comment"
                                 readonly="readonly"><?=  $user_comments?></textarea>
 
@@ -202,7 +202,7 @@ $current_user = $this->session->userdata('id');
                             <img class="fa fa-user">
                             <?php }?>
                             <textarea
-                                class="form-control ml-1 shadow-none textarea" wrap="hard" rows="5" cols="5"
+                                class="form-control ml-1 shadow-none textarea" wrap="hard" rows="3" cols="3"
                                 name="community_comment"></textarea>
 
                         </div>
