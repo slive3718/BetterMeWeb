@@ -202,7 +202,7 @@ $current_user = $this->session->userdata('id');
                             <img class="fa fa-user">
                             <?php }?>
                             <textarea
-                                class="shadow-none textarea" wrap="hard" rows="80" cols="20"
+                                class="shadow-none textarea" wrap="hard" rows="20" cols="50"
                                 name="community_comment"></textarea>
 
                         </div>
