@@ -337,11 +337,14 @@ class User extends CI_Controller
         }
     }
     
-    public function create_thread()
-    {
-        $data['page_title']="Create Thread";
-        $this->load->view('user/templates/header', $data);
-        $this->load->view('user/createThread');
+    public function create_thread(){
+        if (isset($this->session->userdata['id'])) {
+            $data['page_title']="Create Thread";
+            $this->load->view('user/templates/header', $data);
+            $this->load->view('user/createThread');
+        }else{
+            redirect(base_url('user/logout'));
+        }
     }
     
     public function post_thread()
