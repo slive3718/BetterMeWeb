@@ -304,7 +304,7 @@ public function addDietPlan(){
 			}
 			redirect(base_url('admin/viewDiet'));
 		}
-		if($result > 0 ){
+		if($this->db->affected_rows() > 0 ){
 			$this->session->set_flashdata('msgsuccess','Successfully Updated');
 			redirect(base_url('admin/viewDiet'));
 		}else{

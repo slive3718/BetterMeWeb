@@ -19,8 +19,7 @@
 <div class="container-fluid border card shadow"
 	 style="width:80%;margin-top:30px;padding-top:20px;padding-bottom: 20px;">
 	<div class="jumbotron text-center">
-	 <?= ($this->session->flashdata('msgsuccess'))?'<div class="btn btn-success">'.($this->session->flashdata('msgsuccess')).'</div>':''?>
-	 <?= ($this->session->flashdata('msgwarn'))?'<div class="btn btn-warning"> '.($this->session->flashdata('msgwarn')).'</div>':''?>
+
 		<h2>Manage Diet Plan</h2>
 	<button style="margin-left:20px;width:200px; float:right" class="btn btn-sm btn-success"
 			onclick="document.location='<?= base_url() . 'admin/addDietPlan/' . $post_type ?>'">Add Diet Plan
@@ -40,6 +39,8 @@
 					<th scope="col"style="border-left: 0px solid #ddd; border-right: 0px solid #ddd;"> </th>
 				</tr>
 				</thead>
+				<tbody>
+
 				<?php
 				if (isset($rows)) {
 					foreach ($rows as $row){
@@ -55,7 +56,6 @@
 
 				$type_of_diet = $row->type_of_diet;
 				?>
-				<tbody>
 				<tr>
 					<td class="font-weight-bold"> <?= $post_title ?></td>
 					<td><?php if (strlen($post_content) > 50) {
@@ -83,6 +83,7 @@
 				</tr>
 				<?php }
 				} ?>
+
 				</tbody>
 			</table>
 		</div>
@@ -111,6 +112,16 @@
 			});
 		})
 	});
+
+	$(document).ready(function(){
+		if('<?= ($this->session->flashdata('msgsuccess'))?>'){
+			alertify.success('Post Updated Successfully');
+		}
+		if('<?= ($this->session->flashdata('msgwarn'))?>'){
+			alertify.success('No Changes Made');
+		}
+	});
+
 </script>
 
 
