@@ -15,6 +15,14 @@ class Admin extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('upload');
         date_default_timezone_set("Asia/Kuala_Lumpur");
+
+
+		$account_type=$this->session->userdata('account_type');
+		if($account_type && $account_type != '1' ){
+			$this->session->sess_destroy();
+			$this->load->view('admin/login');
+
+		}
     }
 	public function index()
 	{
@@ -252,7 +260,6 @@ public function addDietPlan(){
 		$files = $_FILES;
 
 		$cpt = count($_FILES['userfile']['name']);
-
 		for($i=0; $i<$cpt; $i++)
 		{
 			$_FILES['userfile']['name']= $files['userfile']['name'][$i];
@@ -266,7 +273,6 @@ public function addDietPlan(){
 			$dataInfo[] = $this->upload->data();
 
 		}
-
 		$user_id= $this->session->userdata('id');
 //
 		$datestring = date('Y-m-d h:i:s');
@@ -289,13 +295,12 @@ public function addDietPlan(){
 		$this->db->where('post_id',$post_id);
 		$result=$this->db->update("tblposts", $int_array);
 
-		if($dataInfo){
+		if(is_uploaded_file($_FILES['userfile']['tmp_name'])){
 			$image_arr = array();
 			foreach ($dataInfo as $info) {
 				$image_name=($info['file_name']);
 				// array_push($image_arr,$image_name);
 				$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'image_post_type'=>'diet_plan','post_id'=>$post_id,'user_id'=>$id,'date_created'=>date('Y-m-d')));
-
 			}
 			redirect(base_url('admin/viewDiet'));
 		}
@@ -719,7 +724,7 @@ public function viewArchiveDiet(){
 
 		$result=$this->db->insert("tblposts", $int_array);
 		$res_id=$this->db->insert_id();
-		if($res_id){
+		if(is_uploaded_file($_FILES['userfile']['tmp_name'])){
 			$image_arr = array();
 			foreach ($dataInfo as $info) {
 				$image_name=($info['file_name']);

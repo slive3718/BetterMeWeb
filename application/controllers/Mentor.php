@@ -15,6 +15,13 @@ class Mentor extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('upload');
         date_default_timezone_set("Asia/Kuala_Lumpur");
+
+		$account_type=$this->session->userdata('account_type');
+		if($account_type && $account_type != 'M' ){
+			$this->session->sess_destroy();
+			$this->load->view('mentor/login');
+
+		}
     }
 	public function index()
 	{
@@ -344,7 +351,7 @@ public function addDietPlan(){
 		$this->db->where('post_id',$post_id);
 		$result=$this->db->update("tblposts", $int_array);
 
-		if($dataInfo){
+		if(is_uploaded_file($_FILES['userfile']['tmp_name'])){
 			$image_arr = array();
 			foreach ($dataInfo as $info) {
 				$image_name=($info['file_name']);
@@ -891,7 +898,7 @@ $this->load->view('mentor/uploadProfilePic');
 
 		$result=$this->db->insert("tblposts", $int_array);
 		$res_id=$this->db->insert_id();
-		if($dataInfo){
+		if(is_uploaded_file($_FILES['userfile']['tmp_name'])){
 			$image_arr = array();
 			foreach ($dataInfo as $info) {
 				$image_name=($info['file_name']);

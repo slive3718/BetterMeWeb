@@ -15,6 +15,14 @@ class User extends CI_Controller
         $this->load->library('upload');
       
         date_default_timezone_set("Asia/Kuala_Lumpur");
+
+		$account_type=$this->session->userdata('account_type');
+		if($account_type && $account_type != 'U' ){
+			$this->session->sess_destroy();
+			$this->load->view('user/login');
+
+		}
+
     }
     public function index()
     {
@@ -706,7 +714,7 @@ public function add_new_post(){
        
          $result=$this->db->insert("profile_post", $int_array);
          $res_id=$this->db->insert_id();
-                if($dataInfo){
+				if(is_uploaded_file($_FILES['userfile']['tmp_name'])){
                     $image_arr = array();
                     foreach ($dataInfo as $info) {
                             $image_name=($info['file_name']);
@@ -812,7 +820,7 @@ public function add_new_post(){
 
 			$this->db->where('post_id',$post_id);
 			$result=$this->db->update("profile_post", $int_array);
-			if($dataInfo){
+				if(is_uploaded_file($_FILES['userfile']['tmp_name'])){
 				$image_arr = array();
 				foreach ($dataInfo as $info) {
 					$image_name=($info['file_name']);
