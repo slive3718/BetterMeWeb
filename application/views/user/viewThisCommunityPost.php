@@ -146,7 +146,7 @@ $current_user = $this->session->userdata('id');
                             <?php }?>
 
                             <textarea
-                                class="form-control ml-1 shadow-none textarea" wrap="hard" rows="20" cols="20"
+                                class="form-control ml-1 shadow-none textarea" wrap="hard" rows="5" cols="5"
                                 name="community_comment"
                                 readonly="readonly"><?=  $user_comments?></textarea>
 
