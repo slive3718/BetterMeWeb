@@ -102,15 +102,15 @@
 						<span>Date</span>
 					</div>
 				</div>
-				<div class="dropdown dropleft">
-					<a class=" btn-m fa fa-cogs" href="#" role="button" id="dropdownMenuLink"
-					   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					</a>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<a class="dropdown-item" href="#">Remove</a>
-						<a class="dropdown-item" href="#">Edit</a>
-					</div>
-				</div>
+<!--				<div class="dropdown dropleft">-->
+<!--					<a class=" btn-m fa fa-cogs" href="#" role="button" id="dropdownMenuLink"-->
+<!--					   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--					</a>-->
+<!--					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">-->
+<!--						<a class="dropdown-item" href="#">Remove</a>-->
+<!--						<a class="dropdown-item" href="#">Edit</a>-->
+<!--					</div>-->
+<!--				</div>-->
 			</div>
 			<label class="tb " readonly>
 				<?=	$followed_content ?>

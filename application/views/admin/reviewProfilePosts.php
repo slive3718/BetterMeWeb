@@ -2,8 +2,27 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css"/>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
-
+<style>
+	h2 {
+		color: #008000;
+		font-family: 'Raleway', sans-serif;
+		font-size: 40px;
+		font-weight: 800;
+		line-height: 72px;
+		margin: 0 0 24px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	.jumbotron{
+		padding-bottom: 20px;
+	}
+</style>
 <div class="container-fluid border card shadow" style="width:80%;margin-top:30px;padding-top:20px;padding-bottom: 20px;">
+	<div class="jumbotron text-center">
+		<?= ($this->session->flashdata('msgsuccess'))?'<div class="btn btn-success">'.($this->session->flashdata('msgsuccess')).'</div>':''?>
+		<?= ($this->session->flashdata('msgwarn'))?'<div class="btn btn-warning"> '.($this->session->flashdata('msgwarn')).'</div>':''?>
+		<h2>Archived Community Thread Posts</h2>
+	</div>
 	<div class="row">
 		<div class="col-md-12 table-responsive">
 			<table id="myTable" class="table table-bordered table-striped text-center">
