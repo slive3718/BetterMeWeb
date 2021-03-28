@@ -157,7 +157,7 @@
 				?>
 				<tr>
 					<td>
-						<span style="float:left !important;"><?=$diets->post_title?></span>
+						<span style="float:left !important;"><a href="<?= base_url().'user/viewFullDiet/'.$diets->post_id?>"><?=$diets->post_title?></a></span>
 					</td>
 					<td>
 						<span style="float:right !important;"><?=$diets->like_sum?></span>
