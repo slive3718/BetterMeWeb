@@ -23,6 +23,18 @@
 		color: #28A745;
 		font-family: monospace,sans-serif;
 	}
+	.font-header{
+		color: #FFFFFF;
+		font-family: 'Raleway', sans-serif;
+		font-size: 30px;
+		font-weight: 800;
+		line-height: 72px;
+		margin: 0 0 24px;
+		text-align: center;
+		text-transform: uppercase;
+		background-color: #28A745;
+
+	}
 </style>
 <div style="width:70%;padding-right:30px;" class="">
 
@@ -137,7 +149,7 @@
 					alt="Card image cap"
 					style="width:300px;height:120px;margin:auto">
 			<table class="responsive table">
-				<div class="border border-success " style="text-align: center;font-size:30px; font-family: -apple-system">Top 10 Most Likes Diet</div>
+				<div class="border border-success font-header">Top 10 Most Likes Diet</div>
 				<thead>
 				<th>Diet Title</th>
 				<th style="float:right">Like Count</th>
@@ -159,7 +171,8 @@
 					}} ?>
 				</tbody>
 			</table>
-			<div class="card-body">
+			<div class="card-body">.
+
 				<button class="btn btn-success btn-sm"
 						onclick="window.location.href='<?= base_url() . 'mentor/create_thread' ?>'" style="float:right"> Create a Thread
 				</button>
@@ -170,16 +183,13 @@
 
 					<?php
 					if (isset($community_posts)) {
-//    print_r($community_posts);
 						foreach ($community_posts as $community_post) {
-
 							$community_post_id = $community_post['community_id'];
 							$thread_title = $community_post['thread_title'];
 							$thread_content = $community_post['thread_content'];
 							$thread_date = $community_post['thread_date'];
 							$thread_user_id = $community_post['thread_user_id'];
 							$thread_user_name = $community_post['username'];
-
 							?>
 							<tr>
 								<td>
@@ -214,10 +224,7 @@
 							<?php
 						}
 					} ?>
-
 				</table>
-
-
 				</p>
 			</div>
 		</div>

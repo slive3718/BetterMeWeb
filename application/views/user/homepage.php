@@ -27,9 +27,23 @@
 		margin-right: auto;
 		display: block;
 	}
-	.table th{
+
+	.table th {
 		color: #28A745;
-		font-family: monospace,sans-serif;
+		font-family: monospace, sans-serif;
+
+	}
+	.font-header{
+		color: #FFFFFF;
+		font-family: 'Raleway', sans-serif;
+		font-size: 30px;
+		font-weight: 800;
+		line-height: 72px;
+		margin: 0 0 24px;
+		text-align: center;
+		text-transform: uppercase;
+		background-color: #28A745;
+
 	}
 </style>
 <div style="width:70%;padding-right:30px;" class="">
@@ -59,8 +73,8 @@
 			$posts_user_name = $row->username;
 			$pic_status = $row->user_picture_status;
 
-			if(isset($row->getLikeStatus) && !empty($row->getLikeStatus)){
-				foreach($row->getLikeStatus as $getLike){
+			if (isset($row->getLikeStatus) && !empty($row->getLikeStatus)) {
+				foreach ($row->getLikeStatus as $getLike) {
 					$like = $getLike->like_status;
 				}
 			}
@@ -96,8 +110,8 @@
 
 				<div class="card" style="width:30rem;height:30rem">
 					<div style="width:30rem;height:30rem">
-						<a href="<?= base_url('user/viewFullDiet/' . $post_id)?>">
-							<div class="container" >
+						<a href="<?= base_url('user/viewFullDiet/' . $post_id) ?>">
+							<div class="container">
 								<?php foreach ($row->images as $images) {
 									?>
 									<img class="" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
@@ -107,14 +121,15 @@
 						</a>
 					</div>
 					<div class="card-body">
-						<div class="rounded card shadow"style="background-color: #28A745; color:white;text-align: center">
+						<div class="rounded card shadow"
+							 style="background-color: #28A745; color:white;text-align: center">
 							<div style="margin-left:10px;margin-right: 5px">
 								<h5 class="card-title d-flex justify-content-center"><?= $post_title ?></h5>
 								<div>
-									<?= (isset($type_of_diet) && !empty($type_of_diet) && ($type_of_diet)!="Other Diet") ? '<span style="float:left">Type of Diet: </span><span style="float:right">'.$type_of_diet.'</span><br>':''?>
-									<?= (isset($other_diet) && !empty($other_diet))? '<span style="float:left">Type of Diet: (Other Diet)</span><span style="float:right">'.$other_diet.'</span><br>':''?>
-									<?= ((isset($routine_count) && !empty($routine_count)) && (isset($routine_format) && !empty($routine_format)))? '<span style="float:left">Routine: </span><span style="float:right">'.$routine_count.' '.$routine_format.'</span><br>':'';?>
-									<?= ((isset($target_audience) && !empty($target_audience)) && (isset($target_audience) && !empty($target_audience)))? '<span style="float:left">Good For: </span><span style="float:right">'.$target_audience.' '.$target_audience.'</span><br>':'';?>
+									<?= (isset($type_of_diet) && !empty($type_of_diet) && ($type_of_diet) != "Other Diet") ? '<span style="float:left">Type of Diet: </span><span style="float:right">' . $type_of_diet . '</span><br>' : '' ?>
+									<?= (isset($other_diet) && !empty($other_diet)) ? '<span style="float:left">Type of Diet: (Other Diet)</span><span style="float:right">' . $other_diet . '</span><br>' : '' ?>
+									<?= ((isset($routine_count) && !empty($routine_count)) && (isset($routine_format) && !empty($routine_format))) ? '<span style="float:left">Routine: </span><span style="float:right">' . $routine_count . ' ' . $routine_format . '</span><br>' : ''; ?>
+									<?= ((isset($target_audience) && !empty($target_audience)) && (isset($target_audience) && !empty($target_audience))) ? '<span style="float:left">Good For: </span><span style="float:right">' . $target_audience . ' ' . $target_audience . '</span><br>' : ''; ?>
 
 								</div>
 								<p class="card-text ">
@@ -130,9 +145,13 @@
 						</div>
 					</div>
 				</div>
-				<div class="like p-2 cursor"  id="like-id_<?=$post_id?>" style="cursor: pointer; <?= (isset($like) && !empty($like)==1)?'color:blue':''?>; " data-post_id="<?=$post_id?>" >
-					<i class="fa fa-thumbs-o-up" ></i>
-					<span class="ml-1"> Like</span> <span><?=(isset($row->getLikeCount) && ($row->getLikeCount)!=0)?$row->getLikeCount:''?></span></div>
+				<div class="like p-2 cursor" id="like-id_<?= $post_id ?>"
+					 style="cursor: pointer; <?= (isset($like) && !empty($like) == 1) ? 'color:blue' : '' ?>; "
+					 data-post_id="<?= $post_id ?>">
+					<i class="fa fa-thumbs-o-up"></i>
+					<span class="ml-1"> Like</span>
+					<span><?= (isset($row->getLikeCount) && ($row->getLikeCount) != 0) ? $row->getLikeCount : '' ?></span>
+				</div>
 			</div>
 			<?php
 		}
@@ -153,32 +172,39 @@
 					style="width:300px;height:120px;margin:auto">
 
 			<table class="responsive table">
-				<div class="border border-success " style="text-align: center;font-size:30px; font-family: -apple-system">Top 10 Most Likes Diet</div>
+				<div class="border border-success font-header">10 Most Liked Diet</div>
 				<thead>
 				<th>Diet Title</th>
 				<th style="float:right">Like Count</th>
 				</thead>
 				<tbody>
-				<?php if(isset($getTopDiets) && !empty($getTopDiets)){
+				<?php if (isset($getTopDiets) && !empty($getTopDiets)) {
 
-				foreach ($getTopDiets as $diets){
-				?>
-				<tr>
-					<td>
-						<span style="float:left !important;"><a href="<?= base_url().'user/viewFullDiet/'.$diets->post_id?>"><?=$diets->post_title?></a></span>
-					</td>
-					<td>
-						<span style="float:right !important;"><?=$diets->like_sum?></span>
-					</td>
-				</tr>
-				<?php
-				}} ?>
+					foreach ($getTopDiets as $diets) {
+						?>
+						<tr>
+							<td>
+								<span style="float:left !important;"><a
+											href="<?= base_url() . 'user/viewFullDiet/' . $diets->post_id ?>"><?= $diets->post_title ?></a></span>
+							</td>
+							<td>
+								<span style="float:right !important;"><?= $diets->like_sum ?></span>
+							</td>
+						</tr>
+						<?php
+					}
+				} ?>
 				</tbody>
 			</table>
 			<div class="card-body">
+				<div class="font-header">
+					THREAD SECTION
+				</div>
 				<button class="btn btn-success btn-sm"
-						onclick="window.location.href='<?= base_url() . 'user/create_thread' ?>'" style="float:right"> Create a Thread
-				</button><br><br>
+						onclick="window.location.href='<?= base_url() . 'user/create_thread' ?>'" style="float:right">
+					Create a Thread
+				</button>
+				<br><br>
 				<h5 class="card-title d-flex justify-content-center"></h5>
 				<p class="card-text ">
 
@@ -199,10 +225,12 @@
 							?>
 							<tr>
 								<td>
-									<span style="float:left"><a href="<?= base_url() . 'user/view_this_community_post/' . $community_post_id ?>">
+									<span style="float:left"><a
+												href="<?= base_url() . 'user/view_this_community_post/' . $community_post_id ?>">
 										<?php echo $thread_title ?>
 									</a></span>
-									<span style="float:left"><a href="<?= base_url() . 'user/view_this_community_post/' . $community_post_id ?>">
+									<span style="float:left"><a
+												href="<?= base_url() . 'user/view_this_community_post/' . $community_post_id ?>">
 										<?php
 										if (strlen($thread_content) > 30) {
 											$thread_content_cut = substr($thread_content, 0, 30);
@@ -235,21 +263,21 @@
 	</div>
 </div>
 <script>
-	$(document).ready(function (){
-		$('.like').on('click',function(){
+	$(document).ready(function () {
+		$('.like').on('click', function () {
 			var postId = $(this).attr('data-post_id');
 			console.log(postId);
-			var base_url= "<?= base_url().'user/likeHomepagePost'?>";
+			var base_url = "<?= base_url() . 'user/likeHomepagePost'?>";
 
-			$.post(base_url,{'postId':postId},function(response){
-					if(response == "like"){
+			$.post(base_url, {'postId': postId}, function (response) {
+				if (response == "like") {
 
-						$('#like-id_'+postId).css('color','blue');
-					}else if (response == "unlike"){
-						$('#like-id_'+postId).css('color','black');
-					}else{
+					$('#like-id_' + postId).css('color', 'blue');
+				} else if (response == "unlike") {
+					$('#like-id_' + postId).css('color', 'black');
+				} else {
 
-					}
+				}
 			});
 		});
 	});

@@ -23,6 +23,18 @@
 		color: #28A745;
 		font-family: monospace,sans-serif;
 	}
+	.font-header{
+		color: #FFFFFF;
+		font-family: 'Raleway', sans-serif;
+		font-size: 30px;
+		font-weight: 800;
+		line-height: 72px;
+		margin: 0 0 24px;
+		text-align: center;
+		text-transform: uppercase;
+		background-color: #28A745;
+
+	}
 </style>
 <div style="width:90%;padding-right:30px;" class="">
 	<?php
@@ -132,7 +144,7 @@
 					style="width:300px;height:120px;margin:auto">
 
 			<table class="responsive table">
-				<div class="border border-success " style="text-align: center;font-size:30px; font-family: -apple-system">Top 10 Most Likes Diet</div>
+				<div class="border border-success font-header" >Top 10 Most Likes Diet</div>
 				<thead>
 				<th>Diet Title</th>
 				<th style="float:right">Like Count</th>
