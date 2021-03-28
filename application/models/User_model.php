@@ -416,7 +416,6 @@ class User_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('tblusers');
 		$this->db->where('userId', $userid);
-		$this->db->order_by('date','desc');
 		$qstr = $this->db->get();
 
 		//$query=$this->db->query($qstr);
@@ -445,6 +444,7 @@ class User_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('profile_post pp');
 		$this->db->where('pp.user_id', $userid);
+		$this->db->order_by('date','desc');
 		$qstr = $this->db->get();
 		if ($qstr->num_rows() > 0) {
 			$return_array = array();
