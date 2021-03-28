@@ -637,7 +637,7 @@ public function updateMyProfile($id){
         $result = $this->mentor_model->updateMyProfile($field, $id);
 
         if ($result) {
-            $this->session->set_flashdata('msgsuccess', "Post successfully deleted.");
+            $this->session->set_flashdata('msgsuccess', "Profile successfully updated.");
 
             redirect(base_url('mentor/viewMyProfile'));
         } else {
