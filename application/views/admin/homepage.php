@@ -19,6 +19,10 @@
 		margin-right: auto;
 		display: block;
 	}
+	.table th{
+		color: #28A745;
+		font-family: monospace,sans-serif;
+	}
 </style>
 <div style="width:90%;padding-right:30px;" class="">
 	<?php
@@ -93,7 +97,6 @@
 								<?= (isset($type_of_diet) && !empty($type_of_diet) && ($type_of_diet)!="Other Diet") ? '<span style="float:left">Type of Diet: </span><span style="float:right">'.$type_of_diet.'</span><br>':''?>
 								<?= (isset($other_diet) && !empty($other_diet))? '<span style="float:left">Type of Diet: (Other Diet)</span><span style="float:right">'.$other_diet.'</span><br>':''?>
 								<?= ((isset($routine_count) && !empty($routine_count)) && (isset($routine_format) && !empty($routine_format)))? '<span style="float:left">Routine: </span><span style="float:right">'.$routine_count.' '.$routine_format.'</span><br>':'';?>
-
 								<?= ((isset($target_audience) && !empty($target_audience)) && (isset($target_audience) && !empty($target_audience)))? '<span style="float:left">Good For: </span><span style="float:right">'.$target_audience.' </span><br>':'';?>
 							</div><br>
 							<p class="card-text ">
@@ -131,7 +134,8 @@
 			<table class="responsive table">
 				<div class="border border-success " style="text-align: center;font-size:30px; font-family: -apple-system">Top 10 Most Likes Diet</div>
 				<thead>
-				<th></th>
+				<th>Diet Title</th>
+				<th style="float:right">Like Count</th>
 				</thead>
 				<tbody>
 				<?php if(isset($getTopDiets) && !empty($getTopDiets)){
@@ -152,7 +156,7 @@
 			</table>
 			<div class="card-body">
 				<button class="btn btn-success btn-sm"
-						onclick="window.location.href='<?= base_url() . 'admin/create_thread' ?>'"> Create a Thread
+						onclick="window.location.href='<?= base_url() . 'admin/create_thread' ?>'"  style="float:right"> Create a Thread
 				</button>
 				<h5 class="card-title d-flex justify-content-center"></h5>
 				<p class="card-text ">
