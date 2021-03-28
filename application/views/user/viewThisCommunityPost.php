@@ -12,6 +12,7 @@ $current_user = $this->session->userdata('id');
         $community_post_id=$row['community_id'];
         $post_user_name=$row['username'];
         $pic_status=$row['user_picture_status'];
+		$post_user_full_name=($row['first_name'].' '.$row['last_name']);
 ?>
 
 <form
@@ -41,8 +42,8 @@ $current_user = $this->session->userdata('id');
                         <img class="fa fa-user">
                         <?php }?>  <b class="bg-light"> <?= $community_post_title?>   </b>
                         <div class="d-flex flex-column justify-content-start ml-2">
-                            
-                            <span class="d-block font-weight-bold name"><?=$post_user_name?></span>
+
+							<span class="d-block font-weight-bold name"><?=(isset($post_user_full_name) && ($post_user_full_name)!=' ')?$post_user_full_name:$post_user_name?></span>
                             <span class="date text-black-50">
                                 Shared
                                 <?= $community_post_date ?></span></div>
