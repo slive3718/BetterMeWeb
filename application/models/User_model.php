@@ -445,6 +445,7 @@ class User_model extends CI_Model
 		$this->db->from('profile_post pp');
 		$this->db->where('pp.user_id', $userid);
 		$this->db->order_by('date','desc');
+		$this->db->order_by('post_id','desc');
 		$qstr = $this->db->get();
 		if ($qstr->num_rows() > 0) {
 			$return_array = array();
