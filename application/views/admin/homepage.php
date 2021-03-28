@@ -94,7 +94,7 @@
 								<?= (isset($other_diet) && !empty($other_diet))? '<span style="float:left">Type of Diet: (Other Diet)</span><span style="float:right">'.$other_diet.'</span><br>':''?>
 								<?= ((isset($routine_count) && !empty($routine_count)) && (isset($routine_format) && !empty($routine_format)))? '<span style="float:left">Routine: </span><span style="float:right">'.$routine_count.' '.$routine_format.'</span><br>':'';?>
 
-								<?= ((isset($target_audience) && !empty($target_audience)) && (isset($target_audience) && !empty($target_audience)))? '<span style="float:left">Good For: </span><span style="float:right">'.$target_audience.' '.$target_audience.'</span><br>':'';?>
+								<?= ((isset($target_audience) && !empty($target_audience)) && (isset($target_audience) && !empty($target_audience)))? '<span style="float:left">Good For: </span><span style="float:right">'.$target_audience.' </span><br>':'';?>
 							</div><br>
 							<p class="card-text ">
 								<?php if (strlen($post_content) > 300) {
