@@ -19,7 +19,7 @@
 	        
     		<h1>Create a Thread</h1>
     		
-    		<form action="<?= base_url().'mentor/updateMyThread/',$thread_id?>" method="POST">
+    		<form action="<?= base_url().'admin/updateMyThread/',$thread_id?>" method="POST">
     		  
     		    
     		    <div class="form-group">
