@@ -831,6 +831,7 @@ public function add_new_post(){
 					// array_push($image_arr,$image_name);
 					$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'post_id'=>$post_id,'user_id'=>$id,'date_created'=>date('Y-m-d')));
 				}
+                redirect(base_url('user/myProfile'));
 			}
 
 
