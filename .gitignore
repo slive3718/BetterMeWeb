@@ -22,5 +22,4 @@ application/config/config.php
 .idea/php.xml
 .idea/vcs.xml
 .idea/codeStyles/codeStyleConfig.xml
-*.JPG
 /uploads/
