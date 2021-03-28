@@ -39,7 +39,7 @@
 			</div>
 
 			<div class="form-group other-diet" >
-				<label for="">Name of Diet</label>
+				<label for="">Name of Diet Plan</label>
 				<input class="form-control" type="text" value="" name="other_diet">
 			</div>
 			<div class="form-row">
