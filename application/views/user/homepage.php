@@ -151,7 +151,9 @@
 				<th></th>
 				</thead>
 				<tbody>
-				<?php  foreach ($getTopDiets as $diets){
+				<?php if(isset($getTopDiets) && !empty($getTopDiets)){
+
+				foreach ($getTopDiets as $diets){
 				?>
 				<tr>
 					<td>
@@ -161,7 +163,8 @@
 						<span style="float:right !important;"><?=$diets->like_sum?></span>
 					</td>
 				</tr>
-				<?php } ?>
+				<?php
+				}} ?>
 				</tbody>
 			</table>
 			<div class="card-body">
