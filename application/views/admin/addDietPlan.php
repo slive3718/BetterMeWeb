@@ -39,7 +39,7 @@
 			</div>
 
 			<div class="form-group other-diet" >
-				<label for="">Other Diet</label>
+				<label for="">Name of Diet</label>
 				<input class="form-control" type="text" value="" name="other_diet">
 			</div>
 			<div class="form-row">
@@ -92,7 +92,7 @@
 <script>
 	$(document).ready(function(){
 		$('.other-diet').hide();
-		
+
 		$('#type_of_diet').on('click',function(){
 		  $('.other-diet').show();
 		});
