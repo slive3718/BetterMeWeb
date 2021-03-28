@@ -347,6 +347,7 @@ public function addDietPlan(){
 			'post_type'=>$post['thread_type'],
 			'type_of_diet'=>$post['type_of_diet'],
 			'target_audience'=>$post['target_audience'],
+			'other_diet'=>$post['other_diet'],
 		);
 		$this->db->select('*');
 		$this->db->from('tbl_posts');
@@ -896,6 +897,7 @@ $this->load->view('mentor/uploadProfilePic');
 			'post_type'=>$post['thread_type'],
 			'type_of_diet'=>$post['type_of_diet'],
 			'target_audience'=>$post['target_audience'],
+			'other_diet'=>$post['other_diet'],
 		);
 
 		$result=$this->db->insert("tblposts", $int_array);

@@ -17,7 +17,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="">Post Title</label>
+				<label for="">Diet Title</label>
 				<input name="post_title" type="text" class="form-control" id="" placeholder="" required>
 			</div>
 
