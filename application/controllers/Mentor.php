@@ -15,6 +15,13 @@ class Mentor extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('upload');
         date_default_timezone_set("Asia/Kuala_Lumpur");
+
+		$account_type=$this->session->userdata('account_type');
+		if($account_type && $account_type != 'M' ){
+			$this->session->sess_destroy();
+			$this->load->view('mentor/login');
+
+		}
     }
 	public function index()
 	{
@@ -150,6 +157,8 @@ class Mentor extends CI_Controller {
 
         $community_posts=$this->mentor_model->get_community_post();
         $data['community_posts']=$community_posts;
+
+		 $data['getTopDiets'] = $this->mentor_model->getTopDiets();
 
         $data['page_title']= "Homepage";
         $this->load->view('templates/header',$data);
@@ -292,93 +301,78 @@ public function addDietPlan(){
     }
 }
 
-public function update_dietPlan(){
-    if (isset($this->session->userdata['id'])) {
-    $post_content=$this->input->post('post_content');
-    $post_title=$this->input->post('post_title');
+	public function update_diet_plan(){
+		$post = $this->input->post();
+		$id=$this->session->userdata('id');
+		$post_id=$post['post_id'];
 
-    $post_id=$this->input->post('post_id');
+		$config['upload_path']          = './uploads/posts';
+		$config['allowed_types']        = 'jpg|png|jpeg|';
+		$config['max_size']             = 100000;
+		$config['max_width']            = 100000;
+		$config['max_height']           = 100000;
 
+		$dataInfo = array();
+		$files = $_FILES;
 
-    $config['upload_path']          = './uploads/images/';
-    $config['allowed_types']        = 'gif|jpg|png';
-    $config['max_size']             = 100000;
-    $config['max_width']            = 100000;
-    $config['max_height']           = 100000;
-    $config['overwrite']           = false;
+		$cpt = count($_FILES['userfile']['name']);
 
-    $datestring = "%Y-%m-%d %h:%i:%s";
-    $dateposted =mdate($datestring);
-    $this->upload->initialize($config);
+		for($i=0; $i<$cpt; $i++)
+		{
+			$_FILES['userfile']['name']= $files['userfile']['name'][$i];
+			$_FILES['userfile']['type']= $files['userfile']['type'][$i];
+			$_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+			$_FILES['userfile']['error']= $files['userfile']['error'][$i];
+			$_FILES['userfile']['size']= $files['userfile']['size'][$i];
 
-    $this->upload->do_upload('userfile');
-    //   if (! $this->upload->do_upload('userfile')) {
+			$this->upload->initialize($config);
+			$this->upload->do_upload();
+			$dataInfo[] = $this->upload->data();
 
+		}
 
-    $this->load->view('mentor/formUpload');
+		$user_id= $this->session->userdata('id');
+//
+		$datestring = date('Y-m-d h:i:s');
+		$time = time();
+		$date_created=mdate($datestring, $time);
 
-    //  } else {
+		$int_array = array(
+			'post_title'=>$post['post_title'],
+			'post_content'=> $post['post_content'],
+			'date_posted'=>$date_created,
+			'routine_count'=>$post['routine_count'],
+			'routine_format'=>$post['routine_format'],
+			'post_user_id'=>$user_id,
+			'post_type'=>$post['thread_type'],
+			'type_of_diet'=>$post['type_of_diet'],
+			'target_audience'=>$post['target_audience'],
+			'other_diet'=>$post['other_diet'],
+		);
+		$this->db->select('*');
+		$this->db->from('tbl_posts');
+		$this->db->where('post_id',$post_id);
+		$result=$this->db->update("tblposts", $int_array);
 
-    $data = array('upload_data' => $this->upload->data());
-    $file_name=$this->upload->data('file_name');
-    if (isset($file_name)) {
-        $image_name = $file_name;
-        $fullpath="betterMe_Ci3/".$config['upload_path'].$file_name;
-        $field = array(
-    'post_content'=>$post_content,
-    'post_title'=>$post_title,
-    'post_image_name'=>$image_name,
-    'post_image_url'=>$fullpath,
-    );
+		if(is_uploaded_file($_FILES['userfile']['tmp_name'])){
+			$image_arr = array();
+			foreach ($dataInfo as $info) {
+				$image_name=($info['file_name']);
+				// array_push($image_arr,$image_name);
+				$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'image_post_type'=>'diet_plan','post_id'=>$post_id,'user_id'=>$id,'date_created'=>date('Y-m-d')));
 
+			}
+			redirect(base_url('mentor/viewDiet'));
+		}
+		if($result > 0 ){
+			$this->session->set_flashdata('msgsuccess','Successfully Updated');
+			redirect(base_url('mentor/viewDiet'));
+		}else{
+			$this->session->set_flashdata('msgwarn','No Changes Made');
+			redirect(base_url('mentor/viewDiet'));
+		}
 
-
-        $result = $this->mentor_model->update_dietPlan($field, $post_id);
-
-
-    if ($result) {
-        $this->session->set_flashdata('msgsuccess', "Post successfully updated.");
-       $this->session->set_flashdata('tempid',$post_id);
-
-     redirect(base_url('mentor/viewDiet'));
-    } else {
-       $this->session->set_flashdata('msgwarn', "No changes");
-       $this->session->set_flashdata('tempid',$post_id);
-        redirect(base_url('mentor/viewDiet'));
-    }
-    }else{
-
-
-        $field = array(
-    'post_content'=>$post_content,
-    'post_title'=>$post_title,
-
-    );
-
-
-
-        $result = $this->mentor_model->update_dietPlan($field, $post_id);
-
-
-    if ($result) {
-        $this->session->set_flashdata('msgsuccess', "Post successfully updated.");
-       $this->session->set_flashdata('tempid',$post_id);
-
-     redirect(base_url('mentor/viewDiet'));
-    } else {
-       $this->session->set_flashdata('msgwarn', "No changes");
-       $this->session->set_flashdata('tempid',$post_id);
-        redirect(base_url('mentor/viewDiet'));
-    }
-    }
-
-} else{
-    redirect(base_url().'mentor/logout');
-}
-
-}
-
-
+	}
 
 public function archive_post(){
     if (isset($this->session->userdata['id'])) {
@@ -500,111 +494,6 @@ public function upload(){
 
     redirect('mentor/viewUpload');
 }
-
-
-//
-//public function temp_add(){
-//
-//    // $config['upload_path'] = './assets/images/';
-//    //	$config['allowed_types'] = '*';
-//
-//    $config['upload_path']          = './uploads/images/';
-//    $config['allowed_types']        = 'gif|jpg|png';
-//    $config['max_size']             = 100000;
-//    $config['max_width']            = 100000;
-//    $config['max_height']           = 100000;
-//    $config['overwrite']           = false;
-//
-//    $datestring = "%Y-%m-%d %h:%i:%s";
-//    $dateposted =mdate($datestring);
-//    $this->upload->initialize($config);
-//
-//    $this->upload->do_upload('userfile');
-//    //   if (! $this->upload->do_upload('userfile')) {
-//
-//
-//    $this->load->view('mentor/formUpload');
-//
-//    //  } else {
-//
-//    $data = array('upload_data' => $this->upload->data());
-//    $file_name=$this->upload->data('file_name');
-//    if (isset($file_name)) {
-//
-//        $user_id= $this->session->userdata('id');
-//
-//        $datestring = '%Y-%m-%d %h:%i:%s';
-//        $time = time();
-//
-//        $date_created=mdate($datestring, $time);
-//
-//
-//        $post_type=$this->input->post("post_type");
-//        $user_id=$this->input->post("user_id");
-//        $type_of_diet=$this->input->post("type_of_diet");
-//        $post_title=$this->input->post("post_title");
-//        $post_content=htmlspecialchars($this->input->post("post_content"));
-//
-//        $routine_format=$this->input->post("routine_format");
-//        $routine_count=$this->input->post("routine_count");
-//
-//    echo $post_content;
-//
-//        if ($post_type && $user_id && $post_content && $post_title ){
-//            $fullpath="betterMe_Ci3/".$config['upload_path'].$file_name;
-//            $data['inserted']=$this->mentor_model->add_post($post_type,$user_id,$post_title,$date_created,$post_content,$routine_count,$routine_format,$file_name,$fullpath,$type_of_diet);
-////                print_r($data);
-//            if ($data){
-//
-////				print_r($data);
-//                $this->session->set_flashdata('msgsuccess', 'Diet Plan Successfully Created');
-//
-//                        redirect(base_url().'mentor/viewDiet');
-//            }else{
-//                echo "hi";
-//            }
-//        }
-//
-//    }
-//    else {
-//        $user_id= $this->session->userdata('id');
-//
-//        $datestring = '%Y-%m-%d %h:%i:%s';
-//            $time = time();
-//
-//        $date_created=mdate($datestring, $time);
-//
-//
-//        $post_type=$this->input->post("post_type");
-//        $user_id=$this->input->post("user_id");
-//        $type_of_diet=$this->input->post("type_of_diet");
-//        $post_title=$this->input->post("post_title");
-//        $post_content=htmlspecialchars($this->input->post("post_content"));
-//
-//        $routine_format=$this->input->post("routine_format");
-//        $routine_count=$this->input->post("routine_count");
-//
-//    echo $post_content;
-//
-//        if ($post_type && $user_id && $post_content && $post_title ){
-//
-//
-//            $data['inserted']=$this->mentor_model->add_post($post_type,$user_id,$post_title,$date_created,$post_content,$routine_count,$routine_format,$type_of_diet);
-////                print_r($data);
-//            if ($data){
-//
-////				print_r($data);
-//                $this->session->set_flashdata('msgsuccess', 'Diet Plan Successfully Created');
-//
-//                        redirect(base_url().'mentor/viewDiet');
-//            }else{
-//                echo "hi";
-//            }
-//        }
-//    }
-//
-//
-//}
 
 
 public function view_this_community_post($community_post_id){
@@ -748,7 +637,7 @@ public function updateMyProfile($id){
         $result = $this->mentor_model->updateMyProfile($field, $id);
 
         if ($result) {
-            $this->session->set_flashdata('msgsuccess', "Post successfully deleted.");
+            $this->session->set_flashdata('msgsuccess', "Profile successfully updated.");
 
             redirect(base_url('mentor/viewMyProfile'));
         } else {
@@ -1008,19 +897,66 @@ $this->load->view('mentor/uploadProfilePic');
 			'post_type'=>$post['thread_type'],
 			'type_of_diet'=>$post['type_of_diet'],
 			'target_audience'=>$post['target_audience'],
+			'other_diet'=>$post['other_diet'],
 		);
 
 		$result=$this->db->insert("tblposts", $int_array);
 		$res_id=$this->db->insert_id();
-		if($res_id){
+		if(is_uploaded_file($_FILES['userfile']['tmp_name'])){
 			$image_arr = array();
 			foreach ($dataInfo as $info) {
 				$image_name=($info['file_name']);
 				// array_push($image_arr,$image_name);
 				$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'image_post_type'=>'diet_plan','post_id'=>$res_id,'user_id'=>$id,'date_created'=>date('Y-m-d')));
+
 			}
+			redirect(base_url('mentor/viewDiet'));
 		}
 }
 
+	public function getImagesInPost(){
+
+		$post_id = $this->input->post('postId');
+		$result=$this->mentor_model->getImagesInPost($post_id);
+		if($result){
+
+			echo json_encode($result->result());
+
+		}else{
+			echo json_encode(array());
+		}
+	}
+
+	public function removeImageInPost(){
+
+		$post_id = $this->input->post('postId');
+		$image_id= $this->input->post('imageId');
+
+
+		$this->db->select('*');
+		$this->db->from('tblimages');
+		$this->db->where('post_id',$post_id);
+		$this->db->where('image_id',$image_id);
+		$result= $this->db->delete();
+		if($result){
+			echo $result;
+		}else{
+			echo '';
+		}
+	}
+
+
+	public function likeHomepagePost(){
+		$post=$this->input->post();
+		$post_id=$post['postId'];
+		$result=$this->mentor_model->likeHomepagePost($post_id);
+		if($result=="2"){
+			echo 'like';
+		}else if ($result=='1'){
+			echo 'unlike';
+		}else{
+			echo 'error';
+		}
+	}
 
 }

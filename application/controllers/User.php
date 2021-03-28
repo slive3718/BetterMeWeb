@@ -15,6 +15,14 @@ class User extends CI_Controller
         $this->load->library('upload');
       
         date_default_timezone_set("Asia/Kuala_Lumpur");
+
+		$account_type=$this->session->userdata('account_type');
+		if($account_type && $account_type != 'U' ){
+			$this->session->sess_destroy();
+			$this->load->view('user/login');
+
+		}
+
     }
     public function index()
     {
@@ -150,6 +158,8 @@ class User extends CI_Controller
 
         $community_posts=$this->user_model->get_community_post();
         $data['community_posts']=$community_posts;
+
+		$data['getTopDiets'] = $this->user_model->getTopDiets();
 
         $data['page_title']= "Homepage";
         $this->load->view('user/templates/header', $data);
@@ -337,11 +347,14 @@ class User extends CI_Controller
         }
     }
     
-    public function create_thread()
-    {
-        $data['page_title']="Create Thread";
-        $this->load->view('user/templates/header', $data);
-        $this->load->view('user/createThread');
+    public function create_thread(){
+        if (isset($this->session->userdata['id'])) {
+            $data['page_title']="Create Thread";
+            $this->load->view('user/templates/header', $data);
+            $this->load->view('user/createThread');
+        }else{
+            redirect(base_url('user/logout'));
+        }
     }
     
     public function post_thread()
@@ -560,7 +573,7 @@ class User extends CI_Controller
 public function do_upload(){
     $post = $this->input->post();
     $id=$this->session->userdata('id');
-    $config['upload_path']          = './uploads/posts';
+    $config['upload_path']          = './uploads/profile_posts';
     $config['allowed_types']        = 'jpg|png|jpeg|avi|mp4|';
     $config['max_size']             = 100000;
     $config['max_width']            = 100000;
@@ -671,14 +684,13 @@ $image_arr = array();
 public function add_new_post(){
         $post = $this->input->post();
         $id=$this->session->userdata('id');
-        $config['upload_path']          = './uploads/posts';
+        $config['upload_path']          = './uploads/profile_posts';
         $config['allowed_types']        = 'jpg|png|jpeg|';
         $config['max_size']             = 100000;
         $config['max_width']            = 100000;
         $config['max_height']           = 100000;
         $datestring = "%Y-%m-%d %h:%i:%s";
 
-        
         $dataInfo = array();
         $files = $_FILES;
         $cpt = count($_FILES['userfile']['name']);
@@ -696,10 +708,6 @@ public function add_new_post(){
             $dataInfo[] = $this->upload->data();
         }
 
-    
-        // print_r(implode('/',$image_arr));
-        // exit;
-    
         $int_array = array(
             'content' => $post['content'],
             'user_id'=>$id,
@@ -708,17 +716,141 @@ public function add_new_post(){
        
          $result=$this->db->insert("profile_post", $int_array);
          $res_id=$this->db->insert_id();
-                if($res_id){
+				if(is_uploaded_file($_FILES['userfile']['tmp_name'])){
                     $image_arr = array();
                     foreach ($dataInfo as $info) {
                             $image_name=($info['file_name']);
                             // array_push($image_arr,$image_name);
                             $result=$this->db->insert("tblimages", array('image_name'=>$image_name,'post_id'=>$res_id,'user_id'=>$id,'date_created'=>date('Y-m-d')));
                     }
-                
+                    redirect(base_url('user/myProfile'));
                 }
+    }
 
-            }
+	public function remove_myProfilePost($post_id)
+	{
+		$result = $this->user_model->remove_myProfilePost($post_id);
+		if($result > 0 ){
+			redirect(base_url().'user/myProfile');
+			$this->session->set_flashdata('msgsuccess', ' Profile Post Successfully Removed ');
+		}
+		else{
+			redirect(base_url().'user/myProfile');
+			$this->session->set_flashdata('msgwarn', ' No changes made ');
+		}
+	}
+	public function edit_myProfilePost($post_id){
+		$result = $this->user_model->get_editMyProfilePost($post_id);
+
+		if($result){
+			$data['gotMyProfilePost']=$result;
+            $data['page_title']="Edit My Profile Post";
+			$this->load->view("user/templates/header", $data);
+			$this->load->view('user/editMyProfilePost',$data);
+		}
+		else{
+			echo "Error 123 Something wrong please tell the Administrator";
+		}
+	}
 
 
-        }
+	public function getImagesInPost(){
+
+		$post_id = $this->input->post('postId');
+		$result=$this->user_model->getImagesInPost($post_id);
+		if($result){
+
+			echo json_encode($result->result());
+
+		}else{
+			echo json_encode(array());
+		}
+	}
+
+	public function removeImageInPost(){
+
+		$post_id = $this->input->post('postId');
+		$image_id= $this->input->post('imageId');
+
+
+		$this->db->select('*');
+		$this->db->from('tblimages');
+		$this->db->where('post_id',$post_id);
+		$this->db->where('image_id',$image_id);
+		$result= $this->db->delete();
+		if($result){
+			echo $result;
+		}else{
+			echo '';
+		}
+	}
+
+
+	public function update_profilePost($post_id){
+
+			$post = $this->input->post();
+			$id=$this->session->userdata('id');
+			$post_id= $post_id;
+
+			$config['upload_path']          = './uploads/profile_posts';
+			$config['allowed_types']        = 'jpg|png|jpeg|';
+			$config['max_size']             = 100000;
+			$config['max_width']            = 100000;
+			$config['max_height']           = 100000;
+			$datestring = "%Y-%m-%d %h:%i:%s";
+
+			$dataInfo = array();
+			$files = $_FILES;
+			$cpt = count($_FILES['userfile']['name']);
+			$cpt = count($_FILES['userfile']['name']);
+			for($i=0; $i<$cpt; $i++)
+			{
+				$_FILES['userfile']['name']= $files['userfile']['name'][$i];
+				$_FILES['userfile']['type']= $files['userfile']['type'][$i];
+				$_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+				$_FILES['userfile']['error']= $files['userfile']['error'][$i];
+				$_FILES['userfile']['size']= $files['userfile']['size'][$i];
+
+				$this->upload->initialize($config);
+				$this->upload->do_upload();
+				$dataInfo[] = $this->upload->data();
+			}
+
+			$int_array = array(
+				'content' => $post['content'],
+				'user_id'=>$id,
+				'date'=> date('Y-m-d'),
+			);
+
+			$this->db->where('post_id',$post_id);
+			$result=$this->db->update("profile_post", $int_array);
+				if(is_uploaded_file($_FILES['userfile']['tmp_name'])){
+				$image_arr = array();
+				foreach ($dataInfo as $info) {
+					$image_name=($info['file_name']);
+					// array_push($image_arr,$image_name);
+					$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'post_id'=>$post_id,'user_id'=>$id,'date_created'=>date('Y-m-d')));
+				}
+                
+			}
+            redirect(base_url('user/myProfile'));
+
+
+	}
+
+	public function likeHomepagePost(){
+    	$post=$this->input->post();
+    	$post_id=$post['postId'];
+    	$result=$this->user_model->likeHomepagePost($post_id);
+		if($result=="2"){
+			echo 'like';
+		}else if ($result=='1'){
+			echo 'unlike';
+		}else{
+			echo 'error';
+		}
+	}
+
+
+
+}

@@ -60,18 +60,7 @@ $current_user=$this->session->userdata('id');
 						echo $post_content;
 					}
 
-					if($post_user_id==$current_user){
-
 					?>
-
-				<div class="mr-5 d-flex justify-content-end">
-					<a href="<?= base_url().'admin/edit_Diet/'.$post_id?>" class="btn  btn-sm btn-primary">Edit</a>
-
-
-					</p>
-
-
-					<?php } ?>
 					<!-- Modal -->
 					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog" role="document">
@@ -90,27 +79,10 @@ $current_user=$this->session->userdata('id');
 							</div>
 						</div>
 					</div>
-
-
-
-
 				</div>
-
-
 			</div>
-
 		</div>
-
-
-
 		<?php
 		}
 		}?>
-
-		<!-- <div class="card border-danger" style="width: 18rem;"> <img
-		class="card-img-top" src="..." alt="Card image cap"> <div class="card-body"> <h5
-		class="card-title">Card title</h5> <p class="card-text">Some quick example text
-		to build on the card title and make up the bulk of the card's content.</p> <a
-		href="#" class="btn btn-primary">Go somewhere</a> </div> </div> -->
-
 		<script></script>

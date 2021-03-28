@@ -1,23 +1,32 @@
 
-
-	<?php if ($this->session->flashdata('msgsuccess')) {
-		echo ' <div class="btn success"> ' . $this->session->flashdata('msgsuccess') . ' <div class="btn success"> ';
-	} ?>
-	<?php if ($this->session->flashdata('msgwarn')) {
-		?>
-		<div class="btn success"> <?php echo ' <div class="btn btn-warning">' . $this->session->flashdata('msgsuccess');
-			echo $this->session->flashdata('msgwarn');
-			?>    </div> <?php } ?>
-	</div>
-
 <?php $post_type = "DietPlan";
 ?>
+	<style>
+		h2 {
+			color: #008000;
+			font-family: 'Raleway', sans-serif;
+			font-size: 40px;
+			font-weight: 800;
+			line-height: 72px;
+			margin: 0 0 24px;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		.jumbotron{
+			padding-bottom: 20px;
+		}
+	</style>
 <div class="container-fluid border card shadow"
 	 style="width:80%;margin-top:30px;padding-top:20px;padding-bottom: 20px;">
+	<div class="jumbotron text-center">
+
+		<h2>Manage Diet Plan</h2>
+	<button style="margin-left:20px;width:200px; float:right" class="btn btn-sm btn-success"
+			onclick="document.location='<?= base_url() . 'admin/addDietPlan/' . $post_type ?>'">Add Diet Plan
+	</button>
+	</div>
 	<div class="row">
-		<button style="margin-left:20px" class="btn btn-sm btn-success"
-				onclick="document.location='<?= base_url() . 'admin/addDietPlan/' . $post_type ?>'">Add Diet Plan
-		</button>
+
 		<div class="col-md-12 table-responsive">
 			<table id="myTable" class="table table-bordered table-striped text-center">
 				<thead>
@@ -30,6 +39,8 @@
 					<th scope="col"style="border-left: 0px solid #ddd; border-right: 0px solid #ddd;"> </th>
 				</tr>
 				</thead>
+				<tbody>
+
 				<?php
 				if (isset($rows)) {
 					foreach ($rows as $row){
@@ -45,14 +56,13 @@
 
 				$type_of_diet = $row->type_of_diet;
 				?>
-				<tbody>
 				<tr>
 					<td class="font-weight-bold"> <?= $post_title ?></td>
 					<td><?php if (strlen($post_content) > 50) {
 							$firstdesc = substr($post_content, 0, 150);
 							echo $firstdesc . '<a href="' . base_url('admin/viewFullDiet/' . $post_id) . '">...see more </a>';
 						} else {
-							echo $post_content;
+							echo $post_content .'<br>'. '<a href="' . base_url('admin/viewFullDiet/' . $post_id) . '">view full </a>';
 						} ?>
 					</td>
 					<td><?= $date_posted ?></td>
@@ -73,6 +83,7 @@
 				</tr>
 				<?php }
 				} ?>
+
 				</tbody>
 			</table>
 		</div>
@@ -101,6 +112,16 @@
 			});
 		})
 	});
+
+	$(document).ready(function(){
+		if('<?= ($this->session->flashdata('msgsuccess'))?>'){
+			alertify.success('Post Updated Successfully');
+		}
+		if('<?= ($this->session->flashdata('msgwarn'))?>'){
+			alertify.success('No Changes Made');
+		}
+	});
+
 </script>
 
 

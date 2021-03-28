@@ -15,26 +15,25 @@
 <link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
 
 <main>
-        <div id="device-bar-2">
-            <!-- <button></button>
-            <button></button>
-            <button></button> -->
-        </div>
-        <header>
-            <div class="tb"> 
-                <div>   <a style="font-weight: bold" class="btn btn-s btn-success rounded"
-                href="<?= base_url().'user/homepage/'?>" >BetterMe</a></div>
-                <div class="td" id="search-form">
-                    <form method="get" action="#">
-                        <input type="text" placeholder="Better Me Search">
-                        <button type="submit"><i class="material-icons">search</i></button>
-                    </form>
-                </div> 
+	<div id="device-bar-2">
+	</div>
+	<header>
+		<div class="tb">
+			<div><a style="font-weight: bold" class="btn btn-s btn-success rounded"
+					href="<?= base_url() . 'user/homepage/' ?>">BetterMe</a></div>
+			<div class="td" id="search-form">
+				<form method="get" action="#">
+					<input type="text" placeholder="Better Me Search">
+					<button type="submit"><i class="material-icons">search</i></button>
+				</form>
+			</div>
 
 			<?php
-			if(isset($user_info)&& !empty($user_info)){
+			if (isset($user_info) && !empty($user_info)){
 
-			foreach ($user_info as $val){
+			foreach ($user_info
+
+			as $val){
 			//   print($val->getAllProfilePost->post_images->result());exit;
 			$id = $this->session->userdata('id');
 			$username = $val->username;
@@ -47,7 +46,7 @@
 			$sex = $val->sex;
 			?>
 			<div class="td" id="f-name-l"><a style="font-weight: bold" class="btn btn-s btn-success rounded"
-			href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a>
+											 href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a>
 			</div>
 			<div class="td" id="i-links">
 				<div class="tb">
@@ -96,7 +95,7 @@
 			<div id="u-name"><?= Ucfirst($firstName), ' ', Ucfirst($lastName) ?></div>
 			<div class="tb" id="m-btns">
 				<div class="td">
-					 <!--<div class="m-btn"><i class="material-icons">Change Timeline Piture</i><span></span></div>-->
+					<!--<div class="m-btn"><i class="material-icons">Change Timeline Piture</i><span></span></div>-->
 				</div>
 			</div>
 		</div>
@@ -212,7 +211,9 @@
 
 				if (isset($val->getAllProfilePost) && !empty($val->getAllProfilePost)) {
 					foreach ($val->getAllProfilePost as $post) {
-						$content = $post->content; ?>
+						$content = $post->content;
+						$my_post_id=($post->post_id);
+						?>
 						<div class="m-mrg card Regular shadow" id="">
 							<div>
 								<div class="post card Regular shadow">
@@ -231,7 +232,7 @@
 										<div class="td p-r-hdr">
 											<div class="p-u-info">
 												<a href="#"><?= Ucfirst($firstName), " ", Ucfirst($lastName) ?></a>
-			
+
 											</div>
 											<div class="p-dt">
 												<i class="fa fa-calendar"></i>
@@ -243,9 +244,10 @@
 											   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											</a>
 
-											<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-												<a class="dropdown-item" href="#">Remove</a>
-												<a class="dropdown-item" href="#">Edit</a>
+											<div class="dropdown-menu align-content-center" aria-labelledby="dropdownMenuLink" >
+												<a class="dropdown-item" href="<?= base_url().'user/remove_myProfilePost/'.$my_post_id?>">Remove</a>
+												<a class="dropdown-item" href="<?= base_url().'user/edit_myProfilePost/'.$my_post_id?>">Edit</a>
+
 											</div>
 
 										</div>
@@ -263,7 +265,7 @@
 													foreach ($pp->post_images as $each_post_images) {
 														if ($each_post_images->post_id == $post->post_id) { ?>
 
-															<img src="<?= base_url() . './uploads/posts/' . $each_post_images->image_name ?>">
+															<img src="<?= base_url() . './uploads/profile_posts/' . $each_post_images->image_name ?>">
 															<?php
 														}
 													}
@@ -297,33 +299,11 @@
 	?>
 	<div id="device-bar-2"><i class="fab fa-apple"></i></div>
 </main>
+
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script type="text/javascript">
-	$(document).ready(function () {
-		$('.btn-click').on('click', function () {
-			alert('hi');
-		});
-		//     $(".button-post").on("click",function(){
-
-
-		//       var postContent= $("input.whats-on-ur-mind").val();
-		//     // var page_link = $(location).attr('href');
-
-		//     // var page_name = "Sessions";
-		//     $.ajax({
-		//         url: "<?=base_url()?>user/create_profile_post",
-		//         type: "post",
-		//         data: {'content': postContent},
-		//         dataType: "json",
-		//         success: function (data) {
-		//             Swal.fire('Post Success').then(function(){
-		//                 $('input.whats-on-ur-mind').val("");
-		//                 location.reload();
-		//             });
-		//         }
-		//     });
-		// });
+	$(document).ready(function(){
 
 	});
 

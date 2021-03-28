@@ -17,3 +17,9 @@ application/logs/*
 /vendor/
 application/config/database.php
 application/config/config.php
+.idea/betterMeWeb.iml
+.idea/modules.xml
+.idea/php.xml
+.idea/vcs.xml
+.idea/codeStyles/codeStyleConfig.xml
+

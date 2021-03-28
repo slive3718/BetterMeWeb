@@ -21,7 +21,7 @@
                            <input type="text" name="comment_id" value="<?= $comment_id?>" hidden>
                            <input type="text" name="community_id" value="<?= $community_id?>" hidden>
                         
-                                <textarea class="form-control ml-5 mr-5 shadow-none textarea" name="community_comment" ><?php if (isset($comment_content)){ echo $comment_content;}?></textarea>
+                                <textarea class="form-control ml-5 mr-5 shadow-none textarea" rows="10" cols="10" name="community_comment"><?php if (isset($comment_content)){ echo $comment_content;}?></textarea>
                             
                             
                                             </div>

@@ -9,11 +9,31 @@
 	.container .image {
 		width: 50%;
 
+
 	}
 
 	.container img {
 		width: calc(100% - (150px * 2));
 		margin: 20px;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+	}
+	.table th{
+		color: #28A745;
+		font-family: monospace,sans-serif;
+	}
+	.font-header{
+		color: #FFFFFF;
+		font-family: 'Raleway', sans-serif;
+		font-size: 30px;
+		font-weight: 800;
+		line-height: 72px;
+		margin: 0 0 24px;
+		text-align: center;
+		text-transform: uppercase;
+		background-color: #28A745;
+
 	}
 </style>
 <div style="width:70%;padding-right:30px;" class="">
@@ -42,7 +62,7 @@
 			$type_of_diet = $row->type_of_diet;
 			$posts_user_name = $row->username;
 			$pic_status = $row->user_picture_status;
-			$diet_type = $row->type_of_diet;
+			$other_diet= $row->other_diet;
 			?>
 
 			<?php
@@ -74,33 +94,38 @@
 				</div>
 
 				<div class="card" style="width:30rem;height:30rem">
-
-					<div class="container">
-						<?php foreach ($row->images as $images) {
-							?>
-							<img class="" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
-								 alt="Card image cap" style="">
-						<?php } ?>
+					<div style="width:30rem;height:30rem">
+						<a href="<?= base_url('mentor/viewFullDiet/' . $post_id)?>">
+							<div class="container" >
+								<?php foreach ($row->images as $images) {
+									?>
+									<img class="" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
+										 alt="Card image cap" style="">
+								<?php } ?>
+							</div>
+						</a>
 					</div>
-
 					<div class="card-body">
 						<div class="rounded card shadow"style="background-color: #28A745; color:white;text-align: center">
-							<h5 class="card-title d-flex justify-content-center"><?= $post_title ?></h5>
+							<div style="margin-left:10px;margin-right: 5px">
+								<h5 class="card-title d-flex justify-content-center"><?= $post_title ?></h5>
+								<div>
 
-
-							<p>
-							<center> Type of Diet: <?= $diet_type ?></center>
-							</p>
-
-							<p class="card-text ">
-								<?php if (strlen($post_content) > 300) {
-									$firstdesc = substr($post_content, 0, 150);
-									echo $firstdesc . '<a class=" stretched-link" href="' . base_url('mentor/viewFullDiet/' . $post_id) . '">...see more </a>';
-								} else {
-									echo $post_content;
-								}
-								?>
-							</p>
+									<?= (isset($type_of_diet) && !empty($type_of_diet) && ($type_of_diet)!="Other Diet") ? '<span style="float:left">Type of Diet: </span><span style="float:right">'.$type_of_diet.'</span><br>':''?>
+									<?= (isset($other_diet) && !empty($other_diet))? '<span style="float:left">Type of Diet: (Other Diet)</span><span style="float:right">'.$other_diet.'</span><br>':''?>
+									<?= ((isset($routine_count) && !empty($routine_count)) && (isset($routine_format) && !empty($routine_format)))? '<span style="float:left">Routine: </span><span style="float:right">'.$routine_count.' '.$routine_format.'</span><br>':'';?>
+									<?= ((isset($target_audience) && !empty($target_audience)) && (isset($target_audience) && !empty($target_audience)))? '<span style="float:left">Good For: </span><span style="float:right">'.$target_audience.' '.$target_audience.'</span><br>':'';?>
+								</div>
+								<p class="card-text ">
+									<?php if (strlen($post_content) > 300) {
+										$firstdesc = substr($post_content, 0, 150);
+										echo $firstdesc . '<a class=" stretched-link" href="' . base_url('mentor/viewFullDiet/' . $post_id) . '">...see more </a>';
+									} else {
+										echo $post_content;
+									}
+									?>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -113,8 +138,8 @@
 </div>
 <div>
 
-	<div class="shadow-lg p-3 mb-5 ml-5" style="display:inline-block;">
-		<div class="card" style="width: 25rem; height:60rem">
+	<div class="shadow-lg p-3 mb-5 ml-5 responsive" style="display:inline-block;">
+		<div class="card" style="">
 			<?php if ($this->session->flashdata('msgsuccess_c')) {
 				echo "<div class='btn btn-success'>" . $this->session->flashdata('msgsuccess_c') . '</div>';
 			} ?>
@@ -123,9 +148,33 @@
 					src="<?= base_url(); ?>assets/images/betterMeCommunity.png?>"
 					alt="Card image cap"
 					style="width:300px;height:120px;margin:auto">
-			<div class="card-body">
+			<table class="responsive table">
+				<div class="border border-success font-header">Top 10 Most Likes Diet</div>
+				<thead>
+				<th>Diet Title</th>
+				<th style="float:right">Like Count</th>
+				</thead>
+				<tbody>
+				<?php if(isset($getTopDiets) && !empty($getTopDiets)){
+
+					foreach ($getTopDiets as $diets){
+						?>
+						<tr>
+							<td>
+								<span style="float:left !important;"><a href="<?= base_url().'mentor/viewFullDiet/'.$diets->post_id?>"><?=$diets->post_title?></a></span>
+							</td>
+							<td>
+								<span style="float:right !important;"><?=$diets->like_sum?></span>
+							</td>
+						</tr>
+						<?php
+					}} ?>
+				</tbody>
+			</table>
+			<div class="card-body">.
+
 				<button class="btn btn-success btn-sm"
-						onclick="window.location.href='<?= base_url() . 'mentor/create_thread' ?>'"> Create a Thread
+						onclick="window.location.href='<?= base_url() . 'mentor/create_thread' ?>'" style="float:right"> Create a Thread
 				</button>
 				<h5 class="card-title d-flex justify-content-center"></h5>
 				<p class="card-text ">
@@ -134,16 +183,13 @@
 
 					<?php
 					if (isset($community_posts)) {
-//    print_r($community_posts);
 						foreach ($community_posts as $community_post) {
-
 							$community_post_id = $community_post['community_id'];
 							$thread_title = $community_post['thread_title'];
 							$thread_content = $community_post['thread_content'];
 							$thread_date = $community_post['thread_date'];
 							$thread_user_id = $community_post['thread_user_id'];
 							$thread_user_name = $community_post['username'];
-
 							?>
 							<tr>
 								<td>
@@ -178,10 +224,7 @@
 							<?php
 						}
 					} ?>
-
 				</table>
-
-
 				</p>
 			</div>
 		</div>

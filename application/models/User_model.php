@@ -101,6 +101,8 @@ class User_model extends CI_Model
 			foreach($qstr->result() as $val){
 
 				$val->images= $this->get_diet_plan_images($val->post_id);
+				$val->getLikeStatus = $this->getLikeStatus($val->post_id);
+				$val->getLikeCount = $this->getLikeCount($val->post_id);
 			}
 
 		}
@@ -120,7 +122,8 @@ class User_model extends CI_Model
 		$this->db->from('tblimages');
 		$this->db->where('post_id', $post_id);
 		$this->db->where('image_post_type','diet_plan');
-		$this->db->limit(4);
+		$this->db->where('image_name!=','');
+		$this->db->limit(6);
 		$qstr = $this->db->get();
 		if ($qstr) {
 			return $qstr->result();
@@ -128,6 +131,20 @@ class User_model extends CI_Model
 			return '';
 		}
 	}
+	function get_diet_plan_images_all($post_id){
+
+		$this->db->select('*');
+		$this->db->from('tblimages');
+		$this->db->where('post_id', $post_id);
+		$this->db->where('image_post_type','diet_plan');
+		$qstr = $this->db->get();
+		if ($qstr) {
+			return $qstr->result();
+		} else {
+			return '';
+		}
+	}
+
 
 
 	public function get_dietPlanFull($post_id)
@@ -145,7 +162,7 @@ class User_model extends CI_Model
 			$return_array = array();
 			foreach($qstr->result() as $val){
 
-				$val->images= $this->get_diet_plan_images($val->post_id);
+				$val->images= $this->get_diet_plan_images_all($val->post_id);
 			}
 
 		}
@@ -288,7 +305,7 @@ class User_model extends CI_Model
 			'thread_content' => $desciption,
 			'thread_date' => $date_created
 		);
-		print_r($data);
+
 		return $this->db->insert('tblcommunity', $data);
 	}
 
@@ -360,7 +377,7 @@ class User_model extends CI_Model
 
 		);
 
-		print_r($data);
+
 		return $this->db->insert('tblcommunitycomments', $data);
 
 	}
@@ -408,6 +425,7 @@ class User_model extends CI_Model
 				$val->getAllProfilePost = $this->getAllProfilePost($val->userId);
 				$val->getAllusersToFollow = $this->getAllusersToFollow();
 				$val->getFollowtbl = $this->getFollowtbl($val->userId);
+
 				// $val->getAllImages=$this->getAllImages($val->userId);
 				$return_array[] = $val;
 				// echo '<pre>';
@@ -427,6 +445,8 @@ class User_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('profile_post pp');
 		$this->db->where('pp.user_id', $userid);
+		$this->db->order_by('date','desc');
+		$this->db->order_by('post_id','desc');
 		$qstr = $this->db->get();
 		if ($qstr->num_rows() > 0) {
 			$return_array = array();
@@ -628,5 +648,140 @@ class User_model extends CI_Model
 		}
 	}
 
+	function remove_myProfilePost($post_id){
+		$this->db->select('*');
+		$this->db->from('profile_post');
+		$this->db->where('post_id',$post_id);
+		$this->db->delete();
 
+	}
+
+	function get_editMyProfilePost($post_id){
+		$this->db->select('pp.*');
+		$this->db->select('u.user_picture_status');
+		$this->db->from('profile_post pp');
+		$this->db->join('tblusers u','pp.user_id= u.userId');
+		$this->db->where('post_id',$post_id);
+		$result= $this->db->get();
+
+		if ($result){
+			return $result->result();
+		}else{
+			return '';
+		}
+
+	}
+
+
+	function getImagesInPost($post_id){
+
+		$this->db->select ('*');
+		$this->db->from ('tblimages');
+		$this->db->where ('post_id',$post_id);
+		$result= $this->db->get();
+
+		if($result->result() > 0 ){
+			return $result;
+		}else{
+			return 'no image';
+		}
+	}
+
+	function likeHomepagePost($post_id){
+		$this->db->select ('*');
+		$this->db->from ('tbllikes');
+		$this->db->where ('like_post_id',$post_id);
+		$this->db->where ('like_from_id',$this->session->userdata('id'));
+		$getDb = $this->db->get();
+
+		if ($getDb->num_rows() > 0 ){
+			foreach($getDb->result() as $db){
+				$status=$db->like_status;
+			}
+			if($status=='1'){
+				$int_array = array(
+					'like_status'=>'0',
+				);
+
+				$this->db->where ('like_post_id',$post_id);
+				$this->db->where ('like_from_id',$this->session->userdata('id'));
+				$this->db->update('tbllikes',$int_array);
+				return '1';
+			}else{
+				$int_array = array(
+					'like_status'=>'1',
+				);
+
+				$this->db->where ('like_post_id',$post_id);
+				$this->db->where ('like_from_id',$this->session->userdata('id'));
+				$this->db->update('tbllikes',$int_array);
+				return '2';
+			}
+
+		}else{
+			$int_array = array(
+				'like_from_id'=>$this->session->userdata('id'),
+				'like_post_id'=>$post_id,
+				'like_status'=>'1',
+			);
+			$this->db->insert('tbllikes',$int_array);
+			return '2';
+		}
+		return '';
+	}
+
+	function getLikeStatus($post_id){
+		$this->db->select ('like_status');
+		$this->db->from ('tbllikes');
+		$this->db->where ('like_post_id',$post_id);
+		$this->db->where ('like_from_id',$this->session->userdata('id'));
+		$getDb = $this->db->get();
+
+		if($getDb->num_rows() >0){
+
+			return $getDb->result();
+
+		}else{
+			return '';
+		}
+	}
+	function getLikeCount($post_id){
+		$this->db->select('*');
+		$this->db->from ('tbllikes');
+		$this->db->where ('like_post_id',$post_id);
+		$this->db->where ('like_status=','1');
+		$getDb = $this->db->get();
+
+		if($getDb->num_rows() > 0){
+			 return $getDb->num_rows();
+		}else{
+			return '';
+		}
+
+	}
+
+	function getTopDiets(){
+
+//		SELECT * FROM `tbllikes` join tblposts on tbllikes.like_post_id = tblposts.post_id group by like_post_id
+//		SELECT sum(like_status) FROM `tbllikes` group by like_post_id
+
+
+		$this->db->select('*');
+		$this->db->select('(SELECT SUM(like_status)) AS like_sum');
+		$this->db->from('tbllikes l');
+		$this->db->join('tblposts p','l.like_post_id=p.post_id','left');
+		$this->db->group_by('l.like_post_id');
+		$this->db->order_by('like_sum','desc');
+		$getDb = $this->db->get();
+//		echo "<pre>";
+//		print_r($getDb->result());
+//
+//		exit;
+		if($getDb->num_rows()>0){
+
+			return $getDb->result();
+		}else{
+			return '';
+		}
+	}
 }

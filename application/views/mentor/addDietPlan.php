@@ -17,8 +17,8 @@
 			</div>
 
 			<div class="form-group">
-				<label for="">Post Title</label>
-				<input name="post_title" type="text" class="form-control" id="" placeholder="">
+				<label for="">Diet Title</label>
+				<input name="post_title" type="text" class="form-control" id="" placeholder="" required>
 			</div>
 
 			<div class="form-group">
@@ -28,19 +28,25 @@
 					<option name="type_of_diet" value="Intermittent Fasting">Intermittent Fasting</option>
 					<option name="type_of_diet" value="Zone Diet">Zone Diet</option>
 					<option name="type_of_diet" value="Paleo Diet">Paleo Diet</option>
-					<option name="type_of_diet" value="Paleo Diet">Paleo Diet</option>
 					<option name="type_of_diet" value="Blood Type Diet">Blood Type Diet</option>
 					<option name="type_of_diet" value="Vegan Diet">Vegan Diet</option>
 					<option name="type_of_diet" value="South Beach Diet">South Beach Diet</option>
 					<option name="type_of_diet" value="Mediterranean Diet">Mediterranean Diet</option>
 					<option name="type_of_diet" value="Food Diet">Raw Food Diet</option>
+					<option id="type_of_diet" name="type_of_diet" value="Other Diet">Other Diet</option>
 				</select>
+			</div>
+
+			<div class="form-group other-diet" >
+				<label for="">Name of Diet Plan</label>
+				<input class="form-control" type="text" value="" name="other_diet">
 			</div>
 
 			<div class="form-row">
 				<div class="col">
 					<label for=""> Plan Track (Optional)</label>
-					<select class="form-control" name="routine_format">
+					<select class="form-control" name="routine_format" id="plan_track">
+						<option value="">No Selection</option>
 						<option name="routine_format" value="Day">Day</option>
 						<option name="routine_format" value="Month">Month</option>
 						<option name="routine_format" value="Year">Year</option>
@@ -48,12 +54,13 @@
 				</div>
 				<div class="col">
 					<label for="">Number of: Days|Months|Years</label>
-					<input name="routine_count" class="form-control" type="number" class="form-inline" id=""
+					<input name="routine_count" class="form-control" type="number" class="form-inline" id="num_day"
 						   placeholder="">
 				</div>
 				<div class="col">
 					<label for="target_audience">Suitable for:</label>
 					<select name="target_audience" class="form-control">
+						<option value="">No Selection</option>
 						<option name="target_audience" value="Kids">Kids</option>
 						<option name="target_audience" value="Adult">Teens</option>
 						<option name="target_audience" value="Adult">Adult</option>
@@ -76,9 +83,19 @@
 			</div>
 			<div style="float:right">
 				<button type="reset" class="btn btn-primary btn-sm">Reset</button>
-				<button type="submit" class="btn btn-success btn-sm">Submit</button>
+				<button type="submit" class="btn btn-success btn-sm" id="submit">Submit</button>
 			</div>
 
 		</form>
 	</div>
 </div>
+<script>
+	$(document).ready(function(){
+		$('.other-diet').hide();
+
+		$('#type_of_diet').on('click',function(){
+			$('.other-diet').show();
+		});
+	});
+</script>
+

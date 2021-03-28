@@ -161,7 +161,23 @@ class Admin_model extends CI_Model
 		$this->db->from('tblimages');
 		$this->db->where('post_id', $post_id);
 		$this->db->where('image_post_type', 'diet_plan');
-		$this->db->limit(4);
+		$this->db->where('image_name!=','');
+		$this->db->limit(6);
+		$qstr = $this->db->get();
+		if ($qstr) {
+			return $qstr->result();
+		} else {
+			return '';
+		}
+	}
+
+	function get_diet_plan_images_all($post_id)
+	{
+
+		$this->db->select('*');
+		$this->db->from('tblimages');
+		$this->db->where('post_id', $post_id);
+		$this->db->where('image_post_type', 'diet_plan');
 		$qstr = $this->db->get();
 		if ($qstr) {
 			return $qstr->result();
@@ -185,7 +201,7 @@ class Admin_model extends CI_Model
 			$return_array = array();
 			foreach($qstr->result() as $val){
 
-				$val->images= $this->get_diet_plan_images($val->post_id);
+				$val->images= $this->get_diet_plan_images_all($val->post_id);
 			}
 
 		}
@@ -457,4 +473,293 @@ class Admin_model extends CI_Model
 
 	}
 
+
+	public function post_thread($title, $desciption, $date_created)
+	{
+		$id = $this->session->userdata('id');
+		$data = array(
+			'thread_user_id' => $id,
+			'thread_title' => $title,
+			'thread_content' => $desciption,
+			'thread_date' => $date_created
+		);
+		print_r($data);
+		return $this->db->insert('tblcommunity', $data);
+	}
+
+
+	public function get_myComment($comment_id)
+	{
+
+		$qstr = $this->db->query("SELECT * from tblcommunitycomments where comment_id = $comment_id");
+
+
+		if ($qstr->num_rows() > 0) {
+			$result = $qstr->result_array();
+		} else {
+			$result = null;
+		}
+		return $result;
+	}
+
+	public function updateMyComment($comment_id, $field)
+	{
+		$this->db->where('comment_id', $comment_id);
+		$this->db->update('tblcommunitycomments', $field);
+		// echo $this->db->last_query();
+
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
+	public function get_myCommunityThread($community_id)
+	{
+		$qstr = $this->db->query("SELECT * from tblcommunity where community_id = $community_id");
+
+
+		if ($qstr->num_rows() > 0) {
+			$result = $qstr->result_array();
+		} else {
+			$result = null;
+		}
+		return $result;
+	}
+
+
+	public function updateMyThread($thread_id, $field)
+	{
+		$this->db->where('community_id', $thread_id);
+		$this->db->update('tblcommunity', $field);
+		// echo $this->db->last_query();
+
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
+
+	public function get_my_Profileinfo($current_user)
+	{
+
+		$qstr = $this->db->get('tblusers');
+		$qstr = $this->db->get_where('tblusers', array('userId' => $current_user));
+		//$query=$this->db->query($qstr);
+		if ($qstr->num_rows() > 0) {
+			$result = $qstr->result_array();
+		} else {
+			$result = null;
+		}
+		return $result;
+	}
+
+
+	public function updateMyProfile($field, $id)
+	{
+
+		$this->db->where('userId', $id);
+		$this->db->update('tblusers', $field);
+		// echo $this->db->last_query();
+
+		if ($this->db->affected_rows() == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
+	public function add_profilePic($id, $date_picuploaded, $file_name)
+	{
+
+		$qstr = $this->db->query("SELECT * FROM profilepic where p_user_id = $id");
+
+
+		if ($qstr->num_rows() > 0) {
+			$data = array(
+				'p_user_id' => $id,
+				'p_name' => $file_name,
+
+				'p_dateuploaded' => $date_picuploaded,
+
+			);
+
+			return $this->db->update('profilepic', $data);
+
+			$data['userpic'] = array(
+				'user_picture_status' => '1'
+			);
+
+			return $this->db->update('tblusers', $data['userpic']);
+			$this->session->set_flashdata('msgerror', 'Fields cannot be empty');
+			exit;
+		} else {
+			$data = array(
+				'p_user_id' => $id,
+				'p_name' => $file_name,
+
+				'p_dateuploaded' => $date_picuploaded,
+
+			);
+
+			return $this->db->insert('profilepic', $data);
+
+			$data['userpic'] = array(
+				'user_picture_status' => '1'
+			);
+
+			return $this->db->insert('tblusers', $data['userpic']);
+			$this->session->set_flashdata('msgerror', 'Fields cannot be empty');
+			exit;
+		}
+
+
+	}
+
+
+	public function profilePic_Status($id)
+	{
+		$data = array(
+			'user_picture_status' => '1'
+		);
+
+		$this->db->where('userId', $id);
+		return $this->db->update('tblusers', $data);
+
+		$this->session->set_flashdata('msgerror', 'Fields cannot be empty');
+		exit;
+	}
+
+
+	public function model_show_profilepic()
+	{
+		$qstr = $this->db->query('SELECT * from profilepic');
+
+
+		if ($qstr->num_rows() > 0) {
+			$result = $qstr->result_array();
+		} else {
+			$result = null;
+		}
+		return $result;
+	}
+
+	function getImagesInPost($post_id){
+
+	$this->db->select ('*');
+	$this->db->from ('tblimages');
+	$this->db->where ('post_id',$post_id);
+	$result= $this->db->get();
+
+	if($result->result() > 0 ){
+		return $result;
+	}else{
+		return 'no image';
+	}
+	}
+
+
+	function likeHomepagePost($post_id){
+		$this->db->select ('*');
+		$this->db->from ('tbllikes');
+		$this->db->where ('like_post_id',$post_id);
+		$this->db->where ('like_from_id',$this->session->userdata('id'));
+		$getDb = $this->db->get();
+
+		if ($getDb->num_rows() > 0 ){
+			foreach($getDb->result() as $db){
+				$status=$db->like_status;
+			}
+			if($status=='1'){
+				$int_array = array(
+					'like_status'=>'0',
+				);
+
+				$this->db->where ('like_post_id',$post_id);
+				$this->db->where ('like_from_id',$this->session->userdata('id'));
+				$this->db->update('tbllikes',$int_array);
+				return '1';
+			}else{
+				$int_array = array(
+					'like_status'=>'1',
+				);
+
+				$this->db->where ('like_post_id',$post_id);
+				$this->db->where ('like_from_id',$this->session->userdata('id'));
+				$this->db->update('tbllikes',$int_array);
+				return '2';
+			}
+
+		}else{
+			$int_array = array(
+				'like_from_id'=>$this->session->userdata('id'),
+				'like_post_id'=>$post_id,
+				'like_status'=>'1',
+			);
+			$this->db->insert('tbllikes',$int_array);
+			return '2';
+		}
+		return '';
+	}
+
+	function getLikeStatus($post_id){
+		$this->db->select ('like_status');
+		$this->db->from ('tbllikes');
+		$this->db->where ('like_post_id',$post_id);
+		$this->db->where ('like_from_id',$this->session->userdata('id'));
+		$getDb = $this->db->get();
+
+		if($getDb->num_rows() >0){
+
+			return $getDb->result();
+
+		}else{
+			return '';
+		}
+	}
+	function getLikeCount($post_id){
+		$this->db->select('*');
+		$this->db->from ('tbllikes');
+		$this->db->where ('like_post_id',$post_id);
+		$this->db->where ('like_status=','1');
+		$getDb = $this->db->get();
+
+		if($getDb->num_rows() > 0){
+			return $getDb->num_rows();
+		}else{
+			return '';
+		}
+
+	}
+
+	function getTopDiets(){
+
+//		SELECT * FROM `tbllikes` join tblposts on tbllikes.like_post_id = tblposts.post_id group by like_post_id
+//		SELECT sum(like_status) FROM `tbllikes` group by like_post_id
+
+
+		$this->db->select('*');
+		$this->db->select('(SELECT SUM(like_status)) AS like_sum');
+		$this->db->from('tbllikes l');
+		$this->db->join('tblposts p','l.like_post_id=p.post_id','left');
+		$this->db->group_by('l.like_post_id');
+		$this->db->order_by('like_sum','desc');
+		$getDb = $this->db->get();
+//		echo "<pre>";
+//		print_r($getDb->result());
+//
+//		exit;
+		if($getDb->num_rows()>0){
+
+			return $getDb->result();
+		}else{
+			return '';
+		}
+	}
 }
