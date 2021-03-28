@@ -56,7 +56,7 @@
 	if (isset($rows)) {
 		?>
 		<h1 class="d-flex justify-content-center">
-			Diet Plans Test Update
+			Diet Plans
 		</h1>
 		<?php
 		foreach ($rows as $row) {
