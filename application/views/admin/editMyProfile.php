@@ -113,28 +113,28 @@ if ($myInfo){
                               
                               <div class="col-xs-6">
                                   <label for="mname"><h4>Middle Name</h4></label>
-                                  <input type="text" class="form-control" name="mname"  id="middle_name" value="<?php if($middleName){ echo $middleName; } else {echo "";}?>" placeholder="enter phone" title="enter your phone number if any.">
+                                  <input type="text" class="form-control" name="mname"  id="middle_name" value="<?php if($middleName){ echo $middleName; } else {echo "";}?>" placeholder="middle name" title="enter your phone number if any.">
                               </div>
                           </div>
                               <div class="form-group">
                               
                               <div class="col-xs-6">
                                   <label for="phone"><h4>Age</h4></label>
-                                  <input type="text" class="form-control" name="age"   id="phone"  value="<?php if(isset($age)){ echo $age; } else {echo "";}?>" placeholder="enter phone" readonly>
+                                  <input type="text" class="form-control" name="age"   id="phone"  value="<?php if(isset($age)){ echo $age; } else {echo "";}?>" placeholder="your age" readonly>
                               </div>
                           </div>
                           <div class="form-group">
                               
                               <div class="col-xs-6">
                                   <label for="lname"><h4>Last Name</h4></label>
-                                  <input type="text" class="form-control" name="lname"  id="last_name" value="<?php if($lastName){ echo $lastName; } else {echo "";}?>" placeholder="enter phone"  >
+                                  <input type="text" class="form-control" name="lname"  id="last_name" value="<?php if($lastName){ echo $lastName; } else {echo "";}?>" placeholder="last name"  >
                               </div>
                           </div>
                           <div class="form-group">
                               
                               <div class="col-xs-6">
                                   <label for="dob"><h4>Date Of Birth</h4></label>
-                                  <input type="date" class="form-control" name="dob"  id="dob" required value="<?php if(date($dob)){ echo date($dob); } else {echo "";}?>" placeholder="enter phone" title="if its wrong change here">
+                                  <input type="date" class="form-control" name="dob"  id="dob" required value="<?php if(date($dob)){ echo date($dob); } else {echo "";}?>" placeholder="Birth Date" title="if its wrong change here">
                               </div>
                           </div>
                           
