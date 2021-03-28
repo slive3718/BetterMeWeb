@@ -1,3 +1,10 @@
+<?php
+//foreach ($getTopDiets as $diets){
+//
+//			print_r($diets->like_sum);
+//
+//}
+?>
 
 <style>
 
@@ -127,7 +134,6 @@
 </div>
 </div>
 <div>
-
 	<div class="shadow-lg p-3 mb-5 ml-5" style="display:inline-block;">
 		<div class="card" style="width: 25rem; height:60rem">
 			<?php if ($this->session->flashdata('msgsuccess_c')) {
@@ -138,6 +144,26 @@
 					src="<?= base_url(); ?>assets/images/betterMeCommunity.png?>"
 					alt="Card image cap"
 					style="width:300px;height:120px;margin:auto">
+
+			<table class="responsive table">
+				<div class="border border-success " style="text-align: center;font-size:30px; font-family: -apple-system">Top 10 Most Likes Diet</div>
+				<thead>
+				<th></th>
+				</thead>
+				<tbody>
+				<?php  foreach ($getTopDiets as $diets){
+				?>
+				<tr>
+					<td>
+						<span style="float:left !important;"><?=$diets->post_title?></span>
+					</td>
+					<td>
+						<span style="float:right !important;"><?=$diets->like_sum?></span>
+					</td>
+				</tr>
+				<?php } ?>
+				</tbody>
+			</table>
 			<div class="card-body">
 				<button class="btn btn-success btn-sm"
 						onclick="window.location.href='<?= base_url() . 'user/create_thread' ?>'"> Create a Thread
@@ -165,7 +191,6 @@
 									<a href="<?= base_url() . 'user/view_this_community_post/' . $community_post_id ?>">
 										<?php echo $thread_title ?>
 									</a>
-
 								<th>
 									<a href="<?= base_url() . 'user/view_this_community_post/' . $community_post_id ?>">
 										<?php
@@ -184,7 +209,6 @@
 									</p>
 								</td>
 								<td>
-
 									<p style="font-size:70%;">Post Author:
 										<?php echo $thread_user_name ?>
 									</p>
@@ -193,14 +217,10 @@
 							<?php
 						}
 					} ?>
-
 				</table>
-
-
 				</p>
 			</div>
 		</div>
-
 	</div>
 </div>
 <script>

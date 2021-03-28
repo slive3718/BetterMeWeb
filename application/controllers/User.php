@@ -159,6 +159,8 @@ class User extends CI_Controller
         $community_posts=$this->user_model->get_community_post();
         $data['community_posts']=$community_posts;
 
+		$data['getTopDiets'] = $this->user_model->getTopDiets();
+
         $data['page_title']= "Homepage";
         $this->load->view('user/templates/header', $data);
         $this->load->view('user/homepage', $data);
@@ -832,7 +834,6 @@ public function add_new_post(){
 
 	}
 
-
 	public function likeHomepagePost(){
     	$post=$this->input->post();
     	$post_id=$post['postId'];
@@ -845,4 +846,7 @@ public function add_new_post(){
 			echo 'error';
 		}
 	}
+
+
+
 }
