@@ -416,6 +416,7 @@ class User_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('tblusers');
 		$this->db->where('userId', $userid);
+		$this->db->order_by('date','desc');
 		$qstr = $this->db->get();
 
 		//$query=$this->db->query($qstr);
