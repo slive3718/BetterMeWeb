@@ -744,6 +744,7 @@ public function add_new_post(){
 
 		if($result){
 			$data['gotMyProfilePost']=$result;
+            $data['page_title']="Edit My Profile Post";
 			$this->load->view("user/templates/header", $data);
 			$this->load->view('user/editMyProfilePost',$data);
 		}
