@@ -664,4 +664,102 @@ class Admin_model extends CI_Model
 	}
 	}
 
+
+	function likeHomepagePost($post_id){
+		$this->db->select ('*');
+		$this->db->from ('tbllikes');
+		$this->db->where ('like_post_id',$post_id);
+		$this->db->where ('like_from_id',$this->session->userdata('id'));
+		$getDb = $this->db->get();
+
+		if ($getDb->num_rows() > 0 ){
+			foreach($getDb->result() as $db){
+				$status=$db->like_status;
+			}
+			if($status=='1'){
+				$int_array = array(
+					'like_status'=>'0',
+				);
+
+				$this->db->where ('like_post_id',$post_id);
+				$this->db->where ('like_from_id',$this->session->userdata('id'));
+				$this->db->update('tbllikes',$int_array);
+				return '1';
+			}else{
+				$int_array = array(
+					'like_status'=>'1',
+				);
+
+				$this->db->where ('like_post_id',$post_id);
+				$this->db->where ('like_from_id',$this->session->userdata('id'));
+				$this->db->update('tbllikes',$int_array);
+				return '2';
+			}
+
+		}else{
+			$int_array = array(
+				'like_from_id'=>$this->session->userdata('id'),
+				'like_post_id'=>$post_id,
+				'like_status'=>'1',
+			);
+			$this->db->insert('tbllikes',$int_array);
+			return '2';
+		}
+		return '';
+	}
+
+	function getLikeStatus($post_id){
+		$this->db->select ('like_status');
+		$this->db->from ('tbllikes');
+		$this->db->where ('like_post_id',$post_id);
+		$this->db->where ('like_from_id',$this->session->userdata('id'));
+		$getDb = $this->db->get();
+
+		if($getDb->num_rows() >0){
+
+			return $getDb->result();
+
+		}else{
+			return '';
+		}
+	}
+	function getLikeCount($post_id){
+		$this->db->select('*');
+		$this->db->from ('tbllikes');
+		$this->db->where ('like_post_id',$post_id);
+		$this->db->where ('like_status=','1');
+		$getDb = $this->db->get();
+
+		if($getDb->num_rows() > 0){
+			return $getDb->num_rows();
+		}else{
+			return '';
+		}
+
+	}
+
+	function getTopDiets(){
+
+//		SELECT * FROM `tbllikes` join tblposts on tbllikes.like_post_id = tblposts.post_id group by like_post_id
+//		SELECT sum(like_status) FROM `tbllikes` group by like_post_id
+
+
+		$this->db->select('*');
+		$this->db->select('(SELECT SUM(like_status)) AS like_sum');
+		$this->db->from('tbllikes l');
+		$this->db->join('tblposts p','l.like_post_id=p.post_id','left');
+		$this->db->group_by('l.like_post_id');
+		$this->db->order_by('like_sum','desc');
+		$getDb = $this->db->get();
+//		echo "<pre>";
+//		print_r($getDb->result());
+//
+//		exit;
+		if($getDb->num_rows()>0){
+
+			return $getDb->result();
+		}else{
+			return '';
+		}
+	}
 }

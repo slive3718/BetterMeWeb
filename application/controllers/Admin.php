@@ -135,6 +135,8 @@ public function homepage(){
         $community_posts=$this->admin_model->get_community_post();
         $data['community_posts']=$community_posts;
         $data['page_title']= "Homepage";
+		$data['getTopDiets'] = $this->admin_model->getTopDiets();
+
         $this->load->view('admin/templates/header',$data);
         $this->load->view('admin/homepage',$data);
         $this->load->view('templates/footer');
@@ -1053,5 +1055,17 @@ public function viewArchiveDiet(){
 		}
 	}
 
+	public function likeHomepagePost(){
+		$post=$this->input->post();
+		$post_id=$post['postId'];
+		$result=$this->admin_model->likeHomepagePost($post_id);
+		if($result=="2"){
+			echo 'like';
+		}else if ($result=='1'){
+			echo 'unlike';
+		}else{
+			echo 'error';
+		}
+	}
 
 }

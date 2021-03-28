@@ -125,6 +125,29 @@
 					src="<?= base_url(); ?>assets/images/betterMeCommunity.png?>"
 					alt="Card image cap"
 					style="width:300px;height:120px;margin:auto">
+
+			<table class="responsive table">
+				<div class="border border-success " style="text-align: center;font-size:30px; font-family: -apple-system">Top 10 Most Likes Diet</div>
+				<thead>
+				<th></th>
+				</thead>
+				<tbody>
+				<?php if(isset($getTopDiets) && !empty($getTopDiets)){
+
+					foreach ($getTopDiets as $diets){
+						?>
+						<tr>
+							<td>
+								<span style="float:left !important;"><a href="<?= base_url().'admin/viewFullDiet/'.$diets->post_id?>"><?=$diets->post_title?></a></span>
+							</td>
+							<td>
+								<span style="float:right !important;"><?=$diets->like_sum?></span>
+							</td>
+						</tr>
+						<?php
+					}} ?>
+				</tbody>
+			</table>
 			<div class="card-body">
 				<button class="btn btn-success btn-sm"
 						onclick="window.location.href='<?= base_url() . 'admin/create_thread' ?>'"> Create a Thread

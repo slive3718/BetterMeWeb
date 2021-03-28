@@ -158,6 +158,8 @@ class Mentor extends CI_Controller {
         $community_posts=$this->mentor_model->get_community_post();
         $data['community_posts']=$community_posts;
 
+		 $data['getTopDiets'] = $this->mentor_model->getTopDiets();
+
         $data['page_title']= "Homepage";
         $this->load->view('templates/header',$data);
         $this->load->view('mentor/homepage',$data);
@@ -941,5 +943,18 @@ $this->load->view('mentor/uploadProfilePic');
 		}
 	}
 
+
+	public function likeHomepagePost(){
+		$post=$this->input->post();
+		$post_id=$post['postId'];
+		$result=$this->mentor_model->likeHomepagePost($post_id);
+		if($result=="2"){
+			echo 'like';
+		}else if ($result=='1'){
+			echo 'unlike';
+		}else{
+			echo 'error';
+		}
+	}
 
 }
