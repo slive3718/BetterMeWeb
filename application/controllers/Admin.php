@@ -942,7 +942,7 @@ public function viewArchiveDiet(){
 			$result = $this->admin_model->updateMyProfile($field, $id);
 
 			if ($result) {
-				$this->session->set_flashdata('msgsuccess', "Post successfully deleted.");
+				$this->session->set_flashdata('msgsuccess', "Profile successfully Updated.");
 
 				redirect(base_url('admin/viewMyProfile'));
 			} else {
