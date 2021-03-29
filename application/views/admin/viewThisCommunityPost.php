@@ -168,7 +168,7 @@ if (isset($rows)){
 								<div class="d-flex flex-row fs-12">
 									<div class="like p-2 cursor">
 										<i class="fa fa-thumbs-o-up"></i>
-										<span class="ml-1">
+										<span class="ml-1" style="cursor:pointer">
                                     Like</span></div>
 
 									<div
@@ -186,7 +186,7 @@ if (isset($rows)){
 											aria-controls="collapse-2"
 											href="#collapse-2">
 										<i class="fa fa-share"></i>
-										<span class="ml-1">Share</span></div>
+										<span class="ml-1" style="cursor:pointer">Share</span></div>
 								</div>
 							</div>
 							<div id="collapse-1" class="bg-light p-2 collapse" data-parent="#myGroup">
@@ -210,7 +210,7 @@ if (isset($rows)){
 								</div>
 								<div class="mt-2 text-right">
 									<button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>
-									<button class="btn btn-outline-primary btn-sm ml-1 shadow-none" class="ml-1" type="button">Cancel</button>
+									<button class="btn btn-outline-primary btn-sm ml-1 shadow-none"  type="button">Cancel</button>
 								</div>
 							</div>
 							<div id="collapse-2" class="bg-light p-2 collapse" data-parent="#myGroup">
