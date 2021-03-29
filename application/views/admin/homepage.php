@@ -128,10 +128,11 @@
 					</div>
 				</div>
 			</div>
+		</div>
 			<?php
 		}
 	} ?>
-</div>
+
 	<div class="shadow-lg p-3 mb-5 ml-5 responsive" style="display:inline-block;">
 		<div class="card" style="">
 			<?php if ($this->session->flashdata('msgsuccess_c')) {
