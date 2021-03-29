@@ -42,8 +42,9 @@
 
 	if (isset($rows)) {
 		?>
-		<table class="responsive table">
-		<div class="border border-success font-header">Diet Plans</div>
+		<h1 class="d-flex justify-content-center">
+			Diet Plans
+		</h1>
 		<?php
 		foreach ($rows as $row) {
 
@@ -120,7 +121,6 @@
 								}
 								?>
 							</p>
-			</table>
 						</div>
 
 						</div>
