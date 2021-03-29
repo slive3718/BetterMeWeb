@@ -41,8 +41,8 @@
 
 	if (isset($rows)) {
 		?>
-		<h1 class="border border-success font-header">
-			Diet and Exercise Plans
+		<h1 class="d-flex justify-content-center">
+			Latest Post
 		</h1>
 		<?php
 		foreach ($rows as $row) {
