@@ -208,7 +208,7 @@
 									</a></span>
 								</td>
 								<td>
-									<p style="font-size:50%;">
+									<p style="font-size:80%;">
 										<?php echo $thread_date ?>
 									</p>
 								</td>
