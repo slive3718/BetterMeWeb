@@ -46,8 +46,6 @@
 
 	}
 </style>
-<div style="width:70%;padding-right:30px;" class="">
-
 
 	<?php
 
@@ -55,8 +53,8 @@
 
 	if (isset($rows)) {
 		?>
-		<h1 class="d-flex justify-content-center">
-			Diet Plans
+		<h1 class="d-flex justify-content-center" style="margin:10px; font-weight: bold;">
+			Diet Plans and Exercise Routines
 		</h1>
 		<?php
 		foreach ($rows as $row) {
