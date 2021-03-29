@@ -130,7 +130,7 @@
 		}
 	} ?>
 	<div class="shadow-lg p-3 mb-5 ml-5 responsive"
-	style="display:inline-block; margin:auto;">
+	style="display:inline-block; margin:auto; align-content:center;">
 		<div class="card" style="float:center;">
 			<?php if ($this->session->flashdata('msgsuccess_c')) {
 				echo "<div class='btn btn-success'>" . $this->session->flashdata('msgsuccess_c') . '</div>';
