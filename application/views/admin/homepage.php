@@ -76,12 +76,12 @@
 
 			<div
 					class="shadow p-3 mb-5"
-					style='margin-left:65px;margin-bottom:30px;'>
+					style='float:left;margin-left:65px;margin-bottom:30px;'>
 				<div class="d-flex justify-content-between btn btn-success btn-xs">
 
 					<div>    <?php if (isset($pic_status)){
 						?>
-						<img style="width:2rem;height:2rem" ;
+						<img style="width:5rem;height:5rem" ;
 							 src="<?= base_url() . './uploads/profilepic/profile' . $post_user_id ?>.jpg"
 							 class="img-circle img-responsive"
 							 alt=""/> Posted by: <?= ucfirst($posts_user_name) ?></div>
