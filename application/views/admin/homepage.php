@@ -36,7 +36,7 @@
 
 	}
 </style>
-<div style="width:90%;padding-right:30px;" class="">
+<div style="width:70%;padding-right:30px;" class="">
 	<?php
 	$current_user = $this->session->userdata('id');
 
