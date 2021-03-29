@@ -208,13 +208,13 @@
 									</a></span>
 								</td>
 								<td>
-									<p style="font-size:80%;">
+									<p style="font-size:80%; font-weight:bold;">
 										<?php echo $thread_date ?>
 									</p>
 								</td>
 								<td>
 
-									<p style="font-size:70%; font-weight:bold;">Post Author:
+									<p style="font-size:80%; font-weight:bold;">Posted By:
 										<?php echo $thread_user_name ?>
 									</p>
 								</td>
