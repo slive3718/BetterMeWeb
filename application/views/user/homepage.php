@@ -172,7 +172,7 @@
 					style="width:300px;height:120px;margin:auto">
 
 			<table class="responsive table">
-				<div class="border border-success font-header">10 Most Liked Diet</div>
+				<div class="border border-success font-header">Most Liked Diets & Exercise</div>
 				<thead>
 				<th>Diet Title</th>
 				<th style="float:right">Like Count</th>
