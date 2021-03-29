@@ -41,7 +41,7 @@
 
 	if (isset($rows)) {
 		?>
-		<h1 class="d-flex justify-content-center">
+		<h1 class="d-flex justify-content-center" style="margin:10px">
 			Latest Post
 		</h1>
 		<?php
