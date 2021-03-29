@@ -193,10 +193,10 @@
 							?>
 							<tr>
 								<td>
-								<span style="float:left"><a href="<?= base_url() . 'admin/view_this_community_post/' . $community_post_id ?>">
+								<span style="float:left; font-weight:bold;"><a href="<?= base_url() . 'admin/view_this_community_post/' . $community_post_id ?>">
 										<?php echo $thread_title ?>
 									</a></span>
-								<span style="float:left"><a href="<?= base_url() . 'admin/view_this_community_post/' . $community_post_id ?>">
+								<span style="float:left; font-weight:bold;"><a href="<?= base_url() . 'admin/view_this_community_post/' . $community_post_id ?>">
 										<?php
 										if (strlen($thread_content) > 30) {
 											$thread_content_cut = substr($thread_content, 0, 30);
