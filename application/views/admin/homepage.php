@@ -154,10 +154,10 @@
 						?>
 						<tr>
 							<td>
-								<span style="float:left !important;"><a href="<?= base_url().'admin/viewFullDiet/'.$diets->post_id?>"><?=$diets->post_title?></a></span>
+								<span style="float:left !important; font-weight:bold;"><a href="<?= base_url().'admin/viewFullDiet/'.$diets->post_id?>"><?=$diets->post_title?></a></span>
 							</td>
 							<td>
-								<span style="float:right !important;"><?=$diets->like_sum?></span>
+								<span style="float:right !important; font-weight:bold;"><?=$diets->like_sum?></span>
 							</td>
 						</tr>
 						<?php
