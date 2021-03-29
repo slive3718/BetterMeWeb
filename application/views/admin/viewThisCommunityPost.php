@@ -178,7 +178,7 @@ if (isset($rows)){
 											aria-controls="collapse-1"
 											href="#collapse-1">
 										<i class="fa fa-commenting-o"></i>
-										<span class="ml-1">Comment</span></div>
+										<span class="ml-1" style="cursor:pointer">Comment</span></div>
 									<div
 											class="like p-2 cursor action-collapse"
 											data-toggle="collapse"
