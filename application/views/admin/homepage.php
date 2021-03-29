@@ -81,7 +81,7 @@
 
 					<div>    <?php if (isset($pic_status)){
 						?>
-						<img style="width:5rem;height:5rem" ;
+						<img style="width:2rem;height:2rem" ;
 							 src="<?= base_url() . './uploads/profilepic/profile' . $post_user_id ?>.jpg"
 							 class="img-circle img-responsive"
 							 alt=""/> Posted by: <?= ucfirst($posts_user_name) ?></div>
@@ -107,7 +107,7 @@
 							<div style="margin-left:10px;margin-right: 5px">
 							<h5 class="card-title d-flex justify-content-center"><?= $post_title ?></h5>
 							<div>
-								<?= (isset($type_of_diet) && !empty($type_of_diet) && ($type_of_diet)!="Other Diet") ? '<span style="float:left">Type of Diet: </span><span style="float:right">'.$type_of_diet.'</span><br>':''?>
+								<?= (isset($type_of_diet) && !empty($type_of_diet) && ($type_of_diet)!="Other Diet") ? '<span style="float:left">Type of Diet: </span><span style="float:left">'.$type_of_diet.'</span><br>':''?>
 								<?= (isset($other_diet) && !empty($other_diet))? '<span style="float:left">Type of Diet: (Other Diet)</span><span style="float:right">'.$other_diet.'</span><br>':''?>
 								<?= ((isset($routine_count) && !empty($routine_count)) && (isset($routine_format) && !empty($routine_format)))? '<span style="float:left">Routine: </span><span style="float:right">'.$routine_count.' '.$routine_format.'</span><br>':'';?>
 								<?= ((isset($target_audience) && !empty($target_audience)) && (isset($target_audience) && !empty($target_audience))) ? '<span style="float:left">Suitable For: </span><span style="float:right">'.$target_audience.'</span><br>' : ''; ?>
