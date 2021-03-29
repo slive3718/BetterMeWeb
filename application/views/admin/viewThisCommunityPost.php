@@ -210,7 +210,7 @@ if (isset($rows)){
 								</div>
 								<div class="mt-2 text-right">
 									<button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>
-									<button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button>
+									<button class="btn btn-outline-primary btn-sm ml-1 shadow-none" class="ml-1" type="button">Cancel</button>
 								</div>
 							</div>
 							<div id="collapse-2" class="bg-light p-2 collapse" data-parent="#myGroup">
