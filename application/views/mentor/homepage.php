@@ -159,10 +159,10 @@
 						?>
 						<tr>
 							<td>
-								<span style="float:left !important;"><a href="<?= base_url().'mentor/viewFullDiet/'.$diets->post_id?>"><?=$diets->post_title?></a></span>
+								<span style="float:left !important; font-weight:bold;"><a href="<?= base_url().'mentor/viewFullDiet/'.$diets->post_id?>"><?=$diets->post_title?></a></span>
 							</td>
 							<td>
-								<span style="float:right !important;"><?=$diets->like_sum?></span>
+								<span style="float:right !important; font-weight:bold;"><?=$diets->like_sum?></span>
 							</td>
 						</tr>
 						<?php
@@ -195,10 +195,10 @@
 							?>
 							<tr>
 								<td>
-								<span style="float:left"><a href="<?= base_url() . 'mentor/view_this_community_post/' . $community_post_id ?>">
+								<span style="float:left; font-weight:bold;"><a href="<?= base_url() . 'mentor/view_this_community_post/' . $community_post_id ?>">
 										<?php echo $thread_title ?>
 									</a></span>
-								<span style="float:left"><a href="<?= base_url() . 'mentor/view_this_community_post/' . $community_post_id ?>">
+								<span style="float:left; font-weight:bold;"><a href="<?= base_url() . 'mentor/view_this_community_post/' . $community_post_id ?>">
 										<?php
 										if (strlen($thread_content) > 30) {
 											$thread_content_cut = substr($thread_content, 0, 30);
@@ -210,13 +210,13 @@
 									</a></span>
 								</td>
 								<td>
-									<p style="font-size:50%;">
+									<p style="font-size:80%; font-weight:bold;">
 										<?php echo $thread_date ?>
 									</p>
 								</td>
 								<td>
 
-									<p style="font-size:70%;">Post Author:
+									<p style="font-size:80%; font-weight:bold;">Posted By:
 										<?php echo $thread_user_name ?>
 									</p>
 								</td>
