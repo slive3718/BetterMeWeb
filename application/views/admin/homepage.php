@@ -41,7 +41,7 @@
 	if (isset($rows)) {
 		?>
 		<h1 class="d-flex justify-content-center" style="margin:10px; font-weight: bold;">
-			Latest Diet Plans and Exercise Routines
+			Diet Plans and Exercise Routines
 		</h1>
 		<?php
 		foreach ($rows as $row) {
@@ -129,7 +129,7 @@
 			<?php
 		}
 	} ?>
-	<div class="shadow-lg p-3 mb-5 ml-5 responsive" style="display:inline-block;">
+	<div class="shadow-lg p-3 mb-5 ml-5 responsive" style="">
 		<div class="card" style="">
 			<?php if ($this->session->flashdata('msgsuccess_c')) {
 				echo "<div class='btn btn-success'>" . $this->session->flashdata('msgsuccess_c') . '</div>';
