@@ -72,6 +72,7 @@
 			$type_of_diet = $row->type_of_diet;
 			$posts_user_name = $row->username;
 			$pic_status = $row->user_picture_status;
+			$target_audience = $row->target_audience;
 
 			if (isset($row->getLikeStatus) && !empty($row->getLikeStatus)) {
 				foreach ($row->getLikeStatus as $getLike) {
@@ -129,7 +130,7 @@
 									<?= (isset($type_of_diet) && !empty($type_of_diet) && ($type_of_diet) != "Other Diet") ? '<span style="float:left">Type of Diet: </span><span style="float:right">' . $type_of_diet . '</span><br>' : '' ?>
 									<?= (isset($other_diet) && !empty($other_diet)) ? '<span style="float:left">Type of Diet: (Other Diet)</span><span style="float:right">' . $other_diet . '</span><br>' : '' ?>
 									<?= ((isset($routine_count) && !empty($routine_count)) && (isset($routine_format) && !empty($routine_format))) ? '<span style="float:left">Routine: </span><span style="float:right">' . $routine_count . ' ' . $routine_format . '</span><br>' : ''; ?>
-									<?= ((isset($target_audience) && !empty($target_audience)) && (isset($target_audience) && !empty($target_audience))) ? '<span style="float:left">Good For: </span><span style="float:right">' . $target_audience . ' ' . $target_audience . '</span><br>' : ''; ?>
+									<?= ((isset($target_audience) && !empty($target_audience)) && (isset($target_audience) && !empty($target_audience))) ? '<span style="float:left">Suitable For: </span><span style="float:right">'.$target_audience.'</span><br>' : ''; ?>
 
 								</div>
 								<p class="card-text ">

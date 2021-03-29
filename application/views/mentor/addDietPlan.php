@@ -23,7 +23,7 @@
 
 			<div class="form-group">
 				<label for="">Type Of Diet</label>
-				<select class="form-control" name="type_of_diet">
+				<select class="form-control select-diet" name="type_of_diet">
 					<option value="">No Selection</option>
 					<option name="type_of_diet" value="Intermittent Fasting">Intermittent Fasting</option>
 					<option name="type_of_diet" value="Zone Diet">Zone Diet</option>
@@ -37,7 +37,7 @@
 				</select>
 			</div>
 
-			<div class="form-group other-diet" >
+			<div class="form-group text-other-diet" >
 				<label for="">Name of Diet Plan</label>
 				<input class="form-control" type="text" value="" name="other_diet">
 			</div>
@@ -91,11 +91,15 @@
 </div>
 <script>
 	$(document).ready(function(){
-		$('.other-diet').hide();
 
-		$('#type_of_diet').on('click',function(){
-			$('.other-diet').show();
+		$('.text-other-diet').hide();
+		$(".select-diet").change(function() {
+			if ($(this).val() == "Other Diet") {
+				$(".text-other-diet").show();
+			}
+			if ($(this).val() !== "Other Diet") {
+				$(".text-other-diet").hide();
+			}
 		});
 	});
 </script>
-
