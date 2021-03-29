@@ -102,7 +102,8 @@
 					</a>
 				</div>
 					<div class="card-body">
-						<div class="rounded card shadow"style="background-color: #28A745; color:white;text-align: center; width:28rem;height:15rem"">
+						<div class="rounded card shadow"
+						style="background-color: #28A745; color:white;text-align: center">
 							<div style="margin-left:10px;margin-right: 5px">
 							<h5 class="card-title d-flex justify-content-center"><?= $post_title ?></h5>
 							<div>
