@@ -129,7 +129,7 @@
 			<?php
 		}
 	} ?>
-	<div class="d-flex justify-content-center"  
+	<div class="shadow-lg p-3 mb-5 ml-5 responsive" class="d-flex justify-content-center"  
 	style="display:inline-block; margin:auto;">
 		<div class="card" style="float:center;">
 			<?php if ($this->session->flashdata('msgsuccess_c')) {
