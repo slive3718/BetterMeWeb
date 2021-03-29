@@ -145,7 +145,7 @@
 					style="width:300px;height:120px;margin:auto">
 
 			<table class="responsive table">
-				<div class="border border-success font-header" >Top 10 Most Likes Diet</div>
+				<div class="border border-success font-header">Most Liked Diets & Exercise</div>
 				<thead>
 				<th>Diet Title</th>
 				<th style="float:right">Like Count</th>
@@ -168,13 +168,18 @@
 				</tbody>
 			</table>
 			<div class="card-body">
+				<div class="font-header">
+					THREAD SECTION
+				</div>
 				<button class="btn btn-success btn-sm"
-						onclick="window.location.href='<?= base_url() . 'admin/create_thread' ?>'"  style="float:right"> Create a Thread
+						onclick="window.location.href='<?= base_url() . 'admin/create_thread' ?>'"  style="float:right">
+					Create a Thread
 				</button>
+				<br><br>
 				<h5 class="card-title d-flex justify-content-center"></h5>
 				<p class="card-text ">
 
-				<table>
+				<table class="table responsive">
 
 					<?php
 					if (isset($community_posts)) {
