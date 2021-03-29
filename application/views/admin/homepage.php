@@ -41,7 +41,7 @@
 
 	if (isset($rows)) {
 		?>
-		<h1 class="d-flex justify-content-center" class="border border-success font-header">
+		<h1 class="border border-success font-header">
 			Diet Plans
 		</h1>
 		<?php
