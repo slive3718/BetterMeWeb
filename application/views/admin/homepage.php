@@ -42,7 +42,7 @@
 
 	if (isset($rows)) {
 		?>
-		<div class="border border-success font-header">Most Liked Diets & Exercise</div>
+		<div class="border border-success font-header">Diet Plans</div>
 		<?php
 		foreach ($rows as $row) {
 
