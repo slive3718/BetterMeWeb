@@ -1,41 +1,4 @@
-<style>
 
-	.container {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-	}
-
-	.container .image {
-		width: 50%;
-
-
-	}
-
-	.container img {
-		width: calc(100% - (150px * 2));
-		margin: 20px;
-		margin-left: auto;
-		margin-right: auto;
-		display: block;
-	}
-	.table th{
-		color: #28A745;
-		font-family: monospace,sans-serif;
-	}
-	.font-header{
-		color: #FFFFFF;
-		font-family: 'Raleway', sans-serif;
-		font-size: 30px;
-		font-weight: 800;
-		line-height: 72px;
-		margin: 0 0 24px;
-		text-align: center;
-		text-transform: uppercase;
-		background-color: #28A745;
-
-	}
-</style>
 <div style="width:70%;padding-right:30px;" class="">
 	<?php
 	$current_user = $this->session->userdata('id');
