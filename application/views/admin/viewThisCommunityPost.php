@@ -12,7 +12,7 @@ if (isset($rows)){
 		$community_post_image=$row['thread_image_name'];
 		$community_post_id=$row['community_id'];
 		$post_user_name=$row['username'];
-		$post_user_full_name=$row['first_name'] + $row['last_name'];
+		$post_user_full_name=($row['first_name'].' '.$row['last_name']);
 
 		$pic_status=$row['user_picture_status'];
 		?>
