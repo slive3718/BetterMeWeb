@@ -214,7 +214,7 @@
 								</td>
 								<td>
 
-									<p style="font-size:70%;">Post Author:
+									<p style="font-size:70%; font-weight:bold;">Post Author:
 										<?php echo $thread_user_name ?>
 									</p>
 								</td>
