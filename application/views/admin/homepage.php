@@ -199,8 +199,6 @@
 								<span style="float:left"><a href="<?= base_url() . 'admin/view_this_community_post/' . $community_post_id ?>">
 										<?php echo $thread_title ?>
 									</a></span>
-
-								<th>
 								<span style="float:left"><a href="<?= base_url() . 'admin/view_this_community_post/' . $community_post_id ?>">
 										<?php
 										if (strlen($thread_content) > 30) {
