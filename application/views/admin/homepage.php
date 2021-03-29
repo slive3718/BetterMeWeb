@@ -33,7 +33,6 @@
 		text-align: center;
 		text-transform: uppercase;
 		background-color: #28A745;
-
 	}
 </style>
 	<?php
@@ -41,7 +40,7 @@
 
 	if (isset($rows)) {
 		?>
-		<h1 class="d-flex justify-content-center" style="margin:10px color:red">
+		<h1 class="d-flex justify-content-center" style="margin:10px; color:red;">
 			Latest Diet Plans and Exercise Routines
 		</h1>
 		<?php
