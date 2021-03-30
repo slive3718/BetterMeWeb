@@ -137,15 +137,13 @@
 <div>
 
 	<div class="shadow-lg p-3 mb-5 ml-5 responsive" style="display:inline-block;">
-		<div class="card" style="">
 			<?php if ($this->session->flashdata('msgsuccess_c')) {
 				echo "<div class='btn btn-success'>" . $this->session->flashdata('msgsuccess_c') . '</div>';
 			} ?>
-			<img
-					class="card-img-top"
-					src="<?= base_url(); ?>assets/images/betterMeCommunity.png?>"
-					alt="Card image cap"
-					style="width:300px;height:120px;margin:auto">
+			<div style="text-align:center;">
+				<img class=""  src="<?= base_url(); ?>assets/images/betterMeCommunity.png?>" alt="Card image cap" style="width:300px;height:120px;margin:auto">
+			</div>
+
 			<table class="responsive table">
 				<div class="border border-success font-header">Most Liked Diet & Exercise</div>
 				<thead>
