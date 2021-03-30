@@ -46,7 +46,6 @@
 
 	}
 </style>
-<div class="">
 	<div clas="col-12" style="text-align: center">
 		<h1 class="" style="margin:10px; font-weight: bold; text-align: center">
 			Diet Plans and Exercise Routines
@@ -54,8 +53,6 @@
 	</div>
 
 </div>
-	<div class="row">
-	<div class="col-8">
 		<?php
 		$current_user = $this->session->userdata('id');
 		if (isset($rows)) {
