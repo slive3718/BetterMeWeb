@@ -164,16 +164,13 @@
 
 	<div class="col-4" style="float:right">
 		<div class="shadow-lg p-3 mb-5 ml-5 responsive"
-			 style="display:inline-block;right:20px;>
-			<div class="card" style="">
+			 style="display:inline-block;right:20px;" >
 				<?php if ($this->session->flashdata('msgsuccess_c')) {
 					echo "<div class='btn btn-success'>" . $this->session->flashdata('msgsuccess_c') . '</div>';
 				} ?>
-				<img
-						class="card-img-top"
-						src="<?= base_url(); ?>assets/images/betterMeCommunity.png?>"
-						alt="Card image cap"
-						style="width:300px;height:120px;margin:auto">
+			<div style="text-align: center">
+				<img class=""  src="<?= base_url(); ?>assets/images/betterMeCommunity.png?>" alt="Card image cap" style="width:300px;height:120px;margin:auto">
+			</div>
 
 				<table class="responsive table">
 					<div class="border border-success font-header">Most Liked Diets & Exercise</div>
@@ -264,6 +261,9 @@
 					</table>
 					</p>
 				</div>
+			<div style="background-color: #28A745;color: #ffffee;" >
+				<p style="text-align: center">End of Thread</p>
+			</div>
 			</div>
 		</div>
 	</div>
