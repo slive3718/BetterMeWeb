@@ -164,7 +164,7 @@
 				<?php if ($this->session->flashdata('msgsuccess_c')) {
 					echo "<div class='btn btn-success'>" . $this->session->flashdata('msgsuccess_c') . '</div>';
 				} ?>
-			<div style="text-align:center; float:center;" >
+			<div style="text-align:center;" >
 				<img class=""  src="<?= base_url(); ?>assets/images/betterMeCommunity.png?>" alt="Card image cap" style="width:300px;height:120px;margin:auto">
 			</div>
 
