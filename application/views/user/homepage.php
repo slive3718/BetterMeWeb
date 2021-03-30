@@ -257,7 +257,7 @@
 					</table>
 					</p>
 				</div>
-			<div style="background-color: #28A745;color: #ffffee;" >
+			<div style="background-color: #28A745;color: #ffffee; font-weight:bold;" >
 				<p style="text-align: center">End of Thread</p>
 			</div>
 			</div>
