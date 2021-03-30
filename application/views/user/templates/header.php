@@ -87,7 +87,7 @@
 
 
 <div id="" class="">
-    <nav class="navbar navbar-expand-md navbar-light bg-success" style="width:100%; position:fixed;">
+    <nav class="navbar navbar-expand-md navbar-light bg-success" style="width:100%;">
         <a style="font-weight:bold;" class="btn btn-s btn-success rounded"class="navbar-brand"
         href="<?php echo base_url('user/homepage') ?>">BetterMe</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
