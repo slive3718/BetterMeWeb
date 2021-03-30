@@ -131,7 +131,6 @@
 	} ?>
 	<div class="shadow-lg p-3 mb-5 ml-5 responsive"
 	style="display:inline-block;">
-		<div class="card" style="float:center;">
 			<?php if ($this->session->flashdata('msgsuccess_c')) {
 				echo "<div class='btn btn-success'>" . $this->session->flashdata('msgsuccess_c') . '</div>';
 			} ?>
@@ -225,8 +224,9 @@
 				</table>
 				</p>
 				</div>
-				<div style="background-color: #28A745;color: #ffffee; font-weight:bold;">
+				<div style="background-color: #28A745;color: #ffffee; font-weight:bold;" >
 				<p style="text-align: center">End of Thread</p>
+				</div>
 			</div>
 		</div>
 	</div>
