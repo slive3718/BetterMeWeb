@@ -159,8 +159,7 @@
 		} ?>
 	</div>
 
-		<div class="shadow-lg p-3 mb-5 ml-5 responsive"
-			 style="display:inline-block;" >
+		<div class="shadow-lg p-3 mb-5 ml-5 responsive" style="display:inline-block;">
 				<?php if ($this->session->flashdata('msgsuccess_c')) {
 					echo "<div class='btn btn-success'>" . $this->session->flashdata('msgsuccess_c') . '</div>';
 				} ?>
