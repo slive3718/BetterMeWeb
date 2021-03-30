@@ -46,17 +46,18 @@
 
 	}
 </style>
-<div class="row">
-
-
-	<div class="col-8">
-		<?php
-
-		$current_user = $this->session->userdata('id');
-		?><h1 class="d-flex justify-content-center" style="margin:10px; font-weight: bold;">
+<div class="">
+	<div clas="col-12" style="text-align: center">
+		<h1 class="" style="margin:10px; font-weight: bold; text-align: center">
 			Diet Plans and Exercise Routines
 		</h1>
+	</div>
+
+</div>
+	<div class="row">
+	<div class="col-8">
 		<?php
+		$current_user = $this->session->userdata('id');
 		if (isset($rows)) {
 			?>
 
@@ -159,12 +160,11 @@
 				<?php
 			}
 		} ?>
-
 	</div>
 
 	<div class="col-4" style="float:right">
 		<div class="shadow-lg p-3 mb-5 ml-5 responsive"
-			 style="display:inline-block;right:20px">
+			 style="display:inline-block;right:20px;>
 			<div class="card" style="">
 				<?php if ($this->session->flashdata('msgsuccess_c')) {
 					echo "<div class='btn btn-success'>" . $this->session->flashdata('msgsuccess_c') . '</div>';
@@ -268,7 +268,6 @@
 		</div>
 	</div>
 </div>
-
 <script>
 	$(document).ready(function () {
 		$('.like').on('click', function () {
