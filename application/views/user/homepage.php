@@ -115,7 +115,7 @@
 
 				<div
 						class="shadow p-3 mb-5"
-						style='float:left;margin-left:65px;margin-bottom:30px;'>
+						style='float:left;margin-left:15px;margin-bottom:30px;'>
 					<div class="d-flex justify-content-between btn btn-success btn-xs">
 
 						<div>    <?php if (isset($pic_status)){
@@ -129,8 +129,8 @@
 						<div>Date Posted: <?= $date_posted ?></div>
 					</div>
 
-					<div class="card" style="width:30rem;height:30rem">
-						<div style="width:30rem;height:30rem">
+					<div class="card responsive" style="width:30rem;height:30rem">
+
 							<a href="<?= base_url('user/viewFullDiet/' . $post_id) ?>">
 								<div class="container">
 									<?php foreach ($row->images as $images) {
@@ -140,10 +140,10 @@
 									<?php } ?>
 								</div>
 							</a>
-						</div>
-						<div class="card-body">
+
+						<div class="card-body" style="">
 							<div class="rounded card shadow"
-								 style="background-color: #28A745; color:white;text-align: center">
+								 style="background-color: #28A745; color:white;text-align: center; height: 100%">
 								<div style="margin-left:10px;margin-right: 5px">
 									<h5 class="card-title d-flex justify-content-center"><?= $post_title ?></h5>
 									<div>
