@@ -65,6 +65,7 @@
 
 </style>
 <div clas="col-12" style="text-align: center">
+	<img src="<?= base_url()?>uploads/files/STR_team.jpg">
 	<h1 class="" style="margin:10px; font-weight: bold; text-align: center">
 		Diet Plans and Exercise Routines
 	</h1>
