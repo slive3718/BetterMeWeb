@@ -195,7 +195,7 @@ class User_model extends CI_Model
 	public function get_community_post()
 	{
 
-		$qstr = $this->db->query("SELECT * FROM tblcommunity LEFT JOIN tblusers on tblcommunity.thread_user_id=tblusers.userId where tblcommunity.archive_status !=1 order by tblcommunity.thread_date desc");
+		$qstr = $this->db->query("SELECT * FROM tblcommunity LEFT JOIN tblusers on tblcommunity.thread_user_id=tblusers.userId where tblcommunity.archive_status !=1 order by tblcommunity.thread_date desc limit 20");
 
 		if ($qstr->num_rows() > 0) {
 			$result = $qstr->result_array();
@@ -772,6 +772,7 @@ class User_model extends CI_Model
 		$this->db->join('tblposts p','l.like_post_id=p.post_id','left');
 		$this->db->group_by('l.like_post_id');
 		$this->db->order_by('like_sum','desc');
+		$this->db->limit(10);
 		$getDb = $this->db->get();
 //		echo "<pre>";
 //		print_r($getDb->result());

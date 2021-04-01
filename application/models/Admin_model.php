@@ -262,7 +262,7 @@ class Admin_model extends CI_Model
 	public function get_community_post()
 	{
 
-		$qstr = $this->db->query("SELECT * FROM tblcommunity LEFT JOIN tblusers on tblcommunity.thread_user_id=tblusers.userId where tblcommunity.archive_status !=1 order by tblcommunity.thread_date desc ");
+		$qstr = $this->db->query("SELECT * FROM tblcommunity LEFT JOIN tblusers on tblcommunity.thread_user_id=tblusers.userId where tblcommunity.archive_status !=1 order by tblcommunity.thread_date desc limit 20");
 
 		if ($qstr->num_rows() > 0) {
 			$result = $qstr->result_array();
