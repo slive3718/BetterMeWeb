@@ -65,11 +65,12 @@
 
 </style>
 <div clas="col-12" style="text-align: center">
-	<img src="<?= base_url()?>uploads/files/STR_team.jpg">
+	<img src="<?= base_url()?>uploads/files/STR_team.jpg" style="max-width: 100%">
 	<br><br><br>
-	<h1 class="" style="margin:10px; font-weight: bold; text-align: center">
+	<h1 class="jumbotron" style="margin:10px; font-weight: bold; text-align: center; background-color: #28A745">
 		Diet Plans and Exercise Routines
 	</h1>
+	<br><br><br>
 </div>
 
 </div>
@@ -182,7 +183,7 @@
 	</div>
 
 
-	<div class="threads col-4" style="float:right">
+	<div class="threads col-4" style="float:right; max-width: 100%">
 		<div class="shadow-lg p-3 mb-5 ml-5 responsive"
 			 style="display:inline-block;right:20px;" >
 			<?php if ($this->session->flashdata('msgsuccess_c')) {
