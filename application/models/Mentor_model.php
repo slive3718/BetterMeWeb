@@ -166,6 +166,8 @@ class Mentor_model extends CI_Model
 			foreach ($qstr->result() as $val)
 			{
 				$val->images = $this->get_diet_plan_images($val->post_id);
+				$val->getLikeStatus = $this->getLikeStatus($val->post_id);
+				$val->getLikeCount = $this->getLikeCount($val->post_id);
 			}
 		}
 		$sess_id = $this->session->userdata('id');

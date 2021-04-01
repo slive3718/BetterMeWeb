@@ -142,6 +142,8 @@ class Admin_model extends CI_Model
 			foreach ($qstr->result() as $val)
 			{
 				$val->images = $this->get_diet_plan_images($val->post_id);
+				$val->getLikeStatus = $this->getLikeStatus($val->post_id);
+				$val->getLikeCount = $this->getLikeCount($val->post_id);
 			}
 		}
 		$sess_id = $this->session->userdata('id');
@@ -750,6 +752,7 @@ class Admin_model extends CI_Model
 		$this->db->join('tblposts p','l.like_post_id=p.post_id','left');
 		$this->db->group_by('l.like_post_id');
 		$this->db->order_by('like_sum','desc');
+		$this->db->limit(10);
 		$getDb = $this->db->get();
 //		echo "<pre>";
 //		print_r($getDb->result());
