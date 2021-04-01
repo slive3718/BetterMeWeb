@@ -277,6 +277,8 @@ public function addDietPlan(){
 		}
 		$user_id= $this->session->userdata('id');
 //
+		$image_full_url = base_url().'uploads/posts/'.$_FILES['userfile']['name'];
+
 		$datestring = date('Y-m-d h:i:s');
 		$time = time();
 		$date_created=mdate($datestring, $time);
@@ -303,7 +305,7 @@ public function addDietPlan(){
 			foreach ($dataInfo as $info) {
 				$image_name=($info['file_name']);
 				// array_push($image_arr,$image_name);
-				$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'image_post_type'=>'diet_plan','post_id'=>$post_id,'user_id'=>$id,'date_created'=>date('Y-m-d')));
+				$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'image_post_type'=>'diet_plan','post_id'=>$post_id,'user_id'=>$id,'image_full_path'=>$image_full_url,'date_created'=>date('Y-m-d')));
 			}
 			redirect(base_url('admin/viewDiet'));
 		}
@@ -708,6 +710,8 @@ public function viewArchiveDiet(){
 			$dataInfo[] = $this->upload->data();
 		}
 
+		$image_full_url = base_url().'uploads/posts/'.$_FILES['userfile']['name'];
+
 		$user_id= $this->session->userdata('id');
 //
 		$datestring = date('Y-m-d h:i:s');
@@ -733,7 +737,7 @@ public function viewArchiveDiet(){
 			foreach ($dataInfo as $info) {
 				$image_name=($info['file_name']);
 				// array_push($image_arr,$image_name);
-				$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'image_post_type'=>'diet_plan','post_id'=>$res_id,'user_id'=>$id,'date_created'=>date('Y-m-d')));
+				$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'image_post_type'=>'diet_plan','post_id'=>$res_id,'user_id'=>$id,'image_full_path'=>$image_full_url,'date_created'=>date('Y-m-d')));
 
 			}
 			redirect(base_url('admin/viewDiet'));

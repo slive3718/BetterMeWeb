@@ -45,6 +45,24 @@
 		background-color: #28A745;
 
 	}
+	@media screen and (max-width: 1193px) {
+		body {
+
+
+		}
+
+	}
+	@media screen and (max-width: 600px) {
+		body {
+			background-color: olive;
+		}
+	}
+	@media only screen and (max-width: 600px) {
+		body {
+			background-color: lightblue;
+		}
+	}
+
 </style>
 	<div clas="col-12" style="text-align: center">
 		<h1 class="" style="margin:10px; font-weight: bold; text-align: center">
@@ -53,6 +71,8 @@
 	</div>
 
 </div>
+	<div class="row">
+	<div class="diets col-8">
 		<?php
 		$current_user = $this->session->userdata('id');
 		if (isset($rows)) {
@@ -159,12 +179,16 @@
 		} ?>
 	</div>
 
-		<div class="shadow-lg p-3 mb-5 ml-5 responsive" style="display:inline-block;">
+
+	<div class="threads col-4" style="float:right">
+		<div class="shadow-lg p-3 mb-5 ml-5 responsive"
+			 style="display:inline-block;right:20px;" >
 				<?php if ($this->session->flashdata('msgsuccess_c')) {
 					echo "<div class='btn btn-success'>" . $this->session->flashdata('msgsuccess_c') . '</div>';
 				} ?>
-			<div style="text-align:center;" >
-				<img class=""  src="<?= base_url(); ?>assets/images/betterMeCommunity.png?>" alt="Card image cap" style="width:300px;height:120px;margin:auto">
+			<div style="text-align: center">
+				<img class=""  src="<?= base_url(); ?>assets/images/betterMeCommunity.png?>" alt="Card image cap" style="">
+
 			</div>
 
 				<table class="responsive table">
