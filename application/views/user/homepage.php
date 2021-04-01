@@ -132,11 +132,11 @@
 					<div class="card responsive" style="width:30rem;height:30rem">
 
 							<a href="<?= base_url('user/viewFullDiet/' . $post_id) ?>">
-								<div class="container">
+								<div class="container" >
 									<?php foreach ($row->images as $images) {
 										?>
-										<img class="" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
-											 alt="Card image cap" style="">
+										<img class="image" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
+											 alt="Card image" style="max-height:100px;max-width:120px">
 									<?php } ?>
 								</div>
 							</a>

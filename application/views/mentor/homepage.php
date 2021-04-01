@@ -136,7 +136,7 @@
 								<?php foreach ($row->images as $images) {
 									?>
 									<img class="" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
-										 alt="Card image cap" style="">
+										 alt="Card image cap"  style="max-height:100px;max-width:120px">
 								<?php } ?>
 							</div>
 						</a>
