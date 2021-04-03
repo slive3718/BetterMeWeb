@@ -307,7 +307,7 @@ public function addDietPlan(){
 		$post_id=$post['post_id'];
 
 		$config['upload_path']          = './uploads/posts';
-		$config['allowed_types']        = 'jpg|png|jpeg|';
+		$config['allowed_types']        = 'jpg|png|jpeg|gif|';
 		$config['max_size']             = 100000;
 		$config['max_width']            = 100000;
 		$config['max_height']           = 100000;
@@ -458,7 +458,7 @@ public function upload(){
     //	$config['allowed_types'] = '*';
 
     $config['upload_path']          = './uploads/images/';
-    $config['allowed_types']        ='gif|jpg|png';
+    $config['allowed_types']        ='gif|jpg|png|gif|';
     $config['max_size']             = 100000;
     $config['max_width']            = 100000;
     $config['max_height']           = 100000;
@@ -857,7 +857,7 @@ $this->load->view('mentor/uploadProfilePic');
 		$post = $this->input->post();
 		$id=$this->session->userdata('id');
 		$config['upload_path']          = './uploads/posts';
-		$config['allowed_types']        = 'jpg|png|jpeg|';
+		$config['allowed_types']        = 'jpg|png|jpeg|gif|';
 		$config['max_size']             = 100000;
 		$config['max_width']            = 100000;
 		$config['max_height']           = 100000;

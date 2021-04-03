@@ -253,7 +253,7 @@ public function addDietPlan(){
 		$post_id=$post['post_id'];
 
 		$config['upload_path']          = './uploads/posts';
-		$config['allowed_types']        = 'jpg|png|jpeg|';
+		$config['allowed_types']        = 'jpg|png|jpeg|gif|';
 		$config['max_size']             = 100000;
 		$config['max_width']            = 100000;
 		$config['max_height']           = 100000;
@@ -431,7 +431,7 @@ public function upload(){
     //	$config['allowed_types'] = '*';
     
     $config['upload_path']          = './uploads/images';
-    $config['allowed_types']        ='gif|jpg|png';
+    $config['allowed_types']        ='gif|jpg|png|gif|';
     $config['max_size']             = 100000;
     $config['max_width']            = 100000;
     $config['max_height']           = 100000;
@@ -459,7 +459,7 @@ public function upload(){
 public function temp_add(){
 
     $config['upload_path']          = './uploads/images/';
-    $config['allowed_types']        = 'gif|jpg|png';
+    $config['allowed_types']        = 'gif|jpg|png|gif|';
     $config['max_size']             = 100000;
     $config['max_width']            = 100000;
     $config['max_height']           = 100000;
@@ -686,7 +686,7 @@ public function viewArchiveDiet(){
 		$post = $this->input->post();
 		$id=$this->session->userdata('id');
 		$config['upload_path']          = './uploads/posts';
-		$config['allowed_types']        = 'jpg|png|jpeg|';
+		$config['allowed_types']        = 'jpg|png|jpeg|gif|';
 		$config['max_size']             = 100000;
 		$config['max_width']            = 100000;
 		$config['max_height']           = 100000;
@@ -1072,4 +1072,10 @@ public function viewArchiveDiet(){
 		}
 	}
 
+	public function add_exercise(){
+		$data['exercise'] = "exercise";
+		$this->load->view('admin/templates/header');
+		$this->load->view('admin/addDietPlan',$data);
+		$this->load->view('admin/templates/footer');
+	}
 }
