@@ -180,6 +180,7 @@
 				<?php
 			}
 		} ?>
+	</div>
 
 	<div class="diets col-4">
 		<div class="shadow-lg p-3 mb-5 ml-5 responsive"
