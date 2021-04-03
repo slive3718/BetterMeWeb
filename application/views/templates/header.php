@@ -1,5 +1,6 @@
-<html>
+<html lang="en">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css"
 
 		  href="<?php echo base_url(); ?>assets/css/bootstrap.css">
@@ -87,7 +88,8 @@
 <body>
 <div id="" class="">
     <nav class="navbar navbar-expand-md navbar-light bg-success">
-        <a class="navbar-brand" href="<?php echo base_url('mentor/homepage') ?>">BetterMe</a>
+		<a style="font-weight:bold;" class="btn btn-s btn-success rounded"class="navbar-brand"
+        href="<?php echo base_url('mentor/homepage') ?>">BetterMe</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
