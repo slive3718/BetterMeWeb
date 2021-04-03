@@ -117,7 +117,7 @@
 				} ?>
 
 				<div
-						class="shadow-lg p-3 mb-5 ml-5 responsive"
+						class="shadow p-3 mb-5 responsive"
 						style='float:left;margin-left:15px;margin-bottom:30px;'>
 					<div class="d-flex justify-content-between btn btn-success btn-xs">
 
