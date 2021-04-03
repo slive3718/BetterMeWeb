@@ -74,6 +74,7 @@
 	</div>
 
 </div>
+	<div class="row">
 	<div class="diets row-8">
 		<?php
 		$current_user = $this->session->userdata('id');
