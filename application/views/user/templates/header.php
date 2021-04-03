@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,6 +23,7 @@
 
 	<!-- start: GOOGLE FONTS -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/googlefonts.css">
+	<link rel="shortcut icon" href="<?= base_url();?>assets/images/Smile.png">
 	<!--<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />-->
 	<!-- end: GOOGLE FONTS -->
 	<!-- start: MAIN CSS -->
@@ -39,7 +39,6 @@
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/styles.css">
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/plugins.css">
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/themes/theme-1.css" id="skin_color"/>
-	<link rel="shortcut icon" href="<?= base_url();?>assets/images/Smile.png">
 	<!-- end: CLIP-TWO CSS -->
 	<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
 	<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
@@ -96,10 +95,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav" >
             <ul class="navbar-nav mr-auto">
-          
             </ul>
             <?php if (isset($this->session->userdata['id'])){
-
             ?>
             <ul class="navbar-nav" style="float:right;>
                 <li class="nav-item">
