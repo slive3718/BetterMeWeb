@@ -183,7 +183,7 @@
 	</div>
 
 
-	<div class="threads col-4" style="float:left;">
+	<div class="threads col-4" style="float:right;max-width: 100%">
 		<div class="shadow-lg p-3 mb-5 ml-5 responsive"
 			 style="display:inline-block;right:20px;" >
 				<?php if ($this->session->flashdata('msgsuccess_c')) {
