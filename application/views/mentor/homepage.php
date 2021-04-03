@@ -132,7 +132,7 @@
 
 					<div class="card responsive" style="width:23rem;height:30rem">
 
-							<a href="<?= base_url('user/viewFullDiet/' . $post_id) ?>">
+							<a href="<?= base_url('mentor/viewFullDiet/' . $post_id) ?>">
 								<div class="container" >
 									<?php foreach ($row->images as $images) {
 										?>
