@@ -10,6 +10,7 @@ if ($posts) {
 		$target_audience = $post['target_audience'];
 		$routine_count = $post['routine_count'];
 		$routine_format = $post['routine_format'];
+		$other_diet = $post['other_diet'];
 	}
 }
 ?>
@@ -46,43 +47,44 @@ if ($posts) {
 
 			<div class="form-group">
 				<label for="">Type Of Diet</label>
-				<select class="form-control" name="type_of_diet">
+				<select class="form-control select-diet" name="type_of_diet">
 					<option value="">No Selection</option>
 					<option name="type_of_diet"
-							value="Intermittent Fasting" <?= (isset($type_of_diet) && ($type_of_diet == "Intermittent Fasting")) ? "selected" : '' ?>>
-						Intermittent Fasting
+							value="Intermittent Fasting" <?= (isset($type_of_diet) && ($type_of_diet == "Intermittent Fasting")) ? "selected" : '' ?> id="diet_select">Intermittent Fasting
 					</option>
 					<option name="type_of_diet"
-							value="Zone Diet" <?= (isset($type_of_diet) && ($type_of_diet == "Zone Diet")) ? "selected" : '' ?>>
-						Zone Diet
+							value="Zone Diet" <?= (isset($type_of_diet) && ($type_of_diet == "Zone Diet")) ? "selected" : '' ?> id="diet_select">Zone Diet
 					</option>
 					<option name="type_of_diet"
-							value="Paleo Diet" <?= (isset($type_of_diet) && ($type_of_diet == "Paleo Diet")) ? "selected" : '' ?>>
-						Paleo Diet
+							value="Paleo Diet" <?= (isset($type_of_diet) && ($type_of_diet == "Paleo Diet")) ? "selected" : '' ?> id="diet_select">Paleo Diet
 					</option>
 					<option name="type_of_diet"
-							value="Blood Type Diet" <?= (isset($type_of_diet) && ($type_of_diet == "Blood Type Diet")) ? "selected" : '' ?>>
-						Blood Type Diet
+							value="Blood Type Diet" <?= (isset($type_of_diet) && ($type_of_diet == "Blood Type Diet")) ? "selected" : '' ?> id="diet_select">Blood Type Diet
 					</option>
 					<option name="type_of_diet"
-							value="Vegan Diet" <?= (isset($type_of_diet) && ($type_of_diet == "Vegan Diet")) ? "selected" : '' ?>>
-						Vegan Diet
+							value="Vegan Diet" <?= (isset($type_of_diet) && ($type_of_diet == "Vegan Diet")) ? "selected" : '' ?> id="diet_select">Vegan Diet
 					</option>
 					<option name="type_of_diet"
-							value="South Beach Diet" <?= (isset($type_of_diet) && ($type_of_diet == "South Beach Diet")) ? "selected" : '' ?>>
-						South Beach Diet
+							value="South Beach Diet" <?= (isset($type_of_diet) && ($type_of_diet == "South Beach Diet")) ? "selected" : '' ?> id="diet_select">South Beach Diet
 					</option>
 					<option name="type_of_diet"
-							value="Mediterranean Diet" <?= (isset($type_of_diet) && ($type_of_diet == "Mediterranean Diet")) ? "selected" : '' ?>>
-						Mediterranean Diet
+							value="Mediterranean Diet" <?= (isset($type_of_diet) && ($type_of_diet == "Mediterranean Diet")) ? "selected" : '' ?> id="diet_select">Mediterranean Diet
 					</option>
 					<option name="type_of_diet"
-							value="Food Diet" <?= (isset($type_of_diet) && ($type_of_diet == "Food Diet")) ? "selected" : '' ?>>
-						Raw Food Diet
+							value="Food Diet" <?= (isset($type_of_diet) && ($type_of_diet == "Food Diet")) ? "selected" : '' ?> id="diet_select">Raw Food Diet
+					</option>
+					<option name="type_of_diet"
+							value="Other Diet" <?= (isset($type_of_diet) && ($type_of_diet == "Other Diet")) ? "selected" : '' ?> id="other_diet">Other Diet
 					</option>
 				</select>
 			</div>
 
+			<div class="form-group text-other-diet" >
+				<label for="">Name of Diet Plan</label>
+				<input class="form-control" type="text" value="<?=(isset($other_diet) && !empty($other_diet))?$other_diet:''?>" name="other_diet" >
+
+			</div>
+			
 			<div class="form-row">
 				<div class="col">
 					<label for=""> Plan Track (Optional)</label>
@@ -198,5 +200,18 @@ if ($posts) {
 		});
 
 
+	});
+
+	$(document).ready(function(){
+		$('.text-other-diet').hide();
+
+		$(".select-diet").change(function() {
+			if ($(this).val() == "Other Diet") {
+				$(".text-other-diet").show();
+			}
+			if ($(this).val() !== "Other Diet") {
+				$(".text-other-diet").hide();
+			}
+		});
 	});
 </script>
