@@ -65,7 +65,7 @@
 
 </style>
 	<div class="col-12" style="text-align: center">
-		<img src="<?= base_url()?>uploads/files/STR_team.jpg" style="max-width: 100%">
+		<img src="<?= base_url()?>uploads/files/eat.jpg" style="max-width: 100%">
 		<br><br><br>
 		<h1 class="jumbotron" style="margin:10px; font-weight: bold; text-align: center; background-color: #28A745">
 			Diet Plans and Exercise Routines
