@@ -92,9 +92,8 @@
 			<ul class="navbar-nav mr-auto">
 			</ul>
 			<?php if (isset($this->session->userdata['id'])) {
-				
 			?>
-			   <ul class="navbar-nav" style="float:right;>
+			<ul class="navbar-nav" style="float:right;>
                 <li class="nav-item">
                     <a class="nav-link" href=""></a>
                 </li>
