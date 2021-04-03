@@ -118,8 +118,8 @@
 
 				<div
 						class="shadow p-3 mb-5"
-						style='float:left;'>
-					<div class="d-flex justify-content-between btn btn-success btn-xs">
+						style="float:left;margin-left:15px;margin-bottom:30px;">
+					
 
 						<div>    <?php if (isset($pic_status)){
 							?>
