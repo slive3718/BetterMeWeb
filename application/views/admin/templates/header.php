@@ -70,6 +70,15 @@
 
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css"/>
 	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
+<style>
+.btn-group-xs > .btn, .btn-xs {
+  padding: .25rem .4rem;
+  font-size: .8rem;
+  line-height: .5;
+  border-radius: .2rem;
+}
+
+</style>
 	<title>
 		<?php
 		if (isset($page_title) && !empty($page_title)) {
