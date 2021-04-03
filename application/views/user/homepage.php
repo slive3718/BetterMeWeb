@@ -176,13 +176,11 @@
 						<span class="ml-1"> Like</span>
 						<span><?= (isset($row->getLikeCount) && ($row->getLikeCount) != 0) ? $row->getLikeCount : '' ?></span>
 					</div>
-				</div>
 				<?php
 			}
 		} ?>
 
-
-	<div class="diets col-8">
+	<div class="threads col-4" style="float:left;">
 		<div class="shadow-lg p-3 mb-5 ml-5 responsive"
 			 style="display:inline-block;right:20px;" >
 				<?php if ($this->session->flashdata('msgsuccess_c')) {
