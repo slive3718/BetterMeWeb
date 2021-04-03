@@ -1,5 +1,6 @@
-<html>
+<html lang="en">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css"
 
 		  href="<?php echo base_url(); ?>assets/css/bootstrap.css">
@@ -22,6 +23,7 @@
 
 	<!-- start: GOOGLE FONTS -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/googlefonts.css">
+	<link rel="shortcut icon" href="<?= base_url();?>assets/images/Smile.png">
 	<!--<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />-->
 	<!-- end: GOOGLE FONTS -->
 	<!-- start: MAIN CSS -->
@@ -37,7 +39,7 @@
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/styles.css">
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/plugins.css">
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/themes/theme-1.css" id="skin_color"/>
-	<link rel="shortcut icon" href="<?= base_url();?>assets/images/Smile.png">
+	
 	<!-- end: CLIP-TWO CSS -->
 	<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
 	<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
@@ -81,7 +83,8 @@
 
 <div id="" class="">
 	<nav class="navbar navbar-expand-md navbar-light bg-success">
-		<a class="navbar-brand" href="<?php echo base_url('admin/homepage') ?>">BetterMe</a>
+		<a style="font-weight:bold;" class="btn btn-s btn-success rounded"class="navbar-brand"
+        href="<?php echo base_url('admin/homepage') ?>">BetterMe</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
 			<span class="navbar-toggler-icon"></span>
 		</button>
