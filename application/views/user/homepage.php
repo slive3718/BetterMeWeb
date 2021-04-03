@@ -8,10 +8,7 @@
 
 <style>
 
-	.container {
-		display: flex;
-		flex-wrap: wrap;
-	}
+
 
 	.container .image {
 		width: 50%;
