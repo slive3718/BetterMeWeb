@@ -132,7 +132,7 @@
 						<div>Date Posted: <?= $date_posted ?></div>
 					</div>
 
-					<div class="card responsive" style="width:23rem;height:30rem">
+					<div class="card responsive" style="width:30rem;height:30rem">
 
 							<a href="<?= base_url('admin/viewFullDiet/' . $post_id) ?>">
 								<div class="container" >
