@@ -130,7 +130,7 @@
 						<div>Date Posted: <?= $date_posted ?></div>
 					</div>
 
-					<div class="card responsive" style="width:30rem;height:30rem">
+					<div class="card responsive" style="width:20rem;height:30rem">
 
 							<a href="<?= base_url('user/viewFullDiet/' . $post_id) ?>">
 								<div class="container" >
@@ -180,7 +180,7 @@
 		} ?>
 	</div>
 
-	<div class="threads col-4" style="float:left; max-width: 100%">
+	<div class="threads col-4" style="float:right; max-width: 100%">
 		<div class="shadow-lg p-3 mb-5 ml-5 responsive"
 			 style="display:inline-block;right:20px;" >
 				<?php if ($this->session->flashdata('msgsuccess_c')) {
