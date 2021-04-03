@@ -124,12 +124,10 @@
 							<img style="width:2rem;height:2rem" ;
 								 src="<?= base_url() . './uploads/profilepic/profile' . $post_user_id ?>.jpg"
 								 class="img-circle img-responsive"
-								 alt=""/> Posted by: <?= ucfirst($posts_user_name) ?>
-								 Date Posted: <?= $date_posted ?>
-								 </div>
+								 alt=""/> Posted by: <?= ucfirst($posts_user_name) ?></div>
 						<?php
 						} ?>
-						
+						<div style=" font-weight: bold;">Date Posted: <?= $date_posted ?></div>
 					</div>
 
 					<div class="card responsive" style="width:23rem;height:30rem">
