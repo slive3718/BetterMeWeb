@@ -116,10 +116,10 @@
 					echo $this->session->flashdata('msgerror');
 				} ?>
 
-				<div class="shadow p-3 mb-5" style='float:left;margin-left:15px;margin-bottom:30px; font-weight: bold;'>
+				<div class="shadow p-3 mb-5" style='float:left;margin-left:15px;margin-bottom:30px;'>
 					<div class="d-flex justify-content-between btn btn-success btn-xs">
 
-						<div>    <?php if (isset($pic_status)){
+						<div style="font-weight: bold;">    <?php if (isset($pic_status)){
 							?>
 							<img style="width:2rem;height:2rem" ;
 								 src="<?= base_url() . './uploads/profilepic/profile' . $post_user_id ?>.jpg"
@@ -127,7 +127,7 @@
 								 alt=""/> Posted by: <?= ucfirst($posts_user_name) ?></div>
 						<?php
 						} ?>
-						<div>Date Posted: <?= $date_posted ?></div>
+						<div style=" font-weight: bold;">Date Posted: <?= $date_posted ?></div>
 					</div>
 
 					<div class="card responsive" style="width:23rem;height:30rem">
