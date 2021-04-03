@@ -75,7 +75,7 @@
 
 </div>
 	<div class="row">
-	<div class="diets col-4">
+	<div class="diets col-8">
 		<?php
 		$current_user = $this->session->userdata('id');
 		if (isset($rows)) {
