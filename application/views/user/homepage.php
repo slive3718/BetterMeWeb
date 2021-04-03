@@ -117,7 +117,7 @@
 				} ?>
 
 				<div
-						class="shadow p-3 mb-5"
+						class="shadow-lg p-3 mb-5 ml-5 responsive"
 						style='float:left;margin-left:15px;margin-bottom:30px;'>
 					<div class="d-flex justify-content-between btn btn-success btn-xs">
 
@@ -184,7 +184,7 @@
 
 	<div class="threads col-4" style="float:center; max-width: 100%">
 		<div class="shadow-lg p-3 mb-5 ml-5 responsive"
-			 style="display:inline-block;" >
+			 style="display:inline-block;right:20px;" >
 				<?php if ($this->session->flashdata('msgsuccess_c')) {
 					echo "<div class='btn btn-success'>" . $this->session->flashdata('msgsuccess_c') . '</div>';
 				} ?>
