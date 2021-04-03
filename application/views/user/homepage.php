@@ -127,7 +127,7 @@
 								 alt=""/> Posted by: <?= ucfirst($posts_user_name) ?></div>
 						<?php
 						} ?>
-						<div style=" font-weight: bold;">Date Posted: <?= $date_posted ?></div>
+						Date Posted: <?= $date_posted ?>
 					</div>
 
 					<div class="card responsive" style="width:23rem;height:30rem">
