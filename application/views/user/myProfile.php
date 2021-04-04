@@ -340,7 +340,7 @@
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
 				cancelButtonColor: '#d33',
-				confirmButtonText: 'Yes, Continue!'
+				confirmButtonText: 'Ok, Continue!'
 			}).then((result) => {
 				if (result.isConfirmed) {
 					$.post(confirm_read_url+postId,{ 'postId':postId },function(success){
