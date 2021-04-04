@@ -48,7 +48,7 @@
 								if (isset($profile_post->get_post_images) && !empty($profile_post->get_post_images)){
 								foreach($profile_post->get_post_images as  $images){
 									?>
-									<img src="<?= base_url().'./uploads/posts/'.$images->image_name;?>" style="width:20px;height:20px">
+									<img src="<?= base_url().'./uploads/profile_posts/'.$images->image_name;?>" style="width:20px;height:20px">
 									<?php
 								}
 								}
