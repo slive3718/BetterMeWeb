@@ -19,8 +19,8 @@
 	</div>
 	<header>
 		<div class="tb">
-			<div><a style="font-weight: bold" class="btn btn-s btn-success rounded"
-					href="<?= base_url() . 'user/homepage/' ?>">BetterMe</a></div>
+			<div><a href="<?php echo base_url('user/homepage') ?>">
+			<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
 			<div class="td" id="search-form">
 				<form method="get" action="#">
 					<input type="text" placeholder="Better Me Search">
