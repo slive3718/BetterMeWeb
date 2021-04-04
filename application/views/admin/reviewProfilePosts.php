@@ -100,7 +100,7 @@
 			var sessionId=$(this).data('sessions-id');
 			console.log(sessionId);
 
-			alertify.confirm("Are you sure you want to delete this Profile Post?", function (e) {
+			alertify.confirm("Are you sure you want to restore this Profile Post?", function (e) {
 				if (e)
 				{
 					$.post("<?=base_url()?>admin/allowProfilePost/",{"sessionId":sessionId},function (response){
