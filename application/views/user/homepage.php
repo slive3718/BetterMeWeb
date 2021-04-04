@@ -38,18 +38,6 @@
 		background-color: #28A745;
 
 	}
-	.class-card{
-		width:23rem;
-		height:40rem;
-	}
-	.box-home{
-		float:left;
-		margin-left:15px;
-		margin-bottom:30px;
-	}
-
-
-
 	@media screen and (max-width: 900px) {
 		.class-card{
 			width:30rem;
