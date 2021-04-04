@@ -445,9 +445,9 @@ class User_model extends CI_Model
 
 		$this->db->select('*');
 		$this->db->from('profile_post pp');
-		$this->db->join('tblarchive ar', 'pp.post_id=ar.post_id');
+//		$this->db->join('tblarchive ar', 'pp.post_id=ar.post_id','left');
 		$this->db->where('pp.user_id', $userid);
-		$this->db->where('ar.user_confirm_action!=',"1");
+//		$this->db->where('ar.user_confirm_action!=',"1");
 		$this->db->order_by('pp.date','desc');
 		$this->db->order_by('pp.post_id','desc');
 		$qstr = $this->db->get();
@@ -793,7 +793,7 @@ class User_model extends CI_Model
 	}
 
 	function getArchiveStatus($post_id){
-		$this->db->select('archive_status');
+		$this->db->select('*');
 		$this->db->from('tblarchive');
 		$this->db->where('archive_from=','profile_posts');
 		$this->db->where('post_id=',$post_id);

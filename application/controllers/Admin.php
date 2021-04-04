@@ -326,6 +326,7 @@ public function archive_post(){
     $archive="1";
     $field = array(
     'archive'=>$archive,
+
     );
     $result = $this->admin_model->archive_post($field, $post_id);
     if ($result) {

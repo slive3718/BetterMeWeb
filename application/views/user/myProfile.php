@@ -210,17 +210,28 @@
 				<?php
 
 				if (isset($val->getAllProfilePost) && !empty($val->getAllProfilePost)) {
+//					print_r($val->getAllProfilePost);exit;
 					foreach ($val->getAllProfilePost as $post) {
 						$content = $post->content;
 						$my_post_id=($post->post_id);
-//						print_r($post);exit;
-						foreach($post->getArchiveStatus as $archiveStatus){
-							$archived=$archiveStatus->archive_status;
-//							print_r($archived);exit;
+
+//						print_r($post->getArchiveStatus);
+						$archived=0;
+//						print_r($post->getArchiveStatus);
+						if(isset($post->getArchiveStatus) && !empty($post->getArchiveStatus)) {
+							foreach ($post->getArchiveStatus as $archiveStatus)
+								$archived = $archiveStatus->archive_status;
+								$confirmed = $archiveStatus->user_confirm_action;
 						}
-						?>
+
+//						print_r($archived);
+//
+//						?>
+
 						<!--									Archive Checking Start-->
-						<?php if(isset($archived) && $archived!=="1" ){?>
+						<?php if($archived!=="1" ){
+
+						?>
 						<div class="m-mrg card Regular shadow" id="">
 							<div>
 								<div class="post card Regular shadow">
@@ -298,7 +309,9 @@
 							</div>
 
 						</div>
-						<?php }else{ ?>
+						<?php }else if ($confirmed !== "1"){
+						?>
+
 							<div class="m-mrg card Regular shadow" id="archived-section_<?=$my_post_id?>" class="">
 								<div>
 									<div class="post card Regular shadow">
@@ -309,7 +322,7 @@
 								</div>
 							</div>
 
-						<?php }?>
+						<?php } ?>
 						<!--									End of archive checking -->
 					<?php }
 				} ?>
