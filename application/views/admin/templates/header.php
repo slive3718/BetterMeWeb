@@ -92,8 +92,8 @@
 
 <div id="" class="">
 	<nav class="navbar navbar-expand-md navbar-light bg-success">
-		<a style="font-weight:bold;" class="btn btn-s btn-success rounded"class="navbar-brand"
-        href="<?php echo base_url('admin/homepage') ?>">BetterMe</a>
+		<a href="<?php echo base_url('admin/homepage') ?>">
+		<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
 			<span class="navbar-toggler-icon"></span>
 		</button>
