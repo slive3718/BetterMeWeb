@@ -1,12 +1,4 @@
 <body style='overflow-x:hidden;'>
-<?php
-//foreach ($getTopDiets as $diets){
-//
-//			print_r($diets->like_sum);
-//
-//}
-?>
-
 <style>
 
 	.container {
