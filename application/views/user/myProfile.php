@@ -303,7 +303,7 @@
 								<div>
 									<div class="post card Regular shadow">
 										<div class="tb">
-											<div style="text-align: center"> Sorry This is Post has been hide by the admin:<br> "This post didn't obey rules from this website"</div><span class="mark-read-warning" style="cursor: pointer;color: blue" data-post_id="<?=$my_post_id?>">Ok! Mark as read</span>
+											<div style="text-align: center; font-weight: bold font-size: 10px"> Sorry, This content isn't available right now:<br><a style="font-size: 5px;">"When this happens, it's usually the post is unavailable or deleted due to contents against our rules and standard. "</a></div><span class="mark-read-warning" style="cursor: pointer;color: blue font-weight: bold;" data-post_id="<?=$my_post_id?>">Ok! Mark as read</span>
 										</div>
 									</div>
 								</div>
@@ -334,8 +334,8 @@
 			var confirm_read_url = "<?= base_url().'user/confirm_read_archived_post/'?>";
 			// console.log(confirm_read_url);return false;
 			Swal.fire({
-				title: 'Notification',
-				text: "This post will be remain hidden until admin approval!",
+				title: 'Notice',
+				text: "This post will be remain hidden until Admin's approval!",
 				icon: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
