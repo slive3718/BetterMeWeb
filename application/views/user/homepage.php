@@ -40,7 +40,7 @@
 	}
 	.class-card{
 		width:23rem;
-		height:40rem;
+		height:30rem;
 	}
 	.box-home{
 		float:left;
@@ -154,7 +154,7 @@
 					echo $this->session->flashdata('msgerror');
 				} ?>
 
-				<div class="shadow p-3 mb-5 box-home">
+				<div class="shadow p-3 mb-5" style='float:left;margin-left:15px;margin-bottom:30px;'>
 					<div class="d-flex justify-content-between btn btn-success btn-xs">
 
 						<div style="font-weight: bold;">    <?php if (isset($pic_status)){
