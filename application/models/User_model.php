@@ -426,6 +426,7 @@ class User_model extends CI_Model
 				$val->getAllusersToFollow = $this->getAllusersToFollow();
 				$val->getFollowtbl = $this->getFollowtbl($val->userId);
 
+
 				// $val->getAllImages=$this->getAllImages($val->userId);
 				$return_array[] = $val;
 				// echo '<pre>';
@@ -444,14 +445,19 @@ class User_model extends CI_Model
 
 		$this->db->select('*');
 		$this->db->from('profile_post pp');
+		$this->db->join('tblarchive ar', 'pp.post_id=ar.post_id');
 		$this->db->where('pp.user_id', $userid);
-		$this->db->order_by('date','desc');
-		$this->db->order_by('post_id','desc');
+		$this->db->where('ar.user_confirm_action!=',"1");
+		$this->db->order_by('pp.date','desc');
+		$this->db->order_by('pp.post_id','desc');
 		$qstr = $this->db->get();
 		if ($qstr->num_rows() > 0) {
 			$return_array = array();
 			foreach ($qstr->result() as $val) {
+//				print_r($val->post_id);exit;
 				$val->post_images = $this->getImagePerPost($val->post_id);
+				$val->getArchiveStatus = $this->getArchiveStatus($val->post_id);
+
 				$return_array[] = $val;
 			}
 			return $return_array;
@@ -781,6 +787,34 @@ class User_model extends CI_Model
 		if($getDb->num_rows()>0){
 
 			return $getDb->result();
+		}else{
+			return '';
+		}
+	}
+
+	function getArchiveStatus($post_id){
+		$this->db->select('archive_status');
+		$this->db->from('tblarchive');
+		$this->db->where('archive_from=','profile_posts');
+		$this->db->where('post_id=',$post_id);
+
+		$result=$this->db->get();
+		if ($result){
+			return $result->result();
+		}else{
+			return '';
+		}
+	}
+
+	function confirm_read_archived_post($post_id){
+		$this->db->select('*');
+		$this->db->from('tblarchive');
+		$this->db->where('archive_from=','profile_posts');
+		$this->db->where('post_id=',$post_id);
+
+		$result=$this->db->update('tblarchive',array('user_confirm_action'=>'1'));
+		if ($result){
+			return $result;
 		}else{
 			return '';
 		}

@@ -213,7 +213,14 @@
 					foreach ($val->getAllProfilePost as $post) {
 						$content = $post->content;
 						$my_post_id=($post->post_id);
+//						print_r($post);exit;
+						foreach($post->getArchiveStatus as $archiveStatus){
+							$archived=$archiveStatus->archive_status;
+//							print_r($archived);exit;
+						}
 						?>
+						<!--									Archive Checking Start-->
+						<?php if(isset($archived) && $archived!=="1" ){?>
 						<div class="m-mrg card Regular shadow" id="">
 							<div>
 								<div class="post card Regular shadow">
@@ -252,6 +259,8 @@
 
 										</div>
 									</div>
+
+
 									<label class="tb " readonly>
 										<center><?= $content ?></center>
 									</label>
@@ -285,8 +294,23 @@
 										</div>
 									</div>
 								</div>
+
 							</div>
+
 						</div>
+						<?php }else{ ?>
+							<div class="m-mrg card Regular shadow" id="archived-section_<?=$my_post_id?>" class="">
+								<div>
+									<div class="post card Regular shadow">
+										<div class="tb">
+											<div style="text-align: center"> Sorry This is Post has been hide by the admin:<br> "This post didn't obey rules from this website"</div><span class="mark-read-warning" style="cursor: pointer;color: blue" data-post_id="<?=$my_post_id?>">Ok! Mark as read</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						<?php }?>
+						<!--									End of archive checking -->
 					<?php }
 				} ?>
 				<div clas="fa-3x"><i class="fas fa-sync fa-spin"></i></div>
@@ -305,6 +329,41 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 
+		$('.mark-read-warning').on('click',function(){
+			var postId=$(this).attr('data-post_id');
+			var confirm_read_url = "<?= base_url().'user/confirm_read_archived_post/'?>";
+			// console.log(confirm_read_url);return false;
+			Swal.fire({
+				title: 'Notification',
+				text: "This post will be remain hidden until admin approval!",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes, Continue!'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$.post(confirm_read_url+postId,{ 'postId':postId },function(success){
+						if(success==success){
+							Swal.fire({
+										icon: 'success',
+										title: 'Thank you for confirmation',
+										text: 'Confirmed',
+									});
+							$('#archived-section_'+postId).hide();
+						}else{
+							Swal.fire(
+									{
+										icon: 'error',
+										title: 'Something went wrong',
+										text: 'Error',
+									});
+
+						}
+					});
+				}
+			})
+		})
 	});
 
 </script>

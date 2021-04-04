@@ -11,16 +11,18 @@
 			<div class="form-group">
 				<label for="thread_type">Thread</label>
 				<select name="thread_type" class="form-control">
-					<option name="thread_type" value="Diet_Plan">Diet Plan</option>
-					<option name="thread_type" value="Exercise">Exercise</option>
+					<option name="thread_type" value="Diet_Plan" id="dietPlan">Diet Plan </option>
+					<option name="thread_type" value="Exercise" selected>Exercise</option>
 				</select>
 			</div>
 
 			<div class="form-group">
-				<label for="">Diet Title</label>
+				<label for=""><?=(isset($exercise) && !empty($exercise))?'Exercise Title':'Diet Title'?></label>
 				<input name="post_title" type="text" class="form-control" id="" placeholder="" required>
 			</div>
 
+
+			<?php if(! isset($exercise) && empty($exercise)):?>
 			<div class="form-group ">
 				<label for="">Type Of Diet</label>
 				<select class="form-control select-diet" name="type_of_diet" >
@@ -36,11 +38,13 @@
 					<option name="type_of_diet" value="Other Diet" id="other_diet" >Other Diet</option>
 				</select>
 			</div>
-
 			<div class="form-group text-other-diet" >
 				<label for="">Name of Diet Plan</label>
 				<input class="form-control" type="text" value="" name="other_diet">
 			</div>
+			<?php endif; ?>
+
+
 			<div class="form-row">
 				<div class="col">
 					<label for=""> Plan Track (Optional)</label>
@@ -99,6 +103,10 @@
 			if ($(this).val() !== "Other Diet") {
 				$(".text-other-diet").hide();
 			}
+		});
+
+		$('#dietPlan').on('click',function(){
+			console.log("here");
 		});
 	});
 </script>

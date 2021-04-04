@@ -1,11 +1,3 @@
-<body style='overflow-x:hidden;'>
-<?php
-//foreach ($getTopDiets as $diets){
-//
-//			print_r($diets->like_sum);
-//
-//}
-?>
 
 <style>
 
@@ -46,24 +38,69 @@
 		background-color: #28A745;
 
 	}
-	@media screen and (max-width: 1193px) {
-		body {
+	.class-card{
+		width:23rem;
+		height:40rem;
+	}
+	.box-home{
+		float:left;
+		margin-left:15px;
+		margin-bottom:30px;
+	}
 
 
+
+	@media screen and (max-width: 900px) {
+		.class-card{
+			width:30rem;
+			height:35rem;
+		}
+		.box-home{
+			width:30rem;
+			height:35rem;
+		}
+		.threads{
+			width: 200px;
+		}
+	}
+
+	@media screen and (min-width:1201px ;max-width: 1600px) {
+		.class-card{
+			width:30rem;
+			height:35rem;
+		}
+		.threads{
+			width: 100px;
+		}
+	}
+	@media screen and (min-width:1601px ;max-width: 1900px) {
+		.class-card{
+			width:23rem;
+			height:40rem;
+		}
+	}
+
+	@media screen and (min-width:1901px;max-width: 2400px) {
+		.class-card{
+			width:29rem;
+			height:35rem;
+		}
+	}
+
+	@media screen and (min-width:2401px;max-width: 21600px) {
+		.class-card{
+			width:30rem;
+			height:35rem;
+
+		}
+		.box-home{
+			margin-left: 100px;
 		}
 
 	}
-	@media screen and (max-width: 600px) {
-		body {
-			background-color: olive;
-		}
-	}
-	@media only screen and (max-width: 600px) {
-		body {
-			background-color: lightblue;
-		}
-	}
 
+
+	}
 </style>
 	<div class="col-12" style="text-align: center">
 		<img src="<?= base_url()?>uploads/files/health.jpg" style="max-width: 100%">
@@ -117,7 +154,7 @@
 					echo $this->session->flashdata('msgerror');
 				} ?>
 
-				<div class="shadow p-3 mb-5" style='float:left;margin-left:15px;margin-bottom:30px;'>
+				<div class="shadow p-3 mb-5 box-home">
 					<div class="d-flex justify-content-between btn btn-success btn-xs">
 
 						<div style="font-weight: bold;">    <?php if (isset($pic_status)){
@@ -131,7 +168,7 @@
 						<div style=" font-weight: bold;">Date Posted: <?= $date_posted ?></div>
 					</div>
 
-					<div class="card responsive" style="width:23rem;height:30rem">
+					<div class="card responsive class-card">
 
 							<a href="<?= base_url('user/viewFullDiet/' . $post_id) ?>">
 								<div class="container" >

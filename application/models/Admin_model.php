@@ -427,7 +427,9 @@ class Admin_model extends CI_Model
 		if ($qstr->num_rows() > 0 ){
 			$post=array(
 				'archive_status'=>1,
-				'archive_message'=>'This post is archived by the administrator and being reviewed');
+				'archive_message'=>'This post is archived by the administrator and being reviewed',
+				'archive_from'=>'profile_posts'
+			);
 			$this->db->where('post_id=',$postId);
 			$qstr1=$this->db->update('tblarchive',$post);
 
@@ -437,6 +439,7 @@ class Admin_model extends CI_Model
 				'post_id'=>$postId,
 				'archive_status'=>1,
 				'archive_message'=>'This post is archived by the administrator and being reviewed',
+				'archive_from'=>'profile_posts',
 			);
 			$this->db->where('post_id=',$postId);
 			$qstr2=$this->db->insert('tblarchive',$post);
@@ -456,7 +459,9 @@ class Admin_model extends CI_Model
 		if ($qstr->num_rows() > 0 ){
 			$post=array(
 				'archive_status'=>0,
-				'archive_message'=>'Reviewed');
+				'archive_message'=>'Reviewed',
+				'user_confirm_action'=>'0'
+			);
 			$this->db->where('post_id=',$postId);
 			$qstr1=$this->db->update('tblarchive',$post);
 
@@ -466,6 +471,7 @@ class Admin_model extends CI_Model
 				'post_id'=>$postId,
 				'archive_status'=>0,
 				'archive_message'=>'Reviewed',
+				'user_confirm_action'=>'0',
 			);
 			$this->db->where('post_id=',$postId);
 			$qstr2=$this->db->insert('tblarchive',$post);

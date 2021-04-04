@@ -851,6 +851,16 @@ public function add_new_post(){
 		}
 	}
 
-
+	public function confirm_read_archived_post(){
+		$post=$this->input->post();
+		$post_id=$post['postId'];
+		print_r($post['postId']);
+		$result=$this->user_model->confirm_read_archived_post($post_id);
+		if($result=="1"){
+		echo "success";
+		}else {
+		echo "error";
+		}
+	}
 
 }

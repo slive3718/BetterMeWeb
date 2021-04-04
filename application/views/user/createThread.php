@@ -1,28 +1,43 @@
 
 <!------ Include the above in your HEAD tag ---------->
+<style>
+	body{
+		align-content: center;
+	}
+	.font-header{
+		color: #FFFFFF;
+		font-family: 'Raleway', sans-serif;
+		font-size: 30px;
+		font-weight: 800;
+		line-height: 72px;
+		/*margin: 0 0 24px;*/
+		text-align: center;
+		text-transform: uppercase;
+		background-color: #28A745;
+		border-radius: 5px;
+	}
+</style>
+
 <div >
 <div class="container">
 	<div class="row">
-	    
-	    <div class="col-md-8 col-md-offset-2">
-	        
-    		<h1>Create a Thread</h1>
-    		
+	    <div class="col-md-11 col-md-offset-4 card shadow" style="margin-top:50px">
+		<div class="jumbotron" style="margin-top: 20px;">
+			<div class="font-header table-responsive" >
+				THREAD SECTION
+			</div>
+		</div>
+
+
     		<form action="<?= base_url().'user/post_thread' ?>" method="POST">
-    		  
-    		    
     		    <div class="form-group">
-    		        <label for="title">Title <span class="require">*</span></label>
-    		        <input type="text" class="form-control" name="title" />
+					<label for="title"><b>Title</b></label>
+    		        <input type="text" class="form-control" name="title" required />
     		    </div>
-    		    
     		    <div class="form-group">
     		        <label for="description">Description</label>
-    		        <textarea rows="5" class="form-control" name="description" ></textarea>
+    		        <textarea rows="5" class="form-control" name="description" required></textarea>
     		    </div>
-    		    
-    		
-    		    
     		    <div class="form-group">
     		        <button type="submit" class="btn btn-primary">
     		            Create
@@ -31,8 +46,9 @@
     		            Cancel
     		        </button>
     		    </div>
-    		    
+
     		</form>
+
 		</div>
 		
 	</div>
