@@ -335,20 +335,20 @@
 			// console.log(confirm_read_url);return false;
 			Swal.fire({
 				title: 'Notice',
-				text: "This post will be remain hidden until Admin's approval!",
+				text: "This post will be remain hidden until Admin's approval.",
 				icon: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
 				cancelButtonColor: '#d33',
-				confirmButtonText: 'Ok, Continue!'
+				confirmButtonText: 'Ok, Continue.'
 			}).then((result) => {
 				if (result.isConfirmed) {
 					$.post(confirm_read_url+postId,{ 'postId':postId },function(success){
 						if(success==success){
 							Swal.fire({
 										icon: 'success',
-										title: 'Thank you for confirmation',
-										text: 'Confirmed',
+										title: 'Thank you for confirmation.',
+										text: 'Confirmed!',
 									});
 							$('#archived-section_'+postId).hide();
 						}else{
