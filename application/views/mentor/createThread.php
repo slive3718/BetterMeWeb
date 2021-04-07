@@ -2,15 +2,15 @@
 <!------ Include the above in your HEAD tag ---------->
 <div >
 <div class="container">
-	<div class="row">
-	    
-	    <div class="col-md-8 col-md-offset-2">
-	        
-    		<h1>Create a Thread</h1>
-    		
+<div class="row">
+	    <div class="col-md-11 col-md-offset-4 card shadow" style="margin-top:50px">
+		<div class="jumbotron" style="margin-top: 20px;">
+			<div class="font-header table-responsive" >
+				CREATE A THREAD
+			</div>
+		</div>
+
     		<form action="<?= base_url().'mentor/post_thread' ?>" method="POST">
-    		  
-    		    
     		    <div class="form-group">
     		        <label for="title">Title <span class="require">*</span></label>
     		        <input type="text" class="form-control" name="title" />
