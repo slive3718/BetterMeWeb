@@ -99,8 +99,6 @@
         <div id="main-content">
             <div class="tb ">
                 <div class="td" id="l-col">                   
-                   
-                   
                 <div class="m-mrg card Regular shadow" id="composer"  style='right:20px'>
                         <div id="c-tabs-cvr">
                             <div class="tb" id="c-tabs">
