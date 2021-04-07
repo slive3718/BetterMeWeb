@@ -146,7 +146,7 @@
 					<div class="col-sm-12">
 						<input
 								class="btn btn-primary"
-								style="left:100px"
+								style="margin-left:60px"
 								type="file"
 								name="userfile[]"
 								size="20"
