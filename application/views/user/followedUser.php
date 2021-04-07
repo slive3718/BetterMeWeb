@@ -117,11 +117,6 @@
 			</div>
 			</a>
 			<div>
-				<div class="p-acts">
-					<div class="p-act like"><i class="fa fa-thumbs-up"></i><span>25</span></div>
-					<div class="p-act comment btn-click"><i
-								class="fa fa-comment"></i><span>1</span></div>
-				</div>
 			</div>
 		</div>
 	</div>
