@@ -36,7 +36,7 @@
 			$pic_status = $val->user_picture_status;
 			$sex = $val->sex;
 			}
-			}
+		}
 
 			?>
 			<div class="td" id="f-name-l"><span><a style="font-weight: bold" class="btn btn-s btn-success rounded"
