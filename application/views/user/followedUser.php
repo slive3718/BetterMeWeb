@@ -87,11 +87,11 @@
 				<div class="td p-r-hdr">
 					<div class="p-u-info">
 						<a href="#"><?= $followDatas->first_name,' ',$followDatas->last_name?></a>
-						 Shared a post
+						 shared a post.
 					</div>
 					<div class="p-dt">
-						<i class="fa fa-calendar"><?=$followDatas->date?></i>
-						<span>Date</span>
+						<i class="fa fa-calendar" style="font-weight:bold;">Date Posted: <?=$followDatas->date?></i>
+						
 					</div>
 				</div>
 <!--				<div class="dropdown dropleft">-->
