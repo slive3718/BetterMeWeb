@@ -162,6 +162,9 @@ $current_user = $this->session->userdata('id');
                 } ?>
 
                     <!-- comment -->
+
+                    <div class="bg-white p-2">
+                        <div class="d-flex flex-row fs-12">
                             <div
                                 class="like p-2 cursor action-collapse"
                                 data-toggle="collapse"
