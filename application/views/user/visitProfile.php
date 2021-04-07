@@ -111,60 +111,6 @@
 		<div class="tb ">
 			<div class="td" id="l-col">
 				<div class="l-cnt card Regular shadow">
-					<div class="cnt-label ">
-						<i class="l-i" id="l-i-i"></i>
-						<span>Intro</span>
-						<div class="lb-action"><i class="material-icons">edit</i></div>
-					</div>
-					<div id="i-box">
-						<div id="intro-line">Web developer - UI</div>
-						<div id="u-occ">Developing awesome UIs at <a href="#">Google LLC</a> Bengaluru and inspiring
-							other companies to do so :)
-						</div>
-						<div id="u-loc"><i class="material-icons">location_on</i><a href="#">Bengaluru</a>, <a href="#">India</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="l-cnt l-mrg card Regular shadow">
-					<div class="cnt-label">
-						<i class="l-i" id="l-i-p"></i>
-						<span>Photos</span>
-						<!-- <div class="lb-action" id="b-i"><i class="fa fa-caret-down"></i></div> -->
-					</div>
-					<div id="photos">
-						<div class="container">
-							<div>
-
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="l-cnt l-mrg">
-					<div class="cnt-label">
-						<i class="l-i" id="l-i-k"></i>
-						<span>Did You Know<i id="k-nm">1</i></span>
-					</div>
-					<div>
-						<div class="q-ad-c">
-							<a href="#" class="q-ad">
-								<img src="https://imagizer.imageshack.com/img923/1849/4TnLy1.png">
-								<span>My favorite superhero is...</span>
-							</a>
-						</div>
-						<div class="q-ad-c">
-							<a href="#" class="q-ad" id="add_q">
-								<i class="material-icons">add</i>
-								<span>Add Answer</span>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div id="t-box ">
-					<a href="#">Privacy</a> <a href="#">Terms</a> <a href="#">Advertising</a> <a href="#">Ad Choices</a>
-					<a href="#">Cookies</a> <span id="t-more">More<i class="material-icons">arrow_drop_down</i></span>
-
-				</div>
 			</div>
 			<div class="td" id="m-col">
 				<div class="m-mrg card" id="p-tabs">
