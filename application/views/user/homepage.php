@@ -1,4 +1,4 @@
-<body style='overflow-x:hidden;'>
+<body style="overflow:hidden;">
 <style>
 
 	.container {
