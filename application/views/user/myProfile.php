@@ -206,8 +206,6 @@
 
 											</div>
 											<div class="p-dt">
-												<i class="fa fa-calendar"></i>
-												<span>Date Posted: <?= $date_posted ?></span>
 											</div>
 										</div>
 										<div class="dropdown dropleft">
