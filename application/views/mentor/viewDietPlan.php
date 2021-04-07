@@ -1,6 +1,6 @@
 
 <div class="container-fluid border card shadow"
-	 style="width:80%;margin-top:30px;padding-top:20px;padding-bottom: 20px;">
+	 style="width:80%;margin-top:30px;padding-top:20px;padding-bottom: 20px;  max-width: 100%;">
 	<div class="card container-fluid border shadow " style="background-color: green;color:white;text-align:center">
 	<h4> Manage My Diet Plans</h4>
 	</div><br>
