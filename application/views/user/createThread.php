@@ -24,7 +24,7 @@
 	    <div class="col-md-11 col-md-offset-4 card shadow" style="margin-top:50px">
 		<div class="jumbotron" style="margin-top: 20px;">
 			<div class="font-header table-responsive" >
-				THREAD SECTION
+				CREATE A THREAD
 			</div>
 		</div>
 
