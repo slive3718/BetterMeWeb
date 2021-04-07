@@ -107,7 +107,7 @@ if (isset($rows)){
 													class="btn btn-primary btn-xs fas fa-edit  fa-xs "
 													href="<?= base_url().'admin/editMyComment/',$comment_id?>"></a>
 										<a
-												class="btn btn-danger btn-xs fas fa-trash-alt  fa-xs" style="cursor:pointer;"  data-toggle="modal"  data-target="#exampleModal<?=$comment_id?>"
+												class="btn btn-danger btn-xs fas fa-trash-alt  fa-xs"   data-toggle="modal"  data-target="#exampleModal<?=$comment_id?>"
 										></a><?php
 										}?>
 
