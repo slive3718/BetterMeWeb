@@ -19,7 +19,8 @@
 	}
 </style>
 
-<div class="container-fluid border card shadow" style="width:80%;margin-top:30px;padding-top:20px;padding-bottom: 20px;">
+<div class="container-fluid border card shadow" 
+style="width:80%;margin-top:30px;padding-top:20px;padding-bottom: 20px; max-width: 100%;">
 	<div class="jumbotron text-center">
 		<?= ($this->session->flashdata('msgsuccess'))?'<div class="btn btn-success">'.($this->session->flashdata('msgsuccess')).'</div>':''?>
 		<?= ($this->session->flashdata('msgwarn'))?'<div class="btn btn-warning"> '.($this->session->flashdata('msgwarn')).'</div>':''?>
