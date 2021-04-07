@@ -21,13 +21,6 @@
 		<div class="tb">
 			<div><a href="<?php echo base_url('user/homepage') ?>">
 			<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
-			<div class="td" id="search-form">
-				<form method="get" action="#">
-					<input type="text" placeholder="Better Me Search">
-					<button type="submit"><i class="material-icons">search</i></button>
-				</form>
-			</div>
-
 			<?php
 			if (isset($user_info) && !empty($user_info)){
 
