@@ -146,7 +146,7 @@
 					<div class="col-sm-12">
 						<input
 								class="btn btn-primary"
-								style="left:50px"
+								style="left:70px"
 								type="file"
 								name="userfile[]"
 								size="20"
@@ -206,6 +206,8 @@
 
 											</div>
 											<div class="p-dt">
+												<i class="fa fa-calendar"></i>
+												<span>Date</span>
 											</div>
 										</div>
 										<div class="dropdown dropleft">
