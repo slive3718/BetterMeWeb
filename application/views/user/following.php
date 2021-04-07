@@ -18,10 +18,10 @@
             <button></button> -->
         </div>
         <header>
-            <div class="tb" style="max-width: 100%;"> 
-                <div><a href="<?php echo base_url('user/homepage') ?>">
-			    <img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
-                <div class="td" id="search-form" style="max-width: 100%;">
+            <div class="tb"> 
+            <div><a href="<?php echo base_url('user/homepage') ?>">
+			<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
+                <div class="td" id="search-form">
                     <form method="get" action="#">
                         <input type="text" placeholder="Better Me Search">
                         <button type="submit"><i class="material-icons">search</i></button>
@@ -40,10 +40,10 @@
             $sex=$val->sex;
 
                  ?>
-                <div class="td" id="f-name-l"><a style="font-weight: bold; max-width: 100%;" class="btn btn-s btn-success rounded" 
+                <div class="td" id="f-name-l"><a style="font-weight: bold" class="btn btn-s btn-success rounded"
 				href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></div>
                 <div class="td" id="i-links">
-                    <div class="tb" style="max-width: 100%;">
+                    <div class="tb">
                         <div class="td" id="m-td">
                             <div class="tb">
                                 <span class="td"><i class="fa fa-user"></i></span>
@@ -66,11 +66,11 @@
                 </div>
             </div>
         </header>
-        <div id="profile-upper" style="max-width: 100%;">
-            <div id="profile-banner-image" style="max-width: 100%;">
+        <div id="profile-upper">
+            <div id="profile-banner-image">
                 <img src="https://imagizer.imageshack.com/img924/8210/3cMvFg.jpg" alt="Banner image">
             </div>
-            <div id="profile-d" style="max-width: 100%;">
+            <div id="profile-d">
                 <div id="profile-pic" class="card Regular shadow">
                 <?php
                 if (isset($pic_status)){ ?>
@@ -138,7 +138,7 @@
                 
           ?>
         </div>
-        <div id="device-bar-2" style="max-width: 100%;"><i class=""></i></div>
+        <div id="device-bar-2"><i class=""></i></div>
     </main>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <!--  -->
