@@ -104,7 +104,7 @@
 						<a href="#"><?= $followDatas->first_name,' ',$followDatas->last_name?></a>
 						 shared a post.
 					</div>
-					<div class="p-dt">
+					<div>
 						<i class="fa fa-calendar" style="font-weight: bold;">Date Posted:<?=$followDatas->date?></i>
 					</div>
 				</div>
