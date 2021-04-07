@@ -210,7 +210,7 @@
 												<span>Date</span>
 											</div>
 										</div>
-										<div class="dropdown dropleft">
+										<div class="dropdown dropleft" style="float:right;">
 											<a class=" btn-m fa fa-cogs" href="#" role="button" id="dropdownMenuLink"
 											   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											</a>
