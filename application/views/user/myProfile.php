@@ -13,7 +13,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
-
+<body style='overflow-x:hidden;'>
 <main>
 	<div id="device-bar-2" style="max-width: 100%;">
 	</div>
