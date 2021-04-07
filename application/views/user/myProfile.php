@@ -86,7 +86,7 @@
 		</div>
 		<div id="black-grd"></div>
 	</div>
-		<div class="td" style="float: center;">
+		<div class="tb" style="float: center;">
 				<div class="m-mrg card" id="p-tabs">
 					<div class="tb">
 						<div class="td">
