@@ -90,7 +90,7 @@
 		<div class="tb">
 			<div class="td" id="1-col">
 			<div class="td" id="m-col">
-			<div class="m-mrg card Regular shadow" id="composer"  style='top:50px'>
+			<div class="m-mrg card" id="composer"  style='top:30px'>
 				<div class="m-mrg card" id="p-tabs">
 					<div class="tb" >
 						<div class="td">
