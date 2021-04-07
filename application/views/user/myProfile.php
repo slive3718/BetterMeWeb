@@ -89,7 +89,7 @@
 	<div id="main-content">
 			<div class="td" id="1-col">
 			<div class="td" id="m-col">
-			<div class="m-mrg card" style='top:30px'>
+			<div class="m-mrg card" id="composer"  style='margin:30px;'>
 				<div class="m-mrg card" id="p-tabs">
 					<div class="tb" >
 						<div class="td">
