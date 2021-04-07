@@ -90,7 +90,6 @@
 			<div class="td" id="1-col">
 			<div class="td" id="m-col">
 				<div class="m-mrg card" id="p-tabs">
-					<div class="tb" style="margin: 30px;">
 						<div class="td">
 							<div class="tb" id="p-tabs-m">
 								<div class="td active"><a href="<?= base_url() . 'user/myProfile' ?>" class=""><i
