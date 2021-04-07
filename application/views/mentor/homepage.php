@@ -120,7 +120,7 @@
 				<div class="shadow p-3 mb-5" style='float:left;margin-left:15px;margin-bottom:30px;'>
 					<div class="d-flex justify-content-between btn btn-success btn-xs">
 
-						<div style="font-weight: bold; font-size: 8px;">   <?php if (isset($pic_status)){
+						<div style="">   <?php if (isset($pic_status)){
 							?>
 							<img style="width:2rem;height:2rem" ;
 								 src="<?= base_url() . './uploads/profilepic/profile' . $post_user_id ?>.jpg"
