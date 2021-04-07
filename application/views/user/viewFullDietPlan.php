@@ -48,7 +48,7 @@ if (isset($rows)) {
         } ?>
 
 <div class="" >
-    <div class="card" style="width: 50rem; max-width: 100%; ">
+    <div class="card" style="width: 50rem; max-width: 100%;">
 		<?php foreach ($row->images as $images) {
 			?>
 			<img class="" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
