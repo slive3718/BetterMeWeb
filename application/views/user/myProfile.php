@@ -174,7 +174,7 @@
 									placeholder="What's on your mind?"
 									class="whats-on-ur-mind border border-primary rounded"
 									cols="100"
-									rows="5"></textarea>
+									rows="5" required></textarea>
 
 								</div>
 						</div>
