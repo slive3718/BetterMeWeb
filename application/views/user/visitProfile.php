@@ -108,6 +108,7 @@
 		<div id="black-grd"></div>
 	</div>
 	<div id="main-content">
+			<div class="td" id="1-col">
 			<div class="m-mrg card" id="composer"  style='margin:30px;'>
 				<div class="m-mrg card" id="p-tabs"hidden>
 					<div class="tb">
