@@ -86,10 +86,11 @@
 		</div>
 		<div id="black-grd"></div>
 	</div>
-		<div class="tb" style="float: center; margin: auto;">
+		<div class="tb" style="float: center;">
 			<div class="td" id="l-col">
 			<div class="td" id="m-col">
 				<div class="m-mrg card" id="p-tabs">
+					<div class="tb" style="margin:20px;">
 						<div class="td">
 							<div class="tb" id="p-tabs-m">
 								<div class="td active"><a href="<?= base_url() . 'user/myProfile' ?>" class=""><i
