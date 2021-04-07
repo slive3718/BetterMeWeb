@@ -116,7 +116,7 @@
 					echo $this->session->flashdata('msgerror');
 				} ?>
 
-				<div class="shadow p-3 mb-5" style='float:left;margin-left:10px; margin-right:5px; margin-bottom:30px;'>
+				<div class="shadow p-3 mb-5" style='float:left;margin-left:8px; margin-bottom:30px;'>
 					<div class="d-flex justify-content-between btn btn-success btn-xs">
 
 						<div style="font-weight: bold;">    <?php if (isset($pic_status)){
