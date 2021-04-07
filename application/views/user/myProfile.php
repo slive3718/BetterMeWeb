@@ -92,7 +92,6 @@
 				</div>
 			</div>
 		</div>
-		<div id="black-grd"></div>
 	</div>
 	<div id="main-content">
 		<div class="tb ">
