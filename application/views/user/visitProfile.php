@@ -44,7 +44,7 @@
 	<header>
 		<div class="tb">
 			<div><a href="<?php echo base_url('user/homepage') ?>">
-			<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
+			<img src="<?= base_url()?>uploads/files/logo.png" style="width:100px;height:70px;"></a></div>
 			<?php foreach ($user_info as $val){
 
 			$id = $this->session->userdata('id');
