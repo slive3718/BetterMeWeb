@@ -21,7 +21,7 @@ if ($posts) {
 	}
 
 </style>
-<div class="container-fluid card shadow" style="width:100vh;margin-top:50px;background-color: lightgray max-width: 100%;">
+<div class="container-fluid card shadow" style="width:100vh;margin-top:50px;background-color: lightgray; max-width: 100%;">
 	<div class="m-indent" style="">
 		<form method="POST" action="<?= base_url() . 'admin/update_diet_plan' ?>" enctype="multipart/form-data">
 			<input type="text" name="post_id" value="<?= $post_id ?>" hidden>
