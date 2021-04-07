@@ -14,9 +14,22 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
-
-
-
+<script type="text/javascript" src="<?= base_url() ?>/assets/js/myProfile.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/css/myProfile.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+		crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
+<body style='overflow-x:hidden;'>
 <main>
 	<div id="device-bar-2" style="max-width: 100%;">
 	</div>
@@ -25,12 +38,6 @@
 			
 		<div><a href="<?php echo base_url('user/homepage') ?>">
 		<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
-			<div class="td" id="search-form">
-                <form method="get" action="#">
-                <input type="text" placeholder="Better Me Search">
-                <button type="submit"><i class="material-icons">search</i></button>
-                </form>
-            </div> 
 			<?php if(isset($user_info) && !empty($user_info)){
 			foreach ($user_info as $val){
 			//   print($val->getAllProfilePost->post_images->result());exit;
