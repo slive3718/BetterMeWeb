@@ -4,7 +4,7 @@
 		margin: 20px;
 	}
 </style>
-<div class="container-fluid card shadow" style="width:100vh">
+<div class="container-fluid card shadow" style="width:100vh; max-width: 100%;">
 	<div class="m-indent" style="">
 		<form method="POST" action="<?= base_url().'admin/add_new_plan'?>" enctype="multipart/form-data">
 
