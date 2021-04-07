@@ -86,9 +86,11 @@
 		</div>
 		<div id="black-grd"></div>
 	</div>
-		<div class="tb" style="float: center;">
+	<div id="main-content">
+		<div class="tb">
 			<div class="td" id="1-col">
 			<div class="td" id="m-col">
+			<div class="m-mrg card Regular shadow" id="composer"  style='right:20px'>
 				<div class="m-mrg card" id="p-tabs">
 					<div class="tb" >
 						<div class="td">
