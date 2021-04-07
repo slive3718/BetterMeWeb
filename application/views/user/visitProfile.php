@@ -117,7 +117,7 @@
 					<div class="tb">
 						<div class="td">
 							<div class="tb" id="p-tabs-m">
-								<div class="td active"><a class=""><i
+								<div class="td active"><a href="<?= base_url() . 'user/myProfile' ?>" class=""><i
 												class="fa fa-clock-o"></i><span>TIMELINE</span></a></div>
 								<div class="td"><a class=""><i
 												class="fa fa-user-plus"></i><span>Following</span></a></div>
