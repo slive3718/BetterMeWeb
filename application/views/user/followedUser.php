@@ -125,5 +125,4 @@
 	}
 	}
 	?>
-	<div id="device-bar-2"><i class=""></i></div>
 </main>
