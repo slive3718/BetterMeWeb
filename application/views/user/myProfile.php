@@ -91,12 +91,6 @@
 			<div class="td" id="l-col">
 				<div class="l-cnt card Regular shadow">
 					<div id="photos">
-						<div class="container">
-							<div>
-
-
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
