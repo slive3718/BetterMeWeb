@@ -28,7 +28,6 @@
 			</div>
 		</div>
 
-
     		<form action="<?= base_url().'user/post_thread' ?>" method="POST">
     		    <div class="form-group">
 					<label for="title"><b>Title</b></label>
