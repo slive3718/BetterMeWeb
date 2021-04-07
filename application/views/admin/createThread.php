@@ -1,5 +1,23 @@
 
 <!------ Include the above in your HEAD tag ---------->
+<style>
+	body{
+		align-content: center;
+	}
+	.font-header{
+		color: #FFFFFF;
+		font-family: 'Raleway', sans-serif;
+		font-size: 30px;
+		font-weight: 800;
+		line-height: 72px;
+		/*margin: 0 0 24px;*/
+		text-align: center;
+		text-transform: uppercase;
+		background-color: #28A745;
+		border-radius: 5px;
+	}
+</style>
+
 <div >
 <div class="container">
 <div class="row">
