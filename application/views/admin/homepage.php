@@ -67,7 +67,7 @@
 </div>
 
 </div>
-<div class="row" style="max-width: 100%;">
+<div class="row">
 	<div class="diets col-8">
 		<?php
 		$current_user = $this->session->userdata('id');
@@ -109,7 +109,7 @@
 					echo $this->session->flashdata('msgerror');
 				} ?>
 
-				<div class="shadow p-3 mb-5" style='float:left;margin-left:15px;margin-bottom:30px;'>
+				<div class="shadow p-3 mb-5" style='float:left;margin-left:10px;margin-bottom:30px;'>
 					<div class="d-flex justify-content-between btn btn-success btn-xs">
 
 						<div style="font-weight: bold;">     <?php if (isset($pic_status)){
