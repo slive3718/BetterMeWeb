@@ -110,7 +110,7 @@
 	<div id="main-content">
 			<div class="td" id="1-col">
 			<div class="td" id="m-col">
-			<div class="m-mrg card" id="composer"  style='margin:50px;'>
+			<div class="m-mrg card" id="composer"  style='margin:30px;'>
 				<div class="m-mrg card" id="p-tabs">
 					<div class="tb" >
 						<div class="td">
@@ -126,7 +126,7 @@
 						<!-- <div class="td" id="p-tab-m"><i class="material-icons">keyboard_arrow_down</i></div> -->
 					</div>
 				</div>
-				<div class="m-mrg card Regular shadow" id="composer" hidden>
+				<div class="m-mrg card Regular shadow" id="composer">
 					<div id="c-tabs-cvr">
 						<div class="tb" id="c-tabs">
 							<div class="td"><i class="material-icons">Whats Up?</i><span></span></div>
