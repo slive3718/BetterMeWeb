@@ -133,7 +133,7 @@
 									name="content"
 									placeholder="What's on your mind?"
 									class="whats-on-ur-mind border border-primary rounded"
-									cols="100"
+									cols="150"
 									rows="5" required></textarea>
 
 								</div>
@@ -145,8 +145,8 @@
 					</hr>
 					<div class="col-sm-12">
 						<input
-								class="btn btn-primary btn-sm col-md-4"
-								style="left:70px"
+								class="btn btn-primary"
+								style="left:50px"
 								type="file"
 								name="userfile[]"
 								size="20"
