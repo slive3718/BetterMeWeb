@@ -105,7 +105,7 @@
 						 shared a post.
 					</div>
 					<div class="p-dt">
-						<i class="fa fa-calendar">Date Posted:<?=$followDatas->date?></i>
+						<i class="fa fa-calendar" style="font-weight: bold;">Date Posted:<?=$followDatas->date?></i>
 					</div>
 				</div>
 <!--				<div class="dropdown dropleft">-->
