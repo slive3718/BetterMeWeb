@@ -59,16 +59,9 @@
 			$userId = $val->userId;
 			?>
 			<div class="td" id="f-name-l"><a style="font-weight: bold" class="btn btn-s btn-success rounded"
-											 href="<?= base_url() . 'user/myProfile/' . $id ?>">Home</a></div>
+				href="<?= base_url() . 'user/myProfile/' . $id ?>">Home</a></div>
 			<div class="td" id="i-links">
 				<div class="tb">
-					<div class="td" id="m-td">
-						<div class="tb">
-							<span class="td"><i class="fa fa-user"></i></span>
-							<span class="td"><i class="fa fa-envelope"></i></span>
-							<span class="td m-active"><i class="fa fa-bell"></i></span>
-						</div>
-					</div>
 					<div class="td">
 						<a href="#" id="p-link">
 							<?php if (isset($pic_status)) { ?>
