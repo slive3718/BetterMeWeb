@@ -90,8 +90,6 @@
 		<div class="tb ">
 			<div class="td" id="l-col">
 				<div class="l-cnt card Regular shadow">
-				</div>
-			</div>
 			<div class="td" id="m-col">
 				<div class="m-mrg card" id="p-tabs">
 					<div class="tb">
