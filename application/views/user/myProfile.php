@@ -92,7 +92,7 @@
 				<div class="m-mrg card" id="p-tabs">
 					<div class="tb">
 						<div class="td">
-							<div class="tb">
+							<div class="tb" id="p-tabs-m" style="margin: 30px;">
 								<div class="td active"><a href="<?= base_url() . 'user/myProfile' ?>" class=""><i
 												class="fa fa-clock-o"></i><span>TIMELINE</span></a></div>
 								<div class="td"><a href="<?= base_url() . 'user/following' ?>" class=""><i
