@@ -108,13 +108,11 @@
 		<div id="black-grd"></div>
 	</div>
 	<div id="main-content">
-		<div class="tb ">
-			<div class="td" id="l-col">
-				<div class="l-cnt card Regular shadow">
-			</div>
+			<div class="td" id="1-col">
 			<div class="td" id="m-col">
+			<div class="m-mrg card" id="composer"  style='margin:30px;'>
 				<div class="m-mrg card" id="p-tabs">
-					<div class="tb">
+					<div class="tb" >
 						<div class="td">
 							<div class="tb" id="p-tabs-m">
 								<div class="td active"><a class=""><i
