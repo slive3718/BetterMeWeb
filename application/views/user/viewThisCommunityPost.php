@@ -162,14 +162,6 @@ $current_user = $this->session->userdata('id');
                 } ?>
 
                     <!-- comment -->
-
-                    <div class="bg-white p-2">
-                        <div class="d-flex flex-row fs-12">
-                            <div class="like p-2 cursor">
-                                <i class="fa fa-thumbs-o-up"></i>
-                                <span class="ml-1" style="cursor:pointer">
-                                    Like</span></div>
-
                             <div
                                 class="like p-2 cursor action-collapse"
                                 data-toggle="collapse"
@@ -178,14 +170,6 @@ $current_user = $this->session->userdata('id');
                                 href="#collapse-1">
                                 <i class="fa fa-commenting-o"></i>
                                 <span class="ml-1" style="cursor:pointer">Comment</span></div>
-                            <div
-                                class="like p-2 cursor action-collapse"
-                                data-toggle="collapse"
-                                aria-expanded="true"
-                                aria-controls="collapse-2"
-                                href="#collapse-2">
-                                <i class="fa fa-share"></i>
-                                <span class="ml-1" style="cursor:pointer">Share</span></div>
                         </div>
                     </div>
                     <div id="collapse-1" class="bg-light p-2 collapse" data-parent="#myGroup">
