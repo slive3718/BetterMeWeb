@@ -205,7 +205,7 @@ if (isset($rows)){
 									<?php }?>
 									<textarea
 											class="form-control ml-1 shadow-none textarea" wrap="hard" rows="3" cols="3"
-											name="community_comment"></textarea>
+											name="community_comment"  required></textarea>
 
 								</div>
 								<div class="mt-2 text-right">
