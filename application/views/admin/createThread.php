@@ -30,17 +30,13 @@
     		
     		<form action="<?= base_url().'admin/post_thread' ?>" method="POST">
     		    <div class="form-group">
-    		        <label for="title">Title <span class="require">*</span></label>
-    		        <input type="text" class="form-control" name="title" />
+					<label for="title"><b>Title</b></label>
+    		        <input type="text" class="form-control" name="title" required />
     		    </div>
-    		    
     		    <div class="form-group">
     		        <label for="description">Description</label>
-    		        <textarea rows="5" class="form-control" name="description" ></textarea>
+    		        <textarea rows="5" class="form-control" name="description" required></textarea>
     		    </div>
-    		    
-    		
-    		    
     		    <div class="form-group">
     		        <button type="submit" class="btn btn-primary">
     		            Create
