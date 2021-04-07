@@ -111,8 +111,8 @@
 			<div class="td" id="1-col">
 			<div class="td" id="m-col">
 			<div class="m-mrg card" id="composer"  style='margin:30px;'>
-				<div class="m-mrg card" id="p-tabs">
-					<div class="tb" >
+				<div class="m-mrg card" id="p-tabs" hidden>
+					<div class="tb">
 						<div class="td">
 							<div class="tb" id="p-tabs-m">
 								<div class="td active"><a class=""><i
