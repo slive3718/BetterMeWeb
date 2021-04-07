@@ -90,8 +90,8 @@
 			<div class="td" id="1-col">
 			<div class="td" id="m-col">
 				<div class="m-mrg card" id="p-tabs">
-					<div class="tb">
-						<div class="td"style="margin: 100px;">
+					<div class="tb" style="margin: 30px;">
+						<div class="td">
 							<div class="tb" id="p-tabs-m">
 								<div class="td active"><a href="<?= base_url() . 'user/myProfile' ?>" class=""><i
 												class="fa fa-clock-o"></i><span>TIMELINE</span></a></div>
