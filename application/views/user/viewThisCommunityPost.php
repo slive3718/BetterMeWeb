@@ -172,7 +172,7 @@ $current_user = $this->session->userdata('id');
                                 aria-controls="collapse-1"
                                 href="#collapse-1">
                                 <i class="fa fa-commenting-o"></i>
-                                <span class="ml-1" style="cursor:pointer">Comment</span></div>
+                                <span class="ml-1" style="cursor:pointer">Write a Comment Here</span></div>
                         </div>
                     </div>
                     <div id="collapse-1" class="bg-light p-2 collapse" data-parent="#myGroup">
