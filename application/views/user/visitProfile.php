@@ -252,9 +252,7 @@
 	</div>
 	<?php
 	}
-
 	?>
-	<div id="device-bar-2"><i class="fab fa-apple"></i></div>
 </main>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
