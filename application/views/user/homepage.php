@@ -75,7 +75,7 @@
 
 </div>
 	<div class="row">
-	<div class="diets col-8">
+	<div class="diets col-8" style="max-width: 100%">
 		<?php
 		$current_user = $this->session->userdata('id');
 		if (isset($rows)) {
