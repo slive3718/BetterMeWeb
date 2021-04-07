@@ -40,7 +40,8 @@
     		    <div class="form-group">
     		        <button type="submit" class="btn btn-primary">
     		            Create
-    		        <a href="<?php echo base_url('mentor/homepage')?>"><button>
+    		        </button>
+    		        <a href="<?php echo base_url('mentor/homepage')?>">
     		            Cancel
     		        </a>
     		    </div>
