@@ -104,7 +104,7 @@
 <!--					</div>-->
 <!--				</div>-->
 			</div>
-			<label class="tb " readonly>
+			<label class="tb " readonly style="text-align:center;">
 				<?=	$followed_content ?>
 			</label>
 			<div class="d-flex justify-content-center">
