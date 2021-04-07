@@ -310,6 +310,7 @@
 						<!--									End of archive checking -->
 					<?php }
 				} ?>
+				<div clas="fa-3x"><i class="fas fa-sync fa-spin"></i></div>
 			</div>
 		</div>
 	</div>
