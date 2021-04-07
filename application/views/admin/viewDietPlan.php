@@ -17,7 +17,7 @@
 		}
 	</style>
 <div class="container-fluid border card shadow"
-	 style="width:80%;margin-top:30px;padding-top:20px;padding-bottom: 20px;">
+	 style="width:80%;margin-top:30px;padding-top:20px;padding-bottom: 20px; max-width: 100%;">
 	<div class="jumbotron text-center">
 
 		<h2>Manage Diet Plan</h2>
