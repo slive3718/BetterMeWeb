@@ -46,7 +46,7 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 								name="content"
 								placeholder="What's on your mind?"
 								class="whats-on-ur-mind border border-primary rounded"
-								cols="100"
+								cols="90"
 								rows="5"><?=(isset($content) && !empty($content))?$content:''?></textarea>
 					</div>
 			</div>
