@@ -41,7 +41,7 @@
     		        <button type="submit" class="btn btn-primary">
     		            Create
     		        </button>
-					<a style="font-weight: bold; margin: 5px;" href="<?php echo base_url('user/homepage')?>">
+					<a style="font-weight: bold; margin: 5px;" href="<?php echo base_url('user/homepage')?>"  class="btn btn-default">
     		            Cancel
 					</a>
     		    </div>
