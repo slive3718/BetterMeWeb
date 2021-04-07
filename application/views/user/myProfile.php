@@ -88,37 +88,6 @@
 	</div>
 	<div id="main-content">
 		<div class="tb ">
-			<div class="td" id="l-col">
-				<div class="l-cnt card Regular shadow">
-					<div class="cnt-label ">
-						<i class="l-i" id="l-i-i"></i>
-						<span>Intro</span>
-						<div class="lb-action"><i class="material-icons">edit</i></div>
-					</div>
-					<div id="i-box">
-						<div id="intro-line">Web developer - UI</div>
-						<div id="u-occ">Developing awesome UIs at <a href="#">Google LLC</a> Bengaluru and inspiring
-							other companies to do so :)
-						</div>
-						<div id="u-loc"><i class="material-icons">location_on</i><a href="#">Bengaluru</a>, <a href="#">India</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="l-cnt l-mrg card Regular shadow">
-					<div class="cnt-label">
-						<i class="l-i" id="l-i-p"></i>
-						<span>Photos</span>
-						<!-- <div class="lb-action" id="b-i"><i class="fa fa-caret-down"></i></div> -->
-					</div>
-					<div id="photos">
-						<div class="container">
-							<div>
-
-
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 			<div class="td" id="m-col">
