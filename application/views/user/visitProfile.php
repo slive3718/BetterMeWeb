@@ -112,9 +112,9 @@
 			<div class="td" id="m-col">
 			<div class="m-mrg card" id="composer"  style='margin:30px;'>
 				<div class="m-mrg card" id="p-tabs">
-					<div class="tb" >
+					<div class="tb" hidden>
 						<div class="td">
-							<div class="tb" id="p-tabs-m" hidden>
+							<div class="tb" id="p-tabs-m">
 								<div class="td active"><a class=""><i
 												class="fa fa-clock-o"></i><span>TIMELINE</span></a></div>
 								<div class="td"><a class=""><i
