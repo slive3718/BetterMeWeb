@@ -117,11 +117,11 @@
 					<div class="tb">
 						<div class="td">
 							<div class="tb" id="p-tabs-m">
-								<div class="td active"><a href="<?= base_url() . 'user/myProfile' ?>" class=""><i
+								<div class="td active"><a href="<?= base_url() . 'user/myProfile' ?>" class="" disabled><i
 												class="fa fa-clock-o"></i><span>TIMELINE</span></a></div>
-								<div class="td"><a href="<?= base_url() . 'user/following' ?>" class=""><i
+								<div class="td"><a href="<?= base_url() . 'user/following' ?>" class="" disabled><i
 												class="fa fa-user-plus"></i><span>Following</span></a></div>
-								<div class="td"><a href="<?= base_url() . 'user/followers' ?>" class=""><i
+								<div class="td"><a href="<?= base_url() . 'user/followers' ?>" class="" disabled><i
 												class="fa fa-users"></i><span>Followers</span> </a></div>
 							</div>
 						</div>
