@@ -155,8 +155,8 @@ if (isset($rows)){
 								</div>
 							</div>
 							<?php
-								}
-							?>
+									}
+								?>
 
 							<?php
 							}
@@ -172,7 +172,7 @@ if (isset($rows)){
 											aria-expanded="true"
 											aria-controls="collapse-1"
 											href="#collapse-1">
-										<i class="fa fa-commenting-o"></i>
+										<i class="fa fa-commenting-o" style="cursor:pointer"></i>
 										<span class="ml-1" style="cursor:pointer; font-weight: bold;">Write a Comment Here</span></div>
 								</div>
 							</div>
