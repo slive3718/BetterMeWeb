@@ -145,7 +145,7 @@
 					</hr>
 					<div class="col-sm-12">
 						<input
-								class="btn btn-primary"
+								class="btn btn-primary btn-sm col-md-4"
 								style="left:70px"
 								type="file"
 								name="userfile[]"
