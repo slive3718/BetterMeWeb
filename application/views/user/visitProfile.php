@@ -205,7 +205,8 @@
 											} ?></a>
 										<div class="td p-r-hdr">
 											<div class="p-u-info">
-												<a href="#"><?= Ucfirst($firstName), " ", Ucfirst($lastName) ?>
+												<a href="#"><?= Ucfirst($firstName), " ", Ucfirst($lastName) ?></a>
+												shared a post <a href="#">Himalaya Singh</a>
 											</div>
 											<div class="p-dt">
 												<i class="fa fa-calendar"></i>
