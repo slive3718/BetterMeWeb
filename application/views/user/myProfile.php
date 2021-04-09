@@ -16,7 +16,6 @@
 <body style='overflow-x:hidden;'>
 <main>
 	<div id="device-bar-2" style="max-width: 100%;">
-	</div>
 	<header>
 		<div class="tb">
 			<div><a href="<?php echo base_url('user/homepage') ?>">
@@ -105,7 +104,7 @@
 						<!-- <div class="td" id="p-tab-m"><i class="material-icons">keyboard_arrow_down</i></div> -->
 					</div>
 				</div>
-				<div class="m-mrg card Regular shadow" id="composer">
+				<div class="m-mrg card Regular shadow" id="composer" style="max-width: 100%;">
 					<div id="c-tabs-cvr">
 						<div class="tb" id="c-tabs">
 							<div class="td"><i class="material-icons">Whats Up?</i><span></span></div>
