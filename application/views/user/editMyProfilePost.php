@@ -59,7 +59,6 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 				style="left:0px; 
 				width: 0.1px;
 				height: 0.1px;
-				overflow: hidden;
 				type="file"
 				name="userfile[]"
 				size="20"
