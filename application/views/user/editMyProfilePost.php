@@ -1,4 +1,3 @@
-<body style='overflow-x:hidden;'>
 <style>
 	.m-indent {
 		margin: 20px;
@@ -56,7 +55,8 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 		</hr>
 		<div class="col-sm-12" style="max-width:100%;">
 			<input
-				style="margin-left:10px;"
+				class="btn btn-primary"
+				style="left:20px;"
 				type="file"
 				name="userfile[]"
 				size="20"
