@@ -53,7 +53,7 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 			</div>
 		</div>
 		</hr>
-		<div class="col-sm-12">
+		<div>
 			<input
 				class="" 
 				style="left:0px; overflow: hidden;"
