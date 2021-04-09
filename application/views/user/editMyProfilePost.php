@@ -53,7 +53,7 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 			</div>
 		</div>
 		</hr>
-		<div class="col-sm-5" style="max-width:100%;">
+		<div style="max-width:100%;">
 			<input
 				class="btn btn-primary"
 				style="left:20px;"
