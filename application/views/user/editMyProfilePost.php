@@ -59,7 +59,7 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 				style="margin-left:20px;"
 				type="file"
 				name="userfile[]"
-				size="20"
+				size="10"
 				multiple="multiple"/>
 
 			<input type="submit" value="Post" class="btn btn-primary" style="right:0px;float:right"/>
