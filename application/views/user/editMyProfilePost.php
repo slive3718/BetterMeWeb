@@ -62,7 +62,7 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 				size="20"
 				multiple="multiple"/>
 
-			<input type="submit" value="Post" class="" style="margin-right:3px;float:right"/>
+			<input type="submit" value="Post" class="" style="right:0px;float:right"/>
 
 		</div>
 		<!-- -->
