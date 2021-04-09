@@ -131,7 +131,7 @@
 									name="content"
 									placeholder="What's on your mind?"
 									class="whats-on-ur-mind border border-primary rounded"
-									cols="150"
+									cols="100"
 									rows="5" required></textarea>
 
 								</div>
