@@ -14,7 +14,7 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 }
 ?>
 
-<div class="container-fluid card shadow" style="width:100vh;margin-top: 50px">
+<div class="container-fluid card shadow" style="width:100vh;margin-top: 50px; max-width:100%;">
 	<div class="m-mrg" style="padding: 30px 5px 90px 5px" id="composer">
 
 		<div id="c-c-main">
@@ -46,7 +46,7 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 								name="content"
 								placeholder="What's on your mind?"
 								class="whats-on-ur-mind border border-primary rounded"
-								cols="90"
+								cols="60"
 								rows="5"><?=(isset($content) && !empty($content))?$content:''?></textarea>
 					</div>
 			</div>
