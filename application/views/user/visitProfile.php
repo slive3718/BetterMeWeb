@@ -217,7 +217,7 @@
 											<div class="container">
 												<?php foreach ($post->post_images as $images) {
 													?>
-													<img src="<?= base_url() . './uploads/profile_posts/' . $images->image_name ?>">
+													<img src="<?= base_url() . './uploads/posts/' . $images->image_name ?>">
 													<?php
 												} ?>
 											</div>
