@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
 <body style='overflow-x:hidden;'>
 <main>
-	<div id="device-bar-2" style="max-width: 100%;">
+	<div style="max-width: 100%;">
 	<header>
 		<div class="tb">
 			<div><a href="<?php echo base_url('user/homepage') ?>">
