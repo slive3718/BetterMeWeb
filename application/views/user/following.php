@@ -28,11 +28,7 @@
 
 
 <main>
-        <div id="device-bar-2" style="max-width: 100%;">
-            <!-- <button></button>
-            <button></button>
-            <button></button> -->
-        </div>
+
         <header>
             <div class="tb"> 
             <div><a href="<?php echo base_url('user/homepage') ?>">
