@@ -55,14 +55,13 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 		</hr>
 		<div class="col-sm-12">
 			<input
-				class="btn btn-primary"
-				style=""
+				style="left:10px;"
 				type="file"
 				name="userfile[]"
 				size="20"
 				multiple="multiple"/>
 
-			<input type="submit" value="Post" class="btn btn-primary" style="float:right"/>
+			<input type="submit" value="Post" class="btn btn-primary" style="right:0px;float:right"/>
 
 		</div>
 		<!-- -->
