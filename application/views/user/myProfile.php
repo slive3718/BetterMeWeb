@@ -127,6 +127,7 @@
 									enctype="multipart/form-data">
 								<div class="Small" id="c-inp">
                             <textarea
+									style="max-width: 100%;"
 									name="content"
 									placeholder="What's on your mind?"
 									class="whats-on-ur-mind border border-primary rounded"
