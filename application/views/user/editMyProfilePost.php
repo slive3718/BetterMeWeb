@@ -54,8 +54,8 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 		</hr>
 		<div class="col-sm-12">
 			<input
-				class="btn btn-primary btn-sm col-md-4"
-				style="left:20px;"
+				class="btn btn-primary"
+				style="margin-left:20px;"
 				type="file"
 				name="userfile[]"
 				size="20"
