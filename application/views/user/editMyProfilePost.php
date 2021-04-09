@@ -56,9 +56,8 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 		<div class="col-sm-12">
 			<input
 				class="" 
-				style="left:0px; width: 0.1px;
+				style="left:px; width: 0.1px;
 				height: 0.1px;
-				opacity: 0;
 				overflow: hidden;
 				position: absolute;
 				z-index: -1;"
