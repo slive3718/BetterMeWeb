@@ -53,12 +53,13 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 			</div>
 		</div>
 		</hr>
-		<div class="col-sm-5" style="max-width:100%;">
+		<div class="col-sm-5" style="max-width:100%; font-size: 5px;">
 			<input
+				class="btn btn-primary"
 				style="left:20px;"
 				type="file"
 				name="userfile[]"
-				size="5"
+				size="20"
 				multiple="multiple"/>
 
 			<input type="submit" value="Post" class="btn btn-primary" style="right:0px;float:right"/>
