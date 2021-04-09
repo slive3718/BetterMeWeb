@@ -143,7 +143,7 @@
 					<div>
 						<input
 								class="btn btn-primary"
-								style="left:60px"
+								style="margin-left:60px"
 								type="file"
 								name="userfile[]"
 								size="20"
@@ -152,7 +152,7 @@
 								type="submit"
 								value="Post"
 								class="btn btn-primary"
-								style="right:50px;float:right"/>
+								style="margin-right:50px;float:right"/>
 					</div>
 					<!-- -->
 				</div>
