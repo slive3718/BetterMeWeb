@@ -57,8 +57,6 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 			<input
 				class="" 
 				style="left:0px; 
-				width: 3px;
-				height:3px;
 				type="file"
 				name="userfile[]"
 				size="20"
