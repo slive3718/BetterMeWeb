@@ -108,7 +108,7 @@
 							<div class="td"><i class="material-icons">Whats Up?</i><span></span></div>
 						</div>
 					</div>
-					<div id="c-c-main">
+					<div id="c-c-main" style="max-width: 100%;">
 						<div class="tb">
 							<div class="td" id="p-c-i"> <?php
 								if (isset($pic_status)) { ?>
@@ -127,7 +127,6 @@
 									enctype="multipart/form-data">
 								<div class="Small" id="c-inp">
                             <textarea
-									style="max-width: 100%;"
 									name="content"
 									placeholder="What's on your mind?"
 									class="whats-on-ur-mind border border-primary rounded"
