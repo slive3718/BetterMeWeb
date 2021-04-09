@@ -16,8 +16,6 @@
 <link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
 
 <main>
-	<div id="device-bar-2" style="max-width: 100%;">
-	</div>
 	<header>
 		<div class="tb">
 			
