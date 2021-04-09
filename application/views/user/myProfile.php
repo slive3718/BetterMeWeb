@@ -153,7 +153,7 @@
 								type="submit"
 								value="Post"
 								class="btn btn-primary"
-								style="margin-right:55px;float:right"/>
+								style="margin-right:70px;float:right"/>
 					</div>
 					<!-- -->
 				</div>
@@ -207,7 +207,7 @@
 												<span>Date</span>
 											</div>
 										</div>
-										<div class="dropdown dropleft" style="float:right; size: 30px;">
+										<div class="dropdown dropleft" style="float:right;">
 											<a class=" btn-m fa fa-cogs" href="#" role="button" id="dropdownMenuLink"
 											   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											</a>
