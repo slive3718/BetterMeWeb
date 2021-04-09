@@ -43,6 +43,7 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 					enctype="multipart/form-data">
 					<div class="Small" id="c-inp">
                             <textarea
+								style="width:100vh;"
 								name="content"
 								placeholder="What's on your mind?"
 								class="whats-on-ur-mind border border-primary rounded"
