@@ -183,7 +183,7 @@
 						<?php if($archived!=="1" ){
 
 						?>
-						<div class="m-mrg card Regular shadow" id="">
+						<div class="m-mrg card Regular shadow" id="" style="max-width: 100%;">
 							<div>
 								<div class="post card Regular shadow">
 									<div class="tb">
