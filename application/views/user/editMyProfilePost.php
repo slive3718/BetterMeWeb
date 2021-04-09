@@ -1,3 +1,4 @@
+<body style='overflow-x:hidden;'>
 <style>
 	.m-indent {
 		margin: 20px;
