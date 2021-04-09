@@ -153,7 +153,7 @@
 								type="submit"
 								value="Post"
 								class="btn btn-primary"
-								style="margin-right:50px;float:right"/>
+								style="margin-right:60px;float:right"/>
 					</div>
 					<!-- -->
 				</div>
