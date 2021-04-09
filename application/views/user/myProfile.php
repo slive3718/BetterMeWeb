@@ -140,10 +140,10 @@
 						button-post">Post</a></div> -->
 					</div>
 					</hr>
-					<div class="col-sm-12">
+					<div>
 						<input
 								class="btn btn-primary"
-								style="margin-left:60px"
+								style="left:0px"
 								type="file"
 								name="userfile[]"
 								size="20"
