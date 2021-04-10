@@ -19,10 +19,8 @@
 <?php
 if (isset($rows)) {
 
-foreach ($rows
-
-as $row){
-
+foreach ($rows as $row){
+print_r($row);
 $post_id = $row->post_id;
 $post_title = $row->post_title;
 $post_content = $row->post_content;
@@ -61,7 +59,7 @@ $current_user = $this->session->userdata('id');
 					 alt="Card image cap" style="">
 			<?php } ?>
 			<div class="card-body">
-				<span style="float:left" class="btn btn-success form-control"><h6 class="card-title"> Posted by : <?= $post_from ?></h6></span><br>
+				<span style="" class="btn btn-success form-control"><span style="float:left"><h6 class="card-title"> <?= (isset($post_from) && !empty($post_from))?'Posted by: '.$post_from:''?>></h6></span><span style="float:right"><?= (isset($date_posted) && !empty($date_posted))?'Date: '.$date_posted:''?> </span></span><br>
 				<div class="card shadow border border-success">
 				<h5 class="card-title"><?= $post_title ?></h5>
 				<p class="card-text"><?php if (isset($post_content)) {
