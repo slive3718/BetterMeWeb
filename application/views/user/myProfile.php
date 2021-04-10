@@ -125,8 +125,8 @@
 									method="post"
 									action="<?= base_url() ?>user/add_new_post"
 									enctype="multipart/form-data">
-								<div class="Small" id="c-inp">
-                            <textarea
+							<div class="Small" id="c-inp">
+                            	<textarea
 									style="max-width: 100%;"
 									name="content"
 									placeholder="What's on your mind?"
