@@ -20,7 +20,8 @@
 if (isset($rows)) {
 
 foreach ($rows as $row){
-print_r($row);
+/*	echo "<pre>";
+print_r($row);*/
 $post_id = $row->post_id;
 $post_title = $row->post_title;
 $post_content = $row->post_content;
@@ -30,6 +31,7 @@ $routine_format = $row->routine_format;
 $post_user_id = $row->post_user_id;
 $post_type = $row->post_type;
 
+$target_audience = $row->target_audience;
 $post_from = ucfirst($row->first_name) . ' ' . ucfirst($row->last_name);
 
 $type_of_diet = $row->type_of_diet;
@@ -62,7 +64,9 @@ $current_user = $this->session->userdata('id');
 				<span style="" class="btn btn-success form-control"><span style="float:left"><h6 class="card-title"> <?= (isset($post_from) && !empty($post_from))?'Posted by: '.$post_from:''?></h6></span><span style="float:right"><?= (isset($date_posted) && !empty($date_posted))?'Date: '.$date_posted:''?> </span></span><br>
 				<div class="card shadow border border-success">
 				<h5 class="card-title"><?= $post_title ?></h5>
-				<p class="card-text"><?php if (isset($post_content)) {
+					<p> <?= (isset($routine_count,$routine_format) && !empty($routine_count) && !empty($routine_format))?'<span style="float: left">' .'<strong> Routine: </strong>'.$routine_count.' '.$routine_format.'</span>':'' ; ?>
+					<?= (isset($target_audience) && !empty($target_audience))? '<span style="float: right"> <strong>Suitable for: </strong>'.$target_audience.'</span>':''?></p>
+					<p class="card-text"><?php if (isset($post_content)) {
 						echo $post_content;
 					}
 
