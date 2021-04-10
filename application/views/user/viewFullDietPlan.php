@@ -59,7 +59,7 @@ $current_user = $this->session->userdata('id');
 					 alt="Card image cap" style="">
 			<?php } ?>
 			<div class="card-body">
-				<span style="" class="btn btn-success form-control"><span style="float:left"><h6 class="card-title"> <?= (isset($post_from) && !empty($post_from))?'Posted by: '.$post_from:''?>></h6></span><span style="float:right"><?= (isset($date_posted) && !empty($date_posted))?'Date: '.$date_posted:''?> </span></span><br>
+				<span style="" class="btn btn-success form-control"><span style="float:left"><h6 class="card-title"> <?= (isset($post_from) && !empty($post_from))?'Posted by: '.$post_from:''?></h6></span><span style="float:right"><?= (isset($date_posted) && !empty($date_posted))?'Date: '.$date_posted:''?> </span></span><br>
 				<div class="card shadow border border-success">
 				<h5 class="card-title"><?= $post_title ?></h5>
 				<p class="card-text"><?php if (isset($post_content)) {
