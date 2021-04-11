@@ -145,7 +145,7 @@ if ($posts) {
 			</div>
 			<div class="form-group">
 				<a id="hide-image" class="btn btn-outline-warning" style="cursor: pointer;">Hide Image</a>
-				<a data-sessions_id="<?= $post_id ?>" id="manage-image" style="cursor: pointer">Manage Image</a>
+				<a data-sessions_id="<?= $post_id ?>" class="btn btn-outline-success btn-sm" id="manage-image" style="cursor: pointer">Manage Image</a>
 			</div>
 			<div class="show-image-here" style="width:50px;display: block">
 				<p class="image-here">
