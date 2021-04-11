@@ -162,8 +162,10 @@ class User extends CI_Controller
 		$data['getTopDiets'] = $this->user_model->getTopDiets();
 
         $data['page_title']= "Homepage";
+
         $this->load->view('user/templates/header', $data);
         $this->load->view('user/homepage', $data);
+        $this->load->view('user/homeCommentModal');
     }
 
    
@@ -685,7 +687,7 @@ public function add_new_post(){
         $post = $this->input->post();
         $id=$this->session->userdata('id');
         $config['upload_path']          = './uploads/profile_posts';
-        $config['allowed_types']        = 'jpg|png|jpeg|';
+        $config['allowed_types']        = 'jpg|png|jpeg|gif|';
         $config['max_size']             = 100000;
         $config['max_width']            = 100000;
         $config['max_height']           = 100000;
