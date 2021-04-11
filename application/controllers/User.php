@@ -795,7 +795,7 @@ public function add_new_post(){
 			$post_id= $post_id;
 
 			$config['upload_path']          = './uploads/profile_posts';
-			$config['allowed_types']        = 'jpg|png|jpeg|';
+			$config['allowed_types']        = 'jpg|png|jpeg|gif|';
 			$config['max_size']             = 100000;
 			$config['max_width']            = 100000;
 			$config['max_height']           = 100000;
