@@ -180,6 +180,7 @@
 
 				if (isset($val->getAllProfilePost) && !empty($val->getAllProfilePost)) {
 					foreach ($val->getAllProfilePost as $post) {
+						if($post->archive_status == "0"){
 						$content = $post->content; ?>
 						<div class="m-mrg card Regular shadow" id="">
 							<div>
@@ -226,7 +227,14 @@
 								</div>
 							</div>
 						</div>
-					<?php }
+					<?php }else{
+							?><div class="m-mrg card Regular shadow" id="">
+					<div class="post card Regular shadow">
+						<div class="tb">
+							<p> This post is Hidden</p>
+						</div></div>
+									</div> <?php
+						}}
 				} ?>
 				<div clas="fa-3x"><i class="fas fa-sync fa-spin"></i></div>
 			</div>

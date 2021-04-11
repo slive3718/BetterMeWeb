@@ -445,6 +445,7 @@ class User_model extends CI_Model
 
 		$this->db->select('*');
 		$this->db->from('profile_post pp');
+		$this->db->join('tblarchive ac', 'pp.post_id=ac.post_id');
 //		$this->db->join('tblarchive ar', 'pp.post_id=ar.post_id','left');
 		$this->db->where('pp.user_id', $userid);
 //		$this->db->where('ar.user_confirm_action!=',"1");
