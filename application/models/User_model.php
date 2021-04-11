@@ -601,7 +601,7 @@ class User_model extends CI_Model
 	{
 
 		$sessId = $this->session->userdata['id'];
-		$this->db->select('*');
+		$this->db->select('s.*, f.*, u.*, ac.archive_status');
 		$this->db->from('profile_post s');
 		$this->db->join('tblfollow f', 's.user_id=f.following_id');
 		$this->db->join('tblusers u', 's.user_id=u.userId');
