@@ -65,7 +65,7 @@
 		$followDatas->first_name;
 		$followDatas->last_name;
 //		print_r($followDatas->user_id);
-		if(isset($followDatas->archive_status) && ($followDatas->archive_status)==1){
+		if(!(isset($followDatas->archive_status) && ($followDatas->archive_status)==0)){
 		?>
 	<div class="m-mrg card Regular shadow" style="width:80%;margin:auto" id="">
 	<div>
