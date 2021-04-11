@@ -178,7 +178,7 @@
 		});
 	});
 	$(document).ready(function () {
-		$('.button-follow').on('click', function () {
+		$('.table').on('click','.button-follow', function () {
 
 			var userId = $(this).data("session-id");
 			let href = $(this).attr('href-url');
