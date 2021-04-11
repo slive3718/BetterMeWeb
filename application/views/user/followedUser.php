@@ -61,11 +61,12 @@
 	<?php
 	if (isset($followedUsersDatas) && !empty($followedUsersDatas)){
 	foreach ($followedUsersDatas as $followDatas) {
+		if(isset($followDatas->archive_status) && ($followDatas->archive_status)==0 || (!isset($followDatas->archive_status))){
 		 $followed_content = $followDatas->content;
 		$followDatas->first_name;
 		$followDatas->last_name;
 //		print_r($followDatas->user_id);
-		if(!(isset($followDatas->archive_status) && ($followDatas->archive_status)==0)){
+
 		?>
 	<div class="m-mrg card Regular shadow" style="width:80%;margin:auto" id="">
 	<div>
@@ -106,12 +107,13 @@
 					</div>
 			</div>
 			</a>
-			<?php }?>
+
 			<div>
 			</div>
 		</div>
 	</div>
 	</div>
+		<?php }?>
 	<?php
 	}
 	}
