@@ -163,7 +163,7 @@
 
 	$(document).ready(function () {
 
-		$('.button-unfollow').on('click', function () {
+		$('.table').on('click', '.button-unfollow',function () {
 
 			var userId = $(this).data("session-id");
 			let href = $(this).attr('href-url');
