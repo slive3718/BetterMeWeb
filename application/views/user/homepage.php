@@ -1,4 +1,4 @@
-
+<body style='overflow-x:hidden;'>
 <style>
 
 	.container {
@@ -64,7 +64,7 @@
 
 
 </style>
-<div style='overflow-x:hidden;'>
+
 	<div class="col-12" style="text-align: center">
 		<img src="<?= base_url()?>uploads/files/health.jpg" style="max-width: 100%">
 		<br><br><br>
