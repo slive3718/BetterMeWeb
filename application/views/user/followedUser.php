@@ -106,19 +106,7 @@
 					</div>
 			</div>
 			</a>
-			<?php }else{
-			?>
-			<div class="m-mrg card Regular shadow" style="width:80%;margin:auto" id="">
-				<div>
-					<div class="post card Regular shadow">
-						<div class="tb">
-							<div style="text-align: center; font-weight: bold; font-size: 25px"> Sorry, This content isn't available right now:<br><a style="font-size: 15px;">"When this happens, it's usually the post is unavailable or deleted due to contents against our rules and standard. "</a></div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<?php
-		}?>
+			<?php }?>
 			<div>
 			</div>
 		</div>
