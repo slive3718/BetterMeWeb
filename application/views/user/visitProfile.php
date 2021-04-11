@@ -180,7 +180,7 @@
 
 				if (isset($val->getAllProfilePost) && !empty($val->getAllProfilePost)) {
 					foreach ($val->getAllProfilePost as $post) {
-				
+
 						$content = $post->content; ?>
 						<div class="m-mrg card Regular shadow" id="">
 							<div>
@@ -228,7 +228,7 @@
 							</div>
 						</div>
 					<?php }}
-				} ?>
+				 ?>
 				<div clas="fa-3x"><i class="fas fa-sync fa-spin"></i></div>
 			</div>
 
