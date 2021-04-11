@@ -1,4 +1,6 @@
-
+<?php /*echo "<pre>";
+print_r($followedUsersDatas);
+echo "</pre>"*/?>
 <script type="text/javascript" src="<?= base_url() ?>/assets/js/myProfile.js"></script>
 <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/css/myProfile.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -93,6 +95,7 @@
 <!--					</div>-->
 <!--				</div>-->
 			</div>
+			<?php if($followDatas->archive_status == "0"):?>
 			<label class="tb " readonly style="text-align:center;">
 				<?=	$followed_content ?>
 			</label>
@@ -105,6 +108,11 @@
 					</div>
 			</div>
 			</a>
+			<?php else: ?>
+			<div class="d-flex justify-content-center">
+				<p> This Content Is hidden</p>
+			</div>
+			<?php endif;?>
 			<div>
 			</div>
 		</div>
