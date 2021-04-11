@@ -144,7 +144,8 @@ if ($posts) {
 
 			</div>
 			<div class="form-group">
-				<a data-sessions_id="<?= $post_id ?>" id="manage-image" style="cursor: pointer">Manage Image</a>
+				<a id="hide-image" class="btn btn-outline-warning" style="cursor: pointer;">Hide Image</a>
+				<a data-sessions_id="<?= $post_id ?>" class="btn btn-outline-success btn-sm" id="manage-image" style="cursor: pointer">Manage Image</a>
 			</div>
 			<div class="show-image-here" style="width:50px;display: block">
 				<p class="image-here">
@@ -162,6 +163,7 @@ if ($posts) {
 </div>
 <script>
 	$(document).ready(function () {
+		$('#hide-image').hide();
 
 		$('#manage-image').on('click', function () {
 			var postId = $(this).attr('data-sessions_id');
@@ -177,6 +179,8 @@ if ($posts) {
 									"<a class='btn btn-warning btn-sm remove-this-image' id='class_image_id_" + value.image_id + "' style='cursor: pointer' id='remove-image' data-image_id='" + value.image_id + "' data-post_id='" + value.post_id + "'>Remove</a>"
 							);
 						});
+						$('#manage-image').hide();
+						$('#hide-image').toggle();
 					});
 		});
 		$('.image-here').on('click', '.remove-this-image', function () {
@@ -199,6 +203,11 @@ if ($posts) {
 			});
 		});
 
+		$('#hide-image').on('click',function(){
+			$('#hide-image').toggle();
+			$('#manage-image').toggle();
+			$('.image-here').empty();
+		})
 
 	});
 
