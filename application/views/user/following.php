@@ -100,7 +100,7 @@
                             <div class="tb" id="c-tabs">
                                 <div class="td"><h3>People that will inspire you</h3></div>
                             </div>
-                                <table class="table table-bordered table-striped text-center" >
+                                <table class="table table-bordered border-success table-striped text-center" >
                                <thead>
 							   <th>Name of User</th>
 							   <th>Option</th>
@@ -117,7 +117,7 @@
                                                 }
                                         ?>
                                         <tr>
-                                        <td class=""><?=(isset($user->first_name,$user->last_name) && !empty($user->first_name)&& !empty($user->last_name))?Ucfirst($user->first_name):Ucfirst($user->username),' ',ucfirst($user->last_name),' ',(isset($user->account_type)&&($user->account_type)=='M')?'<a class="text-primary" title="Our Mentor is a professional teacher that may gives help and advice">(Mentor)</a>':''?></td>
+                                        <td class="" style="text-align: left"><?=(isset($user->first_name,$user->last_name) && !empty($user->first_name)&& !empty($user->last_name))?Ucfirst($user->first_name):Ucfirst($user->username),' ',ucfirst($user->last_name),' ',(isset($user->account_type)&&($user->account_type)=='M')?'<a class="text-primary" title="Our Mentor is a professional teacher that may gives help and advice">(Mentor)</a>':''?></td>
                                         <td class=""> <!-- --> <?php if (isset($subs) && $subs==$user->userId && $status=='1'){
                                         ?><a data-session-id="<?= $user->userId ?>" class="button-unfollow" style="cursor: pointer;" title="Unfollow"><span id ="button-unfollow" class="fa fa-check btn btn-danger btn-sm"></span></a> <?php
                                         }else{
@@ -153,7 +153,7 @@
 	$(document).ready(function () {
 		$('.table').DataTable({
 			"language": {
-				"info": "Number of Users _START_ to _END_ of _TOTAL_ entries",
+				"info": "Number of People _START_ to _END_ of _TOTAL_ entries",
 				"search": "Looking for someone ? <b> Search here",
 				"lengthMenu":     "Show _MENU_ People",
 			}
