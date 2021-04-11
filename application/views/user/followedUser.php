@@ -1,6 +1,4 @@
-<?php /*echo "<pre>";
-print_r($followedUsersDatas);
-echo "</pre>"*/?>
+
 <script type="text/javascript" src="<?= base_url() ?>/assets/js/myProfile.js"></script>
 <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/css/myProfile.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -95,7 +93,6 @@ echo "</pre>"*/?>
 <!--					</div>-->
 <!--				</div>-->
 			</div>
-			<?php if($followDatas->archive_status == "0"):?>
 			<label class="tb " readonly style="text-align:center;">
 				<?=	$followed_content ?>
 			</label>
@@ -108,17 +105,7 @@ echo "</pre>"*/?>
 					</div>
 			</div>
 			</a>
-			<?php else: ?>
-				<div class="m-mrg card Regular shadow" class="">
-					<div>
-						<div class="post card Regular shadow">
-							<div class="tb">
-								<div style="text-align: center; font-weight: bold; font-size: 25px"> Sorry, This content isn't available right now:<br><a style="font-size: 15px;">"When this happens, it's usually the post is unavailable or deleted due to contents against our rules and standard. "</a></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			<?php endif;?>
+
 			<div>
 			</div>
 		</div>
