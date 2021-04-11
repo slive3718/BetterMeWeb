@@ -36,7 +36,10 @@
 			$dob = $val->dob;
 			$pic_status = $val->user_picture_status;
 			$sex = $val->sex;
+
+			$name= (isset($firstName,$lastName) && !empty($firstName) || !empty($lastName))?$firstName.' '.$lastName:'';
 			?>
+
 			<div class="td" id="f-name-l"><a style="font-weight: bold" class="btn btn-s btn-success rounded"
 				href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></div>
                 <div class="td" id="i-links">
@@ -76,7 +79,7 @@
 					<?php
 				} ?>
 			</div>
-			<div id="u-name"><?= Ucfirst($firstName), ' ', Ucfirst($lastName) ?></div>
+			<div id="u-name"><?=(isset($name) && !empty($name))?$name:$username?></div>
 			<div class="tb" id="m-btns">
 				<div class="td">
 					<!--<div class="m-btn"><i class="material-icons">Change Timeline Piture</i><span></span></div>-->
@@ -141,14 +144,30 @@
 						button-post">Post</a></div> -->
 					</div>
 					</hr>
-					<div>
+
+					<div class="col-sm-12">
+
+						<div class="form-inline btn btn-outline-secondary btn-sm" style="margin-left: 60px">
 						<input
-								class="btn btn-primary"
-								style="margin-left:65px"
+								id="image_upload"
+								class=""
+								style="left:70px;width:100px"
 								type="file"
 								name="userfile[]"
 								size="20"
-								multiple="multiple"/>
+								multiple="multiple"/><span class="fa fa-image">Upload Images</span>
+						</div>
+						<div class="form-inline btn btn-outline-secondary btn-sm">
+							<input
+									id="video_upload"
+									accept="video/3gpp,video/mp4"
+									style="left:70px;width:100px"
+									type="file"
+									name="videofile[]"
+									size="20"
+									multiple="multiple"/><span class="fa fa-video-camera">Upload Videos</span>
+						</div>
+
 						<input
 								type="submit"
 								value="Post"
@@ -204,7 +223,7 @@
 											</div>
 											<div class="p-dt">
 												<i class="fa fa-calendar"></i>
-												<span>Date</span>
+												<span>Date <?= (isset($post->date) && !empty($post->date)) ? $post->date:'' ?></span>
 											</div>
 										</div>
 										<div class="dropdown dropleft" style="float:right;">
@@ -240,7 +259,6 @@
 														}
 													}
 												}
-
 												?>
 
 											</div>
@@ -318,5 +336,67 @@
 			})
 		})
 	});
+
+	let supportedImages = ['jpg', 'png', 'gif' , 'jpeg', 'JPG', 'PNG', 'JPEG'];
+	let supportedVideos = ['mp4', 'MP4', '3GP', '3gp', 'mov', 'flv', 'fmv'];
+	$(document).ready(function(){
+		$('#image_upload').on('change',function(){
+			let fileName = ($('#image_upload').val()).replace(/^.*[\\\/]/, '');
+			let fileExtension = fileName.substr(fileName.lastIndexOf('.')+1);
+			console.log(fileExtension);
+
+			if (!supportedImages.includes(fileExtension)) {
+				$("#image_upload").val('');
+				Swal.fire({
+					icon: 'error',
+					title: 'Wrong File Extension',
+					text: 'Error!',
+				}).then((result)=>{
+						if(result.isConfirmed){
+							return false;
+						}
+				});
+				return false;
+			}
+			else{
+
+			}
+		});
+
+
+		$('#video_upload').on('change',function(){
+			Swal.fire({
+				icon: 'warning',
+				title: 'This feature is unavailable <br> Under Development',
+
+			}).then((result)=>{
+				if(result.isConfirmed){
+					return false;
+				}
+			});
+			$("#video_upload").val('');
+			return false;
+			let fileName = ($('#video_upload').val()).replace(/^.*[\\\/]/, '');
+			let fileExtension = fileName.substr(fileName.lastIndexOf('.')+1);
+			console.log(fileExtension);
+
+			if (!supportedVideos.includes(fileExtension)) {
+				$("#video_upload").val('');
+				Swal.fire({
+					icon: 'error',
+					title: 'Wrong File Extension',
+					text: 'Error!',
+				}).then((result)=>{
+					if(result.isConfirmed){
+						return false;
+					}
+				});
+				return false;
+			}
+			else{
+
+			}
+		});
+	})
 
 </script>
