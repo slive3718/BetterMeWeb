@@ -445,7 +445,7 @@ class User_model extends CI_Model
 
 		$this->db->select('*');
 		$this->db->from('profile_post pp');
-		$this->db->join('tblarchive ac', 'pp.post_id=ac.post_id');
+//		$this->db->join('tblarchive ac', 'pp.post_id=ac.post_id');
 //		$this->db->join('tblarchive ar', 'pp.post_id=ar.post_id','left');
 		$this->db->where('pp.user_id', $userid);
 //		$this->db->where('ar.user_confirm_action!=',"1");
@@ -605,14 +605,10 @@ class User_model extends CI_Model
 		$this->db->from('profile_post s');
 		$this->db->join('tblfollow f', 's.user_id=f.following_id');
 		$this->db->join('tblusers u', 's.user_id=u.userId');
-		$this->db->join('tblarchive ac', 'ac.post_id= s.post_id');
-
 		// $this->db->where('f.follower_id',$sessId);
 		$this->db->where('f.follower_id', $sessId);
 		$this->db->where('f.subscribe=', '1');
-
 		$this->db->order_by('s.date', 'desc');
-
 		$qstr = $this->db->get();
 
 		if ($qstr) {
