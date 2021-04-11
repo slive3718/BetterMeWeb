@@ -108,7 +108,7 @@
 			</a>
 			<?php }else{
 			?>
-			<div class="m-mrg card Regular shadow" id="" class="">
+			<div class="m-mrg card Regular shadow" style="width:80%;margin:auto" id="">
 				<div>
 					<div class="post card Regular shadow">
 						<div class="tb">
