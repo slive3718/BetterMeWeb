@@ -1,4 +1,4 @@
-<?php echo "<pre>"; print_r($followedUsersDatas);?>
+
 <script type="text/javascript" src="<?= base_url() ?>/assets/js/myProfile.js"></script>
 <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/css/myProfile.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
