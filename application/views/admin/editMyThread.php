@@ -38,7 +38,7 @@
     		        <button type="submit" class="btn btn-primary">
     		            Update
     		        </button>
-    		        <a href="<?= base_url().'mentor/view_this_community_post/',$thread_id?>" class="btn btn-default" >
+    		        <a href="<?= base_url().'admin/view_this_community_post/',$thread_id?>" class="btn btn-default">
     		            Cancel
                 </a>
     		    </div>
