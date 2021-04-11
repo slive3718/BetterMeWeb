@@ -100,8 +100,12 @@
                             <div class="tb" id="c-tabs">
                                 <div class="td"><h3>People that will inspire you</h3></div>
                             </div>
-                                <table class="table" >
-                               
+                                <table class="table table-bordered table-striped text-center" >
+                               <thead>
+							   <th>Name of User</th>
+							   <th>Option</th>
+							   </thead>
+									<tbody>
                                 <?php if (isset($val->getAllusersToFollow) && !empty($val->getAllusersToFollow)){
                                     foreach ($val->getAllusersToFollow as $user){
                                                 foreach($val->getFollowtbl as $folloStat){
@@ -113,19 +117,20 @@
                                                 }
                                         ?>
                                         <tr>
-                                        <td class=""><?=(isset($user->first_name,$user->last_name) && !empty($user->first_name)&& !empty($user->last_name))?Ucfirst($user->first_name):Ucfirst($user->username),' ',ucfirst($user->last_name),' ',(isset($user->account_type)&&($user->account_type)=='M')?'<a class="text-primary">(Mentor)</a>':''?></td>
+                                        <td class=""><?=(isset($user->first_name,$user->last_name) && !empty($user->first_name)&& !empty($user->last_name))?Ucfirst($user->first_name):Ucfirst($user->username),' ',ucfirst($user->last_name),' ',(isset($user->account_type)&&($user->account_type)=='M')?'<a class="text-primary" title="Our Mentor is a professional teacher that may gives help and advice">(Mentor)</a>':''?></td>
                                         <td class=""> <!-- --> <?php if (isset($subs) && $subs==$user->userId && $status=='1'){
-                                        ?><a data-session-id="<?= $user->userId ?>" class="button-unfollow"><span id ="button-unfollow" class="fa fa-check btn btn-danger btn-sm"></span></a> <?php
+                                        ?><a data-session-id="<?= $user->userId ?>" class="button-unfollow" style="cursor: pointer;" title="Unfollow"><span id ="button-unfollow" class="fa fa-check btn btn-danger btn-sm"></span></a> <?php
                                         }else{
-                                            ?> <a data-session-id="<?= $user->userId ?>" class="button-follow"><span class="fa fa-plus btn btn-success btn-sm"></span></a> <?php
+                                            ?> <a data-session-id="<?= $user->userId ?>" class="button-follow" style="cursor: pointer;" title="Follow"><span class="fa fa-plus btn btn-success btn-sm"></span></a> <?php
                                         }?>
-                                         <!-- --> <a href="<?=base_url().'user/visit_profile/'.$user->userId?>" class="button-visit"><span class="fa fa-user btn-primary btn-sm"></span></a></td>
+                                         <!-- --> <a href="<?=base_url().'user/visit_profile/'.$user->userId?>" class="button-visit" title="Visit Profile" ><span class="fa fa-user btn-primary btn-sm"></span></a></td>
                                         </tr>
                                        
                                         
                                         <?php
                                     }
                                 }?>
+									</tbody>
                                  </table>
                              
                             </div>
@@ -141,36 +146,50 @@
         <div id="device-bar-2"><i class=""></i></div>
     </main>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
     <!--  -->
-    <script type="text/javascript">
-$(document).ready(function () {
-$('.button-unfollow').on('click',function(){
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('.table').DataTable({
+			"language": {
+				"info": "Number of Users _START_ to _END_ of _TOTAL_ entries",
+				"search": "Looking for someone ? <b> Search here",
+				"lengthMenu":     "Show _MENU_ People",
+			}
+		});
 
-    var userId=$(this).data("session-id");
-    let href = $(this).attr('href-url');
-    $.post("<?= base_url() ?>user/follow_user_Jquery/",{"userId":userId},function (response){
-                        if(response=="success"){
-                            alert('unfollowed');
-                            $('#button-unfollow').toggleClass('fa fa-plus btn btn-success btn-sm');
-                            location.reload();
-                        }
-                    });
+	});
 
-});
-    });
-    $(document).ready(function () {
-$('.button-follow').on('click',function(){
+	$(document).ready(function () {
 
-    var userId=$(this).data("session-id");
-    let href = $(this).attr('href-url');
-    $.post("<?= base_url() ?>user/follow_user_Jquery/",{"userId":userId},function (response){
-                        if(response=="success"){
-                            alert('Followed');
-                            $('#button-unfollow').toggleClass('fa fa-check btn btn-danger btn-sm');
-                            location.reload();
-                        }
-                    });
+		$('.button-unfollow').on('click', function () {
 
-});
-    });
-    </script>
+			var userId = $(this).data("session-id");
+			let href = $(this).attr('href-url');
+			$.post("<?= base_url() ?>user/follow_user_Jquery/", {"userId": userId}, function (response) {
+				if (response == "success") {
+					alert('unfollowed');
+					$('#button-unfollow').toggleClass('fa fa-plus btn btn-success btn-sm');
+					location.reload();
+				}
+			});
+
+		});
+	});
+	$(document).ready(function () {
+		$('.button-follow').on('click', function () {
+
+			var userId = $(this).data("session-id");
+			let href = $(this).attr('href-url');
+			$.post("<?= base_url() ?>user/follow_user_Jquery/", {"userId": userId}, function (response) {
+				if (response == "success") {
+					alert('Followed');
+					$('#button-unfollow').toggleClass('fa fa-check btn btn-danger btn-sm');
+					location.reload();
+				}
+			});
+
+		});
+	});
+</script>
