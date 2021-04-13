@@ -43,7 +43,8 @@
 			<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
 			<?php 
 if ($user_info){
-			foreach ($user_info as $val){
+		
+	foreach ($user_info as $val){
 
 			$id = $this->session->userdata('id');
 			$username = $val->username;
@@ -52,7 +53,7 @@ if ($user_info){
 			$lastName = $val->last_name;
 			$email = $val->email;
 			$dob = $val->dob;
-			$pic_status = $val['user_picture_status'];
+			$pic_status = $val->user_picture_status;
 			$sex = $val->sex;
 			$userId = $val->userId;
 			?>
