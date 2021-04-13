@@ -641,6 +641,7 @@ $image_arr = array();
  public function visit_profile($profile_id){
     $userid=$this->session->userdata('id');
     if ($userid) {
+        $profile_id = $this->session->userdata('id');
         $user_info=$this->user_model->get_my_Profileinfo($profile_id);
         $data['user_info']=$user_info;
         $data['page_title']="Profile Visit";
