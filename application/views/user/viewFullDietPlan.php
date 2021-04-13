@@ -124,7 +124,17 @@ $current_user = $this->session->userdata('id');
 											<div class="comment">
 												<?php if($comment_user_id==$current_user){
 													?>
-													<a class="btn btn-primary btn-xs fas fa-edit  fa-xs " href="<?= base_url().'user/editMyComment/',$comment_id?>"></a>
+													<a
+															class="like p-2 cursor action-collapse"
+															data-comment_id="<?=$comment_id?>"
+															data-comment_content="<?=$user_comments ?>"
+															data-comment_post_id ="<?=$post_id?>"
+															id="edit-comment"
+															data-toggle="collapse"
+															aria-expanded="true"
+															aria-controls="collapse-2"
+															href="#collapse-2">
+														<span class="ml-1 btn btn-info btn-xs fa fa-edit" style="cursor:pointer; font-weight: bold;" ></span></a>
 												<a class="btn btn-danger btn-xs fas fa-trash-alt  fa-xs" style="cursor:pointer;"  id="delete-comment" data-delete_comment_id="<?=$comment_id?>"></a><?php
 												}?>
 											</div>
@@ -146,19 +156,20 @@ $current_user = $this->session->userdata('id');
 											<textarea
 													class="form-control ml-1 shadow-none textarea" wrap="hard" rows="" cols="70"
 													name="community_comment"
-													readonly="readonly"><?=  $user_comments?></textarea>
+													readonly="readonly"><?= $user_comments?></textarea>
 										</div>
 									</div>
 									<?php
 									}
 									?>
-
 									<?php
 									}
 									} ?>
+									<div class="div-write-comment">
 								<div class="d-flex flex-row fs-12">
 									<div
 											class="like p-2 cursor action-collapse"
+											id="write-comment"
 											data-toggle="collapse"
 											aria-expanded="true"
 											aria-controls="collapse-1"
@@ -196,6 +207,40 @@ $current_user = $this->session->userdata('id');
 											href="#collapse-1" type="button">Cancel</button>
 								</div>
 							</div>
+
+								</div>
+											<!-- ################# This is collapse 2 . collapse Update########################## -->
+
+
+								<div id="collapse-2" class="bg-light p-2 collapse" data-parent="#myGroup2">
+									<div class="d-flex flex-row align-items-start">
+										<?php if (isset($pic_status) ){
+											?>
+											<img
+													class="rounded-circle"
+													src="<?=base_url().'./uploads/profilepic/profile'.$current_user?>.jpg"
+													width="40"
+													height="40px">
+											<?php
+										} else{
+											?>
+											<img class="fa fa-user">
+										<?php }?>
+										<textarea
+												class="form-control ml-1 shadow-none textarea comment-message-update" wrap="hard" rows="3" cols="100"
+												name="community_comment"  required></textarea>
+
+									</div>
+
+									<div class="mt-2 text-right update-here">
+
+										<button class="btn btn-outline-primary btn-sm ml-1 shadow-none"
+												data-toggle="collapse"
+												aria-expanded="true"
+												aria-controls="collapse-1"
+												href="#collapse-1" type="button">Cancel</button>
+									</div>
+								</div>
 						</div>
 					</div>
 
@@ -292,6 +337,34 @@ $current_user = $this->session->userdata('id');
 				});
 
 
+			});
+
+			$('.comment').on('click','#edit-comment',function(){
+	
+
+				var commentContent = $(this).attr('data-comment_content');
+				var comment_post_id = $(this).attr('data-comment_post_id');
+				var comment_id = $(this).attr('data-comment_id');
+
+				$('.comment-message-update').html(commentContent);
+				$('.update-here').html('<button class="btn btn-primary btn-sm shadow-none btn-comment-update" type="submit" data-post_id="'+comment_post_id+'" data-comment_id="'+comment_id+'" >Update comment</button>')
+
+			});
+
+
+			$('.update-here').on('click','.btn-comment-update',function(){
+				var comment = $('.comment-message-update').val();
+				var comment_url = "<?= base_url().'user/updateCommentHomepage'?>";
+				var postId = $(this).attr('data-post_id');
+				var commentId = $(this).attr('data-comment_id');
+				console.log(comment);
+				$.post(comment_url,{'comment':comment, 'postId':postId, 'commentId':commentId},function(success){
+					console.log(success);
+					if (success){
+						alertify.success('Comment Saved')
+						location.reload();
+					}
+				});
 			});
 		});
 	</script>

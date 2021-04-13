@@ -892,4 +892,23 @@ public function add_new_post(){
 
 		echo json_encode($result_array);
 	}
+
+	public function updateCommentHomepage(){
+		$post=$this->input->post();
+		$userid=$this->session->userdata['id'];
+		$field_array = array (
+			'comment'=>$post['comment'],
+			'date'=>date('Y-m-d h:i:s'),
+		);
+		$this->db->where('post_id',$post['postId']);
+		$this->db->where('user_id',$userid);
+		$this->db->where('id',$post['commentId']);
+		$result = $this->db->update('tblpostcomment',$field_array);
+		if($result){
+			$result_array = array("status" => "success");
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+	}
 }
