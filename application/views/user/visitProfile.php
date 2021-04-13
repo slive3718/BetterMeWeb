@@ -63,12 +63,12 @@
 							<?php if (isset($pic_status)) { ?>
 								<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
 									 class="" style="height:35px;width:35px"
-									 alt="avatar">
+									 alt="profile pic">
 							<?php } else {
 								?>
-								<img src="" 
+								<img src="https://www.linkpicture.com/q/profileicon.png" type="image"
 									class="avatar img-circle img-thumbnail" style="height:35px;width:35px"
-									alt="avatar">
+									alt="profile pic">
 								<?php
 							} ?>
 						</a>
@@ -89,7 +89,7 @@
 						 class="avatar img-circle img-thumbnail" style="height:225px;width:225px" alt="avatar">
 				<?php } else {
 					?>
-					<img src=""
+					<img src="https://www.linkpicture.com/q/profileicon.png" type="image" 
 						class="avatar img-circle img-thumbnail" style="height:225px;width:225px" alt="avatar">
 					<?php
 				} ?>
