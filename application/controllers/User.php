@@ -508,8 +508,7 @@ class User extends CI_Controller
 
     public function myProfile()
     {
-        $userid=$this->session->userdata['id'];
-        if ($userid) {
+            $userid=$this->session->userdata['id'];
             $user_info=$this->user_model->getAllProfileInfo($userid);
             $data['user_info']=$user_info;
             // $data['profile_post_info']=$this->user_model->get_my_Profileinfo($userid);
@@ -517,7 +516,6 @@ class User extends CI_Controller
             $this->load->view("user/templates/headerProfile", $data);
             $this->load->view("user/myProfile", $data);
             // $this->load->view("user/templates/footer");
-        }
     }
 
 
