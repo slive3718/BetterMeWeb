@@ -41,21 +41,18 @@
 		<div class="tb">
 			<div><a href="<?php echo base_url('user/homepage') ?>">
 			<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
-			<?php 
-if ($user_info){
-		
-	foreach ($user_info as $val){
+			<?php foreach ($user_info as $val){
 
 			$id = $this->session->userdata('id');
-			$username=$val['username'];
-            $firstName=$val['first_name'];
-            $middleName=$val['middle_name'];
-            $lastName=$val['last_name'];
-            $email=$val['email'];
-            $dob=$val['dob'];
-			$pic_status=$val['user_picture_status'];
-			$sex=$val['sex'];
-			$userId = $val['userId'];
+			$username = $val->username;
+			$firstName = $val->first_name;
+			$middleName = $val->middle_name;
+			$lastName = $val->last_name;
+			$email = $val->email;
+			$dob = $val->dob;
+			$pic_status = $val->user_picture_status;
+			$sex = $val->sex;
+			$userId = $val->userId;
 			?>
 			<div class="td" id="f-name-l"><a style="font-weight: bold" class="btn btn-s btn-success rounded"
 				href="<?= base_url() . 'user/myProfile/' . $id ?>">Home</a></div>
@@ -64,7 +61,7 @@ if ($user_info){
 					<div class="td">
 						<a href="#" id="p-link">
 							<?php if (isset($pic_status)) { ?>
-								<img src="<?= base_url() . './uploads/profilepic/profile' . $val['userId'] ?>.jpg"
+								<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
 									 class="" style="height:35px;width:35px"
 									 alt="profile pic">
 							<?php } else {
@@ -88,7 +85,7 @@ if ($user_info){
 			<div id="profile-pic" class="card Regular shadow">
 				<?php
 				if (isset($pic_status)) { ?>
-					<img src="<?= base_url() . './uploads/profilepic/profile' . $val['userId'] ?>.jpg"
+					<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
 						 class="avatar img-circle img-thumbnail" style="height:225px;width:225px" alt="avatar">
 				<?php } else {
 					?>
@@ -133,7 +130,7 @@ if ($user_info){
 						<div class="tb">
 							<div class="td" id="p-c-i"> <?php
 								if (isset($pic_status)) { ?>
-									<img src="<?= base_url() . './uploads/profilepic/profile' . $val['userId'] ?>.jpg"
+									<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
 										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px"
 										 alt="profile pic">
 								<?php } else {
@@ -239,7 +236,6 @@ if ($user_info){
 	</div>
 	<?php
 	}
-}
 	?>
 </main>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
