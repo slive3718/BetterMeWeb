@@ -49,12 +49,11 @@
                            <?php  if (isset($pic_status)){ ?>
                                     <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" 
 									class="avatar img-circle img-thumbnail" 
-                                    style="height:35px;width:35px"  alt="profile pic">
+                                    style="height:35px;width:35px">
                             <?php }else{
                                 ?>
                                     <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" 
-                                    class="avatar img-circle img-thumbnail" style="height:35px;width:35px"  
-                                    alt="profile pic">
+                                    class="avatar img-circle img-thumbnail" style="height:35px;width:35px">
 								<?php
 							} ?>
 						</a>
@@ -72,11 +71,11 @@
 				<?php
 				if (isset($pic_status)) { ?>
 					<img src="<?= base_url() . './uploads/profilepic/profile' . $id ?>.jpg"
-						 class="avatar img-circle img-thumbnail" style="height:225px;width:225px" alt="avatar">
+						 class="avatar img-circle img-thumbnail" style="height:225px;width:225px">
 				<?php } else {
 					?>
 					<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
-						 style="height:225px;width:225px" alt="avatar">
+						 style="height:225px;width:225px">
 					<?php
 				} ?>
 			</div>
