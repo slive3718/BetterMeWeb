@@ -30,13 +30,19 @@ $routine_count = $row->routine_count;
 $routine_format = $row->routine_format;
 $post_user_id = $row->post_user_id;
 $post_type = $row->post_type;
-
 $target_audience = $row->target_audience;
+if (isset($row->getLikeStatus) && !empty($row->getLikeStatus)) {
+	foreach ($row->getLikeStatus as $getLike) {
+		$like = $getLike->like_status;
+	}
+}
 $post_from = ucfirst($row->first_name) . ' ' . ucfirst($row->last_name);
 
 $type_of_diet = $row->type_of_diet;
 
 $current_user = $this->session->userdata('id');
+
+
 
 ?>
 
