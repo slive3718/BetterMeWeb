@@ -63,12 +63,12 @@
 							<?php if (isset($pic_status)) { ?>
 								<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
 									 class="" style="height:35px;width:35px"
-									 alt="avatar">
+									 alt="profile pic">
 							<?php } else {
 								?>
 								<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
 									 class="avatar img-circle img-thumbnail" style="height:35px;width:35px"
-									 alt="avatar">
+									 alt="profile pic">
 								<?php
 							} ?>
 						</a>
@@ -132,12 +132,12 @@
 								if (isset($pic_status)) { ?>
 									<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
 										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px"
-										 alt="avatar">
+										 alt="profile pic">
 								<?php } else {
 									?>
 									<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
 										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px"
-										 alt="avatar">
+										 alt="profile pic">
 									<?php
 								} ?></div>
 							<form
@@ -190,12 +190,12 @@
 											if (isset($pic_status)) { ?>
 												<img src="<?= base_url() . './uploads/profilepic/profile' . $userId ?>.jpg"
 													 class="avatar img-circle img-thumbnail"
-													 style="height:50px;width:50px" alt="avatar">
+													 style="height:50px;width:50px" alt="profile pic">
 											<?php } else {
 												?>
 												<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
 													 class="avatar img-circle img-thumbnail"
-													 style="height:50px;width:50px" alt="avatar">
+													 style="height:50px;width:50px" alt="profile pic">
 												<?php
 											} ?></a>
 										<div class="td p-r-hdr">
