@@ -38,6 +38,10 @@
 		background-color: #28A745;
 
 	}
+	.class-card{
+		width:23rem;
+		height:30rem;
+	}
 	@media screen and (max-width: 1193px) {
 		body {
 
@@ -56,7 +60,11 @@
 		}
 	}
 
+
+
+
 </style>
+
 <div class="col-12" style="text-align: center">
 	<img src="<?= base_url()?>uploads/files/health.jpg" style="max-width: 100%">
 	<br><br><br>
@@ -109,10 +117,10 @@
 					echo $this->session->flashdata('msgerror');
 				} ?>
 
-				<div class="shadow p-3 mb-5" style='float:left;margin-left:10px;margin-bottom:30px;'>
+				<div class="shadow p-3 mb-5" style='float:left;margin-left:10px; margin-bottom:30px;'>
 					<div class="d-flex justify-content-between btn btn-success btn-xs">
 
-						<div style="font-weight: bold;">     <?php if (isset($pic_status)){
+						<div style="font-weight: bold;">    <?php if (isset($pic_status)){
 							?>
 							<img style="width:2rem;height:2rem" ;
 								 src="<?= base_url() . './uploads/profilepic/profile' . $post_user_id ?>.jpg"
@@ -123,17 +131,17 @@
 						<div style="font-size: 10px; font-weight: bold;">Date Posted: <?= $date_posted ?></div>
 					</div>
 
-					<div class="card responsive" style="width:23rem;height:30rem">
+					<div class="card responsive class-card">
 
-							<a href="<?= base_url('admin/viewFullDiet/' . $post_id) ?>">
-								<div class="container" >
-									<?php foreach ($row->images as $images) {
-										?>
-										<img class="image" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
-											 alt="Card image" style="max-height:100px;max-width:120px">
-									<?php } ?>
-								</div>
-							</a>
+						<a href="<?= base_url('admin/viewFullDiet/' . $post_id) ?>">
+							<div class="container" >
+								<?php foreach ($row->images as $images) {
+									?>
+									<img class="image" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
+										 alt="Card image" style="max-height:100px;max-width:120px">
+								<?php } ?>
+							</div>
+						</a>
 
 						<div class="card-body" style="">
 							<div class="rounded card shadow"
@@ -160,19 +168,26 @@
 							</div>
 						</div>
 					</div>
-					<div class="like p-2 cursor" id="like-id_<?= $post_id ?>"
-						 style="cursor: pointer; <?= (isset($like) && !empty($like) == 1) ? 'color:blue' : '' ?>; "
-						 data-post_id="<?= $post_id ?>">
-						<i class="fa fa-thumbs-o-up"></i>
-						<span class="ml-1"> Like</span>
-						<span><?= (isset($row->getLikeCount) && ($row->getLikeCount) != 0) ? $row->getLikeCount : '' ?></span>
+					<div class="row ml-2">
+						<div class="like p-2 cursor col-md-6" id="like-id_<?= $post_id ?>"
+							 style="cursor: pointer; <?= (isset($like) && !empty($like) == 1) ? 'color:blue' : '' ?>; "
+							 data-post_id="<?= $post_id ?>">
+							<i class="fa fa-thumbs-o-up"></i>
+							<span class="ml-1"> Like</span>
+							<span><?= (isset($row->getLikeCount) && ($row->getLikeCount) != 0) ? $row->getLikeCount : '' ?></span>
+						</div>
+						<div class="comment p-2 cursor col-md-6" id="comment_id_<?= $post_id ?>"
+							 style="cursor: pointer;"
+							 data-post_id="<?= $post_id ?>">
+							<i class="fa fa-comment-o"></i>
+							<span class="ml-1"><a href="<?= base_url('admin/viewFullDiet/' . $post_id) ?>"> Comments </a> </span> <span><?=(isset($row->getCommentCount) && ($row->getCommentCount)!=0)?$row->getCommentCount:''?></span>
+						</div>
 					</div>
 				</div>
 				<?php
 			}
 		} ?>
 	</div>
-
 
 	<div class="threads col-3" style="float:right; max-width: 100%;">
 		<div class="shadow-lg p-3 mb-5 ml-5 responsive" style="display:inline-block;right:20px;" >
@@ -280,6 +295,7 @@
 	</div>
 </div>
 </div>
+</body>
 <script>
 	$(document).ready(function () {
 		$('.like').on('click', function () {
@@ -298,6 +314,8 @@
 				}
 			});
 		});
+
+
 	});
 
 </script>

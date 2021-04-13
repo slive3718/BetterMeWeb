@@ -340,7 +340,7 @@ $current_user = $this->session->userdata('id');
 			});
 
 			$('.comment').on('click','#edit-comment',function(){
-	
+
 
 				var commentContent = $(this).attr('data-comment_content');
 				var comment_post_id = $(this).attr('data-comment_post_id');

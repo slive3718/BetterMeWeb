@@ -144,6 +144,7 @@ class Admin_model extends CI_Model
 				$val->images = $this->get_diet_plan_images($val->post_id);
 				$val->getLikeStatus = $this->getLikeStatus($val->post_id);
 				$val->getLikeCount = $this->getLikeCount($val->post_id);
+				$val->getCommentCount = $this->getCommentCount($val->post_id);
 			}
 		}
 		$sess_id = $this->session->userdata('id');
@@ -202,7 +203,8 @@ class Admin_model extends CI_Model
 		if ($qstr->num_rows() > 0 ){
 			$return_array = array();
 			foreach($qstr->result() as $val){
-
+				$val->getLikeStatus = $this->getLikeStatus($val->post_id);
+				$val->getLikeCount = $this->getLikeCount($val->post_id);
 				$val->images= $this->get_diet_plan_images_all($val->post_id);
 			}
 
@@ -771,4 +773,57 @@ class Admin_model extends CI_Model
 			return '';
 		}
 	}
+
+
+	function addCommentHomepage($post){
+		$date=date('Y-m-d h:i:s');
+		$user_id=$this->session->userdata('id');
+		$post_id= $post['postId'];
+		$comment = $post['comment'];
+		$field_array=array(
+			'comment'=>$comment,
+			'post_id'=>$post_id,
+			'user_id'=>$user_id,
+			'date'=>$date,
+
+		);
+		$res= $this->db->insert('tblpostcomment',$field_array);
+		if ($res){
+			return $res;
+		}else{
+			return '';
+		}
+	}
+
+	function getCommentHomepage($post_id){
+		$this->db->select('*');
+		$this->db->from('tblpostcomment c');
+		$this->db->join('tblusers u','c.user_id=u.userId','left');
+		$this->db->where('post_id',$post_id);
+		$result = $this->db->get();
+
+		if ($result->num_rows()>0){
+			return $result->result_array();
+		}else{
+			return '';
+		}
+
+	}
+
+	function getCommentCount($post_id){
+
+		$this->db->select('*');
+		$this->db->from ('tblpostcomment');
+		$this->db->where ('post_id',$post_id);
+		$getDb = $this->db->get();
+
+		if($getDb->num_rows() > 0){
+
+			return $getDb->num_rows();
+
+		}else{
+			return '';
+		}
+	}
+
 }
