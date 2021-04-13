@@ -21,7 +21,7 @@
 			<div><a href="<?php echo base_url('user/homepage') ?>">
 			<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
 			<?php
-			if ($user_info) {
+			if (isset($user_info) && !empty($user_info)){
 
 			foreach ($user_info
 
@@ -210,7 +210,7 @@
 										<a href="#" class="td p-p-pic"><?php
 											if (isset($pic_status)) { ?>
 												<img src="<?= base_url() . './uploads/profilepic/profile' . $id ?>.jpg"
-													 class="avatar img-circle img-thumbnail" style="height:50px;width:50px" alt="profile pic">
+													 class="" style="height:50px;width:50px" alt="profile pic">
 											<?php } else {
 												?>
 												<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
@@ -292,7 +292,7 @@
 	</div>
 	<?php
 	}
-}
+	}
 	?>
 </main>
 
