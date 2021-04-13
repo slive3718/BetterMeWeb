@@ -138,6 +138,7 @@ public function homepage(){
 		$data['getTopDiets'] = $this->admin_model->getTopDiets();
 
         $this->load->view('admin/templates/header',$data);
+//        $this->load->view('admin/templates/new_header',$data);
         $this->load->view('admin/homepage',$data);
         $this->load->view('templates/footer');
 
@@ -227,6 +228,8 @@ public function viewFullDiet($post_id){
         $posts=$this->admin_model->get_dietPlanFull($post_id);
         $data['rows']=$posts;
         $data['page_title']= "View Full Diet Description";
+		$data['comments'] = $this->admin_model->getCommentHomepage($post_id);
+
         $this->load->view('admin/templates/header', $data);
         $this->load->view('admin/viewFullDietPlan', $data);
         $this->load->view('templates/footer');
@@ -1078,5 +1081,53 @@ public function viewArchiveDiet(){
 		$this->load->view('admin/templates/header');
 		$this->load->view('admin/addDietPlan',$data);
 		$this->load->view('admin/templates/footer');
+	}
+
+
+	public function getCommentHomepage(){
+
+	}
+
+	public function addCommentHomepage(){
+		$post=$this->input->post();
+		$result = $this->admin_model->addCommentHomepage($post);
+		if ($result){
+			$result_array = array('status'=>'success' );
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+	}
+
+	public function deleteMyCommentHomepage(){
+		$post=$this->input->post();
+		$this->db->where('id',$post['commentId']);
+		$result = $this->db->delete('tblpostcomment');
+		if($result){
+			$result_array = array("status" => "success");
+		}else{
+			$result_array = array('status'=>'error');
+		}
+
+		echo json_encode($result_array);
+	}
+
+	public function updateCommentHomepage(){
+		$post=$this->input->post();
+		$userid=$this->session->userdata['id'];
+		$field_array = array (
+			'comment'=>$post['comment'],
+			'date'=>date('Y-m-d h:i:s'),
+		);
+		$this->db->where('post_id',$post['postId']);
+		$this->db->where('user_id',$userid);
+		$this->db->where('id',$post['commentId']);
+		$result = $this->db->update('tblpostcomment',$field_array);
+		if($result){
+			$result_array = array("status" => "success");
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
 	}
 }
