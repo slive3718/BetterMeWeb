@@ -21,7 +21,7 @@
 			<div><a href="<?php echo base_url('user/homepage') ?>">
 			<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
 			<?php
-			if (isset($user_info) && !empty($user_info)){
+			if ($user_info) {
 
 			foreach ($user_info
 
