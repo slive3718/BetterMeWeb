@@ -63,7 +63,7 @@ if ($myInfo){
                      <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" class="avatar img-circle img-thumbnail" style="height:225px;width:225px"  alt="avatar">
                <?php }else{
                    ?>
-                    <img src="<?= base_url()?>uploads/files/profileicon.png" class="avatar img-circle img-thumbnail" style="height:225px;width:225px"  alt="avatar">
+                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" style="height:225px;width:225px"  alt="avatar">
                    <?php
                }
               
