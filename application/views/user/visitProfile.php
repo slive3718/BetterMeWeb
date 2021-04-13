@@ -51,6 +51,7 @@
 			$email = $val->email;
 			$dob = $val->dob;
 			$pic_status=$val['user_picture_status'];
+			$pic_status = $val->user_picture_status;
 			$sex = $val->sex;
 			$userId = $val->userId;
 			?>
