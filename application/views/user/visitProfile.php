@@ -41,7 +41,9 @@
 		<div class="tb">
 			<div><a href="<?php echo base_url('user/homepage') ?>">
 			<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
-			<?php foreach ($user_info as $val){
+			<?php 
+if ($user_info){
+			foreach ($user_info as $val){
 
 			$id = $this->session->userdata('id');
 			$username = $val->username;
@@ -237,6 +239,7 @@
 	</div>
 	<?php
 	}
+}
 	?>
 </main>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
