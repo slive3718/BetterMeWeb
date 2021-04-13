@@ -64,7 +64,7 @@ if ($user_info){
 					<div class="td">
 						<a href="#" id="p-link">
 							<?php if (isset($pic_status)) { ?>
-								<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
+								<img src="<?= base_url() . './uploads/profilepic/profile' . $val['userId'] ?>.jpg"
 									 class="" style="height:35px;width:35px"
 									 alt="profile pic">
 							<?php } else {
@@ -88,7 +88,7 @@ if ($user_info){
 			<div id="profile-pic" class="card Regular shadow">
 				<?php
 				if (isset($pic_status)) { ?>
-					<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
+					<img src="<?= base_url() . './uploads/profilepic/profile' . $val['userId'] ?>.jpg"
 						 class="avatar img-circle img-thumbnail" style="height:225px;width:225px" alt="avatar">
 				<?php } else {
 					?>
@@ -133,7 +133,7 @@ if ($user_info){
 						<div class="tb">
 							<div class="td" id="p-c-i"> <?php
 								if (isset($pic_status)) { ?>
-									<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
+									<img src="<?= base_url() . './uploads/profilepic/profile' . $val['userId'] ?>.jpg"
 										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px"
 										 alt="profile pic">
 								<?php } else {
