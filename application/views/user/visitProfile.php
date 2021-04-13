@@ -66,7 +66,7 @@
 									 alt="profile pic">
 							<?php } else {
 								?>
-								<img src="https://www.linkpicture.com/q/profileicon.png" type="image"
+								<img src="" type="image"
 									class="avatar img-circle img-thumbnail" style="height:35px;width:35px"
 									alt="profile pic">
 								<?php
@@ -89,7 +89,7 @@
 						 class="avatar img-circle img-thumbnail" style="height:225px;width:225px" alt="avatar">
 				<?php } else {
 					?>
-					<img src="https://www.linkpicture.com/q/profileicon.png" type="image" 
+					<img src="" type="image" 
 						class="avatar img-circle img-thumbnail" style="height:225px;width:225px" alt="avatar">
 					<?php
 				} ?>
