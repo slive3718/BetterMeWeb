@@ -224,7 +224,7 @@ class User extends CI_Controller
         if (isset($this->session->userdata['id'])) {
             $posts=$this->user_model->get_dietPlanFull($post_id);
             $data['rows']=$posts;
-
+			$data['comments'] = $this->user_model->getCommentHomepage($post_id);
             $data['page_title']= "Diet Post";
 
             $this->load->view('user/templates/header', $data);
@@ -865,4 +865,31 @@ public function add_new_post(){
 		}
 	}
 
+	public function getCommentHomepage(){
+
+	}
+
+	public function addCommentHomepage(){
+    	$post=$this->input->post();
+		$result = $this->user_model->addCommentHomepage($post);
+		if ($result){
+			$result_array = array('status'=>'success' );
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+	}
+
+	public function deleteMyCommentHomepage(){
+		$post=$this->input->post();
+		$this->db->where('id',$post['commentId']);
+		$result = $this->db->delete('tblpostcomment');
+			if($result){
+				$result_array = array("status" => "success");
+			}else{
+				$result_array = array('status'=>'error');
+			}
+
+		echo json_encode($result_array);
+	}
 }
