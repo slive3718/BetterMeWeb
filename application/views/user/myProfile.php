@@ -34,7 +34,7 @@
 			$lastName = $val->last_name;
 			$email = $val->email;
 			$dob = $val->dob;
-			$pic_status = $val->user_picture_status;
+			$pic_status = $val['user_picture_status'];
 			$sex = $val->sex;
 
 			$name= (isset($firstName,$lastName) && !empty($firstName) || !empty($lastName))?$firstName.' '.$lastName:'';
@@ -47,7 +47,8 @@
                         <div class="td">
                             <a href="#" id="p-link">
                            <?php  if (isset($pic_status)){ ?>
-                                    <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" class="" 
+                                    <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" 
+									class="avatar img-circle img-thumbnail" 
                                     style="height:35px;width:35px"  alt="profile pic">
                             <?php }else{
                                 ?>
@@ -209,7 +210,7 @@
 										<a href="#" class="td p-p-pic"><?php
 											if (isset($pic_status)) { ?>
 												<img src="<?= base_url() . './uploads/profilepic/profile' . $id ?>.jpg"
-													 class="" style="height:50px;width:50px" alt="profile pic">
+													 class="avatar img-circle img-thumbnail" style="height:50px;width:50px" alt="profile pic">
 											<?php } else {
 												?>
 												<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
@@ -291,7 +292,7 @@
 	</div>
 	<?php
 	}
-	}
+}
 	?>
 </main>
 
