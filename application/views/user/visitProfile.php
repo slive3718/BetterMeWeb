@@ -44,15 +44,16 @@
 <?php 
 if ($user_info){
 	foreach ($user_info as $val){
+
 		$id = $this->session->userdata('id');
-		$username=$val['username'];
-		$firstName=$val['first_name'];
-        $middleName=$val['middle_name'];
-        $lastName=$val['last_name'];
-		$email=$val['email'];
-		$dob=$val['dob'];
-		$pic_status = $val['user_picture_status'];
-		$sex=$val['sex'];
+		$username = $val->username;
+		$firstName = $val->first_name;
+		$middleName = $val->middle_name;
+		$lastName = $val->last_name;
+		$email = $val->email;
+		$dob = $val->dob;
+		$pic_status = $val->user_picture_status;
+		$sex = $val->sex;
 		$userId = $val->userId;
 		?>
 		<div class="td" id="f-name-l"><a style="font-weight: bold" class="btn btn-s btn-success rounded"
@@ -237,6 +238,7 @@ if ($user_info){
 </div>
 <?php
 	}
+
 }
 ?>
 </main>
