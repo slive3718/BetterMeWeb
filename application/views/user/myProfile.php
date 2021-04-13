@@ -116,12 +116,11 @@
 							<div class="td" id="p-c-i"> <?php
 								if (isset($pic_status)) { ?>
 									<img src="<?= base_url() . './uploads/profilepic/profile' . $id ?>.jpg"
-										 class="td p-p-pic" style="height:50px;width:50px" alt="profile pic">
+										 class="td p-p-pic" style="height:50px;width:50px">
 								<?php } else {
 									?>
 									<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px"
-										 alt="profile pic">
+										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px">
 									<?php
 								} ?></div>
 							<form
@@ -209,12 +208,12 @@
 										<a href="#" class="td p-p-pic"><?php
 											if (isset($pic_status)) { ?>
 												<img src="<?= base_url() . './uploads/profilepic/profile' . $id ?>.jpg"
-													 class="" style="height:50px;width:50px" alt="profile pic">
+													 class="" style="height:50px;width:50px">
 											<?php } else {
 												?>
 												<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
 													 class="avatar img-circle img-thumbnail"
-													 style="height:50px;width:50px" alt="profile pic">
+													 style="height:50px;width:50px">
 												<?php
 											} ?></a>
 										<div class="td p-r-hdr">
