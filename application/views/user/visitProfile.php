@@ -50,7 +50,7 @@
 			$lastName = $val->last_name;
 			$email = $val->email;
 			$dob = $val->dob;
-			$pic_status=$info['user_picture_status'];
+			$pic_status = $val->user_picture_status;
 			$sex = $val->sex;
 			$userId = $val->userId;
 			?>
