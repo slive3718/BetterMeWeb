@@ -53,7 +53,7 @@ if ($user_info){
 		$dob=$val['dob'];
 		$pic_status = $val['user_picture_status'];
 		$sex=$val['sex'];
-		$userId = $val['userId'];
+		$userId = $val->userId;
 		?>
 		<div class="td" id="f-name-l"><a style="font-weight: bold" class="btn btn-s btn-success rounded"
 			href="<?= base_url() . 'user/myProfile/' . $id ?>">Home</a></div>
