@@ -168,20 +168,19 @@
 							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="comment p-2 cursor col-md-6" id="comment_id_<?= $post_id ?>"
-							 style="cursor: pointer;"
-							 data-post_id="<?= $post_id ?>">
-							<i class="fa fa-comment-o"></i>
-							<span class="ml-1"> Comment </span>
-						</div>
-
+					<div class="row ml-2">
 						<div class="like p-2 cursor col-md-6" id="like-id_<?= $post_id ?>"
 							 style="cursor: pointer; <?= (isset($like) && !empty($like) == 1) ? 'color:blue' : '' ?>; "
 							 data-post_id="<?= $post_id ?>">
 							<i class="fa fa-thumbs-o-up"></i>
 							<span class="ml-1"> Like</span>
 							<span><?= (isset($row->getLikeCount) && ($row->getLikeCount) != 0) ? $row->getLikeCount : '' ?></span>
+						</div>
+						<div class="comment p-2 cursor col-md-6" id="comment_id_<?= $post_id ?>"
+							 style="cursor: pointer;"
+							 data-post_id="<?= $post_id ?>">
+							<i class="fa fa-comment-o"></i>
+							<span class="ml-1"><a href="<?= base_url('user/viewFullDiet/' . $post_id) ?>"> Comments </a> </span> <span><?=(isset($row->getCommentCount) && ($row->getCommentCount)!=0)?$row->getCommentCount:''?></span>
 						</div>
 					</div>
 				</div>
@@ -296,6 +295,7 @@
 		</div>
 	</div>
 </div>
+</body>
 <script>
 	$(document).ready(function () {
 		$('.like').on('click', function () {
@@ -316,19 +316,6 @@
 		});
 
 
-		$('.comment').on('click',function(){
-			alertify.error('This is not available right now! <br> Under Development!');
-			return false;
-			var postId = $(this).attr('data-post_id');
-			console.log(postId);
-			var base_url = "<?= base_url() . 'user/getCommentHomepage'?>";
-
-			$.post(base_url, {'postId': postId}, function (response){
-				$('#modal-comment').modal('show');
-			})
-
-
-		})
 	});
 
 </script>
