@@ -511,7 +511,7 @@ class User extends CI_Controller
         $userid=$this->session->userdata['id'];
         if ($userid) {
             $user_info=$this->user_model->getAllProfileInfo($userid);
-            $data['user_info']=$myInfo;
+            $data['user_info']=$user_info;
             // $data['profile_post_info']=$this->user_model->get_my_Profileinfo($userid);
             $data['page_title']="My Profile";
             $this->load->view("user/templates/headerProfile", $data);
