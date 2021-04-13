@@ -66,9 +66,9 @@
 									 alt="profile pic">
 							<?php } else {
 								?>
-								<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-									 class="avatar img-circle img-thumbnail" style="height:35px;width:35px"
-									 alt="profile pic">
+								<img src="https://www.linkpicture.com/q/profileicon.png" type="image"
+									class="avatar img-circle img-thumbnail" style="height:35px;width:35px"
+									alt="profile pic">
 								<?php
 							} ?>
 						</a>
@@ -89,7 +89,7 @@
 						 class="avatar img-circle img-thumbnail" style="height:225px;width:225px" alt="avatar">
 				<?php } else {
 					?>
-					<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
+					<img src="https://www.linkpicture.com/q/profileicon.png" type="image" class="avatar img-circle img-thumbnail"
 						 style="height:225px;width:225px" alt="avatar">
 					<?php
 				} ?>
@@ -135,7 +135,7 @@
 										 alt="profile pic">
 								<?php } else {
 									?>
-									<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+									<img src="https://www.linkpicture.com/q/profileicon.png" type="image"
 										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px"
 										 alt="profile pic">
 									<?php
@@ -193,7 +193,7 @@
 													 style="height:50px;width:50px" alt="profile pic">
 											<?php } else {
 												?>
-												<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+												<img src="https://www.linkpicture.com/q/profileicon.png" type="image"
 													 class="avatar img-circle img-thumbnail"
 													 style="height:50px;width:50px" alt="profile pic">
 												<?php
