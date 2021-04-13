@@ -55,6 +55,7 @@ $current_user = $this->session->userdata('id');
 
 	<div class="mt-5">
 		<div class="card" style="width: 50rem; max-width: 100%;">
+
 			<?php foreach ($row->images as $images) {
 				?>
 				<img class="" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
@@ -100,7 +101,7 @@ $current_user = $this->session->userdata('id');
 							<div class="bg-white p-2">
 								<!--fetch COMMENT -->
 
-								<?php if (isset($comments)){
+								<?php if (isset($comments) && !empty($comments)){
 								foreach($comments as $comment){
 								$comment_id=$comment['id'];
 								$user_comments=$comment['comment'];
