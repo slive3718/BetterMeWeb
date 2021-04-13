@@ -48,7 +48,7 @@
                             <a href="#" id="p-link">
                            <?php  if (isset($pic_status)){ ?>
                                     <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" 
-									class="avatar img-circle img-thumbnail" 
+									class="" 
                                     style="height:35px;width:35px">
                             <?php }else{
                                 ?>

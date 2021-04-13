@@ -62,13 +62,11 @@
 						<a href="#" id="p-link">
 							<?php if (isset($pic_status)) { ?>
 								<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
-									 class="" style="height:35px;width:35px"
-									 alt="profile pic">
+									 class="" style="height:35px;width:35px">
 							<?php } else {
 								?>
 								<img src="https://www.linkpicture.com/q/profileicon.png" type="image"
-									class="avatar img-circle img-thumbnail" style="height:35px;width:35px"
-									alt="profile pic">
+									class="avatar img-circle img-thumbnail" style="height:35px;width:35px">
 								<?php
 							} ?>
 						</a>
@@ -86,11 +84,11 @@
 				<?php
 				if (isset($pic_status)) { ?>
 					<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
-						 class="avatar img-circle img-thumbnail" style="height:225px;width:225px" alt="avatar">
+						 class="avatar img-circle img-thumbnail" style="height:225px;width:225px">
 				<?php } else {
 					?>
 					<img src="https://www.linkpicture.com/q/profileicon.png" type="image" 
-						class="avatar img-circle img-thumbnail" style="height:225px;width:225px" alt="avatar">
+						class="avatar img-circle img-thumbnail" style="height:225px;width:225px">
 					<?php
 				} ?>
 			</div>
@@ -131,13 +129,11 @@
 							<div class="td" id="p-c-i"> <?php
 								if (isset($pic_status)) { ?>
 									<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
-										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px"
-										 alt="profile pic">
+										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px">
 								<?php } else {
 									?>
 									<img src="https://www.linkpicture.com/q/profileicon.png" type="image"
-										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px"
-										 alt="profile pic">
+										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px">
 									<?php
 								} ?></div>
 							<form
@@ -195,7 +191,7 @@
 												?>
 												<img src="https://www.linkpicture.com/q/profileicon.png" type="image"
 													 class="avatar img-circle img-thumbnail"
-													 style="height:50px;width:50px" alt="profile pic">
+													 style="height:50px;width:50px">
 												<?php
 											} ?></a>
 										<div class="td p-r-hdr">
