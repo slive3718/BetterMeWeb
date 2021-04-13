@@ -103,6 +103,7 @@ class User_model extends CI_Model
 				$val->images= $this->get_diet_plan_images($val->post_id);
 				$val->getLikeStatus = $this->getLikeStatus($val->post_id);
 				$val->getLikeCount = $this->getLikeCount($val->post_id);
+				$val->getCommentCount = $this->getCommentCount($val->post_id);
 			}
 
 		}
@@ -857,4 +858,21 @@ class User_model extends CI_Model
 		}
 
 	}
+
+	function getCommentCount($post_id){
+
+			$this->db->select('*');
+			$this->db->from ('tblpostcomment');
+			$this->db->where ('post_id',$post_id);
+			$getDb = $this->db->get();
+
+			if($getDb->num_rows() > 0){
+
+				return $getDb->num_rows();
+
+			}else{
+				return '';
+			}
+	}
+
 }
