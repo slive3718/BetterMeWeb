@@ -87,12 +87,8 @@
 				if (isset($pic_status)) { ?>
 					<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
 						 class="avatar img-circle img-thumbnail" style="height:225px;width:225px" alt="avatar">
-				<?php } else {
-					?>
-					<img src="https://www.linkpicture.com/q/profileicon.png" type="image" 
-						class="avatar img-circle img-thumbnail" style="height:225px;width:225px" alt="avatar">
-					<?php
-				} ?>
+				<?php } 
+				?>
 			</div>
 			<div id="u-name"><?= Ucfirst($firstName), ' ', Ucfirst($lastName) ?></div>
 			<div class="tb" id="m-btns">
