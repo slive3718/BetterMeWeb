@@ -78,7 +78,8 @@
 				<?php }else{
                         ?>
                         <img src="https://www.linkpicture.com/q/avatarprofile.png" 
-                        class="" style="height:35px;width:35px" alt="profile pic">
+                        class="avatar img-circle img-thumbnail" style="height:50px;width:50px"
+						alt="profile pic">
 						<?php
 					} ?>
 				</a>
