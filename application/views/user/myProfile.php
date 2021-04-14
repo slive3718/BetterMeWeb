@@ -46,7 +46,7 @@
                     <div class="tb">
                         <div class="td">
                             <a href="#" id="p-link">
-                           <?php  if (isset($pic_status)&& !empty($pic_status)){ ?>
+                           <?php  if (isset($pic_status)){ ?>
                                     <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" 
 									class="" 
                                     style="height:35px;width:35px">
@@ -69,7 +69,7 @@
 		<div id="profile-d">
 			<div id="profile-pic" class="card Regular shadow">
 				<?php
-				if (isset($pic_status) && !empty($pic_status)) { ?>
+				if (isset($pic_status)) { ?>
 					<img src="<?= base_url() . './uploads/profilepic/profile' . $id ?>.jpg"
 						 class="avatar img-circle img-thumbnail" style="height:225px;width:225px">
 				<?php } else {
@@ -114,7 +114,7 @@
 					<div id="c-c-main" style="max-width: 100%;">
 						<div class="tb">
 							<div class="td" id="p-c-i"> <?php
-								if (isset($pic_status) && !empty($pic_status)) { ?>
+								if (isset($pic_status)) { ?>
 									<img src="<?= base_url() . './uploads/profilepic/profile' . $id ?>.jpg"
 										 class="td p-p-pic" style="height:50px;width:50px">
 								<?php } else {
@@ -206,7 +206,7 @@
 								<div class="post card Regular shadow">
 									<div class="tb">
 										<a href="#" class="td p-p-pic"><?php
-											if (isset($pic_status) && !empty($pic_status)) { ?>
+											if (isset($pic_status)) { ?>
 												<img src="<?= base_url() . './uploads/profilepic/profile' . $id ?>.jpg"
 													 class="" style="height:50px;width:50px">
 											<?php } else {
