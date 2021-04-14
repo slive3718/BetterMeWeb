@@ -42,7 +42,7 @@
                     <div class="tb">
                         <div class="td">
                             <a href="#" id="p-link">
-                           <?php  if (isset($pic_status)){ ?>
+                           <?php  if (isset($pic_status)&& !empty($pic_status)){ ?>
                                     <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" class="" 
                                     style="height:35px;width:35px">
                             <?php }else{

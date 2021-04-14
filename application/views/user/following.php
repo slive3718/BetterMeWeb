@@ -52,7 +52,7 @@
                     <div class="tb">
                         <div class="td">
                             <a href="#" id="p-link">
-                           <?php  if (isset($pic_status)){ ?>
+                           <?php  if (isset($pic_status)&& !empty($pic_status)){ ?>
                                     <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" class="" 
                                     style="height:35px;width:35px">
                             <?php }else{
@@ -74,7 +74,7 @@
             <div id="profile-d">
                 <div id="profile-pic" class="card Regular shadow">
                 <?php
-                if (isset($pic_status)){ ?>
+                if (isset($pic_status)&& !empty($pic_status)){ ?>
                      <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" class="avatar img-circle img-thumbnail" style="height:225px;width:225px">
                <?php }else{
                    ?>
