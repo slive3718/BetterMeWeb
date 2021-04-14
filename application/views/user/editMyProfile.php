@@ -58,11 +58,11 @@ if ($myInfo){
 
           
               <?php
-                if (isset($pic_status)){ ?>
+                if (isset($pic_status)&& !empty($pic_status)){ ?>
                      <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" class="avatar img-circle img-thumbnail" style="height:225px;width:225px">
                <?php }else{
                    ?>
-                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" style="height:225px;width:225px">
+                    <img src="https://www.linkpicture.com/q/avatarprofile.png" class="avatar img-circle img-thumbnail" style="height:225px;width:225px">
                    <?php
                }
               
