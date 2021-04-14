@@ -74,11 +74,11 @@
 				<a href="#" class="td p-p-pic"> <?php
 					if (isset($pic_status)&& !empty($pic_status)) { ?>
 						<img src="<?=base_url().'./uploads/profilepic/profile'.$followDatas->user_id.'.jpg'?>" 
-						class="" style="height:50px;width:50px" alt="profile pic">
+						class="" style="height:50px;width:50px">
 					<?php } else {
 						?>
 						<img src="https://www.linkpicture.com/q/avatarprofile.png" type="image"
-							 class="avatar img-circle img-thumbnail" style="height:50px;width:50px">
+						class="avatar img-circle img-thumbnail" style="height:50px;width:50px">
 						<?php
 					} ?>
 				</a>
