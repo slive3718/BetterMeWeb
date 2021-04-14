@@ -179,7 +179,7 @@ if (isset($rows)){
 							</div>
 							<div id="collapse-1" class="bg-light p-2 collapse" data-parent="#myGroup">
 								<div class="d-flex flex-row align-items-start">
-									<?php if (isset($pic_status) ){
+									<?php if (isset($pic_status)&& !empty($pic_status)){
 										?>
 										<img
 												class="rounded-circle"
