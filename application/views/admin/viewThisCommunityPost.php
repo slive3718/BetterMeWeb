@@ -134,17 +134,18 @@ if (isset($rows)){
 									</div>
 								</div>
 								<div class="d-flex flex-row align-items-start">
-									<?php if (isset($pic_status) ){
+									<?php if (isset($pic_status)&& !empty($pic_status)){
 										?>
 										<img
 												class="rounded-circle"
 												src="<?=base_url().'./uploads/profilepic/profile'.$comment_user_id?>.jpg"
-												width="40"
+												width="40px"
 												height="40px">
 										<?php
 									} else{
 										?>
-										<img class="fa fa-user">
+										<img src="https://www.linkpicture.com/q/avatarprofile.png" 
+										class="avatar img-circle img-thumbnail" style="height:40px;width:40px;">
 									<?php }?>
 
 									<textarea
@@ -188,7 +189,8 @@ if (isset($rows)){
 										<?php
 									} else{
 										?>
-										<img class="fa fa-user">
+										<img src="https://www.linkpicture.com/q/avatarprofile.png" 
+										class="avatar img-circle img-thumbnail" style="height:40px;width:40px;">
 									<?php }?>
 									<textarea
 											class="form-control ml-1 shadow-none textarea" wrap="hard" rows="3" cols="3"
