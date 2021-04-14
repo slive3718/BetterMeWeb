@@ -20,12 +20,12 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 		<div id="c-c-main">
 			<div class="tb">
 				<div class="td" id="p-c-i"> <?php
-					if (isset($pic_status)) { ?>
+					if (isset($pic_status) && !empty($pic_status)) { ?>
 						<img src="<?= base_url() . './uploads/profilepic/profile' . $id ?>.jpg"
 							 class="td p-p-pic" style="height:50px;width:50px" alt="profile pic">
 					<?php } else {
 						?>
-						<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+						<img src="https://www.linkpicture.com/q/avatarprofile.png"
 							 class="avatar img-circle img-thumbnail" style="height:50px;width:50px"
 							 alt="profile pic">
 						<?php
