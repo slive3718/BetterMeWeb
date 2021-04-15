@@ -60,7 +60,13 @@
 		}
 	}
 
-	
+.speech-recognition{
+	float: right;
+	background-color: #28A745;
+}
+.col-speech{
+	background-color: #28A745;
+}
 
 
 </style>
@@ -71,7 +77,19 @@
 		<h1 class="jumbotron" style="margin:10px; font-weight: bold; text-align: center; background-color: #28A745">
 			Diet Plans and Exercise Routines
 		</h1>
-		<br><br><br>
+		<br><br>
+		<div class="row">
+			<div class="col-md-12 col-speech">
+				<div class="speech-recognition">
+					<label for="Speech Recognition">Speech Recognition</label>
+					<input type="text" name="" id="speechToText" placeholder="Speak Something" >
+					<audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/notification/swiftly-610.mp3"></audio>
+					<button  onclick="record()"  class="btn-search btn btn-primary btn-sm">Voice Input</button>
+					<button class="btn-search btn btn-success btn-sm">Search</button>
+				</div>
+			</div>
+		</div>
+		<br>
 	</div>
 
 </div>
@@ -318,4 +336,24 @@
 
 	});
 
+</script>
+<script>
+	function record() {
+		var recognition = new webkitSpeechRecognition();
+		recognition.lang = "en-GB";
+
+		recognition.onresult = function(event) {
+			// console.log(event);
+			document.getElementById('speechToText').value = event.results[0][0].transcript;
+		}
+		alertify.success('Speak now');
+		play_music();
+		recognition.start();
+
+	}
+
+	function play_music() {
+		var audio = document.getElementById("audio");
+		audio.play();
+	}
 </script>
