@@ -339,21 +339,23 @@
 </script>
 <script>
 	function record() {
-		var recognition = new webkitSpeechRecognition();
-		recognition.lang = "en-GB";
+		$(document).ready(function(){
+			var recognition = new webkitSpeechRecognition();
+			recognition.lang = "en-GB";
 
-		recognition.onresult = function(event) {
-			// console.log(event);
-			document.getElementById('speechToText').value = event.results[0][0].transcript;
-		}
-		alertify.success('Speak now');
-		play_music();
-		recognition.start();
+			recognition.onresult = function(event) {
+				// console.log(event);
+				document.getElementById('speechToText').value = event.results[0][0].transcript;
+			}
+			alertify.success('Speak now');
+			play_music();
+			recognition.start();
 
-	}
 
-	function play_music() {
-		var audio = document.getElementById("audio");
-		audio.play();
+			function play_music() {
+				var audio = document.getElementById("audio");
+				audio.play();
+			}
+		})
 	}
 </script>
