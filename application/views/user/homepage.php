@@ -15,9 +15,7 @@
 
 	.container img {
 		width: calc(100% - (150px * 2));
-		margin: 20px;
-		margin-left: auto;
-		margin-right: auto;
+		margin: 20px auto;
 		display: block;
 	}
 
@@ -84,14 +82,13 @@
 					<label for="Speech Recognition">Speech Recognition</label>
 					<input type="text" name="" id="speechToText" placeholder="Speak Something" >
 					<audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/notification/swiftly-610.mp3"></audio>
-					<button  onclick="record()"  class="btn-search btn btn-primary btn-sm">Voice Input</button>
+					<button  onclick="record()"  class="btn btn-primary btn-sm">Voice Input</button>
 					<button class="btn-search btn btn-success btn-sm">Search</button>
 				</div>
 			</div>
 		</div>
 		<br>
 	</div>
-
 </div>
 	<div class="row">
 	<div class="diets col-8">
@@ -208,7 +205,7 @@
 	</div>
 
 	<div class="threads col-3" style="float:right; max-width: 100%;">
-		<div class="shadow-lg p-3 mb-5 ml-5 responsive" style="display:inline-block;right:20px;" > 
+		<div class="shadow-lg p-3 mb-5 ml-5 responsive" style="display:inline-block;right:20px;" >
 				<?php if ($this->session->flashdata('msgsuccess_c')) {
 					echo "<div class='btn btn-success'>" . $this->session->flashdata('msgsuccess_c') . '</div>';
 				} ?>
@@ -313,6 +310,30 @@
 		</div>
 	</div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="modal-search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Search</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="searching-for"></div>
+				<label> Search Results:</label>
+				<div class="search-result"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 </body>
 <script>
 	$(document).ready(function () {
@@ -336,8 +357,6 @@
 
 	});
 
-</script>
-<script>
 	function record() {
 		$(document).ready(function(){
 			var recognition = new webkitSpeechRecognition();
@@ -356,6 +375,34 @@
 				var audio = document.getElementById("audio");
 				audio.play();
 			}
-		})
+		});
 	}
+
+	$(document).ready(function(){
+
+		$('.btn-search').on('click',function(){
+			var count_result = "";
+			var search = $('#speechToText').val();
+			var url = "<?=base_url().'user/search_json'?>";
+			var url_fulldiet = "<?=base_url().'user/viewFullDiet'?>";
+			$.post(url,{'search':search},function(success){
+				$('#modal-search .searching-for').html('Searching for: <b>'+search+'</b>');
+				$('#modal-search').modal('show');
+			}).done(function(datas){
+				datas= JSON.parse(datas);
+				$('#modal-search .search-result').html('');
+				$.each(datas, function(index, data){
+							if(data.post_title ==undefined) {
+								return false;
+							}else{
+								$('#modal-search .search-result').append('<b><a href="' + url_fulldiet + '/' + data.post_id + '">' +data.post_title + '</a></b><br>');
+							}
+
+
+				});
+			});
+
+
+	});
+	});
 </script>

@@ -910,4 +910,38 @@ public function add_new_post(){
 		}
 		echo json_encode($result_array);
 	}
+
+	public function homepage_search($search){
+
+    		$this->db->select('*');
+    		$this->db->from('tblposts');
+    		$this->db->like($search);
+    		$this->db->get();
+    		$result = $this->db->get();
+
+    		$data['searched'] = $result->result();
+
+    		$this->load->view('user/templates/header');
+    		$this->load->view('user/search_result',$data);
+			$this->load->view('user/templates/footer');
+	}
+
+	public function search_json(){
+    	$post = $this->input->post();
+    	$search = $post['search'];
+
+		$this->db->select('*');
+		$this->db->from('tblposts');
+		$this->db->like ('CONCAT(post_title,post_content)',$search);
+
+		$result = $this->db->get();
+
+		if($result->num_rows() > 0){
+			$result_array = $result->result_array();
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+
+	}
 }
