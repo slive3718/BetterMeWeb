@@ -950,7 +950,7 @@ public function add_new_post(){
 		$this->db->from('tblposts');
 		$result = $this->db->get();
     	$data ['posts'] = $result->result();
-        $data['page_title']="Diet Lists";
+        $data['page_title']="Post Lists";
 		$this->load->view('user/templates/header',$data);
 		$this->load->view('user/fullDietList',$data);
 		$this->load->view('user/templates/footer');
