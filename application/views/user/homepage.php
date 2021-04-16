@@ -72,21 +72,22 @@
 	<div class="col-12" style="text-align: center">
 		<img src="<?= base_url()?>uploads/files/health.jpg" style="max-width: 100%">
 		<br><br><br>
+		<div class="row">
+			<div class="col-md-12 col-speech">
+				<div class="speech-recognition">
+					<label for="Speech Recognition"><b>Try Our Search Bar </b></label>
+					<input type="text" name="" id="speechToText" placeholder="Search Something" class="btn btn-outline-primary" style="background-color: #dddddd;color: #1F1F1F">
+					<audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/notification/swiftly-610.mp3"></audio>
+					<button  onclick="record()"  class="btn btn-warning btn-sm">Voice Input</button>
+					<button class="btn-search btn btn-primary btn-sm">Search</button>
+				</div>
+			</div>
+		</div>
 		<h1 class="jumbotron" style="margin:10px; font-weight: bold; text-align: center; background-color: #28A745">
 			Diet Plans and Exercise Routines
 		</h1>
 		<br><br>
-		<div class="row">
-			<div class="col-md-12 col-speech">
-				<div class="speech-recognition">
-					<label for="Speech Recognition">Speech Recognition</label>
-					<input type="text" name="" id="speechToText" placeholder="Speak Something" >
-					<audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/notification/swiftly-610.mp3"></audio>
-					<button  onclick="record()"  class="btn btn-primary btn-sm">Voice Input</button>
-					<button class="btn-search btn btn-success btn-sm">Search</button>
-				</div>
-			</div>
-		</div>
+
 		<br>
 	</div>
 </div>
@@ -323,7 +324,8 @@
 			<div class="modal-body">
 				<div class="searching-for"></div>
 				<label> Search Results:</label>
-				<div class="search-result"></div>
+				<div class="search-result"></div><br><br>
+				<div class=""> <small>Did you find what your looking for ? or Check out our Lists of Posts here <a href="<?=base_url().'user/full_diet_lists'?>"> POST LIST</a></div></small>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -397,8 +399,6 @@
 							}else{
 								$('#modal-search .search-result').append('<b><a href="' + url_fulldiet + '/' + data.post_id + '">' +data.post_title + '</a></b><br>');
 							}
-
-
 				});
 			});
 
