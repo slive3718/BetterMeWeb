@@ -950,7 +950,8 @@ public function add_new_post(){
 		$this->db->from('tblposts');
 		$result = $this->db->get();
     	$data ['posts'] = $result->result();
-		$this->load->view('user/templates/header');
+        $data['page_title']="Diet Lists";
+		$this->load->view('user/templates/header',$data);
 		$this->load->view('user/fullDietList',$data);
 		$this->load->view('user/templates/footer');
 	}
@@ -960,7 +961,8 @@ public function add_new_post(){
 		$this->db->from('tblcommunity');
 		$result = $this->db->get();
 		$data ['posts'] = $result->result();
-		$this->load->view('user/templates/header');
+        $data['page_title']="Thread Lists";
+		$this->load->view('user/templates/header',$data);
 		$this->load->view('user/communityThreadLists',$data);
 		$this->load->view('user/templates/footer');
 	}
