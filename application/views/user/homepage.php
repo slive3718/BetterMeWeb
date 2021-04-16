@@ -244,6 +244,11 @@
 					<div class="font-header">
 						THREAD SECTION
 					</div>
+					<button class="btn btn-primary btn-sm"
+							onclick="window.location.href='<?= base_url() . 'user/full_thread_lists' ?>'"
+							style="float:left">
+						View All Thread
+					</button>
 					<button class="btn btn-success btn-sm"
 							onclick="window.location.href='<?= base_url() . 'user/create_thread' ?>'"
 							style="float:right">

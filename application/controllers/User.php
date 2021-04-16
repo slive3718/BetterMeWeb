@@ -954,4 +954,14 @@ public function add_new_post(){
 		$this->load->view('user/fullDietList',$data);
 		$this->load->view('user/templates/footer');
 	}
+
+	public function full_thread_lists(){
+		$this->db->select('*');
+		$this->db->from('tblcommunity');
+		$result = $this->db->get();
+		$data ['posts'] = $result->result();
+		$this->load->view('user/templates/header');
+		$this->load->view('user/communityThreadLists',$data);
+		$this->load->view('user/templates/footer');
+	}
 }
