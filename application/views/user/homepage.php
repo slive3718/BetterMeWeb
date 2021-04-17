@@ -365,6 +365,7 @@ section{
 
 </section>
 </body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
 	$(document).ready(function () {
 		$('.like').on('click', function () {
@@ -418,7 +419,10 @@ section{
 			$.post(url,{'search':search},function(success){
 				$('#modal-search .searching-for').html('Searching for: <b>'+search+'</b>');
 				$('#modal-search').modal('show');
+				Swal.fire('Please wait')
+				Swal.showLoading()
 			}).done(function(datas){
+				swal.close()
 				datas= JSON.parse(datas);
 				$('#modal-search .search-result').html('');
 				$.each(datas, function(index, data){
