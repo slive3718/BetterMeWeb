@@ -5,7 +5,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		z-index: -1;
+
 	}
 
 	.container .image {

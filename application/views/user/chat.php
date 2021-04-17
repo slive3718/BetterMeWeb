@@ -1,22 +1,10 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-	  integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-	  crossorigin="anonymous"/>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-<html>
-<head>
-
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"
 
 </head>
 <style>
-	.container2 {max-width:600px; margin:auto;position: fixed;z-index: 1 !important; right: 0px;background-color: #dddddd;bottom: 0px; border: green;  border-radius: 25px}
+	.container2 {max-width:600px; margin:auto;position: fixed;z-index: 100 !important; right: 0px;background-color: #dddddd;bottom: 0px; border: green;  border-radius: 25px}
 	img{ max-width:100%;}
 	.inbox_people {
 		background: #f8f8f8 none repeat scroll 0 0;
@@ -159,6 +147,7 @@
 		right: 0px;
 		position: fixed;
 		bottom: 0px;
+		z-index: 100;
 	}
 	.btn-open-chat{
 		width: 100px;
@@ -209,7 +198,7 @@
 	$(document).ready(function(){
 			$('.container2').hide();
 		$('.btn-close').on('click',function(){
-			$('.container2').toggle();
+			$('.container2').slideToggle();
 		});
 
 	});
@@ -219,7 +208,7 @@
 
 
 		$('.btn-open-chat').on('click',function(){
-			$('.container2').toggle();
+			$('.container2').slideToggle();
 
 			var fetch_chat_list = "<?= base_url().'user/fetch_chat_list'?>";
 

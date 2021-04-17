@@ -515,7 +515,9 @@ class User extends CI_Controller
             $data['user_info']=$user_info;
             // $data['profile_post_info']=$this->user_model->get_my_Profileinfo($userid);
             $data['page_title']="My Profile";
+
             $this->load->view("user/templates/headerProfile", $data);
+				$this->load->view('user/chat', $data);
             $this->load->view("user/myProfile", $data);
             // $this->load->view("user/templates/footer");
     }
@@ -992,6 +994,7 @@ public function add_new_post(){
 		$this->db->join('chat c','c.chat_from=f.following_id','left');
 		$this->db->group_by('u.userId');
 		$this->db->where('f.subscribe=',"1");
+		$this->db->where('u.account_type=',"U");
 		$this->db->where('f.follower_id',$userId);
 		$this->db->order_by('c.date_time','desc');
 		$result = $this->db->get();
