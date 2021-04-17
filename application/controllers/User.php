@@ -532,6 +532,7 @@ class User extends CI_Controller
             // $this->load->view("user/templates/header");
             $data['page_title']="Follow People";
             $this->load->view("user/templates/headerProfile", $data);
+			$this->load->view('user/chat', $data);
             $this->load->view("user/following", $data);
             // $this->load->view("user/templates/footer");
         }
@@ -682,7 +683,9 @@ $image_arr = array();
     $data['user_info']=$this->user_model->getAllProfileInfo();
     $data['followedUsersDatas']=$this->user_model->getAllFollowedUserPosts();
     $data['page_title']="Followed People";
+
     $this->load->view("user/templates/headerProfile", $data);
+	 $this->load->view('user/chat', $data);
     $this->load->view('user/followedUser',$data);
     }
 

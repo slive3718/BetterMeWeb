@@ -150,7 +150,7 @@
 		z-index: 100;
 	}
 	.btn-open-chat{
-		width: 100px;
+		width: 180px;
 	}
 	.btn-open-chat :hover{
 		background-color: #1e7e34;

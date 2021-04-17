@@ -357,7 +357,7 @@ section{
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			
+
 			</div>
 		</div>
 	</div>
@@ -425,7 +425,7 @@ section{
 							if(data.post_title ==undefined) {
 								return false;
 							}else{
-								$('#modal-search .search-result').append('<b><a href="' + url_fulldiet + '/' + data.post_id + '">' +data.post_title + '</a></b><br>');
+								$('#modal-search .search-result').append('<b><span class=""><a href="' + url_fulldiet + '/' + data.post_id + '">' +data.post_title + '</a></span></b><br>');
 							}
 				});
 			});
