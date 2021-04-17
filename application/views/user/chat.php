@@ -2,7 +2,12 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+	  integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+	  crossorigin="anonymous"/>
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <html>
 <head>
@@ -11,7 +16,7 @@
 
 </head>
 <style>
-	.container2 {max-width:600px; margin:auto;position: fixed;z-index: 1 !important; right: 0px;background-color: #dddddd;bottom: 0px}
+	.container2 {max-width:600px; margin:auto;position: fixed;z-index: 1 !important; right: 0px;background-color: #dddddd;bottom: 0px; border: green;  border-radius: 25px}
 	img{ max-width:100%;}
 	.inbox_people {
 		background: #f8f8f8 none repeat scroll 0 0;
@@ -155,14 +160,20 @@
 		position: fixed;
 		bottom: 0px;
 	}
+	.btn-open-chat{
+		width: 100px;
+	}
+	.btn-open-chat :hover{
+		background-color: #1e7e34;
+	}
 </style>
 <body>
 <div class="open-chat">
-	<button class="btn-open-chat"> Open Chat </button>
+	<button class="btn-open-chat btn btn-primary "> Open Chat </button>
 </div>
 <div class="container2">
 	<h3 class=" text-center">Messaging
-	<button class="btn-close fa fa-close form-inline" >Close</button></h3>
+	<button class="btn-close btn btn-warning  form-inline" >Close <span class="fa fa-close"></span></button></h3>
 	<div class="messaging">
 		<div class="inbox_msg">
 			<div class="inbox_people">
@@ -170,13 +181,7 @@
 					<div class="recent_heading">
 						<h4>Recent</h4>
 					</div>
-					<div class="srch_bar">
-						<div class="stylish-input-group">
-							<input type="text" class="search-bar"  placeholder="Search" >
-							<span class="input-group-addon">
-                <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
-                </span> </div>
-					</div>
+
 				</div>
 				<div class="inbox_chat ">
 				</div>
