@@ -75,10 +75,8 @@ if ($myInfo){
                ?>
 
 <h6>Update your photo...</h6>
-            <form method="post" action="<?=base_url()?>user/do_upload_profilepic" enctype="multipart/form-data" >
-            <input type="file" style="margin: 20px;" name="userfile" size="20" />
-            <input type="submit" value="Post" />
-            </div></hr><br>
+            <a href="<?php echo base_url('user/upload_profilepic') ?>">Update Picture</a>
+          </div></hr><br>
     
                    
          
