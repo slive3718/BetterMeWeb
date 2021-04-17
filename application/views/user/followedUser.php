@@ -15,22 +15,12 @@
 <script src="jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
 
-
-
 <main>
-	<div id="device-bar-2">
-	</div>
 	<header>
 		<div class="tb">
 			
-		<div><a style="font-weight: bold" class="btn btn-s btn-success rounded"
-        href="<?= base_url().'user/homepage/'?>" >BetterMe</a></div>
-			<div class="td" id="search-form">
-                <form method="get" action="#">
-                <input type="text" placeholder="Better Me Search">
-                <button type="submit"><i class="material-icons">search</i></button>
-                </form>
-            </div> 
+		<div><a href="<?php echo base_url('user/homepage') ?>">
+		<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
 			<?php if(isset($user_info) && !empty($user_info)){
 			foreach ($user_info as $val){
 			//   print($val->getAllProfilePost->post_images->result());exit;
@@ -44,31 +34,21 @@
 			$pic_status = $val->user_picture_status;
 			$sex = $val->sex;
 			}
-			}
-
+		}
 			?>
-			<div class="td" id="f-name-l"><span><a style="font-weight: bold" class="btn btn-s btn-success rounded"
-			href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></span>
-			</div>
-			<div class="td" id="i-links">
-				<div class="tb">
-					<div class="td" id="m-td">
-						<div class="tb">
-							<span class="td"><i class="fa fa-user"></i></span>
-							<span class="td"><i class="fa fa-envelope"></i></span>
-							<span class="td m-active"><i class="fa fa-bell"></i></span>
-						</div>
-					</div>
-					<div class="td">
-						<a href="#" id="p-link">
-							<?php if (isset($pic_status)) { ?>
-								<img src="<?= base_url() . './uploads/profilepic/profile' . $id ?>.jpg" class=""
-									 style="height:35px;width:35px" alt="profile pic">
-							<?php } else {
-								?>
-								<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-									 class="avatar img-circle img-thumbnail" style="height:35px;width:35px"
-									 alt="profile pic">
+			<div class="td" id="f-name-l"><a style="font-weight: bold" class="btn btn-s btn-success rounded"
+				href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></div>
+                <div class="td" id="i-links">
+                    <div class="tb">
+                        <div class="td">
+                            <a href="#" id="p-link">
+                           <?php  if (isset($pic_status)&& !empty($pic_status)){ ?>
+                                    <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" class="" 
+                                    style="height:35px;width:35px">
+                            <?php }else{
+                                ?>
+                                    <img src="https://www.linkpicture.com/q/avatarprofile.png" 
+                                    class="avatar img-circle img-thumbnail" style="height:35px;width:35px">
 								<?php
 							} ?>
 						</a>
@@ -80,26 +60,29 @@
 	<?php
 	if (isset($followedUsersDatas) && !empty($followedUsersDatas)){
 	foreach ($followedUsersDatas as $followDatas) {
+		if(isset($followDatas->archive_status) && ($followDatas->archive_status)==0 || (!isset($followDatas->archive_status))){
 		 $followed_content = $followDatas->content;
 		$followDatas->first_name;
 		$followDatas->last_name;
 //		print_r($followDatas->user_id);
+
 		?>
 	<div class="m-mrg card Regular shadow" style="width:80%;margin:auto" id="">
 	<div>
 		<div class="post card Regular shadow">
 			<div class="tb">
 				<a href="#" class="td p-p-pic">
-						<img src="<?=base_url().'./uploads/profilepic/profile'.$followDatas->user_id.'.jpg'?>" class="" style="height:50px;width:50px" alt="profile pic">
+						<img src="<?=base_url().'./uploads/profilepic/profile'.$followDatas->user_id.'.jpg'?>" 
+						class="" style="height:50px;width:50px">
 				</a>
 				<div class="td p-r-hdr">
 					<div class="p-u-info">
 						<a href="#"><?= $followDatas->first_name,' ',$followDatas->last_name?></a>
-						 Shared a post
+						 shared a post.
 					</div>
 					<div class="p-dt">
-						<i class="fa fa-calendar"><?=$followDatas->date?></i>
-						<span>Date</span>
+						<i class="fa fa-calendar" style="font-weight:bold;">Date Posted: <?=$followDatas->date?></i>
+						
 					</div>
 				</div>
 <!--				<div class="dropdown dropleft">-->
@@ -112,7 +95,7 @@
 <!--					</div>-->
 <!--				</div>-->
 			</div>
-			<label class="tb " readonly>
+			<label class="tb " readonly style="text-align:center;">
 				<?=	$followed_content ?>
 			</label>
 			<div class="d-flex justify-content-center">
@@ -124,19 +107,15 @@
 					</div>
 			</div>
 			</a>
+
 			<div>
-				<div class="p-acts">
-					<div class="p-act like"><i class="fa fa-thumbs-up"></i><span>25</span></div>
-					<div class="p-act comment btn-click"><i
-								class="fa fa-comment"></i><span>1</span></div>
-				</div>
 			</div>
 		</div>
 	</div>
 	</div>
+		<?php }?>
 	<?php
 	}
 	}
 	?>
-	<div id="device-bar-2"><i class=""></i></div>
 </main>

@@ -47,7 +47,7 @@ if ($myInfo){
     <div class="container">
         <div class="row">
       		<div class="col-sm-10"><h2><strong><?php if($lastName && $firstName){ echo ucfirst($lastName)." ".ucfirst($firstName);} ?></strong></h2></div>
-        	<div class="col-sm-2"><a href="<?= base_url().'user/viewMyProfile'?>" class="pull-right"><img title="Update Profile" class="img-circle img-responsive" src="<?=base_url().'/assets/images/update-profile-icon.png'?>" ></a></div>
+        	<div class="col-sm-2"><a href="<?= base_url().'user/viewMyProfileInfo'?>" class="pull-right"><img title="Update Profile" class="img-circle img-responsive" src="<?=base_url().'/assets/images/update-profile-icon.png'?>" ></a></div>
         </div>
         <div class="row">
       		<div class="col-sm-3"><!--left col-->
@@ -58,11 +58,11 @@ if ($myInfo){
 
           
               <?php
-                if (isset($pic_status)){ ?>
-                     <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" class="avatar img-circle img-thumbnail" style="height:225px;width:225px"  alt="avatar">
+                if (isset($pic_status)&& !empty($pic_status)){ ?>
+                     <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" class="avatar img-circle img-thumbnail" style="height:225px;width:225px">
                <?php }else{
                    ?>
-                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" style="height:225px;width:225px"  alt="avatar">
+                    <img src="https://www.linkpicture.com/q/avatarprofile.png" class="avatar img-circle img-thumbnail" style="height:225px;width:225px">
                    <?php
                }
               

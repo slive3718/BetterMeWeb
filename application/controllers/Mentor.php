@@ -276,11 +276,9 @@ public function viewFullDiet($post_id){
         $data['rows']=$posts;
 
         $data['page_title']= "Diet Post";
-
+		$data['comments'] = $this->mentor_model->getCommentHomepage($post_id);
         // $likes=$this->mentor_model->get_likes($post_id);
         // $data['likes']=$posts;
-
-
 
         $this->load->view('templates/header',$data);
         $this->load->view('mentor/viewFullDietPlan', $data);
@@ -307,7 +305,7 @@ public function addDietPlan(){
 		$post_id=$post['post_id'];
 
 		$config['upload_path']          = './uploads/posts';
-		$config['allowed_types']        = 'jpg|png|jpeg|';
+		$config['allowed_types']        = 'jpg|png|jpeg|gif|';
 		$config['max_size']             = 100000;
 		$config['max_width']            = 100000;
 		$config['max_height']           = 100000;
@@ -458,7 +456,7 @@ public function upload(){
     //	$config['allowed_types'] = '*';
 
     $config['upload_path']          = './uploads/images/';
-    $config['allowed_types']        ='gif|jpg|png';
+    $config['allowed_types']        ='gif|jpg|png|gif|';
     $config['max_size']             = 100000;
     $config['max_width']            = 100000;
     $config['max_height']           = 100000;
@@ -708,7 +706,7 @@ $this->load->view('mentor/uploadProfilePic');
 
     public function show_profilepic(){
 
-        $profile_picture=$this->admin_model->model_show_profilepic();
+        $profile_picture=$this->mentor_model->model_show_profilepic();
         $data['profile_picture']=$profile_picture;
 
         foreach ($profile_picture as $picture){
@@ -857,7 +855,7 @@ $this->load->view('mentor/uploadProfilePic');
 		$post = $this->input->post();
 		$id=$this->session->userdata('id');
 		$config['upload_path']          = './uploads/posts';
-		$config['allowed_types']        = 'jpg|png|jpeg|';
+		$config['allowed_types']        = 'jpg|png|jpeg|gif|';
 		$config['max_size']             = 100000;
 		$config['max_width']            = 100000;
 		$config['max_height']           = 100000;
@@ -959,4 +957,47 @@ $this->load->view('mentor/uploadProfilePic');
 		}
 	}
 
+
+	public function addCommentHomepage(){
+		$post=$this->input->post();
+		$result = $this->mentor_model->addCommentHomepage($post);
+		if ($result){
+			$result_array = array('status'=>'success' );
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+	}
+
+	public function deleteMyCommentHomepage(){
+		$post=$this->input->post();
+		$this->db->where('id',$post['commentId']);
+		$result = $this->db->delete('tblpostcomment');
+		if($result){
+			$result_array = array("status" => "success");
+		}else{
+			$result_array = array('status'=>'error');
+		}
+
+		echo json_encode($result_array);
+	}
+
+	public function updateCommentHomepage(){
+		$post=$this->input->post();
+		$userid=$this->session->userdata['id'];
+		$field_array = array (
+			'comment'=>$post['comment'],
+			'date'=>date('Y-m-d h:i:s'),
+		);
+		$this->db->where('post_id',$post['postId']);
+		$this->db->where('user_id',$userid);
+		$this->db->where('id',$post['commentId']);
+		$result = $this->db->update('tblpostcomment',$field_array);
+		if($result){
+			$result_array = array("status" => "success");
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+	}
 }

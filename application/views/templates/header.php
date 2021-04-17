@@ -1,5 +1,6 @@
-<html>
+<html lang="en">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css"
 
 		  href="<?php echo base_url(); ?>assets/css/bootstrap.css">
@@ -87,7 +88,8 @@
 <body>
 <div id="" class="">
     <nav class="navbar navbar-expand-md navbar-light bg-success">
-        <a class="navbar-brand" href="<?php echo base_url('mentor/homepage') ?>">BetterMe</a>
+		<a href="<?php echo base_url('mentor/homepage') ?>">
+		<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -101,7 +103,7 @@
                     <a class="nav-link" href=""></a>
                 </li>
                 
-                <li class="nav-item">
+                <li class="nav-item" style="font-weight: bold; font-size: 15px; list-style-type: none; margin-left: 20px">
                     <?php if (isset($this->session->userdata['id'])){
                         echo (ucfirst($this->session->userdata['uname']));
                     }else {
@@ -112,16 +114,16 @@
                 </li>
                
             </ul>
-            <div class="dropleft show mr-20" style="float:right; padding:5px;" >
+            <div class="dropleft show mr-20" style="float:right; padding:3px;" >
             
   <a class=" " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
    <span class="fa fa-caret-down mr-3" aria-hidden="true"> </span>
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-    <a class="dropdown-item" href="<?php echo base_url('mentor/viewDiet') ?>">Manage My Diet Plan</a>
-    <a class="dropdown-item" href="<?php echo base_url('mentor/viewMyProfile') ?>">Manage My Info</a>
-    <a class="dropdown-item" href="<?php echo base_url('mentor/logout')?>">LogOut</a>
+    <a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('mentor/viewDiet') ?>">Manage My Diet Plan</a>
+    <a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('mentor/viewMyProfile') ?>">Manage My Info</a>
+    <a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('mentor/logout')?>">LogOut</a>
   </div>
 </div>
 <?php
@@ -134,7 +136,7 @@ else{
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('mentor/viewLogin') ?>">Login</a>
+                    <a class="nav-link"  style="font-weight: bold; font-size: 15px;" href="<?php echo base_url('mentor/viewLogin') ?>">Login</a>
                 </li>
                
             </ul>

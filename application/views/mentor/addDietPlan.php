@@ -4,7 +4,7 @@
 		margin: 20px;
 	}
 </style>
-<div class="container-fluid card shadow" style="width:100vh">
+<div class="container-fluid card shadow" style="width:100vh; max-width: 100%;">
 	<div class="m-indent" style="">
 		<form method="POST" action="<?= base_url().'mentor/add_new_plan'?>" enctype="multipart/form-data">
 
@@ -23,7 +23,7 @@
 
 			<div class="form-group">
 				<label for="">Type Of Diet</label>
-				<select class="form-control" name="type_of_diet">
+				<select class="form-control select-diet" name="type_of_diet">
 					<option value="">No Selection</option>
 					<option name="type_of_diet" value="Intermittent Fasting">Intermittent Fasting</option>
 					<option name="type_of_diet" value="Zone Diet">Zone Diet</option>
@@ -37,7 +37,7 @@
 				</select>
 			</div>
 
-			<div class="form-group other-diet" >
+			<div class="form-group text-other-diet" >
 				<label for="">Name of Diet Plan</label>
 				<input class="form-control" type="text" value="" name="other_diet">
 			</div>
@@ -91,11 +91,15 @@
 </div>
 <script>
 	$(document).ready(function(){
-		$('.other-diet').hide();
 
-		$('#type_of_diet').on('click',function(){
-			$('.other-diet').show();
+		$('.text-other-diet').hide();
+		$(".select-diet").change(function() {
+			if ($(this).val() == "Other Diet") {
+				$(".text-other-diet").show();
+			}
+			if ($(this).val() !== "Other Diet") {
+				$(".text-other-diet").hide();
+			}
 		});
 	});
 </script>
-

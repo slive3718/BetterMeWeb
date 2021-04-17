@@ -138,6 +138,7 @@ public function homepage(){
 		$data['getTopDiets'] = $this->admin_model->getTopDiets();
 
         $this->load->view('admin/templates/header',$data);
+//        $this->load->view('admin/templates/new_header',$data);
         $this->load->view('admin/homepage',$data);
         $this->load->view('templates/footer');
 
@@ -227,6 +228,8 @@ public function viewFullDiet($post_id){
         $posts=$this->admin_model->get_dietPlanFull($post_id);
         $data['rows']=$posts;
         $data['page_title']= "View Full Diet Description";
+		$data['comments'] = $this->admin_model->getCommentHomepage($post_id);
+
         $this->load->view('admin/templates/header', $data);
         $this->load->view('admin/viewFullDietPlan', $data);
         $this->load->view('templates/footer');
@@ -253,7 +256,7 @@ public function addDietPlan(){
 		$post_id=$post['post_id'];
 
 		$config['upload_path']          = './uploads/posts';
-		$config['allowed_types']        = 'jpg|png|jpeg|';
+		$config['allowed_types']        = 'jpg|png|jpeg|gif|';
 		$config['max_size']             = 100000;
 		$config['max_width']            = 100000;
 		$config['max_height']           = 100000;
@@ -277,6 +280,8 @@ public function addDietPlan(){
 		}
 		$user_id= $this->session->userdata('id');
 //
+		$image_full_url = base_url().'uploads/posts/'.$_FILES['userfile']['name'];
+
 		$datestring = date('Y-m-d h:i:s');
 		$time = time();
 		$date_created=mdate($datestring, $time);
@@ -303,7 +308,7 @@ public function addDietPlan(){
 			foreach ($dataInfo as $info) {
 				$image_name=($info['file_name']);
 				// array_push($image_arr,$image_name);
-				$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'image_post_type'=>'diet_plan','post_id'=>$post_id,'user_id'=>$id,'date_created'=>date('Y-m-d')));
+				$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'image_post_type'=>'diet_plan','post_id'=>$post_id,'user_id'=>$id,'image_full_path'=>$image_full_url,'date_created'=>date('Y-m-d')));
 			}
 			redirect(base_url('admin/viewDiet'));
 		}
@@ -324,6 +329,7 @@ public function archive_post(){
     $archive="1";
     $field = array(
     'archive'=>$archive,
+
     );
     $result = $this->admin_model->archive_post($field, $post_id);
     if ($result) {
@@ -429,7 +435,7 @@ public function upload(){
     //	$config['allowed_types'] = '*';
     
     $config['upload_path']          = './uploads/images';
-    $config['allowed_types']        ='gif|jpg|png';
+    $config['allowed_types']        ='gif|jpg|png|gif|';
     $config['max_size']             = 100000;
     $config['max_width']            = 100000;
     $config['max_height']           = 100000;
@@ -457,7 +463,7 @@ public function upload(){
 public function temp_add(){
 
     $config['upload_path']          = './uploads/images/';
-    $config['allowed_types']        = 'gif|jpg|png';
+    $config['allowed_types']        = 'gif|jpg|png|gif|';
     $config['max_size']             = 100000;
     $config['max_width']            = 100000;
     $config['max_height']           = 100000;
@@ -684,7 +690,7 @@ public function viewArchiveDiet(){
 		$post = $this->input->post();
 		$id=$this->session->userdata('id');
 		$config['upload_path']          = './uploads/posts';
-		$config['allowed_types']        = 'jpg|png|jpeg|';
+		$config['allowed_types']        = 'jpg|png|jpeg|gif|';
 		$config['max_size']             = 100000;
 		$config['max_width']            = 100000;
 		$config['max_height']           = 100000;
@@ -707,6 +713,8 @@ public function viewArchiveDiet(){
 			$this->upload->do_upload();
 			$dataInfo[] = $this->upload->data();
 		}
+
+		$image_full_url = base_url().'uploads/posts/'.$_FILES['userfile']['name'];
 
 		$user_id= $this->session->userdata('id');
 //
@@ -733,7 +741,7 @@ public function viewArchiveDiet(){
 			foreach ($dataInfo as $info) {
 				$image_name=($info['file_name']);
 				// array_push($image_arr,$image_name);
-				$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'image_post_type'=>'diet_plan','post_id'=>$res_id,'user_id'=>$id,'date_created'=>date('Y-m-d')));
+				$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'image_post_type'=>'diet_plan','post_id'=>$res_id,'user_id'=>$id,'image_full_path'=>$image_full_url,'date_created'=>date('Y-m-d')));
 
 			}
 			redirect(base_url('admin/viewDiet'));
@@ -1068,4 +1076,58 @@ public function viewArchiveDiet(){
 		}
 	}
 
+	public function add_exercise(){
+		$data['exercise'] = "exercise";
+		$this->load->view('admin/templates/header');
+		$this->load->view('admin/addDietPlan',$data);
+		$this->load->view('admin/templates/footer');
+	}
+
+
+	public function getCommentHomepage(){
+
+	}
+
+	public function addCommentHomepage(){
+		$post=$this->input->post();
+		$result = $this->admin_model->addCommentHomepage($post);
+		if ($result){
+			$result_array = array('status'=>'success' );
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+	}
+
+	public function deleteMyCommentHomepage(){
+		$post=$this->input->post();
+		$this->db->where('id',$post['commentId']);
+		$result = $this->db->delete('tblpostcomment');
+		if($result){
+			$result_array = array("status" => "success");
+		}else{
+			$result_array = array('status'=>'error');
+		}
+
+		echo json_encode($result_array);
+	}
+
+	public function updateCommentHomepage(){
+		$post=$this->input->post();
+		$userid=$this->session->userdata['id'];
+		$field_array = array (
+			'comment'=>$post['comment'],
+			'date'=>date('Y-m-d h:i:s'),
+		);
+		$this->db->where('post_id',$post['postId']);
+		$this->db->where('user_id',$userid);
+		$this->db->where('id',$post['commentId']);
+		$result = $this->db->update('tblpostcomment',$field_array);
+		if($result){
+			$result_array = array("status" => "success");
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+	}
 }

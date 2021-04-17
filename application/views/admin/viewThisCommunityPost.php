@@ -12,8 +12,7 @@ if (isset($rows)){
 		$community_post_image=$row['thread_image_name'];
 		$community_post_id=$row['community_id'];
 		$post_user_name=$row['username'];
-		$post_user_full_name=$row['first_name'] + $row['last_name'];
-
+		$post_user_full_name=($row['first_name'].' '.$row['last_name']);
 		$pic_status=$row['user_picture_status'];
 		?>
 
@@ -108,7 +107,7 @@ if (isset($rows)){
 													class="btn btn-primary btn-xs fas fa-edit  fa-xs "
 													href="<?= base_url().'admin/editMyComment/',$comment_id?>"></a>
 										<a
-												class="btn btn-danger btn-xs fas fa-trash-alt  fa-xs"  data-toggle="modal"  data-target="#exampleModal<?=$comment_id?>"
+												class="btn btn-danger btn-xs fas fa-trash-alt  fa-xs" style="cursor:pointer;" data-toggle="modal"  data-target="#exampleModal<?=$comment_id?>"
 										></a><?php
 										}?>
 
@@ -156,38 +155,25 @@ if (isset($rows)){
 								</div>
 							</div>
 							<?php
-							}
-							?>
+									}
+								?>
 
 							<?php
 							}
-							} ?>
+						} ?>
 
 							<!-- comment -->
 
 							<div class="bg-white p-2">
 								<div class="d-flex flex-row fs-12">
-									<div class="like p-2 cursor">
-										<i class="fa fa-thumbs-o-up"></i>
-										<span class="ml-1">
-                                    Like</span></div>
-
 									<div
 											class="like p-2 cursor action-collapse"
 											data-toggle="collapse"
 											aria-expanded="true"
 											aria-controls="collapse-1"
 											href="#collapse-1">
-										<i class="fa fa-commenting-o"></i>
-										<span class="ml-1">Comment</span></div>
-									<div
-											class="like p-2 cursor action-collapse"
-											data-toggle="collapse"
-											aria-expanded="true"
-											aria-controls="collapse-2"
-											href="#collapse-2">
-										<i class="fa fa-share"></i>
-										<span class="ml-1">Share</span></div>
+										<i class="fa fa-commenting-o" style="cursor:pointer"></i>
+										<span class="ml-1" style="cursor:pointer; font-weight: bold;">Write a Comment Here</span></div>
 								</div>
 							</div>
 							<div id="collapse-1" class="bg-light p-2 collapse" data-parent="#myGroup">
@@ -206,12 +192,16 @@ if (isset($rows)){
 									<?php }?>
 									<textarea
 											class="form-control ml-1 shadow-none textarea" wrap="hard" rows="3" cols="3"
-											name="community_comment"></textarea>
+											name="community_comment"  required></textarea>
 
 								</div>
 								<div class="mt-2 text-right">
 									<button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>
-									<button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button>
+									<button class="btn btn-outline-primary btn-sm ml-1 shadow-none"
+										data-toggle="collapse"
+                                		aria-expanded="true"
+                                		aria-controls="collapse-1"
+                                		href="#collapse-1"  type="button">Cancel</button>
 								</div>
 							</div>
 							<div id="collapse-2" class="bg-light p-2 collapse" data-parent="#myGroup">

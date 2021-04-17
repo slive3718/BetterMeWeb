@@ -20,7 +20,14 @@ if ($myInfo){
             $height=$info['height'];
             $account_type=$info['account_type'];
             $pic_status=$info['user_picture_status'];
-            $age=$info['age'];
+
+
+		if(isset($dob)){
+			$dateOfBirth = $dob;
+			$today = date("Y-m-d");
+			$diff = date_diff(date_create($dateOfBirth), date_create($today));
+			$age = $diff->format('%y');
+		}
 
 ?>
   
@@ -52,11 +59,11 @@ if ($myInfo){
 
           
               <?php
-                if (isset($pic_status)){ ?>
-                     <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" class="avatar img-circle img-thumbnail" style="height:225px;width:225px"  alt="avatar">
+                if (isset($pic_status) && !empty($pic_status)){ ?>
+                     <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" class="avatar img-circle img-thumbnail" style="height:225px;width:225px">
                <?php }else{
                    ?>
-                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" style="height:225px;width:225px"  alt="avatar">
+                    <img src="https://www.linkpicture.com/q/avatarprofile.png" class="avatar img-circle img-thumbnail" style="height:225px;width:225px">
                    <?php
                }
               

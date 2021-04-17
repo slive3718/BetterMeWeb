@@ -39,8 +39,7 @@ if (isset($myThread)) {
 							<button type="submit" class="btn btn-primary">
 								Update
 							</button>
-							<a href="<?= base_url() . 'user/view_this_community_post/', $thread_id ?>"
-							   class="btn btn-default">
+							<a href="<?= base_url() . 'user/view_this_community_post/', $thread_id ?>"class="btn btn-default">
 								Cancel
 							</a>
 						</div>

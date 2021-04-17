@@ -48,7 +48,7 @@
 								if (isset($profile_post->get_post_images) && !empty($profile_post->get_post_images)){
 								foreach($profile_post->get_post_images as  $images){
 									?>
-									<img src="<?= base_url().'./uploads/posts/'.$images->image_name;?>" style="width:20px;height:20px">
+									<img src="<?= base_url().'./uploads/profile_posts/'.$images->image_name;?>" style="width:20px;height:20px">
 									<?php
 								}
 								}
@@ -100,7 +100,7 @@
 			var sessionId=$(this).data('sessions-id');
 			console.log(sessionId);
 
-			alertify.confirm("Are you sure you want to delete this Profile Post?", function (e) {
+			alertify.confirm("Are you sure you want to restore this Profile Post?", function (e) {
 				if (e)
 				{
 					$.post("<?=base_url()?>admin/allowProfilePost/",{"sessionId":sessionId},function (response){

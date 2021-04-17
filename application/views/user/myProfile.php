@@ -13,21 +13,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
-
+<body style='overflow-x:hidden;'>
 <main>
-	<div id="device-bar-2">
-	</div>
+	<div style="max-width: 100%;">
 	<header>
 		<div class="tb">
-			<div><a style="font-weight: bold" class="btn btn-s btn-success rounded"
-					href="<?= base_url() . 'user/homepage/' ?>">BetterMe</a></div>
-			<div class="td" id="search-form">
-				<form method="get" action="#">
-					<input type="text" placeholder="Better Me Search">
-					<button type="submit"><i class="material-icons">search</i></button>
-				</form>
-			</div>
-
+			<div><a href="<?php echo base_url('user/homepage') ?>">
+			<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
 			<?php
 			if (isset($user_info) && !empty($user_info)){
 
@@ -44,29 +36,24 @@
 			$dob = $val->dob;
 			$pic_status = $val->user_picture_status;
 			$sex = $val->sex;
+
+			$name= (isset($firstName,$lastName) && !empty($firstName) || !empty($lastName))?$firstName.' '.$lastName:'';
 			?>
+
 			<div class="td" id="f-name-l"><a style="font-weight: bold" class="btn btn-s btn-success rounded"
-											 href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a>
-			</div>
-			<div class="td" id="i-links">
-				<div class="tb">
-					<div class="td" id="m-td">
-						<div class="tb">
-							<span class="td"><i class="fa fa-user"></i></span>
-							<span class="td"><i class="fa fa-envelope"></i></span>
-							<span class="td m-active"><i class="fa fa-bell"></i></span>
-						</div>
-					</div>
-					<div class="td">
-						<a href="#" id="p-link">
-							<?php if (isset($pic_status)) { ?>
-								<img src="<?= base_url() . './uploads/profilepic/profile' . $id ?>.jpg" class=""
-									 style="height:35px;width:35px" alt="profile pic">
-							<?php } else {
-								?>
-								<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-									 class="avatar img-circle img-thumbnail" style="height:35px;width:35px"
-									 alt="profile pic">
+				href="<?= base_url() . 'user/myProfile/' . $id ?>"><?= Ucfirst($firstName) ?></a></div>
+                <div class="td" id="i-links">
+                    <div class="tb">
+                        <div class="td">
+                            <a href="#" id="p-link">
+                           <?php  if (isset($pic_status)&& !empty($pic_status)){ ?>
+                                    <img src="<?=base_url().'./uploads/profilepic/profile'.$id?>.jpg" 
+									class="" 
+                                    style="height:35px;width:35px">
+                            <?php }else{
+                                ?>
+                                    <img src="https://www.linkpicture.com/q/avatarprofile.png" 
+                                    class="avatar img-circle img-thumbnail" style="height:35px;width:35px">
 								<?php
 							} ?>
 						</a>
@@ -82,17 +69,17 @@
 		<div id="profile-d">
 			<div id="profile-pic" class="card Regular shadow">
 				<?php
-				if (isset($pic_status)) { ?>
+				if (isset($pic_status) && !empty($pic_status)) { ?>
 					<img src="<?= base_url() . './uploads/profilepic/profile' . $id ?>.jpg"
-						 class="avatar img-circle img-thumbnail" style="height:225px;width:225px" alt="avatar">
+						 class="avatar img-circle img-thumbnail" style="height:225px;width:225px">
 				<?php } else {
 					?>
-					<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
-						 style="height:225px;width:225px" alt="avatar">
+					<img src="https://www.linkpicture.com/q/avatarprofile.png" class="avatar img-circle img-thumbnail"
+						 style="height:225px;width:225px">
 					<?php
 				} ?>
 			</div>
-			<div id="u-name"><?= Ucfirst($firstName), ' ', Ucfirst($lastName) ?></div>
+			<div id="u-name"><?=(isset($name) && !empty($name))?$name:$username?></div>
 			<div class="tb" id="m-btns">
 				<div class="td">
 					<!--<div class="m-btn"><i class="material-icons">Change Timeline Piture</i><span></span></div>-->
@@ -101,44 +88,10 @@
 		</div>
 		<div id="black-grd"></div>
 	</div>
-	<div id="main-content">
-		<div class="tb ">
-			<div class="td" id="l-col">
-				<div class="l-cnt card Regular shadow">
-					<div class="cnt-label ">
-						<i class="l-i" id="l-i-i"></i>
-						<span>Intro</span>
-						<div class="lb-action"><i class="material-icons">edit</i></div>
-					</div>
-					<div id="i-box">
-						<div id="intro-line">Web developer - UI</div>
-						<div id="u-occ">Developing awesome UIs at <a href="#">Google LLC</a> Bengaluru and inspiring
-							other companies to do so :)
-						</div>
-						<div id="u-loc"><i class="material-icons">location_on</i><a href="#">Bengaluru</a>, <a href="#">India</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="l-cnt l-mrg card Regular shadow">
-					<div class="cnt-label">
-						<i class="l-i" id="l-i-p"></i>
-						<span>Photos</span>
-						<!-- <div class="lb-action" id="b-i"><i class="fa fa-caret-down"></i></div> -->
-					</div>
-					<div id="photos">
-						<div class="container">
-							<div>
-
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="td" id="m-col">
+	<div id="main-content" style="max-width:100%;">
+			<div class="m-mrg card" id="composer"  style='margin:30px;'>
 				<div class="m-mrg card" id="p-tabs">
-					<div class="tb">
+					<div class="tb" >
 						<div class="td">
 							<div class="tb" id="p-tabs-m">
 								<div class="td active"><a href="<?= base_url() . 'user/myProfile' ?>" class=""><i
@@ -152,36 +105,36 @@
 						<!-- <div class="td" id="p-tab-m"><i class="material-icons">keyboard_arrow_down</i></div> -->
 					</div>
 				</div>
-				<div class="m-mrg card Regular shadow" id="composer">
+				<div class="m-mrg card Regular shadow" id="composer" style="max-width: 100%;">
 					<div id="c-tabs-cvr">
 						<div class="tb" id="c-tabs">
 							<div class="td"><i class="material-icons">Whats Up?</i><span></span></div>
 						</div>
 					</div>
-					<div id="c-c-main">
+					<div id="c-c-main" style="max-width: 100%;">
 						<div class="tb">
 							<div class="td" id="p-c-i"> <?php
-								if (isset($pic_status)) { ?>
+								if (isset($pic_status) && !empty($pic_status)) { ?>
 									<img src="<?= base_url() . './uploads/profilepic/profile' . $id ?>.jpg"
-										 class="td p-p-pic" style="height:50px;width:50px" alt="profile pic">
+										 class="td p-p-pic" style="height:50px;width:50px">
 								<?php } else {
 									?>
-									<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px"
-										 alt="profile pic">
+									<img src="https://www.linkpicture.com/q/avatarprofile.png"
+										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px">
 									<?php
 								} ?></div>
 							<form
 									method="post"
 									action="<?= base_url() ?>user/add_new_post"
 									enctype="multipart/form-data">
-								<div class="Small" id="c-inp">
-                            <textarea
+							<div class="Small" id="c-inp">
+                            	<textarea
+									style="max-width: 100%;"
 									name="content"
 									placeholder="What's on your mind?"
 									class="whats-on-ur-mind border border-primary rounded"
-									cols="100"
-									rows="5"></textarea>
+									cols="135"
+									rows="5" required></textarea>
 
 								</div>
 						</div>
@@ -190,19 +143,35 @@
 						button-post">Post</a></div> -->
 					</div>
 					</hr>
+
 					<div class="col-sm-12">
+
+						<div class="form-inline btn btn-outline-secondary btn-sm" style="margin-left: 60px">
 						<input
-								class="btn btn-primary btn-sm col-md-4"
-								style="left:70px"
+								id="image_upload"
+								class=""
+								style="left:70px;width:100px"
 								type="file"
 								name="userfile[]"
 								size="20"
-								multiple="multiple"/>
+								multiple="multiple"/><span class="fa fa-image">Upload Images</span>
+						</div>
+						<div class="form-inline btn btn-outline-secondary btn-sm">
+							<input
+									id="video_upload"
+									accept="video/3gpp,video/mp4"
+									style="left:70px;width:100px"
+									type="file"
+									name="videofile[]"
+									size="20"
+									multiple="multiple"/><span class="fa fa-video-camera">Upload Videos</span>
+						</div>
+
 						<input
 								type="submit"
 								value="Post"
 								class="btn btn-primary"
-								style="right:0px;float:right"/>
+								style="margin-right:0px;float:right"/>
 					</div>
 					<!-- -->
 				</div>
@@ -210,36 +179,53 @@
 				<?php
 
 				if (isset($val->getAllProfilePost) && !empty($val->getAllProfilePost)) {
+//					print_r($val->getAllProfilePost);exit;
 					foreach ($val->getAllProfilePost as $post) {
 						$content = $post->content;
 						$my_post_id=($post->post_id);
+
+//						print_r($post->getArchiveStatus);
+						$archived=0;
+//						print_r($post->getArchiveStatus);
+						if(isset($post->getArchiveStatus) && !empty($post->getArchiveStatus)) {
+							foreach ($post->getArchiveStatus as $archiveStatus)
+								$archived = $archiveStatus->archive_status;
+								$confirmed = $archiveStatus->user_confirm_action;
+						}
+
+//						print_r($archived);
+//
+//						?>
+
+						<!--									Archive Checking Start-->
+						<?php if($archived!=="1" ){
+
 						?>
-						<div class="m-mrg card Regular shadow" id="">
+						<div class="m-mrg card Regular shadow" id="" style="max-width: 100%;">
 							<div>
 								<div class="post card Regular shadow">
 									<div class="tb">
 										<a href="#" class="td p-p-pic"><?php
-											if (isset($pic_status)) { ?>
+											if (isset($pic_status) && !empty($pic_status)) { ?>
 												<img src="<?= base_url() . './uploads/profilepic/profile' . $id ?>.jpg"
-													 class="" style="height:50px;width:50px" alt="profile pic">
+													 class="" style="height:50px;width:50px">
 											<?php } else {
 												?>
-												<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+												<img src="https://www.linkpicture.com/q/avatarprofile.png"
 													 class="avatar img-circle img-thumbnail"
-													 style="height:50px;width:50px" alt="profile pic">
+													 style="height:50px;width:50px">
 												<?php
 											} ?></a>
 										<div class="td p-r-hdr">
 											<div class="p-u-info">
 												<a href="#"><?= Ucfirst($firstName), " ", Ucfirst($lastName) ?></a>
-
 											</div>
 											<div class="p-dt">
 												<i class="fa fa-calendar"></i>
-												<span>Date</span>
+												<span>Date <?= (isset($post->date) && !empty($post->date)) ? $post->date:'' ?></span>
 											</div>
 										</div>
-										<div class="dropdown dropleft">
+										<div class="dropdown dropleft" style="float:right;">
 											<a class=" btn-m fa fa-cogs" href="#" role="button" id="dropdownMenuLink"
 											   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											</a>
@@ -252,6 +238,8 @@
 
 										</div>
 									</div>
+
+
 									<label class="tb " readonly>
 										<center><?= $content ?></center>
 									</label>
@@ -270,23 +258,30 @@
 														}
 													}
 												}
-
 												?>
 
 											</div>
 									</div>
 									</a>
+								</div>
+							</div>
 
-									<div>
-										<div class="p-acts">
-											<div class="p-act like"><i class="fa fa-thumbs-up"></i><span>25</span></div>
-											<div class="p-act comment btn-click"><i
-														class="fa fa-comment"></i><span>1</span></div>
+						</div>
+						<?php }else if ($confirmed !== "1"){
+						?>
+
+							<div class="m-mrg card Regular shadow" id="archived-section_<?=$my_post_id?>" class="">
+								<div>
+									<div class="post card Regular shadow">
+										<div class="tb">
+											<div style="text-align: center; font-weight: bold; font-size: 25px"> Sorry, This content isn't available right now:<br><a style="font-size: 15px;">"When this happens, it's usually the post is unavailable or deleted due to contents against our rules and standard. "</a></div><span class="mark-read-warning" style="cursor: pointer;color: blue; font-weight: bold; font-size: 12px;" data-post_id="<?=$my_post_id?>">Ok! Mark as read</span>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+
+						<?php } ?>
+						<!--									End of archive checking -->
 					<?php }
 				} ?>
 				<div clas="fa-3x"><i class="fas fa-sync fa-spin"></i></div>
@@ -297,7 +292,6 @@
 	}
 	}
 	?>
-	<div id="device-bar-2"><i class="fab fa-apple"></i></div>
 </main>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -305,6 +299,103 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 
+		$('.mark-read-warning').on('click',function(){
+			var postId=$(this).attr('data-post_id');
+			var confirm_read_url = "<?= base_url().'user/confirm_read_archived_post/'?>";
+			// console.log(confirm_read_url);return false;
+			Swal.fire({
+				title: 'Notice',
+				text: "This post will be remain hidden until Admin's approval.",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Ok, Continue.'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$.post(confirm_read_url+postId,{ 'postId':postId },function(success){
+						if(success==success){
+							Swal.fire({
+										icon: 'success',
+										title: 'Thank you for confirmation.',
+										text: 'Confirmed!',
+									});
+							$('#archived-section_'+postId).hide();
+						}else{
+							Swal.fire(
+									{
+										icon: 'error',
+										title: 'Something went wrong',
+										text: 'Error',
+									});
+
+						}
+					});
+				}
+			})
+		})
 	});
+
+	let supportedImages = ['jpg', 'png', 'gif' , 'jpeg', 'JPG', 'PNG', 'JPEG'];
+	let supportedVideos = ['mp4', 'MP4', '3GP', '3gp', 'mov', 'flv', 'fmv'];
+	$(document).ready(function(){
+		$('#image_upload').on('change',function(){
+			let fileName = ($('#image_upload').val()).replace(/^.*[\\\/]/, '');
+			let fileExtension = fileName.substr(fileName.lastIndexOf('.')+1);
+			console.log(fileExtension);
+
+			if (!supportedImages.includes(fileExtension)) {
+				$("#image_upload").val('');
+				Swal.fire({
+					icon: 'error',
+					title: 'Wrong File Extension',
+					text: 'Error!',
+				}).then((result)=>{
+						if(result.isConfirmed){
+							return false;
+						}
+				});
+				return false;
+			}
+			else{
+
+			}
+		});
+
+
+		$('#video_upload').on('change',function(){
+			Swal.fire({
+				icon: 'warning',
+				title: 'This feature is unavailable <br> Under Development',
+
+			}).then((result)=>{
+				if(result.isConfirmed){
+					return false;
+				}
+			});
+			$("#video_upload").val('');
+			return false;
+			let fileName = ($('#video_upload').val()).replace(/^.*[\\\/]/, '');
+			let fileExtension = fileName.substr(fileName.lastIndexOf('.')+1);
+			console.log(fileExtension);
+
+			if (!supportedVideos.includes(fileExtension)) {
+				$("#video_upload").val('');
+				Swal.fire({
+					icon: 'error',
+					title: 'Wrong File Extension',
+					text: 'Error!',
+				}).then((result)=>{
+					if(result.isConfirmed){
+						return false;
+					}
+				});
+				return false;
+			}
+			else{
+
+			}
+		});
+	})
 
 </script>

@@ -162,8 +162,12 @@ class User extends CI_Controller
 		$data['getTopDiets'] = $this->user_model->getTopDiets();
 
         $data['page_title']= "Homepage";
+
         $this->load->view('user/templates/header', $data);
+		$this->load->view('user/chat', $data);
         $this->load->view('user/homepage', $data);
+
+        $this->load->view('user/homeCommentModal');
     }
 
    
@@ -222,7 +226,7 @@ class User extends CI_Controller
         if (isset($this->session->userdata['id'])) {
             $posts=$this->user_model->get_dietPlanFull($post_id);
             $data['rows']=$posts;
-
+			$data['comments'] = $this->user_model->getCommentHomepage($post_id);
             $data['page_title']= "Diet Post";
 
             $this->load->view('user/templates/header', $data);
@@ -506,15 +510,16 @@ class User extends CI_Controller
 
     public function myProfile()
     {
-        $userid=$this->session->userdata['id'];
-        if ($userid) {
-            $data['user_info']=$this->user_model->getAllProfileInfo();
+            $userid=$this->session->userdata['id'];
+            $user_info=$this->user_model->getAllProfileInfo($userid);
+            $data['user_info']=$user_info;
             // $data['profile_post_info']=$this->user_model->get_my_Profileinfo($userid);
             $data['page_title']="My Profile";
+
             $this->load->view("user/templates/headerProfile", $data);
+				$this->load->view('user/chat', $data);
             $this->load->view("user/myProfile", $data);
             // $this->load->view("user/templates/footer");
-        }
     }
 
 
@@ -527,6 +532,7 @@ class User extends CI_Controller
             // $this->load->view("user/templates/header");
             $data['page_title']="Follow People";
             $this->load->view("user/templates/headerProfile", $data);
+			$this->load->view('user/chat', $data);
             $this->load->view("user/following", $data);
             // $this->load->view("user/templates/footer");
         }
@@ -677,7 +683,9 @@ $image_arr = array();
     $data['user_info']=$this->user_model->getAllProfileInfo();
     $data['followedUsersDatas']=$this->user_model->getAllFollowedUserPosts();
     $data['page_title']="Followed People";
+
     $this->load->view("user/templates/headerProfile", $data);
+	 $this->load->view('user/chat', $data);
     $this->load->view('user/followedUser',$data);
     }
 
@@ -685,7 +693,7 @@ public function add_new_post(){
         $post = $this->input->post();
         $id=$this->session->userdata('id');
         $config['upload_path']          = './uploads/profile_posts';
-        $config['allowed_types']        = 'jpg|png|jpeg|';
+        $config['allowed_types']        = 'jpg|png|jpeg|gif|';
         $config['max_size']             = 100000;
         $config['max_width']            = 100000;
         $config['max_height']           = 100000;
@@ -793,7 +801,7 @@ public function add_new_post(){
 			$post_id= $post_id;
 
 			$config['upload_path']          = './uploads/profile_posts';
-			$config['allowed_types']        = 'jpg|png|jpeg|';
+			$config['allowed_types']        = 'jpg|png|jpeg|gif|';
 			$config['max_size']             = 100000;
 			$config['max_width']            = 100000;
 			$config['max_height']           = 100000;
@@ -851,6 +859,195 @@ public function add_new_post(){
 		}
 	}
 
+	public function confirm_read_archived_post(){
+		$post=$this->input->post();
+		$post_id=$post['postId'];
+		print_r($post['postId']);
+		$result=$this->user_model->confirm_read_archived_post($post_id);
+		if($result=="1"){
+		echo "success";
+		}else {
+		echo "error";
+		}
+	}
 
+	public function getCommentHomepage(){
 
+	}
+
+	public function addCommentHomepage(){
+    	$post=$this->input->post();
+		$result = $this->user_model->addCommentHomepage($post);
+		if ($result){
+			$result_array = array('status'=>'success' );
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+	}
+
+	public function deleteMyCommentHomepage(){
+		$post=$this->input->post();
+		$this->db->where('id',$post['commentId']);
+		$result = $this->db->delete('tblpostcomment');
+			if($result){
+				$result_array = array("status" => "success");
+			}else{
+				$result_array = array('status'=>'error');
+			}
+
+		echo json_encode($result_array);
+	}
+
+	public function updateCommentHomepage(){
+		$post=$this->input->post();
+		$userid=$this->session->userdata['id'];
+		$field_array = array (
+			'comment'=>$post['comment'],
+			'date'=>date('Y-m-d h:i:s'),
+		);
+		$this->db->where('post_id',$post['postId']);
+		$this->db->where('user_id',$userid);
+		$this->db->where('id',$post['commentId']);
+		$result = $this->db->update('tblpostcomment',$field_array);
+		if($result){
+			$result_array = array("status" => "success");
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+	}
+
+	public function homepage_search($search){
+
+    		$this->db->select('*');
+    		$this->db->from('tblposts');
+    		$this->db->like($search);
+    		$this->db->get();
+    		$result = $this->db->get();
+
+    		$data['searched'] = $result->result();
+
+    		$this->load->view('user/templates/header');
+    		$this->load->view('user/search_result',$data);
+			$this->load->view('user/templates/footer');
+	}
+
+	public function search_json(){
+    	$post = $this->input->post();
+    	$search = $post['search'];
+
+		$this->db->select('*');
+		$this->db->from('tblposts');
+		$this->db->like ('CONCAT(post_title,post_content)',$search);
+
+		$result = $this->db->get();
+
+		if($result->num_rows() > 0){
+			$result_array = $result->result_array();
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+
+	}
+
+	public function full_diet_lists(){
+		$this->db->select('*');
+		$this->db->from('tblposts');
+		$result = $this->db->get();
+    	$data ['posts'] = $result->result();
+        $data['page_title']="Post Lists";
+		$this->load->view('user/templates/header',$data);
+		$this->load->view('user/fullDietList',$data);
+		$this->load->view('user/templates/footer');
+	}
+
+	public function full_thread_lists(){
+		$this->db->select('*');
+		$this->db->from('tblcommunity');
+		$result = $this->db->get();
+		$data ['posts'] = $result->result();
+        $data['page_title']="Thread Lists";
+		$this->load->view('user/templates/header',$data);
+		$this->load->view('user/communityThreadLists',$data);
+		$this->load->view('user/templates/footer');
+	}
+
+	public function full_top_diets(){
+
+		$data ['posts'] = $this->user_model->getTopDietsAll();
+		$this->load->view('user/templates/header');
+		$this->load->view('user/communityThreadLists',$data);
+		$this->load->view('user/templates/footer');
+	}
+
+	public function saveUsertoMentorChat(){
+    	$post=$this->input->post();
+
+		$this->db->insert('chat',array('chat_from'=>$post['userId'],'chat_to'=>$post['chat_to'],'message'=>$post['message'],'date_time'=>date('Y-m-d H:i:s')));
+
+	}
+
+	public function fetch_chat_list(){
+    	$userId = $this->session->userdata['id'];
+		$this->db->select('*,c.date_time');
+		$this->db->from('tblfollow f');
+		$this->db->join('tblusers u','f.following_id=u.userId','left');
+		$this->db->join('chat c','c.chat_from=f.following_id','left');
+		$this->db->group_by('u.userId');
+		$this->db->where('f.subscribe=',"1");
+		$this->db->where('u.account_type=',"U");
+		$this->db->where('f.follower_id',$userId);
+		$this->db->order_by('c.date_time','desc');
+		$result = $this->db->get();
+
+//		print_r($result->result());exit;
+		if($result->num_rows() > 0){
+			$result_array = $result->result_array();
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+
+	}
+
+	public function fetch_chat_message(){
+		$post=$this->input->post();
+		$userId = $this->session->userdata['id'];
+
+		$this->db->select('*,c.date_time');
+		$this->db->from('chat c');
+		$this->db->join('tblusers u','u.userId = c.chat_from');
+		$this->db->where('c.chat_to',$userId);
+		$this->db->where('c.chat_from',$post['chat_from']);
+		$this->db->or_where('c.chat_to',$post['chat_from']);
+
+		$this->db->order_by('c.date_time','ascfetch_chat_list');
+		$result = $this->db->get();
+
+//		print_r($result->result());exit;
+		if($result->num_rows() > 0){
+			$result_array = $result->result_array();
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+
+	}
+
+	public function chat_save_message(){
+		$post=$this->input->post();
+		$userId = $this->session->userdata['id'];
+
+		$this->db->insert('chat',array('chat_from'=>$userId,'chat_to'=>$post['send_to'],'message'=>$post['message'],'date_time'=>date('Y-m-d H:i:s')));
+		$insert = $this->db->insert_id();
+		if($insert > 0){
+			$result_array = array('status'=>'success');
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+
+	}
 }

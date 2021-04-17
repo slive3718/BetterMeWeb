@@ -14,18 +14,18 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 }
 ?>
 
-<div class="container-fluid card shadow" style="width:100vh;margin-top: 50px">
+<div class="container-fluid card shadow" style="width:100vh;margin-top: 50px; max-width:100%;">
 	<div class="m-mrg" style="padding: 30px 5px 90px 5px" id="composer">
 
 		<div id="c-c-main">
 			<div class="tb">
 				<div class="td" id="p-c-i"> <?php
-					if (isset($pic_status)) { ?>
+					if (isset($pic_status) && !empty($pic_status)) { ?>
 						<img src="<?= base_url() . './uploads/profilepic/profile' . $id ?>.jpg"
 							 class="td p-p-pic" style="height:50px;width:50px" alt="profile pic">
 					<?php } else {
 						?>
-						<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+						<img src="https://www.linkpicture.com/q/avatarprofile.png"
 							 class="avatar img-circle img-thumbnail" style="height:50px;width:50px"
 							 alt="profile pic">
 						<?php
@@ -43,6 +43,7 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 					enctype="multipart/form-data">
 					<div class="Small" id="c-inp">
                             <textarea
+								style="max-width: 100%;"
 								name="content"
 								placeholder="What's on your mind?"
 								class="whats-on-ur-mind border border-primary rounded"
@@ -52,29 +53,30 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 			</div>
 		</div>
 		</hr>
-		<div class="col-sm-12">
+		<div>
 			<input
-				class="btn btn-primary btn-sm col-md-4"
-				style="left:20px;"
+				class="btn btn-primary btn-sm"
+				style="left:0px;"
 				type="file"
 				name="userfile[]"
 				size="20"
 				multiple="multiple"/>
 
-			<input type="submit" value="Post" class="btn btn-primary" style="right:0px;float:right"/>
+			<input type="submit" value="Post" class="btn btn-success btn-sm" style="right:0px;float:right"/>
 
 		</div>
 		<!-- -->
 		<br>
-		<a data-sessions_id="<?= $post_id ?>" id="manage-image" style="cursor: pointer">Manage Image</a>
+		<a id="hide-image" class="btn btn-outline-warning" style="cursor: pointer;">Hide Image</a>
+		<a data-sessions_id="<?= $post_id ?>" class="btn btn-outline-success btn-sm" id="manage-image" style="cursor: pointer">Manage Image</a>
 	</div>
 	<div class="show-image-here" style="width:50px;display: block">
 		<p class="image-here">
-
 	</div>
 </div>
 <script>
 	$(document).ready(function () {
+		$('#hide-image').hide();
 
 		$('#manage-image').on('click', function () {
 			var postId = $(this).attr('data-sessions_id');
@@ -90,6 +92,8 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 							"<a class='btn btn-warning btn-sm remove-this-image' id='class_image_id_" + value.image_id + "' style='cursor: pointer' id='remove-image' data-image_id='" + value.image_id + "' data-post_id='" + value.post_id + "'>Remove</a>"
 						);
 					});
+					$('#manage-image').hide();
+					$('#hide-image').toggle();
 				});
 		});
 		$('.image-here').on('click', '.remove-this-image', function () {
@@ -108,6 +112,11 @@ if (isset($gotMyProfilePost) && !empty($gotMyProfilePost)) {
 			});
 		});
 
+		$('#hide-image').on('click',function(){
+			$('#hide-image').toggle();
+			$('#manage-image').toggle();
+			$('.image-here').empty();
+		})
 
 	});
 </script>

@@ -4,44 +4,47 @@
 		margin: 20px;
 	}
 </style>
-<div class="container-fluid card shadow" style="width:100vh">
+<div class="container-fluid card shadow" style="width:100vh; max-width: 100%;">
 	<div class="m-indent" style="">
 		<form method="POST" action="<?= base_url().'admin/add_new_plan'?>" enctype="multipart/form-data">
 
 			<div class="form-group">
 				<label for="thread_type">Thread</label>
 				<select name="thread_type" class="form-control">
-					<option name="thread_type" value="Diet_Plan">Diet Plan</option>
-					<option name="thread_type" value="Exercise">Exercise</option>
+					<option name="thread_type" value="Diet_Plan" id="dietPlan">Diet Plan </option>
+					<option name="thread_type" value="Exercise" selected>Exercise</option>
 				</select>
 			</div>
 
 			<div class="form-group">
-				<label for="">Diet Title</label>
+				<label for=""><?=(isset($exercise) && !empty($exercise))?'Exercise Title':'Diet Title'?></label>
 				<input name="post_title" type="text" class="form-control" id="" placeholder="" required>
 			</div>
 
-			<div class="form-group">
+
+			<?php if(! isset($exercise) && empty($exercise)):?>
+			<div class="form-group ">
 				<label for="">Type Of Diet</label>
-				<select class="form-control" name="type_of_diet" >
+				<select class="form-control select-diet" name="type_of_diet" >
 					<option value="">No Selection</option>
-					<option name="type_of_diet" value="Intermittent Fasting">Intermittent Fasting</option>
-					<option name="type_of_diet" value="Zone Diet">Zone Diet</option>
-					<option name="type_of_diet" value="Paleo Diet">Paleo Diet</option>
-					<option name="type_of_diet" value="Paleo Diet">Paleo Diet</option>
-					<option name="type_of_diet" value="Blood Type Diet">Blood Type Diet</option>
-					<option name="type_of_diet" value="Vegan Diet">Vegan Diet</option>
-					<option name="type_of_diet" value="South Beach Diet">South Beach Diet</option>
-					<option name="type_of_diet" value="Mediterranean Diet">Mediterranean Diet</option>
-					<option name="type_of_diet" value="Food Diet">Raw Food Diet</option>
-					<option id="type_of_diet" name="type_of_diet" value="Other Diet">Other Diet</option>
+					<option name="type_of_diet" value="Intermittent Fasting" id="diet_select">Intermittent Fasting</option>
+					<option name="type_of_diet" value="Zone Diet" id="diet_select">Zone Diet</option>
+					<option name="type_of_diet" value="Paleo Diet" id="diet_select">Paleo Diet</option>
+					<option name="type_of_diet" value="Blood Type Diet" id="diet_select">Blood Type Diet</option>
+					<option name="type_of_diet" value="Vegan Diet" id="diet_select">Vegan Diet</option>
+					<option name="type_of_diet" value="South Beach Diet" id="diet_select">South Beach Diet</option>
+					<option name="type_of_diet" value="Mediterranean Diet" id="diet_select">Mediterranean Diet</option>
+					<option name="type_of_diet" value="Food Diet" id="diet_select">Raw Food Diet</option>
+					<option name="type_of_diet" value="Other Diet" id="other_diet" >Other Diet</option>
 				</select>
 			</div>
-
-			<div class="form-group other-diet" >
+			<div class="form-group text-other-diet" >
 				<label for="">Name of Diet Plan</label>
 				<input class="form-control" type="text" value="" name="other_diet">
 			</div>
+			<?php endif; ?>
+
+
 			<div class="form-row">
 				<div class="col">
 					<label for=""> Plan Track (Optional)</label>
@@ -91,10 +94,19 @@
 </div>
 <script>
 	$(document).ready(function(){
-		$('.other-diet').hide();
 
-		$('#type_of_diet').on('click',function(){
-		  $('.other-diet').show();
+		$('.text-other-diet').hide();
+		$(".select-diet").change(function() {
+			if ($(this).val() == "Other Diet") {
+				$(".text-other-diet").show();
+			}
+			if ($(this).val() !== "Other Diet") {
+				$(".text-other-diet").hide();
+			}
+		});
+
+		$('#dietPlan').on('click',function(){
+			console.log("here");
 		});
 	});
 </script>

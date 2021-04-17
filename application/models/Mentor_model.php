@@ -165,7 +165,10 @@ class Mentor_model extends CI_Model
 			$return_array = array();
 			foreach ($qstr->result() as $val)
 			{
+				$val->getCommentCount = $this->getCommentCount($val->post_id);
 				$val->images = $this->get_diet_plan_images($val->post_id);
+				$val->getLikeStatus = $this->getLikeStatus($val->post_id);
+				$val->getLikeCount = $this->getLikeCount($val->post_id);
 			}
 		}
 		$sess_id = $this->session->userdata('id');
@@ -224,7 +227,8 @@ class Mentor_model extends CI_Model
 		if ($qstr->num_rows() > 0 ){
 			$return_array = array();
 			foreach($qstr->result() as $val){
-
+				$val->getLikeStatus = $this->getLikeStatus($val->post_id);
+				$val->getLikeCount = $this->getLikeCount($val->post_id);
 				$val->images= $this->get_diet_plan_images_all($val->post_id);
 			}
 
@@ -253,7 +257,7 @@ class Mentor_model extends CI_Model
 	public function get_community_post()
 	{
 
-		$qstr = $this->db->query("SELECT * FROM tblcommunity LEFT JOIN tblusers on tblcommunity.thread_user_id=tblusers.userId where tblcommunity.archive_status != 1 order by tblcommunity.thread_date desc");
+		$qstr = $this->db->query("SELECT * FROM tblcommunity LEFT JOIN tblusers on tblcommunity.thread_user_id=tblusers.userId where tblcommunity.archive_status != 1 order by tblcommunity.thread_date desc limit 20");
 
 		if ($qstr->num_rows() > 0) {
 			$result = $qstr->result_array();
@@ -644,6 +648,7 @@ class Mentor_model extends CI_Model
 		$this->db->join('tblposts p','l.like_post_id=p.post_id','left');
 		$this->db->group_by('l.like_post_id');
 		$this->db->order_by('like_sum','desc');
+		$this->db->limit(10);
 		$getDb = $this->db->get();
 //		echo "<pre>";
 //		print_r($getDb->result());
@@ -652,6 +657,58 @@ class Mentor_model extends CI_Model
 		if($getDb->num_rows()>0){
 
 			return $getDb->result();
+		}else{
+			return '';
+		}
+	}
+
+
+	function addCommentHomepage($post){
+		$date=date('Y-m-d h:i:s');
+		$user_id=$this->session->userdata('id');
+		$post_id= $post['postId'];
+		$comment = $post['comment'];
+		$field_array=array(
+			'comment'=>$comment,
+			'post_id'=>$post_id,
+			'user_id'=>$user_id,
+			'date'=>$date,
+
+		);
+		$res= $this->db->insert('tblpostcomment',$field_array);
+		if ($res){
+			return $res;
+		}else{
+			return '';
+		}
+	}
+
+	function getCommentHomepage($post_id){
+		$this->db->select('*');
+		$this->db->from('tblpostcomment c');
+		$this->db->join('tblusers u','c.user_id=u.userId','left');
+		$this->db->where('post_id',$post_id);
+		$result = $this->db->get();
+
+		if ($result->num_rows()>0){
+			return $result->result_array();
+		}else{
+			return '';
+		}
+
+	}
+
+	function getCommentCount($post_id){
+
+		$this->db->select('*');
+		$this->db->from ('tblpostcomment');
+		$this->db->where ('post_id',$post_id);
+		$getDb = $this->db->get();
+
+		if($getDb->num_rows() > 0){
+
+			return $getDb->num_rows();
+
 		}else{
 			return '';
 		}

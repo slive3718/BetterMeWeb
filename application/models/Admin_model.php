@@ -142,6 +142,9 @@ class Admin_model extends CI_Model
 			foreach ($qstr->result() as $val)
 			{
 				$val->images = $this->get_diet_plan_images($val->post_id);
+				$val->getLikeStatus = $this->getLikeStatus($val->post_id);
+				$val->getLikeCount = $this->getLikeCount($val->post_id);
+				$val->getCommentCount = $this->getCommentCount($val->post_id);
 			}
 		}
 		$sess_id = $this->session->userdata('id');
@@ -200,7 +203,8 @@ class Admin_model extends CI_Model
 		if ($qstr->num_rows() > 0 ){
 			$return_array = array();
 			foreach($qstr->result() as $val){
-
+				$val->getLikeStatus = $this->getLikeStatus($val->post_id);
+				$val->getLikeCount = $this->getLikeCount($val->post_id);
 				$val->images= $this->get_diet_plan_images_all($val->post_id);
 			}
 
@@ -260,7 +264,7 @@ class Admin_model extends CI_Model
 	public function get_community_post()
 	{
 
-		$qstr = $this->db->query("SELECT * FROM tblcommunity LEFT JOIN tblusers on tblcommunity.thread_user_id=tblusers.userId where tblcommunity.archive_status !=1 order by tblcommunity.thread_date desc ");
+		$qstr = $this->db->query("SELECT * FROM tblcommunity LEFT JOIN tblusers on tblcommunity.thread_user_id=tblusers.userId where tblcommunity.archive_status !=1 order by tblcommunity.thread_date desc limit 20");
 
 		if ($qstr->num_rows() > 0) {
 			$result = $qstr->result_array();
@@ -425,7 +429,9 @@ class Admin_model extends CI_Model
 		if ($qstr->num_rows() > 0 ){
 			$post=array(
 				'archive_status'=>1,
-				'archive_message'=>'This post is archived by the administrator and being reviewed');
+				'archive_message'=>'This post is archived by the administrator and being reviewed',
+				'archive_from'=>'profile_posts'
+			);
 			$this->db->where('post_id=',$postId);
 			$qstr1=$this->db->update('tblarchive',$post);
 
@@ -435,6 +441,7 @@ class Admin_model extends CI_Model
 				'post_id'=>$postId,
 				'archive_status'=>1,
 				'archive_message'=>'This post is archived by the administrator and being reviewed',
+				'archive_from'=>'profile_posts',
 			);
 			$this->db->where('post_id=',$postId);
 			$qstr2=$this->db->insert('tblarchive',$post);
@@ -454,7 +461,9 @@ class Admin_model extends CI_Model
 		if ($qstr->num_rows() > 0 ){
 			$post=array(
 				'archive_status'=>0,
-				'archive_message'=>'Reviewed');
+				'archive_message'=>'Reviewed',
+				'user_confirm_action'=>'0'
+			);
 			$this->db->where('post_id=',$postId);
 			$qstr1=$this->db->update('tblarchive',$post);
 
@@ -464,6 +473,7 @@ class Admin_model extends CI_Model
 				'post_id'=>$postId,
 				'archive_status'=>0,
 				'archive_message'=>'Reviewed',
+				'user_confirm_action'=>'0',
 			);
 			$this->db->where('post_id=',$postId);
 			$qstr2=$this->db->insert('tblarchive',$post);
@@ -750,6 +760,7 @@ class Admin_model extends CI_Model
 		$this->db->join('tblposts p','l.like_post_id=p.post_id','left');
 		$this->db->group_by('l.like_post_id');
 		$this->db->order_by('like_sum','desc');
+		$this->db->limit(10);
 		$getDb = $this->db->get();
 //		echo "<pre>";
 //		print_r($getDb->result());
@@ -762,4 +773,57 @@ class Admin_model extends CI_Model
 			return '';
 		}
 	}
+
+
+	function addCommentHomepage($post){
+		$date=date('Y-m-d h:i:s');
+		$user_id=$this->session->userdata('id');
+		$post_id= $post['postId'];
+		$comment = $post['comment'];
+		$field_array=array(
+			'comment'=>$comment,
+			'post_id'=>$post_id,
+			'user_id'=>$user_id,
+			'date'=>$date,
+
+		);
+		$res= $this->db->insert('tblpostcomment',$field_array);
+		if ($res){
+			return $res;
+		}else{
+			return '';
+		}
+	}
+
+	function getCommentHomepage($post_id){
+		$this->db->select('*');
+		$this->db->from('tblpostcomment c');
+		$this->db->join('tblusers u','c.user_id=u.userId','left');
+		$this->db->where('post_id',$post_id);
+		$result = $this->db->get();
+
+		if ($result->num_rows()>0){
+			return $result->result_array();
+		}else{
+			return '';
+		}
+
+	}
+
+	function getCommentCount($post_id){
+
+		$this->db->select('*');
+		$this->db->from ('tblpostcomment');
+		$this->db->where ('post_id',$post_id);
+		$getDb = $this->db->get();
+
+		if($getDb->num_rows() > 0){
+
+			return $getDb->num_rows();
+
+		}else{
+			return '';
+		}
+	}
+
 }

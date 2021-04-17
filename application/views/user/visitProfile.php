@@ -18,26 +18,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
+<script type="text/javascript" src="<?= base_url() ?>/assets/js/myProfile.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/css/myProfile.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+		crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
+<body style='overflow-x:hidden;'>
 
 <main>
-	<div id="device-bar-2">
-		<!-- <button></button>
-		<button></button>
-		<button></button> -->
-	</div>
+	<div style="max-width: 100%;">
 	<header>
 		<div class="tb">
-			<div><a style="font-weight: bold" class="btn btn-s btn-success rounded"
-					href="<?= base_url() . 'user/homepage/' ?>">BetterMe</a></div>
-			<div class="td" id="search-form">
-				<form method="get" action="#">
-					<input type="text" placeholder="Better Me Search">
-					<button type="submit"><i class="material-icons">search</i></button>
-				</form>
-			</div>
-			<?php foreach ($user_info
-
-			as $val){
+			<div><a href="<?php echo base_url('user/homepage') ?>">
+			<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
+			<?php foreach ($user_info as $val){
 
 			$id = $this->session->userdata('id');
 			$username = $val->username;
@@ -51,27 +55,18 @@
 			$userId = $val->userId;
 			?>
 			<div class="td" id="f-name-l"><a style="font-weight: bold" class="btn btn-s btn-success rounded"
-											 href="<?= base_url() . 'user/myProfile/' . $id ?>">Home</a></div>
+				href="<?= base_url() . 'user/myProfile/' . $id ?>">Home</a></div>
 			<div class="td" id="i-links">
 				<div class="tb">
-					<div class="td" id="m-td">
-						<div class="tb">
-							<span class="td"><i class="fa fa-user"></i></span>
-							<span class="td"><i class="fa fa-envelope"></i></span>
-							<span class="td m-active"><i class="fa fa-bell"></i></span>
-						</div>
-					</div>
 					<div class="td">
 						<a href="#" id="p-link">
-							<?php if (isset($pic_status)) { ?>
+							<?php if (isset($pic_status)&& !empty($pic_status)) { ?>
 								<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
-									 class="avatar img-circle img-thumbnail" style="height:35px;width:35px"
-									 alt="profile pic">
+									 class="" style="height:35px;width:35px">
 							<?php } else {
 								?>
-								<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-									 class="avatar img-circle img-thumbnail" style="height:35px;width:35px"
-									 alt="profile pic">
+								<img src="https://www.linkpicture.com/q/avatarprofile.png" type="image"
+									class="avatar img-circle img-thumbnail" style="height:35px;width:35px">
 								<?php
 							} ?>
 						</a>
@@ -87,13 +82,13 @@
 		<div id="profile-d">
 			<div id="profile-pic" class="card Regular shadow">
 				<?php
-				if (isset($pic_status)) { ?>
+				if (isset($pic_status)&& !empty($pic_status)) { ?>
 					<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
-						 class="avatar img-circle img-thumbnail" style="height:225px;width:225px" alt="avatar">
+						 class="avatar img-circle img-thumbnail" style="height:225px;width:225px">
 				<?php } else {
 					?>
-					<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
-						 style="height:225px;width:225px" alt="avatar">
+					<img src="https://www.linkpicture.com/q/avatarprofile.png" type="image" 
+						class="avatar img-circle img-thumbnail" style="height:225px;width:225px">
 					<?php
 				} ?>
 			</div>
@@ -107,74 +102,16 @@
 		<div id="black-grd"></div>
 	</div>
 	<div id="main-content">
-		<div class="tb ">
-			<div class="td" id="l-col">
-				<div class="l-cnt card Regular shadow">
-					<div class="cnt-label ">
-						<i class="l-i" id="l-i-i"></i>
-						<span>Intro</span>
-						<div class="lb-action"><i class="material-icons">edit</i></div>
-					</div>
-					<div id="i-box">
-						<div id="intro-line">Web developer - UI</div>
-						<div id="u-occ">Developing awesome UIs at <a href="#">Google LLC</a> Bengaluru and inspiring
-							other companies to do so :)
-						</div>
-						<div id="u-loc"><i class="material-icons">location_on</i><a href="#">Bengaluru</a>, <a href="#">India</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="l-cnt l-mrg card Regular shadow">
-					<div class="cnt-label">
-						<i class="l-i" id="l-i-p"></i>
-						<span>Photos</span>
-						<!-- <div class="lb-action" id="b-i"><i class="fa fa-caret-down"></i></div> -->
-					</div>
-					<div id="photos">
-						<div class="container">
-							<div>
-
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="l-cnt l-mrg">
-					<div class="cnt-label">
-						<i class="l-i" id="l-i-k"></i>
-						<span>Did You Know<i id="k-nm">1</i></span>
-					</div>
-					<div>
-						<div class="q-ad-c">
-							<a href="#" class="q-ad">
-								<img src="https://imagizer.imageshack.com/img923/1849/4TnLy1.png">
-								<span>My favorite superhero is...</span>
-							</a>
-						</div>
-						<div class="q-ad-c">
-							<a href="#" class="q-ad" id="add_q">
-								<i class="material-icons">add</i>
-								<span>Add Answer</span>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div id="t-box ">
-					<a href="#">Privacy</a> <a href="#">Terms</a> <a href="#">Advertising</a> <a href="#">Ad Choices</a>
-					<a href="#">Cookies</a> <span id="t-more">More<i class="material-icons">arrow_drop_down</i></span>
-
-				</div>
-			</div>
-			<div class="td" id="m-col">
+			<div class="m-mrg card" id="composer"  style='margin:30px;'>
 				<div class="m-mrg card" id="p-tabs">
 					<div class="tb">
 						<div class="td">
 							<div class="tb" id="p-tabs-m">
-								<div class="td active"><a href="<?= base_url() . 'user/myProfile' ?>" class=""><i
+								<div class="td active"><a class=""><i
 												class="fa fa-clock-o"></i><span>TIMELINE</span></a></div>
-								<div class="td"><a href="<?= base_url() . 'user/following' ?>" class=""><i
+								<div class="td"><a class=""><i
 												class="fa fa-user-plus"></i><span>Following</span></a></div>
-								<div class="td"><a href="<?= base_url() . 'user/followers' ?>" class=""><i
+								<div class="td"><a class=""><i
 												class="fa fa-users"></i><span>Followers</span> </a></div>
 							</div>
 						</div>
@@ -190,15 +127,13 @@
 					<div id="c-c-main">
 						<div class="tb">
 							<div class="td" id="p-c-i"> <?php
-								if (isset($pic_status)) { ?>
+								if (isset($pic_status)&& !empty($pic_status)) { ?>
 									<img src="<?= base_url() . './uploads/profilepic/profile' . $val->userId ?>.jpg"
-										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px"
-										 alt="profile pic">
+										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px">
 								<?php } else {
 									?>
-									<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px"
-										 alt="profile pic">
+									<img src="https://www.linkpicture.com/q/avatarprofile.png" type="image"
+										 class="avatar img-circle img-thumbnail" style="height:50px;width:50px">
 									<?php
 								} ?></div>
 							<form
@@ -241,27 +176,27 @@
 
 				if (isset($val->getAllProfilePost) && !empty($val->getAllProfilePost)) {
 					foreach ($val->getAllProfilePost as $post) {
+
 						$content = $post->content; ?>
 						<div class="m-mrg card Regular shadow" id="">
 							<div>
 								<div class="post card Regular shadow">
 									<div class="tb">
 										<a href="#" class="td p-p-pic"><?php
-											if (isset($pic_status)) { ?>
+											if (isset($pic_status)&& !empty($pic_status)) { ?>
 												<img src="<?= base_url() . './uploads/profilepic/profile' . $userId ?>.jpg"
 													 class="avatar img-circle img-thumbnail"
 													 style="height:50px;width:50px" alt="profile pic">
 											<?php } else {
 												?>
-												<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+												<img src="https://www.linkpicture.com/q/avatarprofile.png" type="image"
 													 class="avatar img-circle img-thumbnail"
-													 style="height:50px;width:50px" alt="profile pic">
+													 style="height:50px;width:50px">
 												<?php
 											} ?></a>
 										<div class="td p-r-hdr">
 											<div class="p-u-info">
 												<a href="#"><?= Ucfirst($firstName), " ", Ucfirst($lastName) ?></a>
-												shared a post <a href="#">Himalaya Singh</a>
 											</div>
 											<div class="p-dt">
 												<i class="fa fa-calendar"></i>
@@ -279,25 +214,17 @@
 											<div class="container">
 												<?php foreach ($post->post_images as $images) {
 													?>
-													<img src="<?= base_url() . './uploads/posts/' . $images->image_name ?>">
+													<img src="<?= base_url() . './uploads/profile_posts/' . $images->image_name ?>">
 													<?php
 												} ?>
 											</div>
 									</div>
 									</a>
-
-									<div>
-										<div class="p-acts">
-											<div class="p-act like"><i class="fa fa-thumbs-up"></i><span>25</span></div>
-											<div class="p-act comment btn-click"><i
-														class="fa fa-comment"></i><span>1</span></div>
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>
-					<?php }
-				} ?>
+					<?php }}
+				 ?>
 				<div clas="fa-3x"><i class="fas fa-sync fa-spin"></i></div>
 			</div>
 
@@ -305,9 +232,7 @@
 	</div>
 	<?php
 	}
-
 	?>
-	<div id="device-bar-2"><i class="fab fa-apple"></i></div>
 </main>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 

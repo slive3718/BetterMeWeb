@@ -103,6 +103,7 @@ class User_model extends CI_Model
 				$val->images= $this->get_diet_plan_images($val->post_id);
 				$val->getLikeStatus = $this->getLikeStatus($val->post_id);
 				$val->getLikeCount = $this->getLikeCount($val->post_id);
+				$val->getCommentCount = $this->getCommentCount($val->post_id);
 			}
 
 		}
@@ -162,6 +163,8 @@ class User_model extends CI_Model
 			$return_array = array();
 			foreach($qstr->result() as $val){
 
+				$val->getLikeStatus = $this->getLikeStatus($val->post_id);
+				$val->getLikeCount = $this->getLikeCount($val->post_id);
 				$val->images= $this->get_diet_plan_images_all($val->post_id);
 			}
 
@@ -195,7 +198,7 @@ class User_model extends CI_Model
 	public function get_community_post()
 	{
 
-		$qstr = $this->db->query("SELECT * FROM tblcommunity LEFT JOIN tblusers on tblcommunity.thread_user_id=tblusers.userId where tblcommunity.archive_status !=1 order by tblcommunity.thread_date desc");
+		$qstr = $this->db->query("SELECT * FROM tblcommunity LEFT JOIN tblusers on tblcommunity.thread_user_id=tblusers.userId where tblcommunity.archive_status !=1 order by tblcommunity.thread_date desc limit 20");
 
 		if ($qstr->num_rows() > 0) {
 			$result = $qstr->result_array();
@@ -426,6 +429,7 @@ class User_model extends CI_Model
 				$val->getAllusersToFollow = $this->getAllusersToFollow();
 				$val->getFollowtbl = $this->getFollowtbl($val->userId);
 
+
 				// $val->getAllImages=$this->getAllImages($val->userId);
 				$return_array[] = $val;
 				// echo '<pre>';
@@ -444,14 +448,19 @@ class User_model extends CI_Model
 
 		$this->db->select('*');
 		$this->db->from('profile_post pp');
+//		$this->db->join('tblarchive ar', 'pp.post_id=ar.post_id','left');
 		$this->db->where('pp.user_id', $userid);
-		$this->db->order_by('date','desc');
-		$this->db->order_by('post_id','desc');
+//		$this->db->where('ar.user_confirm_action!=',"1");
+		$this->db->order_by('pp.date','desc');
+		$this->db->order_by('pp.post_id','desc');
 		$qstr = $this->db->get();
 		if ($qstr->num_rows() > 0) {
 			$return_array = array();
 			foreach ($qstr->result() as $val) {
+//				print_r($val->post_id);exit;
 				$val->post_images = $this->getImagePerPost($val->post_id);
+				$val->getArchiveStatus = $this->getArchiveStatus($val->post_id);
+
 				$return_array[] = $val;
 			}
 			return $return_array;
@@ -594,10 +603,11 @@ class User_model extends CI_Model
 	{
 
 		$sessId = $this->session->userdata['id'];
-		$this->db->select('*');
+		$this->db->select('s.*,f.*, u.*, ac.archive_status');
 		$this->db->from('profile_post s');
 		$this->db->join('tblfollow f', 's.user_id=f.following_id');
 		$this->db->join('tblusers u', 's.user_id=u.userId');
+		$this->db->join('tblarchive ac','s.post_id=ac.post_id','left');
 		// $this->db->where('f.follower_id',$sessId);
 		$this->db->where('f.follower_id', $sessId);
 		$this->db->where('f.subscribe=', '1');
@@ -761,6 +771,111 @@ class User_model extends CI_Model
 	}
 
 	function getTopDiets(){
+
+//		SELECT * FROM `tbllikes` join tblposts on tbllikes.like_post_id = tblposts.post_id group by like_post_id
+//		SELECT sum(like_status) FROM `tbllikes` group by like_post_id
+
+
+		$this->db->select('*');
+		$this->db->select('(SELECT SUM(like_status)) AS like_sum');
+		$this->db->from('tbllikes l');
+		$this->db->join('tblposts p','l.like_post_id=p.post_id','left');
+		$this->db->group_by('l.like_post_id');
+		$this->db->order_by('like_sum','desc');
+		$this->db->limit(10);
+		$getDb = $this->db->get();
+//		echo "<pre>";
+//		print_r($getDb->result());
+//
+//		exit;
+		if($getDb->num_rows()>0){
+
+			return $getDb->result();
+		}else{
+			return '';
+		}
+	}
+
+	function getArchiveStatus($post_id){
+		$this->db->select('*');
+		$this->db->from('tblarchive');
+		$this->db->where('archive_from=','profile_posts');
+		$this->db->where('post_id=',$post_id);
+
+		$result=$this->db->get();
+		if ($result){
+			return $result->result();
+		}else{
+			return '';
+		}
+	}
+
+	function confirm_read_archived_post($post_id){
+		$this->db->select('*');
+		$this->db->from('tblarchive');
+		$this->db->where('archive_from=','profile_posts');
+		$this->db->where('post_id=',$post_id);
+
+		$result=$this->db->update('tblarchive',array('user_confirm_action'=>'1'));
+		if ($result){
+			return $result;
+		}else{
+			return '';
+		}
+	}
+
+	function addCommentHomepage($post){
+		$date=date('Y-m-d h:i:s');
+		$user_id=$this->session->userdata('id');
+		$post_id= $post['postId'];
+		$comment = $post['comment'];
+		$field_array=array(
+			'comment'=>$comment,
+			'post_id'=>$post_id,
+			'user_id'=>$user_id,
+			'date'=>$date,
+
+		);
+		$res= $this->db->insert('tblpostcomment',$field_array);
+		if ($res){
+			return $res;
+		}else{
+			return '';
+		}
+	}
+
+	function getCommentHomepage($post_id){
+		$this->db->select('*');
+		$this->db->from('tblpostcomment c');
+		$this->db->join('tblusers u','c.user_id=u.userId','left');
+		$this->db->where('post_id',$post_id);
+		$result = $this->db->get();
+
+		if ($result->num_rows()>0){
+			return $result->result_array();
+		}else{
+			return '';
+		}
+
+	}
+
+	function getCommentCount($post_id){
+
+			$this->db->select('*');
+			$this->db->from ('tblpostcomment');
+			$this->db->where ('post_id',$post_id);
+			$getDb = $this->db->get();
+
+			if($getDb->num_rows() > 0){
+
+				return $getDb->num_rows();
+
+			}else{
+				return '';
+			}
+	}
+
+	function getTopDietsAll(){
 
 //		SELECT * FROM `tbllikes` join tblposts on tbllikes.like_post_id = tblposts.post_id group by like_post_id
 //		SELECT sum(like_status) FROM `tbllikes` group by like_post_id

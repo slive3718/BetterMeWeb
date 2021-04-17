@@ -17,12 +17,12 @@
 		}
 	</style>
 <div class="container-fluid border card shadow"
-	 style="width:80%;margin-top:30px;padding-top:20px;padding-bottom: 20px;">
+	 style="width:80%;margin-top:30px;padding-top:20px;padding-bottom: 20px; max-width: 100%;">
 	<div class="jumbotron text-center">
 
-		<h2>Manage Diet Plan</h2>
+		<h2>Manage Posts</h2>
 	<button style="margin-left:20px;width:200px; float:right" class="btn btn-sm btn-success"
-			onclick="document.location='<?= base_url() . 'admin/addDietPlan/' . $post_type ?>'">Add Diet Plan
+			onclick="document.location='<?= base_url() . 'admin/addDietPlan/' . $post_type ?>'">Add Post
 	</button>
 	</div>
 	<div class="row">
@@ -77,7 +77,7 @@
 					<td><a href="<?= base_url() . 'admin/edit_Diet/' . $post_id ?>"
 						   class="btn  btn-sm btn-primary"><span class="fa fa-edit"></span>Edit</a></td>
 					<td>
-						<button data-sessions-id="<?=$post_id?>" class="archive btn btn-danger btn-sm" id="archive"><span class="fa fa-trash-o"></span>Delete
+						<button data-sessions-id="<?=$post_id?>" class="archive btn btn-danger btn-sm" id="archive"><span class="fa fa-trash-o"></span>Archive
 						</button>
 					</td>
 				</tr>
