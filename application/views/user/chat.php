@@ -160,7 +160,7 @@
 <div class="open-chat">
 	<button class="btn-open-chat btn btn-primary "> Open Chat </button>
 </div>
-<div class="container2">
+<div class="container2" style="display: none">
 	<h3 class=" text-center">Messaging
 	<button class="btn-close btn btn-warning  form-inline" >Close <span class="fa fa-close"></span></button></h3>
 	<div class="messaging">
