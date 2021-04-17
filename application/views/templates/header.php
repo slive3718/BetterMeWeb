@@ -121,9 +121,9 @@
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-    <a class="dropdown-item" href="<?php echo base_url('mentor/viewDiet') ?>">Manage My Diet Plan</a>
-    <a class="dropdown-item" href="<?php echo base_url('mentor/viewMyProfile') ?>">Manage My Info</a>
-    <a class="dropdown-item" href="<?php echo base_url('mentor/logout')?>">LogOut</a>
+    <a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('mentor/viewDiet') ?>">Manage My Diet Plan</a>
+    <a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('mentor/viewMyProfile') ?>">Manage My Info</a>
+    <a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('mentor/logout')?>">LogOut</a>
   </div>
 </div>
 <?php

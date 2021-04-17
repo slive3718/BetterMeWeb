@@ -96,9 +96,9 @@
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a class="dropdown-item" href="<?php echo base_url('user/viewMyProfileInfo') ?>">Manage My Info</a>
-    <a class="dropdown-item" href="<?php echo base_url('user/myProfile')?>">Profile</a>
-    <a class="dropdown-item" href="<?php echo base_url('user/logout')?>">LogOut</a>
+    <a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('user/viewMyProfileInfo') ?>">Manage My Info</a>
+    <a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('user/myProfile')?>">Profile</a>
+    <a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('user/logout')?>">LogOut</a>
   </div>
 </div>
 <?php
