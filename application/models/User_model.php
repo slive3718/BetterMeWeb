@@ -875,4 +875,28 @@ class User_model extends CI_Model
 			}
 	}
 
+	function getTopDietsAll(){
+
+//		SELECT * FROM `tbllikes` join tblposts on tbllikes.like_post_id = tblposts.post_id group by like_post_id
+//		SELECT sum(like_status) FROM `tbllikes` group by like_post_id
+
+
+		$this->db->select('*');
+		$this->db->select('(SELECT SUM(like_status)) AS like_sum');
+		$this->db->from('tbllikes l');
+		$this->db->join('tblposts p','l.like_post_id=p.post_id','left');
+		$this->db->group_by('l.like_post_id');
+		$this->db->order_by('like_sum','desc');
+		$getDb = $this->db->get();
+//		echo "<pre>";
+//		print_r($getDb->result());
+//
+//		exit;
+		if($getDb->num_rows()>0){
+
+			return $getDb->result();
+		}else{
+			return '';
+		}
+	}
 }

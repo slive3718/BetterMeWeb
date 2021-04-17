@@ -1,10 +1,11 @@
-<body style='overflow-x:hidden;'>
+<body style='overflow-x:hidden;' xmlns="http://www.w3.org/1999/html">
 <style>
 
 	.container {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
+		z-index: -1;
 	}
 
 	.container .image {
@@ -66,11 +67,30 @@
 	background-color: #28A745;
 }
 
+section{
+
+}
+	.parallax1 {
+		/* The image used */
+		background-image: url("<?= base_url()?>uploads/images/home-bg.jpg");
+
+		/* Set a specific height */
+		min-height: 500px;
+		/* Create the parallax scrolling effect */
+		background-attachment: fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+
+	}
 
 </style>
-
+<section class="parallax1">
 	<div class="col-12" style="text-align: center">
-		<img src="<?= base_url()?>uploads/files/health.jpg" style="max-width: 100%">
+		<div class="jumbotron">
+			<img src="<?= base_url()?>uploads/files/health.jpg" style="width: 100%; height: 70%">
+		</div>
+
 		<br><br><br>
 		<div class="row">
 			<div class="col-md-12 col-speech">
@@ -83,6 +103,10 @@
 				</div>
 			</div>
 		</div>
+
+
+
+
 		<h1 class="jumbotron" style="margin:10px; font-weight: bold; text-align: center; background-color: #28A745">
 			Diet Plans and Exercise Routines
 		</h1>
@@ -133,12 +157,12 @@
 					echo $this->session->flashdata('msgerror');
 				} ?>
 
-				<div class="shadow p-3 mb-5" style='float:left;margin-left:10px; margin-bottom:30px;'>
+				<div class="shadow p-3 mb-5" style='float:left;margin-left:10px; margin-bottom:30px; right:20px;background: rgba(255,255,255, 0.8)'>
 					<div class="d-flex justify-content-between btn btn-success btn-xs">
 
 						<div style="font-weight: bold;">    <?php if (isset($pic_status)){
 							?>
-							<img style="width:2rem;height:2rem" ;
+							<img style="width:2rem;height:2rem"
 								 src="<?= base_url() . './uploads/profilepic/profile' . $post_user_id ?>.jpg"
 								 class="img-circle img-responsive"
 								 alt=""/> Posted by: <?= ucfirst($posts_user_name) ?></div>
@@ -204,9 +228,8 @@
 			}
 		} ?>
 	</div>
-
-	<div class="threads col-3" style="float:right; max-width: 100%;">
-		<div class="shadow-lg p-3 mb-5 ml-5 responsive" style="display:inline-block;right:20px;" >
+	<div class="threads col-3" style="float:right; max-width: 100%; ">
+		<div class="shadow-lg p-3 mb-5 ml-5 responsive" style="display:inline-block;right:20px;background: rgba(255,255,255, 0.9)" >
 				<?php if ($this->session->flashdata('msgsuccess_c')) {
 					echo "<div class='btn btn-success'>" . $this->session->flashdata('msgsuccess_c') . '</div>';
 				} ?>
@@ -340,7 +363,7 @@
 	</div>
 </div>
 
-
+</section>
 </body>
 <script>
 	$(document).ready(function () {

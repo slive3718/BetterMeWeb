@@ -164,7 +164,9 @@ class User extends CI_Controller
         $data['page_title']= "Homepage";
 
         $this->load->view('user/templates/header', $data);
+		$this->load->view('user/chat', $data);
         $this->load->view('user/homepage', $data);
+
         $this->load->view('user/homeCommentModal');
     }
 
@@ -965,5 +967,81 @@ public function add_new_post(){
 		$this->load->view('user/templates/header',$data);
 		$this->load->view('user/communityThreadLists',$data);
 		$this->load->view('user/templates/footer');
+	}
+
+	public function full_top_diets(){
+
+		$data ['posts'] = $this->user_model->getTopDietsAll();
+		$this->load->view('user/templates/header');
+		$this->load->view('user/communityThreadLists',$data);
+		$this->load->view('user/templates/footer');
+	}
+
+	public function saveUsertoMentorChat(){
+    	$post=$this->input->post();
+
+		$this->db->insert('chat',array('chat_from'=>$post['userId'],'chat_to'=>$post['chat_to'],'message'=>$post['message'],'date_time'=>date('Y-m-d H:i:s')));
+
+	}
+
+	public function fetch_chat_list(){
+    	$userId = $this->session->userdata['id'];
+		$this->db->select('*,c.date_time');
+		$this->db->from('tblfollow f');
+		$this->db->join('tblusers u','f.following_id=u.userId','left');
+		$this->db->join('chat c','c.chat_from=u.userId');
+		$this->db->group_by('u.userId');
+		$this->db->where('f.subscribe=',"1");
+		$this->db->where('f.follower_id',$userId);
+		$this->db->order_by('c.date_time','desc');
+		$result = $this->db->get();
+
+//		print_r($result->result());exit;
+		if($result->num_rows() > 0){
+			$result_array = $result->result_array();
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+
+	}
+
+	public function fetch_chat_message(){
+		$post=$this->input->post();
+		$userId = $this->session->userdata['id'];
+
+		$this->db->select('*,c.date_time');
+		$this->db->from('chat c');
+		$this->db->join('tblusers u','u.userId = c.chat_from');
+		$this->db->where('c.chat_to',$userId);
+		$this->db->where('c.chat_from',$post['chat_from']);
+		$this->db->or_where('c.chat_to',$post['chat_from']);
+
+		$this->db->order_by('c.date_time','asc');
+		$result = $this->db->get();
+
+//		print_r($result->result());exit;
+		if($result->num_rows() > 0){
+			$result_array = $result->result_array();
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+
+	}
+
+	public function chat_save_message(){
+		$post=$this->input->post();
+		$userId = $this->session->userdata['id'];
+
+		$this->db->insert('chat',array('chat_from'=>$userId,'chat_to'=>$post['send_to'],'message'=>$post['message'],'date_time'=>date('Y-m-d H:i:s')));
+		$insert = $this->db->insert_id();
+		if($insert > 0){
+			$result_array = array('status'=>'success');
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+
 	}
 }
