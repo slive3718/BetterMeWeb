@@ -158,7 +158,7 @@ li a.design:hover {
 
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-						<a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('admin/viewMyProfile') ?>">View My Profile
+						<a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('admin/viewMyProfile') ?>">Manage My Info
 						</a>
 						<a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('admin/logout') ?>">LogOut</a>
 					</div>
