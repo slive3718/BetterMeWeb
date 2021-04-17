@@ -103,7 +103,7 @@
                     <a class="nav-link" href=""></a>
                 </li>
                 
-                <li class="nav-item" style="font-weight: bold; font-size: 15px; list-style-type: none; margin-left: 20px"
+                <li class="nav-item" style="font-weight: bold; font-size: 15px; list-style-type: none; margin-left: 20px">
                     <?php if (isset($this->session->userdata['id'])){
                         echo (ucfirst($this->session->userdata['uname']));
                     }else {
