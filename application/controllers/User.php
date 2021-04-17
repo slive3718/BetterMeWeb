@@ -989,7 +989,7 @@ public function add_new_post(){
 		$this->db->select('*,c.date_time');
 		$this->db->from('tblfollow f');
 		$this->db->join('tblusers u','f.following_id=u.userId','left');
-		$this->db->join('chat c','c.chat_from=u.userId');
+		$this->db->join('chat c','c.chat_from=f.following_id','left');
 		$this->db->group_by('u.userId');
 		$this->db->where('f.subscribe=',"1");
 		$this->db->where('f.follower_id',$userId);
@@ -1017,7 +1017,7 @@ public function add_new_post(){
 		$this->db->where('c.chat_from',$post['chat_from']);
 		$this->db->or_where('c.chat_to',$post['chat_from']);
 
-		$this->db->order_by('c.date_time','asc');
+		$this->db->order_by('c.date_time','ascfetch_chat_list');
 		$result = $this->db->get();
 
 //		print_r($result->result());exit;

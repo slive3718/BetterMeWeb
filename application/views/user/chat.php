@@ -188,7 +188,7 @@
 				</div>
 				<div class="type_msg">
 					<div class="input_msg_write">
-						<input type="text" class="write_msg" placeholder="Type a message" />
+						<input type="text" class="write_msg" placeholder="Type a message"/>
 						<button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
 					</div>
 				</div>
@@ -200,7 +200,7 @@
 </html>
 
 <script>
-
+   var selected_chat ="";
 	$(document).ready(function(){
 			$('.container2').hide();
 		$('.btn-close').on('click',function(){
@@ -226,10 +226,8 @@
 				$('.inbox_chat').html("");
 				$.each(datas,function (index,data){
 					console.log(data);
-					if(data.date_time==undefined){
-						data.date_time="";
-					}
-					$('.inbox_chat').append('<div class="chat_list active_chat"><div style="cursor: pointer" class="chat_people" data-user_chat_id = "'+data.chat_from+'" id="people_'+data.chat_from+'"> <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="pic"> </div><div class="chat_ib"><h5>'+data.first_name+' '+data.last_name+'<span class="chat_date">'+data.date_time+'</span></h5><p>'+data.message+'</p></div></div></div>')
+
+					$('.inbox_chat').append('<div class="chat_list active_chat "><div style="cursor: pointer" class="chat_people" data-user_chat_id = "'+data.following_id+'" id="people_'+data.following_id+'"> <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="pic"> </div><div class="chat_ib"><h5>'+data.first_name+' '+data.last_name+'<span class="chat_date">'+data.date_time+'</span></h5><p>'+data.message+'</p></div></div></div>')
 				})
 			});
 		});
@@ -240,49 +238,46 @@
 				var chat_from = $(this).attr('data-user_chat_id');
 				var fetch_chat_message = "<?= base_url() . 'user/fetch_chat_message'?>";
 				var myUserId = "<?=$this->session->userdata('id')?>";
+				selected_chat = chat_from;
 				getChat(chat_from, fetch_chat_message, myUserId);
 				// getChat(chat_from, fetch_chat_message, myUserId);
-				setInterval(getChat,5000,chat_from, fetch_chat_message, myUserId);
+				// setInterval(getChat,3000);
 
 			});
 
 
-		$('.msg_send_btn').on('click',function(){
+		$('.input_msg_write').on('click','.msg_send_btn',function(){
 			var save_message = "<?= base_url().'user/chat_save_message'?>";
 			var message = $('.write_msg').val();
-			var send_to = $('.received_withd_msg').attr('data-sent_from');
+			var send_to = selected_chat;
 
-			if(message.trim()==""){
-				alertify.error('Message cant be empty');
-				return false;
-			}
-			$.post(save_message,{'send_to':send_to,'message':message},function(success){
-					if(success){
-						$('.write_msg').val(" ");
-						$('.msg_history').append('<div class="received_msg"><div class="sent_msg"><p>'+message+'</p><span class="time_date">just now</span></div>');
-					}
-			});
+			send_chat(save_message,message,send_to);
+
 		});
 	});
 
 
 	 function getChat(chat_from,fetch_chat_message,myUserId){
-		console.log(chat_from);
+
 		$.post(fetch_chat_message,{'chat_from':chat_from},function(success){
 
 		}).done(function(messages){
 			messages = JSON.parse(messages);
-			$('.incoming_msg').html("");
-			$('.outgoing_msg').html("");
+			$('.msg_history').html("");
+
 			$.each(messages , function(index,message){
-				console.log(message);
+
+				if(message.date_time==undefined){
+					$('.incoming_msg').html("");
+					return false;
+				}
 				if (message.chat_from==myUserId){
 
-					$('.msg_history').html('	<div class="incoming_msg"><div class="received_msg"><div class="sent_msg"><p>'+message.message+'</p><span class="time_date">'+message.date_time+'</span></div></div>');
+					$('.msg_history').append('	<div class="incoming_msg"><div class="received_msg"><div class="sent_msg"><p>'+message.message+'</p><span class="time_date">'+message.date_time+'</span></div></div>');
 				}
 				else{
 
-					$('.msg_history').html('	<div class="outgoing_msg"><div class="received_withd_msg" data-sent_from = "'+message.chat_from+'"> <p>'+message.message+'</p><span class="time_date">'+message.date_time+'</span></div></div>');
+					$('.msg_history').append('	<div class="outgoing_msg"><div class="received_withd_msg" data-sent_from = "'+message.chat_from+'"> <p>'+message.message+'</p><span class="time_date">'+message.date_time+'</span></div></div>');
 				}
 				$(".msg_history").scrollTop($(".msg_history")[0].scrollHeight);
 			});
@@ -290,4 +285,16 @@
 		});
 	}
 
+	function send_chat(save_message,message,send_to){
+		if(message.trim()==""){
+			alertify.error('Message cant be empty');
+			return false;
+		}
+		$.post(save_message,{'send_to':send_to,'message':message},function(success){
+			if(success){
+				$('.write_msg').val("");
+				$('.msg_history').append('<div class="received_msg"><div class="sent_msg"><p>'+message+'</p><span class="time_date">just now</span></div>');
+			}
+		});
+	}
 </script>
