@@ -77,6 +77,35 @@
   line-height: .5;
   border-radius: .2rem;
 }
+ul.ul-design {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+}
+li.li-design{
+  list-style-type: none;
+  font-size: 13px;
+  float: left;
+  margin: 5px;
+}
+li a.design {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 10px;
+  text-decoration: none;
+  border-radius: 50px;
+  background-color: #32CD32;
+
+
+}
+
+li a.design:hover {
+  background-color: #00FF00;
+  border-radius: 50px;
+}
 
 </style>
 	<title>
@@ -94,20 +123,19 @@
 	<nav class="navbar navbar-expand-md navbar-light bg-success">
 		<a href="<?php echo base_url('admin/homepage') ?>">
 		<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav mr-auto">
 			</ul>
 			<?php if (isset($this->session->userdata['id'])) {
 			?>
-			<ul class="navbar-nav" style="float:right;>
-                <li class="nav-item">
-                    <a class="nav-link" href=""></a>
-                </li>
-                
-                <li class="nav-item">
+			<ul class="ul-design" style="font-weight: bold;">
+			<li class="li-design"><a class="design" href="<?php echo base_url('admin/viewDiet') ?>">Manage Posts</a></li>
+			<li class="li-design"><a class="design" href="<?php echo base_url('admin/review_community_thread') ?>">Manage Threads</a></li>
+			<li class="li-design"><a class="design" href="<?php echo base_url('admin/viewArchiveDiet') ?>">View Archived Posts</a></li>
+			<li class="li-design"><a class="design" href="<?php echo base_url('admin/viewArchivedCommunityThread') ?>">View Archived Community Thread</a></li>
+			<li class="li-design"><a class="design" href="<?php echo base_url('admin/reviewProfilePosts') ?>">Review Users Profile Posts</a></li>
+            </ul>
+
+                <li class="nav-item"  style="font-weight: bold; font-size: 15px; list-style-type: none; margin-left: 20px;">
                     <?php if (isset($this->session->userdata['id'])){
                         echo (ucfirst($this->session->userdata['uname']));
                     }else {
@@ -122,7 +150,7 @@
                
             </ul>
 				
-				<div class="dropleft show mr-20" style="float:right; padding:5px;">
+				<div class="dropleft show mr-20" style="float:right; padding:3px;">
 					<a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
 					   aria-expanded="false">
 						<span class="fa fa-caret-down mr-3" aria-hidden="true"> </span>
@@ -130,19 +158,9 @@
 
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-						<a class="dropdown-item" href="<?php echo base_url('admin/viewMyProfile') ?>">View My Profile
+						<a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('admin/viewMyProfile') ?>">View My Profile
 						</a>
-						<a class="dropdown-item" href="<?php echo base_url('admin/viewDiet') ?>">Review/Manage Diet Plan
-							Posts</a>
-						<a class="dropdown-item" href="<?php echo base_url('admin/review_community_thread') ?>">Review
-							Thread Posts</a>
-						<a class="dropdown-item" href="<?php echo base_url('admin/viewArchiveDiet') ?>">View Archived
-							Posts</a>
-						<a class="dropdown-item" href="<?php echo base_url('admin/viewArchivedCommunityThread') ?>">View
-							Archived Community Thread</a>
-						<a class="dropdown-item" href="<?php echo base_url('admin/reviewProfilePosts') ?>">Review Users
-							Profile Posts</a>
-						<a class="dropdown-item" href="<?php echo base_url('admin/logout') ?>">LogOut</a>
+						<a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('admin/logout') ?>">LogOut</a>
 					</div>
 				</div>
 				<?php
@@ -154,7 +172,8 @@
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link" href="<?php echo base_url('admin/viewLogin') ?>">Login</a>
+						<a class="nav-link" style="font-weight: bold; font-size: 15px;" 
+						href="<?php echo base_url('admin/viewLogin') ?>">Login</a>
 					</li>
 
 				</ul>
