@@ -416,11 +416,13 @@ section{
 			var search = $('#speechToText').val();
 			var url = "<?=base_url().'user/search_json'?>";
 			var url_fulldiet = "<?=base_url().'user/viewFullDiet'?>";
+
+			Swal.fire('Please wait')
+			Swal.showLoading()
 			$.post(url,{'search':search},function(success){
 				$('#modal-search .searching-for').html('Searching for: <b>'+search+'</b>');
 				$('#modal-search').modal('show');
-				Swal.fire('Please wait')
-				Swal.showLoading()
+
 			}).done(function(datas){
 				swal.close()
 				datas= JSON.parse(datas);
