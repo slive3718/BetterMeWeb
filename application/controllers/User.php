@@ -1050,4 +1050,17 @@ public function add_new_post(){
 		echo json_encode($result_array);
 
 	}
+
+	public function report_user_json(){
+		$post=$this->input->post();
+
+    	$this->db->insert('reports',array('user_id'=>$post['userId'],'reason'=>trim($post['reason']), 'date_time'=>date('Y-m-d H:i:s')));
+		$insert = $this->db->insert_id();
+		if($insert > 0){
+			$result_array = array('status'=>'success');
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+	}
 }
