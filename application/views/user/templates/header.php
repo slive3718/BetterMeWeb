@@ -143,16 +143,6 @@ li a.design:hover {
 .col-speech{
 	background-color: #28A745;
 }
-input{  
-  font-size: 13px;
-  margin-top: 10px;
-
-}
-button{
-  font-size: 13px;
-  margin-top: 10px;
-}
-
 </style>
 
 
