@@ -1136,7 +1136,7 @@ public function viewArchiveDiet(){
 
 		$data['reports'] = $this->admin_model->fetch_reported_user();
 		$this->load->view('admin/templates/header');
-		$this->load->view('admin/reportedUsers',$data);
+		$this->load->view('admin/view_reported_user',$data);
 		$this->load->view('admin/templates/footer');
 
 	}
