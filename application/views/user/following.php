@@ -18,12 +18,13 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-		crossorigin="anonymous"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <body style='overflow-x:hidden;'>
 
 
@@ -122,8 +123,11 @@
                                         }else{
                                             ?> <a data-session-id="<?= $user->userId ?>" class="button-follow" style="cursor: pointer;" title="Follow"><span class="fa fa-plus btn btn-success btn-sm"></span></a> <?php
                                         }?>
-                                         <!-- --> <a href="<?=base_url().'user/visit_profile/'.$user->userId?>" class="button-visit" title="Visit Profile" ><span class="fa fa-user btn-primary btn-sm"></span></a></td>
-                                        </tr>
+                                         <!-- --> <a href="<?=base_url().'user/visit_profile/'.$user->userId?>" class="button-visit" title="Visit Profile" ><span class="fa fa-user btn-primary btn-sm"></span></a>
+											<a data-session-id="<?= $user->userId ?>" class="report-user btn btn-warning btn-s" title="Report user"><span class="fa fa-ban "></span></a>
+
+										</td>
+										</tr>
                                        
                                         
                                         <?php
@@ -144,6 +148,27 @@
         </div>
         <div id="device-bar-2"><i class=""></i></div>
     </main>
+<!-- Modal -->
+<div class="modal fade" id="modal-report-user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Report User</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css"/>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
@@ -190,5 +215,44 @@
 			});
 
 		});
+
+
+		$('.table').on('click','.report-user',function(){
+			var userId = $(this).data("session-id");
+			$('#modal-report-user').modal('show');
+				$('#modal-report-user .modal-body').html('<label>Reason</label><textarea style="resize: none" rows="5" class="report-reason form-control"></textarea><br><br><button type="button" data-report_id ="'+userId+'" class="btn btn-warning form-control btn-report">Send report</button>');
+
+		});
+		$('.modal-body').on('click','.btn-report',function(){
+			let report_url = "<?=base_url().'user/report_user_json'?>";
+			var reportId = $(this).attr('data-report_id');
+			var reason = $('.report-reason').val();
+			Swal.fire('Please wait')
+			Swal.showLoading()
+			if (reason.trim() == ""){
+				Swal.fire({
+					position: 'center',
+					icon: 'error',
+					title: 'Reason is not valid',
+					showConfirmButton: false,
+					timer: 1000
+				})
+				return false;
+			}
+			$.post(report_url,{"userId":reportId, "reason":reason},function(success){
+				if (success){
+					swal.close()
+					Swal.fire({
+						position: 'center',
+						icon: 'success',
+						title: 'User reported',
+						showConfirmButton: false,
+						timer: 1500
+					})
+
+				}
+			});
+		});
+
 	});
 </script>
