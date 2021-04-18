@@ -143,6 +143,16 @@ li a.design:hover {
 .col-speech{
 	background-color: #28A745;
 }
+input{  
+  font-size: 13px;
+  margin-top: 10px;
+
+}
+button{
+  font-size: 13px;
+  margin-top: 10px;
+}
+
 </style>
 
 
@@ -197,49 +207,6 @@ li a.design:hover {
     <a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('user/logout')?>">LogOut</a>
   </div>
 </div>
-<?php
-}
-else{
-?>
-    <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href=""></a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link"  style="font-weight: bold; font-size: 15px;" href="<?php echo base_url('user/viewLogin') ?>">Login</a>
-                </li>
-               
-            </ul>
-          
-<?php 
-}
-?>
-           
-        </div>
-    </nav>
-</div>
-    <!-- <a href="<?php echo base_url('user/homepage') ?>">Home</a>
-
-        <div class="nav-item dropdown">
-            <button class="nav-link dropdown-toggle">File 
-      <i class="fa fa-caret-down"></i>
-    </button>
-            <div class="nav-item dropdown">
-               
-                <a href="">Motivational Posts</a>
-                <a href="">View Diet Plans</a>
-				
-
-              
-            </div>
-            
-
-		</div>
-		<a href="<?php echo base_url('user/logout') ?>">LogOut</a> -->
-
-</div>
-</head>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
 function record() {
@@ -294,6 +261,49 @@ function record() {
 	});
 	});
 </script>
-	
+<?php
+}
+else{
+?>
+    <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href=""></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link"  style="font-weight: bold; font-size: 15px;" href="<?php echo base_url('user/viewLogin') ?>">Login</a>
+                </li>
+               
+            </ul>
+          
+<?php 
+}
+?>
+           
+        </div>
+    </nav>
+</div>
+    <!-- <a href="<?php echo base_url('user/homepage') ?>">Home</a>
+
+        <div class="nav-item dropdown">
+            <button class="nav-link dropdown-toggle">File 
+      <i class="fa fa-caret-down"></i>
+    </button>
+            <div class="nav-item dropdown">
+               
+                <a href="">Motivational Posts</a>
+                <a href="">View Diet Plans</a>
+				
+
+              
+            </div>
+            
+
+		</div>
+		<a href="<?php echo base_url('user/logout') ?>">LogOut</a> -->
+
+</div>
+</head>
+
 
   
