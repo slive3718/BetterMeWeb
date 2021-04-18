@@ -70,8 +70,6 @@ li a.design {
   text-decoration: none;
   border-radius: 50px;
   background-color: #32CD32;
-
-
 }
 
 li a.design:hover {
@@ -81,70 +79,14 @@ li a.design:hover {
 input{  
   font-size: 13px;
   margin-top: 10px;
+  float: left;
 
 }
 button{
   font-size: 13px;
   margin-top: 10px;
+  float: left;
 }
-.container {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-
-	}
-
-	.container .image {
-		width: 50%;
-
-
-	}
-
-	.container img {
-		width: calc(100% - (150px * 2));
-		margin: 20px auto;
-		display: block;
-	}
-
-	.table th {
-		color: #28A745;
-		font-family: monospace, sans-serif;
-
-	}
-	.font-header{
-		color: #FFFFFF;
-		font-family: 'Raleway', sans-serif;
-		font-size: 30px;
-		font-weight: 800;
-		line-height: 72px;
-		margin: 0 0 24px;
-		text-align: center;
-		text-transform: uppercase;
-		background-color: #28A745;
-
-	}
-	.class-card{
-		width:23rem;
-		height:30rem;
-	}
-	@media screen and (max-width: 1193px) {
-		body {
-
-
-		}
-
-	}
-	@media screen and (max-width: 600px) {
-		body {
-			background-color: olive;
-		}
-	}
-	@media only screen and (max-width: 600px) {
-		body {
-			background-color: lightblue;
-		}
-	}
-
 </style>
 
 
@@ -167,8 +109,8 @@ button{
             <input type="text" name="" id="speechToText" placeholder="Search Something" 
 			class="btn btn-outline-primary" style="background-color: #dddddd;color: #1F1F1F">
 			<audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/notification/swiftly-610.mp3"></audio>
-			<button style="margion-top: 10px;"  onclick="record()"  class="btn btn-warning btn-sm">Voice Input</button>
-			<button style="margion-top: 10px;" class="btn-search btn btn-primary btn-sm">Search</button>
+			<button onclick="record()"  class="btn btn-warning btn-sm">Voice Input</button>
+			<button class="btn-search btn btn-primary btn-sm">Search</button>
 			<li class="li-design"><a class="design" href="<?php echo base_url('user/create_thread') ?>">Create a Thread</a></li>
 			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_thread_lists') ?>">View All Thread</a></li>
 			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_diet_lists') ?>">View All Post</a></li>
