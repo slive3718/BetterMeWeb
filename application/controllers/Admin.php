@@ -1167,5 +1167,17 @@ public function viewArchiveDiet(){
 
 	}
 
+	public function get_user_reports_info(){
+		$post=$this->input->post();
+
+		$result = $this->admin_model->get_user_reports_info($post);
+
+		if(!empty($result)){
+			$result_array = $result->result_array();
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+	}
 
 }
