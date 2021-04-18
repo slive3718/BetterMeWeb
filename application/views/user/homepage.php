@@ -62,7 +62,7 @@
 .speech-recognition{
 	float: right;
 	background: white;
-	border-radius; 50px;
+	border-radius; 10px;
 }
 .col-speech{
 
