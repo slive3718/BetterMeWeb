@@ -21,7 +21,7 @@
 	<div class="jumbotron text-center">
 		<?= ($this->session->flashdata('msgsuccess'))?'<div class="btn btn-success">'.($this->session->flashdata('msgsuccess')).'</div>':''?>
 		<?= ($this->session->flashdata('msgwarn'))?'<div class="btn btn-warning"> '.($this->session->flashdata('msgwarn')).'</div>':''?>
-		<h2>Review Profile Posts</h2>
+		<h2>Manage Users</h2>
 	</div>
 	<div class="row">
 		<div class="col-md-12 table-responsive">
