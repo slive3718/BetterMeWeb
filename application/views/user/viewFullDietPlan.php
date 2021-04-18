@@ -1,4 +1,3 @@
-<body style='overflow-x:hidden;' xmlns="http://www.w3.org/1999/html">
 <?php $post_type = "DietPlan";
 
 ?>
