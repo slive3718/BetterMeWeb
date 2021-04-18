@@ -78,63 +78,6 @@ li a.design:hover {
   background-color: #00FF00;
   border-radius: 50px;
 }
-.container {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-
-	}
-
-	.container .image {
-		width: 50%;
-
-
-	}
-
-	.container img {
-		width: calc(100% - (150px * 2));
-		margin: 20px auto;
-		display: block;
-	}
-
-	.table th {
-		color: #28A745;
-		font-family: monospace, sans-serif;
-
-	}
-	.font-header{
-		color: #FFFFFF;
-		font-family: 'Raleway', sans-serif;
-		font-size: 30px;
-		font-weight: 800;
-		line-height: 72px;
-		margin: 0 0 24px;
-		text-align: center;
-		text-transform: uppercase;
-		background-color: #28A745;
-
-	}
-	.class-card{
-		width:23rem;
-		height:30rem;
-	}
-	@media screen and (max-width: 1193px) {
-		body {
-
-
-		}
-
-	}
-	@media screen and (max-width: 600px) {
-		body {
-			background-color: olive;
-		}
-	}
-	@media only screen and (max-width: 600px) {
-		body {
-			background-color: lightblue;
-		}
-	}
 
 .speech-recognition{
 	float: right;
