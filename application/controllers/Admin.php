@@ -658,7 +658,7 @@ public function viewArchiveDiet(){
 
     public function reviewProfilePosts(){
 		$data['all_profile_posts']=$this->admin_model->getAllProfilePosts();
-        $data['page_title']="Review Profile Posts";
+        $data['page_title']="Manage Profile Posts";
 		$this->load->view('admin/templates/header', $data);
 		$this->load->view('admin/reviewProfilePosts',$data);
 
@@ -1135,7 +1135,8 @@ public function viewArchiveDiet(){
 	public function view_reported_user(){
 
 		$data['reports'] = $this->admin_model->fetch_reported_user();
-		$this->load->view('admin/templates/header');
+		$data['page_title']="Manage Users";
+		$this->load->view('admin/templates/header',$data);
 		$this->load->view('admin/reportedUsers',$data);
 		$this->load->view('admin/templates/footer');
 

@@ -175,7 +175,7 @@ else{
 				<div class="searching-for"></div>
 				<label> Search Results:</label>
 				<div class="search-result"></div><br><br>
-				<div class=""> <small style="font-weight: medium">Did you find what you're looking for? Check out our Lists of Posts here: <a style="font-weight: bold;" href="<?=base_url().'user/full_diet_lists'?>"> POSTS LIST</a></div></small>
+				<div class=""> <small>Did you find what you're looking for? Check out our List of Post here: <a style="font-weight: bold;" href="<?=base_url().'user/full_diet_lists'?>"> POSTS LIST</a></div></small>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
