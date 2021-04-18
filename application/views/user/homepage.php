@@ -61,10 +61,10 @@
 
 .speech-recognition{
 	float: right;
-	background: white;
+	background-color: #28A745;
 }
 .col-speech{
-
+	background-color: #28A745;
 }
 
 section{
@@ -95,7 +95,7 @@ section{
 		<div class="row">
 			<div class="col-md-12 col-speech">
 				<div class="speech-recognition">
-					<label for="Speech Recognition"><b>Search Here: </b></label>
+					<label for="Speech Recognition"><b>Try Our Search Bar </b></label>
 					<input type="text" name="" id="speechToText" placeholder="Search Something" class="btn btn-outline-primary" style="background-color: #dddddd;color: #1F1F1F">
 					<audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/notification/swiftly-610.mp3"></audio>
 					<button  onclick="record()"  class="btn btn-warning btn-sm">Voice Input</button>
@@ -353,7 +353,7 @@ section{
 				<div class="searching-for"></div>
 				<label> Search Results:</label>
 				<div class="search-result"></div><br><br>
-				<div class=""> <small style="font-weight: medium;">Did you find what your looking for? Check out our Lists of Posts here: <a href="<?=base_url().'user/full_diet_lists'?>"> POSTS LIST</a></div></small>
+				<div class=""> <small>Did you find what your looking for ? or Check out our Lists of Posts here <a href="<?=base_url().'user/full_diet_lists'?>"> POST LIST</a></div></small>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
