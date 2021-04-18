@@ -325,7 +325,7 @@ section{
 		</div>
 	</div>
 </div>
-<!-- Modal -->
+<!-- Modal 
 <div class="modal fade" id="modal-search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -347,7 +347,7 @@ section{
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 </section>
 </body>
@@ -373,7 +373,7 @@ section{
 
 
 	});
-
+/*
 	function record() {
 		$(document).ready(function(){
 			var recognition = new webkitSpeechRecognition();
@@ -424,5 +424,5 @@ section{
 
 
 	});
-	});
+	});*/
 </script>
