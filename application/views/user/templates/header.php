@@ -78,6 +78,80 @@ li a.design:hover {
   background-color: #00FF00;
   border-radius: 50px;
 }
+.container {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+
+	}
+
+	.container .image {
+		width: 50%;
+
+
+	}
+
+	.container img {
+		width: calc(100% - (150px * 2));
+		margin: 20px auto;
+		display: block;
+	}
+
+	.table th {
+		color: #28A745;
+		font-family: monospace, sans-serif;
+
+	}
+	.font-header{
+		color: #FFFFFF;
+		font-family: 'Raleway', sans-serif;
+		font-size: 30px;
+		font-weight: 800;
+		line-height: 72px;
+		margin: 0 0 24px;
+		text-align: center;
+		text-transform: uppercase;
+		background-color: #28A745;
+
+	}
+	.class-card{
+		width:23rem;
+		height:30rem;
+	}
+	@media screen and (max-width: 1193px) {
+		body {
+
+
+		}
+
+	}
+	@media screen and (max-width: 600px) {
+		body {
+			background-color: olive;
+		}
+	}
+	@media only screen and (max-width: 600px) {
+		body {
+			background-color: lightblue;
+		}
+	}
+
+.speech-recognition{
+	float: right;
+	background-color: #28A745;
+}
+.col-speech{
+	background-color: #28A745;
+}
+input{  
+  font-size: 13px;
+  margin-top: 10px;
+
+}
+button{
+  font-size: 13px;
+  margin-top: 10px;
+}
 
 </style>
 
@@ -98,6 +172,10 @@ li a.design:hover {
             <?php if (isset($this->session->userdata['id'])){
             ?>
             <ul class="ul-design" style="font-weight: bold;">
+            <input type="text" name="" id="speechToText" placeholder="Search Something" class="btn btn-outline-primary" style="background-color: #dddddd;color: #1F1F1F">
+			<audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/notification/swiftly-610.mp3"></audio>
+			<button  onclick="record()"  class="btn btn-warning btn-sm">Voice Input</button>
+			<button class="btn-search btn btn-primary btn-sm">Search</button>
 			<li class="li-design"><a class="design" href="<?php echo base_url('user/create_thread') ?>">Create a Thread</a></li>
 			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_thread_lists') ?>">View All Threads</a></li>
 			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_diet_lists') ?>">View All Posts</a></li>
@@ -151,8 +229,6 @@ else{
         </div>
     </nav>
 </div>
-
-
     <!-- <a href="<?php echo base_url('user/homepage') ?>">Home</a>
 
         <div class="nav-item dropdown">
@@ -172,9 +248,62 @@ else{
 		</div>
 		<a href="<?php echo base_url('user/logout') ?>">LogOut</a> -->
 
-	</div>
-	
-    </head>
+</div>
+</head>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+function record() {
+		$(document).ready(function(){
+			var recognition = new webkitSpeechRecognition();
+			recognition.lang = "en-GB";
+
+			recognition.onresult = function(event) {
+				// console.log(event);
+				document.getElementById('speechToText').value = event.results[0][0].transcript;
+			}
+			alertify.success('Speak now');
+			play_music();
+			recognition.start();
+
+
+			function play_music() {
+				var audio = document.getElementById("audio");
+				audio.play();
+			}
+		});
+	}
+
+	$(document).ready(function(){
+
+		$('.btn-search').on('click',function(){
+			var count_result = "";
+			var search = $('#speechToText').val();
+			var url = "<?=base_url().'user/search_json'?>";
+			var url_fulldiet = "<?=base_url().'user/viewFullDiet'?>";
+
+			Swal.fire('Please wait')
+			Swal.showLoading()
+			$.post(url,{'search':search},function(success){
+				$('#modal-search .searching-for').html('Searching for: <b>'+search+'</b>');
+				$('#modal-search').modal('show');
+
+			}).done(function(datas){
+				swal.close()
+				datas= JSON.parse(datas);
+				$('#modal-search .search-result').html('');
+				$.each(datas, function(index, data){
+							if(data.post_title ==undefined) {
+								return false;
+							}else{
+								$('#modal-search .search-result').append('<b><span class=""><a href="' + url_fulldiet + '/' + data.post_id + '">' +data.post_title + '</a></span></b><br>');
+							}
+				});
+			});
+
+
+	});
+	});
+</script>
 	
 
   
