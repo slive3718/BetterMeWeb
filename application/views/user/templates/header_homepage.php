@@ -79,13 +79,11 @@ li a.design:hover {
 input{  
   font-size: 13px;
   margin-top: 10px;
-  float: left;
 
 }
 button{
   font-size: 13px;
   margin-top: 10px;
-  float: left;
 }
 </style>
 
