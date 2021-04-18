@@ -86,6 +86,10 @@ section{
 <section class="parallax1">
 	<div class="col-12" style="text-align: center">
 		<div class="jumbotron">
+			<input type="text" name="" id="speechToText" placeholder="Search Something" class="btn btn-outline-primary" style="background-color: #dddddd;color: #1F1F1F">
+			<audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/notification/swiftly-610.mp3"></audio>
+			<button  onclick="record()"  class="btn btn-warning btn-sm">Voice Input</button>
+			<button class="btn-search btn btn-primary btn-sm">Search</button>
 			<img src="<?= base_url()?>uploads/files/health.jpg" style="width: 100%; height: 70%">
 		</div>
 
