@@ -163,7 +163,7 @@ class User extends CI_Controller
 
         $data['page_title']= "Homepage";
 
-        $this->load->view('user/templates/header', $data);
+        $this->load->view('user/templates/header_homepage', $data);
 		$this->load->view('user/chat', $data);
         $this->load->view('user/homepage', $data);
 
