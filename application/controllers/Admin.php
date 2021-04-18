@@ -1130,4 +1130,42 @@ public function viewArchiveDiet(){
 		}
 		echo json_encode($result_array);
 	}
+
+
+	public function view_reported_user(){
+
+		$data['reports'] = $this->admin_model->fetch_reported_user();
+		$this->load->view('admin/templates/header');
+		$this->load->view('admin/reportedUsers',$data);
+		$this->load->view('admin/templates/footer');
+
+	}
+
+
+	public function disable_user(){
+		$post=$this->input->post();
+		$this->db->where('userId',$post['userId']);
+		$result = $this->db->update('tblusers',array('disabled'=>"1"));
+		if(!empty($result)){
+			$result_array = array("status" => "success");
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+
+	}
+	public function enable_user(){
+		$post=$this->input->post();
+		$this->db->where('userId',$post['userId']);
+		$result = $this->db->update('tblusers',array('disabled'=>"0"));
+		if(!empty($result)){
+			$result_array = array("status" => "success");
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+
+	}
+
+
 }

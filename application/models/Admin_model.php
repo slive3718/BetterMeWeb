@@ -826,4 +826,68 @@ class Admin_model extends CI_Model
 		}
 	}
 
+	function fetch_reported_user(){
+		$this->db->select('r.*,u.first_name,u.last_name,u.disabled');
+		$this->db->from ('reports r');
+		$this->db->join('tblusers u','r.user_id=u.userId');
+		$this->db->group_by('r.user_id');
+		$getDb = $this->db->get();
+
+		if($getDb->num_rows() > 0){
+			$return_array = array();
+			foreach ($getDb->result() as $val){
+				$val->reporting_user = $this->reporting_user($val->reporting_user);
+				$val->get_reporting_count = $this->get_reporting_count($val->user_id);
+				$val->get_all_reports = $this->get_all_reports($val->user_id);
+
+				$return_array[] = $val;
+			}
+			return $return_array;
+		}else{
+			return '';
+		}
+
+	}
+
+	function get_reporting_count($user_id){
+		$this->db->select('*');
+		$this->db->from('reports');
+		$this->db->where('user_id',$user_id);
+		$this->db->group_by('reporting_user');
+		$getDb = $this->db->get();
+		if($getDb->num_rows()>0){
+			return $getDb->num_rows();
+		}else{
+			return '';
+		}
+	}
+
+	function get_all_reports($user_id){
+		$this->db->select('*');
+		$this->db->from('reports');
+		$this->db->where('user_id',$user_id);
+		$getDb = $this->db->get();
+		if($getDb->num_rows()>0){
+			return $getDb->num_rows();
+		}else{
+			return '';
+		}
+	}
+
+	function reporting_user($user_id){
+		$this->db->select('*');
+		$this->db->from('tblusers');
+		$this->db->where('userId',$user_id);
+
+		$getDb = $this->db->get();
+		if($getDb->num_rows()>0){
+			return $getDb->result();
+		}else{
+			return '';
+		}
+
+	}
 }
+
+
+

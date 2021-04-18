@@ -40,6 +40,10 @@ class User_model extends CI_Model
 		if ($query->num_rows() > 0) {
 			$row = $query->row_array();
 
+			if($row['disabled']==1){
+				$this->session->set_flashdata('error', 'This User was reported to admin!');
+				return false;
+			}
 
 			if (password_verify($pword, $row['password'])) {
 				return true;

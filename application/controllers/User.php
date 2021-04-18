@@ -1053,8 +1053,8 @@ public function add_new_post(){
 
 	public function report_user_json(){
 		$post=$this->input->post();
-
-    	$this->db->insert('reports',array('user_id'=>$post['userId'],'reason'=>trim($post['reason']), 'date_time'=>date('Y-m-d H:i:s')));
+		$userId = $this->session->userdata['id'];
+    	$this->db->insert('reports',array('user_id'=>$post['userId'],'reason'=>trim($post['reason']), 'date_time'=>date('Y-m-d H:i:s'), 'reporting_user'=>$userId));
 		$insert = $this->db->insert_id();
 		if($insert > 0){
 			$result_array = array('status'=>'success');
