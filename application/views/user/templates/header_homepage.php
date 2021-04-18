@@ -78,6 +78,15 @@ li a.design:hover {
   background-color: #00FF00;
   border-radius: 50px;
 }
+input{  
+  font-size: 13px;
+  margin-top: 10px;
+
+}
+button{
+  font-size: 13px;
+  margin-top: 10px;
+}
 .container {
 		display: flex;
 		flex-wrap: wrap;
@@ -155,14 +164,14 @@ li a.design:hover {
             <?php if (isset($this->session->userdata['id'])){
             ?>
             <ul class="ul-design" style="font-weight: bold;">
-			<li class="li-design"><a class="design" href="<?php echo base_url('user/create_thread') ?>">Create a Thread</a></li>
-			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_thread_lists') ?>">View All Thread</a></li>
-			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_diet_lists') ?>">View All Post</a></li>
-            <input style="margion-top: 10px;" type="text" name="" id="speechToText" placeholder="Search Something" 
+            <input type="text" name="" id="speechToText" placeholder="Search Something" 
 			class="btn btn-outline-primary" style="background-color: #dddddd;color: #1F1F1F">
 			<audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/notification/swiftly-610.mp3"></audio>
 			<button style="margion-top: 10px;"  onclick="record()"  class="btn btn-warning btn-sm">Voice Input</button>
 			<button style="margion-top: 10px;" class="btn-search btn btn-primary btn-sm">Search</button>
+			<li class="li-design"><a class="design" href="<?php echo base_url('user/create_thread') ?>">Create a Thread</a></li>
+			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_thread_lists') ?>">View All Thread</a></li>
+			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_diet_lists') ?>">View All Post</a></li>
             </ul>
 
                 
