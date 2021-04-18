@@ -658,7 +658,7 @@ public function viewArchiveDiet(){
 
     public function reviewProfilePosts(){
 		$data['all_profile_posts']=$this->admin_model->getAllProfilePosts();
-        $data['page_title']="Review Profile Posts";
+        $data['page_title']="Manage Profile Posts";
 		$this->load->view('admin/templates/header', $data);
 		$this->load->view('admin/reviewProfilePosts',$data);
 

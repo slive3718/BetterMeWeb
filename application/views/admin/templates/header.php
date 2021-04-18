@@ -132,8 +132,7 @@ li a.design:hover {
 			<li class="li-design"><a class="design" href="<?php echo base_url('admin/review_community_thread') ?>">Manage Threads</a></li>
 			<li class="li-design"><a class="design" href="<?php echo base_url('admin/viewArchiveDiet') ?>">View Archived Posts</a></li>
 			<li class="li-design"><a class="design" href="<?php echo base_url('admin/viewArchivedCommunityThread') ?>">View Archived Threads</a></li>
-			<li class="li-design"><a class="design" href="<?php echo base_url('admin/reviewProfilePosts') ?>">Review Profile Posts</a></li>
-			<li class="li-design"><a class="design" href="<?php echo base_url('admin/view_reported_user') ?>">Manage Users</a></li>
+			<li class="li-design"><a class="design" href="<?php echo base_url('admin/reviewProfilePosts') ?>">Manage Profile Posts</a></li>
             </ul>
 
                 <li class="nav-item"  style="font-weight: bold; font-size: 15px; list-style-type: none; margin-left: 20px;">
