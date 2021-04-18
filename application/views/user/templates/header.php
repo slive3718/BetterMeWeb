@@ -49,6 +49,36 @@
   line-height: .5;
   border-radius: .2rem;
 }
+ul.ul-design {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+}
+li.li-design{
+  list-style-type: none;
+  font-size: 13px;
+  float: left;
+  margin: 5px;
+}
+li a.design {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 10px;
+  text-decoration: none;
+  border-radius: 50px;
+  background-color: #32CD32;
+
+
+}
+
+li a.design:hover {
+  background-color: #00FF00;
+  border-radius: 50px;
+}
+
 </style>
 
 
@@ -63,18 +93,16 @@
     <nav class="navbar navbar-expand-md navbar-light bg-success">
         <a href="<?php echo base_url('user/homepage') ?>">
 		<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav" >
             <ul class="navbar-nav mr-auto">
             </ul>
             <?php if (isset($this->session->userdata['id'])){
             ?>
-            <ul class="navbar-nav" style="float:right;>
-                <li class="nav-item">
-                    <a class="nav-link" href=""></a>
-                </li>
+            <ul class="ul-design" style="font-weight: bold;">
+			<li class="li-design"><a class="design" href="<?php echo base_url('user/create_thread') ?>">Create a Thread</a></li>
+			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_thread_lists') ?>">View All Threads</a></li>
+			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_diet_lists') ?>">View All Posts</a></li>
+            </ul>
+
                 
                 <li class="nav-item" style="font-weight: bold; font-size: 15px; list-style-type: none; margin-left: 20px">
                     <?php if (isset($this->session->userdata['id'])){
