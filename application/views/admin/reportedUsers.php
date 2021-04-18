@@ -82,7 +82,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+		
 			</div>
 		</div>
 	</div>
@@ -130,7 +130,7 @@
 						$('#modal-report-info').modal('show');
 				datas = JSON.parse(datas);
 				$.each(datas, function (index, data){
-					$('#modal-report-info .modal-body').append('<div><label>Report from: </label><b>'+data.first_name+' '+data.last_name+'</b><br><span class="badge badge-info">Reason</span><br>'+data.reason+'<br>'+data.date_time+'<br></div>');
+					$('#modal-report-info .modal-body').append('<div class="card" style="background-color:lightgray;text-align:center"><label>Report from: </label><b>'+data.first_name+' '+data.last_name+'</b><br><span class="badge badge-info">Reason</span><br>'+data.reason+'<br><small style="text-align: center">'+data.date_time+'</small><br></div><br>');
 				});
 			});
 		});
