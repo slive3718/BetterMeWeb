@@ -79,23 +79,6 @@ li a.design:hover {
   border-radius: 50px;
 }
 
-.speech-recognition{
-	float: right;
-	background-color: #28A745;
-}
-.col-speech{
-	background-color: #28A745;
-}
-input{  
-  font-size: 13px;
-  margin-top: 10px;
-
-}
-button{
-  font-size: 13px;
-  margin-top: 10px;
-}
-
 </style>
 
 
@@ -115,13 +98,9 @@ button{
             <?php if (isset($this->session->userdata['id'])){
             ?>
             <ul class="ul-design" style="font-weight: bold;">
-            <input type="text" name="" id="speechToText" placeholder="Search Something" class="btn btn-outline-primary" style="background-color: #dddddd;color: #1F1F1F">
-			<audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/notification/swiftly-610.mp3"></audio>
-			<button  onclick="record()"  class="btn btn-warning btn-sm">Voice Input</button>
-			<button class="btn-search btn btn-primary btn-sm">Search</button>
 			<li class="li-design"><a class="design" href="<?php echo base_url('user/create_thread') ?>">Create a Thread</a></li>
-			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_thread_lists') ?>">View All Threads</a></li>
-			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_diet_lists') ?>">View All Posts</a></li>
+			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_thread_lists') ?>">View All Thread</a></li>
+			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_diet_lists') ?>">View All Post</a></li>
             </ul>
 
                 
@@ -150,60 +129,6 @@ button{
     <a class="dropdown-item" style="font-weight: bold;" href="<?php echo base_url('user/logout')?>">LogOut</a>
   </div>
 </div>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script>
-function record() {
-		$(document).ready(function(){
-			var recognition = new webkitSpeechRecognition();
-			recognition.lang = "en-GB";
-
-			recognition.onresult = function(event) {
-				// console.log(event);
-				document.getElementById('speechToText').value = event.results[0][0].transcript;
-			}
-			alertify.success('Speak now');
-			play_music();
-			recognition.start();
-
-
-			function play_music() {
-				var audio = document.getElementById("audio");
-				audio.play();
-			}
-		});
-	}
-
-	$(document).ready(function(){
-
-		$('.btn-search').on('click',function(){
-			var count_result = "";
-			var search = $('#speechToText').val();
-			var url = "<?=base_url().'user/search_json'?>";
-			var url_fulldiet = "<?=base_url().'user/viewFullDiet'?>";
-
-			Swal.fire('Please wait')
-			Swal.showLoading()
-			$.post(url,{'search':search},function(success){
-				$('#modal-search .searching-for').html('Searching for: <b>'+search+'</b>');
-				$('#modal-search').modal('show');
-
-			}).done(function(datas){
-				swal.close()
-				datas= JSON.parse(datas);
-				$('#modal-search .search-result').html('');
-				$.each(datas, function(index, data){
-							if(data.post_title ==undefined) {
-								return false;
-							}else{
-								$('#modal-search .search-result').append('<b><span class=""><a href="' + url_fulldiet + '/' + data.post_id + '">' +data.post_title + '</a></span></b><br>');
-							}
-				});
-			});
-
-
-	});
-	});
-</script>
 <?php
 }
 else{
@@ -226,6 +151,8 @@ else{
         </div>
     </nav>
 </div>
+
+
     <!-- <a href="<?php echo base_url('user/homepage') ?>">Home</a>
 
         <div class="nav-item dropdown">
@@ -245,8 +172,9 @@ else{
 		</div>
 		<a href="<?php echo base_url('user/logout') ?>">LogOut</a> -->
 
-</div>
-</head>
-
+	</div>
+	
+    </head>
+	
 
   
