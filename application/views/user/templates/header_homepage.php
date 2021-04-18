@@ -70,15 +70,21 @@ li a.design {
   text-decoration: none;
   border-radius: 50px;
   background-color: #32CD32;
-
-
 }
 
 li a.design:hover {
   background-color: #00FF00;
   border-radius: 50px;
 }
+input{  
+  font-size: 13px;
+  margin-top: 10px;
 
+}
+button{
+  font-size: 13px;
+  margin-top: 10px;
+}
 </style>
 
 
@@ -98,6 +104,11 @@ li a.design:hover {
             <?php if (isset($this->session->userdata['id'])){
             ?>
             <ul class="ul-design" style="font-weight: bold;">
+            <input type="text" name="" id="speechToText" placeholder="Search Something" 
+			class="btn btn-outline-primary" style="background-color: #dddddd;color: #1F1F1F">
+			<audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/notification/swiftly-610.mp3"></audio>
+			<button onclick="record()"  class="btn btn-warning btn-sm">Voice Input</button>
+			<button class="btn-search btn btn-primary btn-sm">Search</button>
 			<li class="li-design"><a class="design" href="<?php echo base_url('user/create_thread') ?>">Create a Thread</a></li>
 			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_thread_lists') ?>">View All Thread</a></li>
 			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_diet_lists') ?>">View All Post</a></li>
@@ -151,30 +162,86 @@ else{
         </div>
     </nav>
 </div>
+<div class="modal fade" id="modal-search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Search</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="searching-for"></div>
+				<label> Search Results:</label>
+				<div class="search-result"></div><br><br>
+				<div class=""> <small style="font-weight: medium">Did you find what you're looking for? Check out our Lists of Posts here: <a style="font-weight: bold;" href="<?=base_url().'user/full_diet_lists'?>"> POSTS LIST</a></div></small>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+			    </div>
+		    </div>
+	    </div>
+    </div>
+</div>
+ </head>
+<script>
+function record() {
+		$(document).ready(function(){
+			var recognition = new webkitSpeechRecognition();
+			recognition.lang = "en-GB";
+
+			recognition.onresult = function(event) {
+				// console.log(event);
+				document.getElementById('speechToText').value = event.results[0][0].transcript;
+			}
+			alertify.success('Speak now');
+			play_music();
+			recognition.start();
 
 
-    <!-- <a href="<?php echo base_url('user/homepage') ?>">Home</a>
+			function play_music() {
+				var audio = document.getElementById("audio");
+				audio.play();
+			}
+		});
+	}
 
-        <div class="nav-item dropdown">
-            <button class="nav-link dropdown-toggle">File 
-      <i class="fa fa-caret-down"></i>
-    </button>
-            <div class="nav-item dropdown">
-               
-                <a href="">Motivational Posts</a>
-                <a href="">View Diet Plans</a>
-				
+	$(document).ready(function(){
 
-              
-            </div>
-            
+		$('.btn-search').on('click',function(){
+			var count_result = "";
+			var search = $('#speechToText').val();
+			var url = "<?=base_url().'user/search_json'?>";
+			var url_fulldiet = "<?=base_url().'user/viewFullDiet'?>";
 
-		</div>
-		<a href="<?php echo base_url('user/logout') ?>">LogOut</a> -->
+			Swal.fire('Please wait')
+			Swal.showLoading()
+			$.post(url,{'search':search},function(success){
+				$('#modal-search .searching-for').html('Searching for: <b>'+search+'</b>');
+				$('#modal-search').modal('show');
 
-	</div>
-	
-    </head>
+			}).done(function(datas){
+				swal.close()
+				datas= JSON.parse(datas);
+				$('#modal-search .search-result').html('');
+				$.each(datas, function(index, data){
+							if(data.post_title ==undefined) {
+								return false;
+							}else{
+								$('#modal-search .search-result').append('<b><span class=""><a href="' + url_fulldiet + '/' + data.post_id + '">' +data.post_title + '</a></span></b><br>');
+							}
+				});
+			});
+
+
+	});
+	});
+
+
+</script>
+
 	
 
   

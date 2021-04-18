@@ -64,6 +64,7 @@
 	background-color: #28A745;
 }
 .col-speech{
+	background-color: #28A745;
 }
 
 section{
@@ -90,21 +91,7 @@ section{
 			<img src="<?= base_url()?>uploads/files/health.jpg" style="width: 100%; height: 70%">
 		</div>
 
-		<br><br><br>
-		<div class="row">
-			<div class="col-md-12 col-speech">
-				<div class="speech-recognition">
-					<label for="Speech Recognition"><b>Try Our Search Bar </b></label>
-					<input type="text" name="" id="speechToText" placeholder="Search Something" class="btn btn-outline-primary" style="background-color: #dddddd;color: #1F1F1F">
-					<audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/notification/swiftly-610.mp3"></audio>
-					<button  onclick="record()"  class="btn btn-warning btn-sm">Voice Input</button>
-					<button class="btn-search btn btn-primary btn-sm">Search</button>
-				</div>
-			</div>
-		</div>
-
-
-
+		<br><br>
 
 		<h1 class="jumbotron" style="margin:10px; font-weight: bold; text-align: center; background-color: #28A745">
 			Diet Plans and Exercise Routines
@@ -338,7 +325,7 @@ section{
 		</div>
 	</div>
 </div>
-<!-- Modal -->
+<!-- Modal 
 <div class="modal fade" id="modal-search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -360,7 +347,7 @@ section{
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 </section>
 </body>
@@ -386,7 +373,7 @@ section{
 
 
 	});
-
+/*
 	function record() {
 		$(document).ready(function(){
 			var recognition = new webkitSpeechRecognition();
@@ -437,5 +424,5 @@ section{
 
 
 	});
-	});
+	});*/
 </script>
