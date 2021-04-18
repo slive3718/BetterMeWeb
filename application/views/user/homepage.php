@@ -61,8 +61,10 @@
 
 .speech-recognition{
 	float: right;
+	background-color: #28A745;
 }
 .col-speech{
+	background-color: #28A745;
 }
 
 section{
