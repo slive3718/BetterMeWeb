@@ -62,7 +62,6 @@
 .speech-recognition{
 	float: right;
 	background: white;
-	border-radius; 10px;
 }
 .col-speech{
 
@@ -96,7 +95,7 @@ section{
 		<div class="row">
 			<div class="col-md-12 col-speech">
 				<div class="speech-recognition">
-					<label for="Speech Recognition"><b>Try Our Search Bar </b></label>
+					<label for="Speech Recognition"><b>Search Here: </b></label>
 					<input type="text" name="" id="speechToText" placeholder="Search Something" class="btn btn-outline-primary" style="background-color: #dddddd;color: #1F1F1F">
 					<audio allow="autoplay" id="audio" src="<?= base_url() ?>uploads/notification/swiftly-610.mp3"></audio>
 					<button  onclick="record()"  class="btn btn-warning btn-sm">Voice Input</button>
