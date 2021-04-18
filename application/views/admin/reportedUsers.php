@@ -128,6 +128,7 @@
 			$.post(url, {'userId':userId}, function(success){
 			}).done(function(datas){
 						$('#modal-report-info').modal('show');
+				$('#modal-report-info .modal-body').html("");
 				datas = JSON.parse(datas);
 				$.each(datas, function (index, data){
 					$('#modal-report-info .modal-body').append('<div class="card" style="background-color:lightgray;text-align:center"><label>Report from: </label><b>'+data.first_name+' '+data.last_name+'</b><br><span class="badge badge-info">Reason</span><br>'+data.reason+'<br><small style="text-align: center">'+data.date_time+'</small><br></div><br>');
