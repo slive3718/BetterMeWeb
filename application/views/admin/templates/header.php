@@ -130,6 +130,7 @@ li a.design:hover {
 			<ul class="ul-design" style="font-weight: bold;">
 			<li class="li-design"><a class="design" href="<?php echo base_url('admin/viewDiet') ?>">Manage Posts</a></li>
 			<li class="li-design"><a class="design" href="<?php echo base_url('admin/review_community_thread') ?>">Manage Threads</a></li>
+			<li class="li-design"><a class="design" href="<?php echo base_url('admin/view_reported_user') ?>">Manage Reported Users</a></li>
 			<li class="li-design"><a class="design" href="<?php echo base_url('admin/viewArchiveDiet') ?>">View Archived Posts</a></li>
 			<li class="li-design"><a class="design" href="<?php echo base_url('admin/viewArchivedCommunityThread') ?>">View Archived Threads</a></li>
 			<li class="li-design"><a class="design" href="<?php echo base_url('admin/reviewProfilePosts') ?>">Manage Profile Posts</a></li>
