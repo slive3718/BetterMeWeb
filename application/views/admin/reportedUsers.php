@@ -123,14 +123,17 @@
 
 		$('#myTable').on('click','.report-info',function(e){
 			e.preventDefault();
+			Swal.fire('Fetching Information')
+			Swal.showLoading()
 			var userId = $(this).attr('data-user_id');
 			var url = "<?=base_url().'admin/get_user_reports_info'?>";
 			$.post(url, {'userId':userId}, function(success){
 			}).done(function(datas){
-						$('#modal-report-info').modal('show');
+				$('#modal-report-info').modal('show');
 				$('#modal-report-info .modal-body').html("");
 				datas = JSON.parse(datas);
 				$.each(datas, function (index, data){
+					swal.close();
 					$('#modal-report-info .modal-body').append('<div class="card" style="background-color:lightgray;text-align:center"><label>Report from: </label><b>'+data.first_name+' '+data.last_name+'</b><br><span class="badge badge-info">Reason</span><br>'+data.reason+'<br><small style="text-align: center">'+data.date_time+'</small><br></div><br>');
 				});
 			});
