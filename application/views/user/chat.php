@@ -1,7 +1,7 @@
 
 <!------ Include the above in your HEAD tag ---------->
 
-
+<?php if(isset($this->session->userdata['id'])){ ?>
 </head>
 <style>
 	.container2 {max-width:600px; margin:auto;position: fixed;z-index: 100 !important; right: 0px;background-color: #dddddd;bottom: 0px; border: green;  border-radius: 25px}
@@ -157,6 +157,7 @@
 	}
 </style>
 <body>
+
 <div class="open-chat">
 	<button class="btn-open-chat btn btn-primary "> Open Chat </button>
 </div>
@@ -219,7 +220,7 @@
 
 				$('.inbox_chat').html("");
 				$.each(datas,function (index,data){
-					console.log(data);
+
 
 					$('.inbox_chat').append('<div class="chat_list active_chat "><div style="cursor: pointer" class="chat_people" data-user_chat_id = "'+data.following_id+'" id="people_'+data.following_id+'"> <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="pic"> </div><div class="chat_ib"><h5>'+data.first_name+' '+data.last_name+'<span class="chat_date">'+data.date_time+'</span></h5><p>'+data.message+'</p></div></div></div>')
 				})
@@ -292,3 +293,4 @@
 		});
 	}
 </script>
+<?php }?>
