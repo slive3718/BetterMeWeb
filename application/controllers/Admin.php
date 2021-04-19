@@ -1133,12 +1133,16 @@ public function viewArchiveDiet(){
 
 
 	public function view_reported_user(){
-
+		if (isset($this->session->userdata['id'])) {
 		$data['reports'] = $this->admin_model->fetch_reported_user();
 		$data['page_title']="Manage Users";
 		$this->load->view('admin/templates/header',$data);
 		$this->load->view('admin/reportedUsers',$data);
 		$this->load->view('admin/templates/footer');
+	}
+	else {
+		redirect(base_url().'admin/logout');
+	}
 
 	}
 

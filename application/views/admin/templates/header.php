@@ -87,7 +87,7 @@ ul.ul-design {
 li.li-design{
   list-style-type: none;
   font-size: 13px;
-  float: left;
+  float: right;
   margin: 5px;
 }
 li a.design {
