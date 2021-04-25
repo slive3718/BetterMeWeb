@@ -746,6 +746,7 @@ public function viewArchiveDiet(){
 			}
 			redirect(base_url('admin/viewDiet'));
 		}
+		redirect(base_url('admin/viewDiet'));
 	}
 /**/
 	public function create_thread(){
