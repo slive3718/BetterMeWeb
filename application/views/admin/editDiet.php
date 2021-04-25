@@ -45,6 +45,7 @@ if ($posts) {
 					   value="<?= isset($post_title) ? $post_title : '' ?>" required>
 			</div>
 
+			<?php if (isset($post_type) && ($post_type !== "Exercise")): ?>
 			<div class="form-group">
 				<label for="">Type Of Diet</label>
 				<select class="form-control select-diet" name="type_of_diet">
@@ -78,7 +79,8 @@ if ($posts) {
 					</option>
 				</select>
 			</div>
-
+			<?php endif;?>
+			
 			<div class="form-group text-other-diet" >
 				<label for="">Name of Diet Plan</label>
 				<input class="form-control" type="text" value="<?=(isset($other_diet) && !empty($other_diet))?$other_diet:''?>" name="other_diet" >
