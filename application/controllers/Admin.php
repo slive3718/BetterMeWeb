@@ -744,10 +744,10 @@ public function viewArchiveDiet(){
 				$result=$this->db->insert("tblimages", array('image_name'=>$image_name,'image_post_type'=>'diet_plan','post_id'=>$res_id,'user_id'=>$id,'image_full_path'=>$image_full_url,'date_created'=>date('Y-m-d')));
 
 			}
-			$this->session->set_flashdata('added');
+			$this->session->set_flashdata('added', 'Post added Successfully');
 			redirect(base_url('admin/viewDiet'));
 		}
-		$this->session->set_flashdata('added');
+		$this->session->set_flashdata('added','Post added Successfully');
 		redirect(base_url('admin/viewDiet'));
 	}
 /**/
