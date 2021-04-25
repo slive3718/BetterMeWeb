@@ -36,7 +36,6 @@ style="width:80%;margin-top:30px;padding-top:20px;padding-bottom: 20px; max-widt
 					<th scope="col">Thread Starter</th>
 					<th scope="col">Thread Date</th>
 					<th scope="col">Thread Content</th>
-					<th scope="col">Thread Image</th>
 					<th scope="col">Option</th>
 				</tr>
 				</thead>
@@ -60,14 +59,12 @@ style="width:80%;margin-top:30px;padding-top:20px;padding-bottom: 20px; max-widt
 					<td><?=$threadStarter?></td>
 					<td><?= $threadDate ?></td>
 					<td><?= $threadContent ?></td>
-					<td><?= $threadImage ?></td>
 					<td>
 					<button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<span class="fas fa-cog"></span>
 					</button>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="">Warning</a>
-						<a class="dropdown-item" href="">Under Review</a>
+
 						<a class="dropdown-item" href="<?=base_url().'admin/archive_community_thread/',$threadId?>">Archive</a>
 					</td>
 				</tr>

@@ -96,7 +96,7 @@ if ($myInfo){
                               
                               <div class="col-xs-6">
                                   <label for="fname"><h4>First name</h4></label>
-                                  <input type="text" class="form-control" name="fname"  id="fname" value="<?php if($firstName){echo $firstName;}?>" placeholder="first name">
+                                  <input type="text" class="form-control" name="fname"  id="fname" value="<?php if($firstName){echo $firstName;}?>" placeholder="first name" required>
                               </div>
                               
                           </div>
@@ -127,7 +127,7 @@ if ($myInfo){
                               
                               <div class="col-xs-6">
                                   <label for="lname"><h4>Last Name</h4></label>
-                                  <input type="text" class="form-control" name="lname"  id="last_name" value="<?php if($lastName){ echo $lastName; } else {echo "";}?>" placeholder="last name"  >
+                                  <input type="text" class="form-control" name="lname"  id="last_name" value="<?php if($lastName){ echo $lastName; } else {echo "";}?>" placeholder="last name"  required>
                               </div>
                           </div>
                           <div class="form-group">
