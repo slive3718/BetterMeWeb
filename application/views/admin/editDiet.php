@@ -27,7 +27,7 @@ if ($posts) {
 			<input type="text" name="post_id" value="<?= $post_id ?>" hidden>
 			<div class="form-group">
 				<label for="thread_type">Thread</label>
-				<select name="thread_type" class="form-control">
+				<select name="thread_type" class="form-control" disabled>
 					<option name="thread_type"
 							value="Diet_Plan" <?= (isset($post_type) && ($post_type == "Diet Plan")) ? "selected" : '' ?>>
 						Diet Plan
@@ -80,7 +80,7 @@ if ($posts) {
 				</select>
 			</div>
 			<?php endif;?>
-			
+
 			<div class="form-group text-other-diet" >
 				<label for="">Name of Diet Plan</label>
 				<input class="form-control" type="text" value="<?=(isset($other_diet) && !empty($other_diet))?$other_diet:''?>" name="other_diet" >
