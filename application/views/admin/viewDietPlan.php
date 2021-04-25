@@ -120,6 +120,9 @@
 		if('<?= ($this->session->flashdata('msgwarn'))?>'){
 			alertify.success('No Changes Made');
 		}
+		if('<?= ($this->session->flashdata('added'))?>'){
+			alertify.success('Post Added Successfully');
+		}
 	});
 
 </script>
