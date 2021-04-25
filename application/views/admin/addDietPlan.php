@@ -10,20 +10,20 @@
 
 			<div class="form-group">
 				<label for="thread_type">Thread</label>
-				<select name="thread_type" class="form-control">
+				<select name="thread_type" class="form-control" id ="thread-type">
 					<option name="thread_type" value="Diet_Plan" id="dietPlan">Diet Plan </option>
-					<option name="thread_type" value="Exercise" selected>Exercise</option>
+					<option name="thread_type" value="Exercise" id="dietPlan" >Exercise</option>
 				</select>
 			</div>
 
 			<div class="form-group">
-				<label for=""><?=(isset($exercise) && !empty($exercise))?'Exercise Title':'Diet Title'?></label>
+				<label for="">Post Title</label>
 				<input name="post_title" type="text" class="form-control" id="" placeholder="" required>
 			</div>
 
 
 			<?php if(! isset($exercise) && empty($exercise)):?>
-			<div class="form-group ">
+			<div class="form-group type-of-diet">
 				<label for="">Type Of Diet</label>
 				<select class="form-control select-diet" name="type_of_diet" >
 					<option value="">No Selection</option>
@@ -109,4 +109,17 @@
 			console.log("here");
 		});
 	});
+
+
+	$(document).ready(function(){
+		$("#thread-type").change(function() {
+			if ($(this).val() == "Exercise") {
+				$('.type-of-diet').hide();
+			}
+			if ($(this).val() == "Diet_Plan") {
+				$('.type-of-diet').show();
+			}
+
+		});
+	})
 </script>
