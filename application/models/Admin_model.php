@@ -890,7 +890,7 @@ class Admin_model extends CI_Model
 
 	function get_user_reports_info($post){
 
-		$this->db->select('r.*,u.first_name,u.last_name');
+		$this->db->select('r.*,u.first_name,u.last_name,r.post_type,r.post_id');
 		$this->db->from('reports r ');
 		$this->db->join('tblusers u ', 'r.reporting_user=u.userId');
 		$this->db->where('user_id',$post['userId']);

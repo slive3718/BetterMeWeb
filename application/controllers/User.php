@@ -427,25 +427,25 @@ class User extends CI_Controller
         $this->session->set_flashdata('lasId', $community_post_id);
 
 
-        $community_comment=$this->input->post('community_comment');
-        $datestring = '%Y-%m-%d %h:%i:%s';
-        $time = time();
-    
-        $date_created=mdate($datestring, $time);
+			$community_comment=$this->input->post('community_comment');
+			$datestring = '%Y-%m-%d %h:%i:%s';
+			$time = time();
 
-        echo $community_comment,$date_created;
+			$date_created=mdate($datestring, $time);
+
+			echo $community_comment,$date_created;
 
 
-        if ($community_comment && $community_post_id) {
-            $data['inserted']=$this->user_model->add_community_comment($community_comment, $date_created, $community_post_id);
-           
-            if ($data) {
-                $this->session->set_flashdata('msgsuccess', 'Comment Plan Successfully Created');
-                  
-                redirect(base_url().'user/view_this_community_post/'.$community_post_id);
-            } else {
-                echo "hi";
-            }
+			if ($community_comment && $community_post_id) {
+				$data['inserted']=$this->user_model->add_community_comment($community_comment, $date_created, $community_post_id);
+
+				if ($data) {
+					$this->session->set_flashdata('msgsuccess', 'Comment Plan Successfully Created');
+
+					redirect(base_url().'user/view_this_community_post/'.$community_post_id);
+				} else {
+					echo "hi";
+				}
         }
     }
 
@@ -1055,6 +1055,21 @@ public function add_new_post(){
 		$post=$this->input->post();
 		$userId = $this->session->userdata['id'];
     	$this->db->insert('reports',array('user_id'=>$post['userId'],'reason'=>trim($post['reason']), 'date_time'=>date('Y-m-d H:i:s'), 'reporting_user'=>$userId));
+		$insert = $this->db->insert_id();
+		if($insert > 0){
+			$result_array = array('status'=>'success');
+		}else{
+			$result_array = array('status'=>'error');
+		}
+		echo json_encode($result_array);
+	}
+
+
+	public function report_post_json(){
+		$post=$this->input->post();
+		$userId = $this->session->userdata['id'];
+
+		$this->db->insert('reports',array('user_id'=>$post['reported_user'],'reason'=>trim($post['reason']), 'date_time'=>date('Y-m-d H:i:s'), 'reporting_user'=>$userId, 'post_id'=>$post['reported_post'], 'post_type'=>$post['post_type']));
 		$insert = $this->db->insert_id();
 		if($insert > 0){
 			$result_array = array('status'=>'success');
