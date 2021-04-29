@@ -20,8 +20,6 @@
 		<div class="tb">
 			<div><a href="<?php echo base_url('user/homepage') ?>">
 			<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
-			<div><a style="font-weight: bold" class="btn btn-s btn-success rounded"
-			href="<?= base_url('user/myProfile')?>">Homepage</a></div>
 			<?php
 			if (isset($user_info) && !empty($user_info)){
 
