@@ -134,7 +134,19 @@
 				datas = JSON.parse(datas);
 				$.each(datas, function (index, data){
 					swal.close();
-					$('#modal-report-info .modal-body').append('<div class="card" style="background-color:lightgray;text-align:center"><label>Report from: </label><b>'+data.first_name+' '+data.last_name+'</b><br><span class="badge badge-info">Reason</span><br>'+data.reason+'<br><small style="text-align: center">'+data.date_time+'</small><br></div><br>');
+					if(data.post_id==null){
+						data.post_id="";
+					}
+					if(data.post_type==null){
+						data.post_type="";
+					}
+					if(data.post_type == "Community_post"){
+						redirect="<?=base_url().'admin/view_this_community_post/'?>";
+					}
+					if(data.post_type == "Diet_plan"){
+						redirect="<?=base_url().'admin/viewFullDiet/'?>";
+					}
+					$('#modal-report-info .modal-body').append('<div class="card" style="background-color:lightgray;text-align:center"><label>Report from: </label><b>'+data.first_name+' '+data.last_name+'</b><br><span class="badge badge-info">Reason</span><br>'+data.reason+'<br><small style="text-align: center">'+data.date_time+'</small><br><div><a href="'+redirect+data.post_id+'">'+data.post_type+data.post_id+'</a></div><br>');
 				});
 			});
 		});
