@@ -20,6 +20,8 @@
 		<div class="tb">
 			<div><a href="<?php echo base_url('user/homepage') ?>">
 			<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a></div>
+			<li class="li-design" style="font-weight: bold;">
+			<a class="design" href="<?php echo base_url('user/homepage') ?>">Home</a></li>
 			<?php
 			if (isset($user_info) && !empty($user_info)){
 
