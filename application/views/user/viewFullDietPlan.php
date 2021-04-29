@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <?php $post_type = "DietPlan";
 
 ?>
@@ -67,13 +69,16 @@ $current_user = $this->session->userdata('id');
 				<img class="" src="<?= base_url() . 'uploads/posts/' . $images->image_name ?>"
 					 alt="Card image cap" style="">
 			<?php } ?>
+
 			<div class="card-body">
 				<span style="" class="btn btn-success form-control"><span style="float:left">
 						<h6 class="card-title"> <?= (isset($post_from) && !empty($post_from))?'Posted by: '.$post_from:''?></h6>
-					</span><span style="float:right"><?= (isset($date_posted) && !empty($date_posted))?'Date: '.$date_posted:''?> </span>
+					</span>	<button id="report-post" data-session_id = "<?=$post_id?>" data-post_user_id = "<?=$post_user_id?>" data-post_type = "diet_plan"  style="float: right; margin-left: 30px; border-radius: 50%; cursor: pointer" class="fa fa-times-circle btn-danger btn-sm"></button>
+<span style="float:right"><?= (isset($date_posted) && !empty($date_posted))?'Date: '.$date_posted:''?> </span>
 				</span><br>
 
 				<div class="card shadow border border-success">
+
 				<h5 class="card-title"><?= $post_title ?></h5>
 					<p> <?= (isset($routine_count,$routine_format) && !empty($routine_count) && !empty($routine_format))?'<span style="float: left">' .'<strong> Routine: </strong>'.$routine_count.' '.$routine_format.'</span>':'' ; ?>
 					<?= (isset($target_audience) && !empty($target_audience))? '<span style="float: right"> <strong>Suitable for: </strong>'.$target_audience.'</span>':''?></p>
@@ -260,17 +265,31 @@ $current_user = $this->session->userdata('id');
 		</div>
 
 	</div>
+		<!-- Modal -->
+		<div class="modal fade" id="modal-report-post" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Report Post</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
 
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
 
 	<?php
 	}
 	} ?>
 
-	<!-- <div class="card border-danger" style="width: 18rem;"> <img
-	class="card-img-top" src="..." alt="Card image cap"> <div class="card-body"> <h5
-	class="card-title">Card title</h5> <p class="card-text">Some quick example text
-	to build on the card title and make up the bulk of the card's content.</p> <a
-	href="#" class="btn btn-primary">Go somewhere</a> </div> </div> -->
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 	<script>
 		$(document).ready(function () {
@@ -372,5 +391,57 @@ $current_user = $this->session->userdata('id');
 					}
 				});
 			});
+
+
+
+
+
 		});
+		$(document).ready(function(){
+			
+			$('#report-post').on('click',function() {
+				var userId = $(this).data("session-id");
+				var postId = $(this).data("post_id");
+				$('#modal-report-post').modal('show');
+				$('#modal-report-post .modal-body').html('<label>Reason</label><textarea style="resize: none" rows="5" class="report-reason form-control"></textarea><br><br><button type="button" data-report_id ="'+userId+'" data-post_id ="'+postId+'" class="btn btn-warning form-control btn-report">Send report</button>');
+
+			})
+
+			$('.modal-body').on('click','.btn-report',function(){
+					let report_url = "<?=base_url().'user/report_post_json'?>";
+					var reportId = "<?=$post_user_id ?>";
+					var postId = "<?=$post_id?>";
+					var reason = $('.report-reason').val();
+					var post_type= "Diet_plan";
+
+					Swal.fire('Please wait')
+					Swal.showLoading()
+
+				if (reason.trim() == ""){
+							Swal.fire({
+								position: 'center',
+								icon: 'error',
+								title: 'Reason is not valid',
+								showConfirmButton: false,
+								timer: 1000
+							})
+							return false;
+						}
+				$.post(report_url,{"reported_user":reportId, "reason":reason, "reported_post":postId, "post_type":post_type},function(success){
+							if (success){
+								swal.close()
+								Swal.fire({
+									position: 'center',
+									icon: 'success',
+									title: 'User reported',
+									showConfirmButton: false,
+									timer: 1500
+								})
+
+							}
+						});
+			});
+
+		})
 	</script>
+

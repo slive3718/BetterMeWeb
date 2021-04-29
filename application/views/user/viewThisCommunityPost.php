@@ -1,3 +1,6 @@
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <?php
 
 if (isset($rows)){
@@ -110,25 +113,7 @@ $current_user = $this->session->userdata('id');
                                    ></a><?php
                             }?>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal<?=$comment_id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Confirm Delete Comment</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a type="button" class="btn btn-primary"  href="<?= base_url().'user/deleteMyComment/',$comment_id.'/'.$community_post_id?>
-        ">Confirm</a>
-      </div>
-    </div>
-  </div>
-</div>
+
 
                             </div>
                         </div>
@@ -164,6 +149,9 @@ $current_user = $this->session->userdata('id');
                     <!-- comment -->
 
                     <div class="bg-white p-2">
+
+						<?=($current_user == $community_post_user)?'':'<a href="" id="report-post" style="float: right; right: 0px; cursor: pointer" class="">Report</a>'?>
+
                         <div class="d-flex flex-row fs-12">
                             <div
                                 class="like p-2 cursor action-collapse"
@@ -172,9 +160,13 @@ $current_user = $this->session->userdata('id');
                                 aria-controls="collapse-1"
                                 href="#collapse-1">
                                 <i class="fa fa-commenting-o" style="cursor:pointer"></i>
-                                <span class="ml-1" style="cursor:pointer; font-weight: bold;">Write a Comment Here</span></div>
+                                <span class="ml-1" style="cursor:pointer; font-weight: bold;">Write a Comment Here</span>
+							</div>
+
                         </div>
+
                     </div>
+
                     <div id="collapse-1" class="bg-light p-2 collapse" data-parent="#myGroup">
                         <div class="d-flex flex-row align-items-start">
                             <?php if (isset($pic_status) ){
@@ -224,3 +216,99 @@ $current_user = $this->session->userdata('id');
     }
 }
 ?>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal<?=$comment_id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Confirm Delete Comment</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<a type="button" class="btn btn-primary"  href="<?= base_url().'user/deleteMyComment/',$comment_id.'/'.$community_post_id?>
+        ">Confirm</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Modal -->
+<div class="modal fade modal-report" id="modal-report-post" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Report Thread</h5>
+				<button type="button" class="close modal-close" data-dismiss="modal-report" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary modal-close" data-dismiss="modal-report">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+
+	$(document).ready(function() {
+
+		$('#report-post').on('click', function (e) {
+			e.preventDefault();
+			var userId = $(this).data("session-id");
+			var postId = $(this).data("post_id");
+			$('#modal-report-post').modal('show');
+			$('#modal-report-post .modal-body').html('<label>Reason</label><textarea style="resize: none" rows="5" class="report-reason form-control"></textarea><br><br><button type="button" data-report_id ="' + userId + '" data-post_id ="' + postId + '" class="btn btn-warning form-control btn-report">Send report</button>');
+
+		})
+	});
+
+		$('.modal-body').on('click','.btn-report',function(){
+			let report_url = "<?=base_url().'user/report_post_json'?>";
+			var reportId = "<?=$community_post_user ?>";
+			var postId = "<?=$community_post_id?>";
+			var reason = $('.report-reason').val();
+			var post_type= "Community_post";
+		
+			Swal.fire('Please wait')
+			Swal.showLoading()
+		
+			if (reason.trim() == ""){
+				Swal.fire({
+					position: 'center',
+					icon: 'error',
+					title: 'Reason is not valid',
+					showConfirmButton: false,
+					timer: 1000
+				})
+				return false;
+			}
+			$.post(report_url,{"reported_user":reportId, "reason":reason, "reported_post":postId, "post_type":post_type},function(success){
+				if (success){
+					swal.close()
+					Swal.fire({
+						position: 'center',
+						icon: 'success',
+						title: 'User reported',
+						showConfirmButton: false,
+						timer: 1500
+					})
+		
+				}
+			});
+
+
+		});
+
+
+</script>

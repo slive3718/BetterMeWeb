@@ -373,56 +373,5 @@ section{
 
 
 	});
-/*
-	function record() {
-		$(document).ready(function(){
-			var recognition = new webkitSpeechRecognition();
-			recognition.lang = "en-GB";
 
-			recognition.onresult = function(event) {
-				// console.log(event);
-				document.getElementById('speechToText').value = event.results[0][0].transcript;
-			}
-			alertify.success('Speak now');
-			play_music();
-			recognition.start();
-
-
-			function play_music() {
-				var audio = document.getElementById("audio");
-				audio.play();
-			}
-		});
-	}
-
-	$(document).ready(function(){
-
-		$('.btn-search').on('click',function(){
-			var count_result = "";
-			var search = $('#speechToText').val();
-			var url = "<?=base_url().'user/search_json'?>";
-			var url_fulldiet = "<?=base_url().'user/viewFullDiet'?>";
-
-			Swal.fire('Please wait')
-			Swal.showLoading()
-			$.post(url,{'search':search},function(success){
-				$('#modal-search .searching-for').html('Searching for: <b>'+search+'</b>');
-				$('#modal-search').modal('show');
-
-			}).done(function(datas){
-				swal.close()
-				datas= JSON.parse(datas);
-				$('#modal-search .search-result').html('');
-				$.each(datas, function(index, data){
-							if(data.post_title ==undefined) {
-								return false;
-							}else{
-								$('#modal-search .search-result').append('<b><span class=""><a href="' + url_fulldiet + '/' + data.post_id + '">' +data.post_title + '</a></span></b><br>');
-							}
-				});
-			});
-
-
-	});
-	});*/
 </script>
