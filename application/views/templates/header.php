@@ -119,7 +119,6 @@ li a.design:hover {
     <nav class="navbar navbar-expand-md navbar-light bg-success">
 		<a href="<?php echo base_url('mentor/homepage') ?>">
 		<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a>
-		<?php if (isset($this->session->userdata['id'])){ ?>
 		<li class="li-design" style="font-weight: bold;"><a class="design" href="<?php echo base_url('mentor/homepage') ?>">Home</a></li>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
@@ -127,7 +126,8 @@ li a.design:hover {
         <div class="collapse navbar-collapse" id="navbarNav" >
             <ul class="navbar-nav mr-auto">
             </ul>
-           
+            <?php if (isset($this->session->userdata['id'])){
+            ?>
             <ul class="navbar-nav" style="float:right;>
                 <li class="nav-item">
                     <a class="nav-link" href=""></a>
