@@ -391,6 +391,15 @@ section{
 
 			$.post(url,{'post_id':postId },function(data){
 
+
+				if(data== '0'){
+					$('#modal-rating .star1').css('color','');
+					$('#modal-rating .star2').css('color','');
+					$('#modal-rating .star3').css('color','');
+					$('#modal-rating .star4').css('color','');
+					$('#modal-rating .star5').css('color','');
+				}
+
 				if(data== '1'){
 					$('#modal-rating .star1').css('color','yellow');
 					$('#modal-rating .star2').css('color','');
