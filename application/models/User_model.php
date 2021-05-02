@@ -109,6 +109,7 @@ class User_model extends CI_Model
 				$val->getLikeCount = $this->getLikeCount($val->post_id);
 				$val->getCommentCount = $this->getCommentCount($val->post_id);
 				$val->getPostRating = $this->getPostRating($val->post_id);
+				$val->getRatePercent = $this->getRatePercent($val->post_id);
 			}
 
 		}
@@ -907,14 +908,33 @@ class User_model extends CI_Model
 
 
 	 function getPostRating($post_id){
-
+		 $user_id=$this->session->userdata('id');
 		$this->db->select('rate');
 		$this->db->from('rating');
 		$this->db->where('post_id',$post_id);
+		 $this->db->where('user_id',$user_id);
 		$qstr = $this->db->get();
 		if ($qstr->num_rows() > 0 ) {
-
 			return $qstr->result()[0]->rate;
+		}else{
+			return '';
+		}
+	}
+
+	function getRatePercent($post_id){
+		$this->db->select('SUM(rate) as sum, COUNT(rate) as count, rate');
+		$this->db->from('rating');
+		$this->db->where('post_id', $post_id);
+		$qstr = $this->db->get();
+		if ($qstr->num_rows() > 0 ) {
+			$sum=($qstr->result()[0]->sum);
+			$count=($qstr->result()[0]->count);
+			if($count != 0){
+				$avg = ($sum / $count );
+			}
+				else $avg =0;
+
+			return $avg;
 		}else{
 			return '';
 		}
