@@ -1078,4 +1078,47 @@ public function add_new_post(){
 		}
 		echo json_encode($result_array);
 	}
+
+	public function save_rating_json(){
+		$post=$this->input->post();
+		$userId = $this->session->userdata['id'];
+
+		$this->db->select('*');
+		$this->db->from('rating');
+		$this->db->where('user_id',$userId);
+		$this->db->where('post_id',$post['rating_id']);
+		$qstr = $this->db->get();
+		if ($qstr->num_rows() > 0 ){
+			$this->db->where('user_id',$userId);
+			$this->db->where('post_id',$post['rating_id']);
+			$result = $this->db->update('rating',array( 'rate'=>$post['rating']));
+		}else{
+			$result=$this->db->insert('rating',array('user_id'=>$userId, 'post_id'=>$post['rating_id'], 'rate'=>$post['rating'],'date_time'=>date('Y-m-d H:i:s') ));
+		}
+		if($result){
+			$json_array = array('status'=>'success');
+		}
+		else{
+			$json_array=array('status'=>json_last_error());
+		}
+		echo json_encode($json_array);
+	}
+
+
+	public function get_post_rating(){
+		$post=$this->input->post();
+		$userId = $this->session->userdata['id'];
+
+		$this->db->select('rate');
+		$this->db->from('rating');
+		$this->db->where('post_id',$post['post_id']);
+		$this->db->where('user_id',$userId);
+		$qstr = $this->db->get();
+		if ($qstr->num_rows() > 0 ) {
+			echo $qstr->result()[0]->rate;
+		}else{
+			echo '0';
+		}
+
+	}
 }

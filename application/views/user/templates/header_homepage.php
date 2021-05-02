@@ -113,8 +113,6 @@ button{
 			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_thread_lists') ?>">View All Thread</a></li>
 			<li class="li-design"><a class="design" href="<?php echo base_url('user/full_diet_lists') ?>">View All Post</a></li>
             </ul>
-
-                
                 <li class="nav-item" style="font-weight: bold; font-size: 15px; list-style-type: none; margin-left: 20px">
                     <?php if (isset($this->session->userdata['id'])){
                         echo (ucfirst($this->session->userdata['uname']));
@@ -123,11 +121,7 @@ button{
                          <a class="nav-link" href="<?php echo base_url('user/viewSignUp') ?>">Register</a>
                     <?php
                     }?>
-                   
-                
-                
                 </li>
-               
             </ul>
             <div class="dropleft show mr-20" style="float:right; padding:3px;">
   <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -152,13 +146,10 @@ else{
                 <li class="nav-item">
                     <a class="nav-link"  style="font-weight: bold; font-size: 15px;" href="<?php echo base_url('user/viewLogin') ?>">Login</a>
                 </li>
-               
             </ul>
-          
 <?php 
 }
 ?>
-           
         </div>
     </nav>
 </div>

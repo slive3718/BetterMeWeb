@@ -108,6 +108,7 @@ class User_model extends CI_Model
 				$val->getLikeStatus = $this->getLikeStatus($val->post_id);
 				$val->getLikeCount = $this->getLikeCount($val->post_id);
 				$val->getCommentCount = $this->getCommentCount($val->post_id);
+				$val->getPostRating = $this->getPostRating($val->post_id);
 			}
 
 		}
@@ -899,6 +900,21 @@ class User_model extends CI_Model
 		if($getDb->num_rows()>0){
 
 			return $getDb->result();
+		}else{
+			return '';
+		}
+	}
+
+
+	 function getPostRating($post_id){
+
+		$this->db->select('rate');
+		$this->db->from('rating');
+		$this->db->where('post_id',$post_id);
+		$qstr = $this->db->get();
+		if ($qstr->num_rows() > 0 ) {
+
+			return $qstr->result()[0]->rate;
 		}else{
 			return '';
 		}

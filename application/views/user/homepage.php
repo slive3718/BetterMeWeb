@@ -84,6 +84,9 @@ section{
 
 	}
 
+	a >.fa-star-o:hover{
+		transform: scale(2);
+	}
 </style>
 <section class="parallax1">
 	<div class="col-12" style="text-align: center">
@@ -129,6 +132,8 @@ section{
 						$like = $getLike->like_status;
 					}
 				}
+
+				print_r($row->getPostRating);
 				?>
 
 				<?php
@@ -195,14 +200,19 @@ section{
 						</div>
 					</div>
 					<div class="row ml-2">
-						<div class="like p-2 cursor col-md-6" id="like-id_<?= $post_id ?>"
+						<div class="like p-2 cursor col-md-3 pl-0" id="like-id_<?= $post_id ?>"
 							 style="cursor: pointer; <?= (isset($like) && !empty($like) == 1) ? 'color:blue' : '' ?>; "
 							 data-post_id="<?= $post_id ?>">
 							<i class="fa fa-thumbs-o-up"></i>
 							<span class="ml-1"> Like</span>
 							<span><?= (isset($row->getLikeCount) && ($row->getLikeCount) != 0) ? $row->getLikeCount : '' ?></span>
 						</div>
-						<div class="comment p-2 cursor col-md-6" id="comment_id_<?= $post_id ?>"
+						<div class="rating col-md-4 p-0 mt-2">
+							<span >
+								<a href="" class="btn-rate btn btn-warning btn-sm"  data-post_id ="<?= $post_id ?>" data-post_rate="<?=$row->getPostRating?>"><i class="fa fa-star-o"></i></a>
+							</span>
+						</div>
+						<div class="comment p-2 cursor col-md-4 pr-0" id="comment_id_<?= $post_id ?>"
 							 style="cursor: pointer;"
 							 data-post_id="<?= $post_id ?>">
 							<i class="fa fa-comment-o"></i>
@@ -325,34 +335,32 @@ section{
 		</div>
 	</div>
 </div>
-<!-- Modal 
-<div class="modal fade" id="modal-search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Search</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<div class="searching-for"></div>
-				<label> Search Results:</label>
-				<div class="search-result"></div><br><br>
-				<div class=""> <small>Did you find what your looking for ? or Check out our Lists of Posts here <a href="<?=base_url().'user/full_diet_lists'?>"> POST LIST</a></div></small>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
+	<div class="modal fade modal-rating" id="modal-rating" tabindex="-1" role="dialog" aria-labelledby="modal-rating" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="">Help People find the best diet</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body text-center ">
+					<a class="star1" href=""><i class="fa fa-star-o " aria-hidden="true" style=""></i></a>
+					<a class="star2" href=""><i class="fa fa-star-o " aria-hidden="true"></i></a>
+					<a class="star3" href=""><i class="fa fa-star-o " aria-hidden="true"></i></a>
+					<a class="star4" href=""><i class="fa fa-star-o " aria-hidden="true"></i></a>
+					<a class="star5" href=""><i class="fa fa-star-o " aria-hidden="true"></i></a>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div> -->
-
 </section>
 </body>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
+	var rating_id = "";
 	$(document).ready(function () {
 		$('.like').on('click', function () {
 			var postId = $(this).attr('data-post_id');
@@ -371,7 +379,170 @@ section{
 			});
 		});
 
+		$('.btn-rate').on('click',function(e){
+			e.preventDefault();
+			var postId=$(this).attr('data-post_id');
+			var post_rate = $(this).attr('data-post_rate');
+			var url = get_post_rate = "<?=base_url().'user/get_post_rating/'?>";
 
+			rating_id=postId;
+
+			$('.modal-rating').modal('show');
+
+			$.post(url,{'post_id':postId },function(data){
+
+				if(data== '1'){
+					$('#modal-rating .star1').css('color','yellow');
+					$('#modal-rating .star2').css('color','');
+					$('#modal-rating .star3').css('color','');
+					$('#modal-rating .star4').css('color','');
+					$('#modal-rating .star5').css('color','');
+				}
+				if(data == '2'){
+					$('#modal-rating .star1').css('color','yellow');
+					$('#modal-rating .star2').css('color','yellow');
+					$('#modal-rating .star3').css('color','');
+					$('#modal-rating .star4').css('color','');
+					$('#modal-rating .star5').css('color','');
+				}
+
+				if(data == '3'){
+					$('#modal-rating .star1').css('color','yellow');
+					$('#modal-rating .star2').css('color','yellow');
+					$('#modal-rating .star3').css('color','yellow');
+					$('#modal-rating .star4').css('color','');
+					$('#modal-rating .star5').css('color','');
+				}
+				if(data == '4'){
+					$('#modal-rating .star1').css('color','yellow');
+					$('#modal-rating .star2').css('color','yellow');
+					$('#modal-rating .star3').css('color','yellow');
+					$('#modal-rating .star4').css('color','yellow');
+					$('#modal-rating .star5').css('color','');
+				}
+				if(data == '5'){
+					$('#modal-rating .star1').css('color','yellow');
+					$('#modal-rating .star2').css('color','yellow');
+					$('#modal-rating .star3').css('color','yellow');
+					$('#modal-rating .star4').css('color','yellow');
+					$('#modal-rating .star5').css('color','yellow');
+				}
+			},'json');
+
+
+
+		});
+
+		$('#modal-rating').on('click','.star1',function(e){
+			e.preventDefault();
+			var rating = "1";
+			var url="<?= base_url().'user/save_rating_json/'?>";
+
+			$(this).css('color','yellow');
+			$('#modal-rating .star2').css('color','');
+			$('#modal-rating .star3').css('color','');
+			$('#modal-rating .star4').css('color','');
+			$('#modal-rating .star5').css('color','');
+
+			$.post(url,{"rating":rating,'rating_id':rating_id},function(success){
+				if(success){
+					Swal.fire(
+							'',
+							'Thank you!',
+							'success'
+					)
+				}
+				$('.modal-rating').modal('hide');
+			});
+		});
+
+		$('#modal-rating').on('click','.star2',function(e){
+			e.preventDefault();
+			var rating = "2";
+			var url="<?= base_url().'user/save_rating_json/'?>";
+
+			$('#modal-rating .star1').css('color','yellow');
+			$('#modal-rating .star3').css('color','');
+			$('#modal-rating .star4').css('color','');
+			$('#modal-rating .star5').css('color','');
+			$(this).css('color','yellow');
+
+			$.post(url,{"rating":rating,'rating_id':rating_id},function(success){
+				if(success){
+					Swal.fire(
+							'',
+							'Thank you!',
+							'success'
+					)
+				}
+				$('.modal-rating').modal('hide');
+			});
+
+		});
+		$('#modal-rating').on('click','.star3',function(e){
+			e.preventDefault();
+			var rating = "3";
+			var url="<?= base_url().'user/save_rating_json/'?>";
+
+			$('#modal-rating .star1').css('color','yellow');
+			$('#modal-rating .star2').css('color','yellow');
+			$('#modal-rating .star4').css('color','');
+			$('#modal-rating .star5').css('color','');
+			$(this).css('color','yellow');
+
+			$.post(url,{"rating":rating,'rating_id':rating_id},function(success){
+				if(success){
+					Swal.fire(
+							'',
+							'Thank you!',
+							'success'
+					)
+				}
+				$('.modal-rating').modal('hide');
+			});
+		});
+		$('#modal-rating').on('click','.star4',function(e){
+			e.preventDefault();
+			var rating = "4";
+			var url="<?= base_url().'user/save_rating_json/'?>";
+
+			$('#modal-rating .star1').css('color','yellow');
+			$('#modal-rating .star2').css('color','yellow');
+			$('#modal-rating .star3').css('color','yellow');
+			$('#modal-rating .star5').css('color','');
+			$(this).css('color','yellow');
+			$.post(url,{"rating":rating,'rating_id':rating_id},function(success){
+				if(success){
+					Swal.fire(
+							'',
+							'Thank you!',
+							'success'
+					)
+				}
+				$('.modal-rating').modal('hide');
+			});
+		});
+		$('#modal-rating').on('click','.star5',function(e){
+			e.preventDefault();
+			var rating = "5";
+			var url="<?= base_url().'user/save_rating_json/'?>";
+
+			$('#modal-rating .star1').css('color','yellow');
+			$('#modal-rating .star2').css('color','yellow');
+			$('#modal-rating .star3').css('color','yellow');
+			$('#modal-rating .star4').css('color','yellow');
+			$(this).css('color','yellow');
+			$.post(url,{"rating":rating,'rating_id':rating_id},function(success){
+				if(success){
+					Swal.fire(
+							'',
+							'Thank you!',
+							'success'
+					)
+				}
+				$('.modal-rating').modal('hide');
+			});
+		});
 	});
 
 </script>
