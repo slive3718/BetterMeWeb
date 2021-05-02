@@ -65,7 +65,7 @@
 					<select name="target_audience" class="form-control">
 						<option value="">No Selection</option>
 						<option name="target_audience" value="Kids">Kids</option>
-						<option name="target_audience" value="Adult">Teens</option>
+						<option name="target_audience" value="Teens">Teens</option>
 						<option name="target_audience" value="Adult">Adult</option>
 					</select>
 				</div>
