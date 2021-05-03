@@ -257,7 +257,7 @@
 															}
 															else{
 															?>
-															<img src="<?= base_url() . './uploads/profile_posts/' . $each_post_images->image_name ?>">
+															<br><img src="<?= base_url() . './uploads/profile_posts/' . $each_post_images->image_name ?>"><br>
 															<?php
 														}}
 													}
