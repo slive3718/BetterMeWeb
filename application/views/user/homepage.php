@@ -209,7 +209,7 @@ section{
 						</div>
 						<div class="rating col-md-4 p-0 mt-2">
 							<span >
-								<a href="" class="btn-rate btn btn-warning btn-sm"  data-post_id ="<?= $post_id ?>" data-post_rate="<?=$row->getPostRating?>"><i class="fa fa-star-o"></i> <span><small><?=(isset($row->getRatePercent) && !empty($row->getRatePercent))?$row->getRatePercent.' out of 5':''?></small></span></a>
+								<a href="" class="btn-rate btn btn-warning btn-sm"  data-post_id ="<?= $post_id ?>" data-post_rate="<?=$row->getPostRating?>"><i class="fa fa-star-o"></i> <span style="font-weight: bold;"><small><?=(isset($row->getRatePercent) && !empty($row->getRatePercent))?$row->getRatePercent.' out of 5':''?></small></span></a>
 							<?php if ($row->getPostRating =="1"){
 
 							}?>
