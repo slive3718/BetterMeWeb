@@ -247,11 +247,11 @@
 															if(end($getExtension)== "mp4" || end($getExtension)== "mp4") {
 																?>
 
-																<video width="320" height="240" controls class="align-self-center m-auto">
+																<br><video width="360" height="270" controls class="align-self-center m-auto">
 																	<source src="<?=base_url() .'/uploads/profile_posts/'.$each_post_images->image_name?>" type="video/mp4">
 																	<source src="movie.ogg" type="video/ogg">
 																	Your browser does not support the video tag.
-																</video>
+																</video><br>
 																
 																<?php
 															}
