@@ -338,6 +338,8 @@ section{
 		</div>
 	</div>
 </div>
+<?php if (isset($this->session->userdata['id'])){
+            ?>
 	<div class="modal fade modal-rating" id="modal-rating" tabindex="-1" role="dialog" aria-labelledby="modal-rating" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -359,6 +361,12 @@ section{
 			</div>
 		</div>
 	</div>
+	<?
+	} else {
+		redirect(base_url().'user/logout');
+	}?>
+<?php
+}?>
 </section>
 </body>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
