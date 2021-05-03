@@ -26,6 +26,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/css/main.css">
 	<link rel="shortcut icon" href="<?= base_url();?>assets/images/Smile.png">
+	<script src="sweetalert2.min.js"></script>
+	<link rel="stylesheet" href="sweetalert2.min.css">
 <!--===============================================================================================-->
 </head>
 <style>
@@ -46,8 +48,9 @@ a.design:hover{
 			
 				<form class="login100-form validate-form" action="<?= base_url().'user/signUp'?> " method="POST"
 				onsubmit="if(document.getElementById('agree').checked) { return true; } else { 
-					alert('Please indicate that you have read and agree to our Terms and Conditions.'); 
-					return false; }">
+					Swal.fire({
+					icon: 'warning',
+					text: 'Please indicate that you have read and agree to our Terms and Conditions.'}); return false; }">
 					<span class="login100-form-title">
 						SignUp
 					</span>
@@ -142,6 +145,7 @@ a.design:hover{
 	
 <!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
