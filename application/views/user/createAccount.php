@@ -104,7 +104,7 @@ a.design:hover{
 						</span>
 					</div>
 					<div class="text-center p-t-136">
-					<input type="checkbox" name="checkbox" value="check" id="agree"/>
+					<input type="checkbox" style="cursor: pointer;" name="checkbox" value="check" id="agree"/>
 						<a class="txt2" style="font-size: 12px;">
 							By clicking Submit, you agree to our </a><br>
 						<a class="design" style="font-size: 12px; color: blue;"
