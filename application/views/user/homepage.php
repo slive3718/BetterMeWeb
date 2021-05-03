@@ -133,7 +133,7 @@ section{
 					}
 				}
 
-				print_r($row->getPostRating);
+
 				?>
 
 				<?php
