@@ -44,7 +44,10 @@ a.design:hover{
 				</div>
 			
 			
-				<form class="login100-form validate-form" action="<?= base_url().'user/signUp'?> " method="POST">
+				<form class="login100-form validate-form" action="<?= base_url().'user/signUp'?> " method="POST"
+				onsubmit="if(document.getElementById('agree').checked) { return true; } else { 
+					alert('Please indicate that you have read and agree to our Terms and Conditions.'); 
+					return false; }">
 					<span class="login100-form-title">
 						SignUp
 					</span>
@@ -101,6 +104,7 @@ a.design:hover{
 						</span>
 					</div>
 					<div class="text-center p-t-136">
+					<input type="checkbox" name="checkbox" value="check" id="agree"/>
 						<a class="txt2" style="font-size: 12px;">
 							By clicking Submit, you agree to our </a><br>
 						<a class="design" style="font-size: 12px; color: blue;"
