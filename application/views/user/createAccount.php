@@ -28,6 +28,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="shortcut icon" href="<?= base_url();?>assets/images/Smile.png">
 <!--===============================================================================================-->
 </head>
+<style>
+a.design:hover{
+	text-decoration: underline;
+}
+
+</style>
 <body>
 
 	<div class="limiter">
@@ -94,7 +100,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
-					
+					<div class="text-center p-t-136">
+						<a class="txt2" style="font-size: 12px;">
+							By clicking Submit, you agree to our </a><br>
+						<a class="design" style="font-size: 12px; color: blue;"
+						href="<?=base_url()?>user/">Terms & Conditions.
+						</a>
+					</div>
 					<div class="container-login100-form-btn">
 						<input type="submit" name="submit" class="login100-form-btn">
 							

@@ -76,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					
 
 					
-					<div class="container-login100-form-btn">
+					<div class="container-login100-form-btn" style="cursor: pointer;">
 						<input type="submit" class="login100-form-btn"value="Log In" name="submit">
 					
 					</div>
