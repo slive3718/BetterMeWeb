@@ -109,7 +109,7 @@ a.design:hover{
 					<div class="text-center p-t-136">
 					<input type="checkbox" style="cursor: pointer;" name="checkbox" value="check" id="agree"/>
 						<a class="txt2" style="font-size: 12px;">
-							Check here to indicate that you have read and agree to our </a><br>
+							Check here to indicate that you have read and agree to our </a>
 						<a class="design" style="font-size: 12px; color: blue;"
 						href="<?=base_url()?>">Terms & Conditions.
 						</a>
