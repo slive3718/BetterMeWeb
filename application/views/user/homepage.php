@@ -218,8 +218,8 @@ section{
 						<div class="comment p-2 cursor col-md-4 pr-0" id="comment_id_<?= $post_id ?>"
 							 style="cursor: pointer;"
 							 data-post_id="<?= $post_id ?>">
-							<i class="fa fa-comment-o"></i>
-							<span style="font-size: 12px;" class="ml-1"><a href="<?= base_url('user/viewFullDiet/' . $post_id) ?>"> Comments </a> </span> <span style="font-size: 12px;"><?=(isset($row->getCommentCount) && ($row->getCommentCount)!=0)?$row->getCommentCount:''?></span>
+							<i class="fa fa-comment-o">
+							<span style="font-size: 12px; font-weight: bold;" class="ml-1"><a href="<?= base_url('user/viewFullDiet/' . $post_id) ?>"> Comments </a> </span> <span style="font-size: 12px;"><?=(isset($row->getCommentCount) && ($row->getCommentCount)!=0)?$row->getCommentCount:''?></span></i>
 						</div>
 					</div>
 				</div>
