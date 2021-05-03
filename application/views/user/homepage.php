@@ -205,7 +205,7 @@ section{
 							 data-post_id="<?= $post_id ?>">
 							<i class="fa fa-thumbs-o-up"></i>
 							<span style="font-size: 12px; font-weight: bold;" class="ml-1"> Like</span>
-							<span><?= (isset($row->getLikeCount) && ($row->getLikeCount) != 0) ? $row->getLikeCount : '' ?></span>
+							<span style="font-size: 12px; font-weight: bold;"><?= (isset($row->getLikeCount) && ($row->getLikeCount) != 0) ? $row->getLikeCount : '' ?></span>
 						</div>
 						<div class="rating col-md-4 p-0 mt-2">
 							<span >
