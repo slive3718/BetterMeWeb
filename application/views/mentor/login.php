@@ -61,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</span>
 					</div>
 					<div class="container-login100-form-btn">
-						<input type="submit" class="login100-form-btn"value="Log In" name="submit">
+						<input style="cursor: pointer;" type="submit" class="login100-form-btn"value="Log In" name="submit">
 					</div>
 					<div class="text-center p-t-136">
 						<a class="txt2" href="<?=base_url()?>user/viewSignUp">

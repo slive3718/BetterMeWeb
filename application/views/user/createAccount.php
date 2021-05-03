@@ -104,7 +104,7 @@ a.design:hover{
 						<a class="txt2" style="font-size: 12px;">
 							By clicking Submit, you agree to our </a><br>
 						<a class="design" style="font-size: 12px; color: blue;"
-						href="<?=base_url()?>user/">Terms & Conditions.
+						href="<?=base_url()?>">Terms & Conditions.
 						</a>
 					</div>
 					<div class="container-login100-form-btn">
