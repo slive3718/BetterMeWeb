@@ -13,6 +13,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="node_modules/font-awesome-animation.min.css">
+<style>
+.centered { 
+	margin: 0 auto; 
+	width: 400px; 
+	}
+</style>
 <body style='overflow-x:hidden;'>
 <main>
 	<div style="max-width: 100%;">
@@ -247,7 +253,7 @@
 															if(end($getExtension)== "mp4" || end($getExtension)== "mp4") {
 																?>
 
-																<video width="320" height="240" controls class="align-self-center m-auto">
+																<video class="centered" width="320" height="240" controls class="align-self-center m-auto">
 																	<source src="<?=base_url() .'/uploads/profile_posts/'.$each_post_images->image_name?>" type="video/mp4">
 																	<source src="movie.ogg" type="video/ogg">
 																	Your browser does not support the video tag.
