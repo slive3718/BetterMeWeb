@@ -1,4 +1,4 @@
-<body style='overflow-x:hidden;' xmlns="http://www.w3.org/1999/html">
+<body style='overflow-x:hidden;' xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <style>
 
 	.container {
@@ -209,7 +209,10 @@ section{
 						</div>
 						<div class="rating col-md-4 p-0 mt-2">
 							<span >
-								<a href="" class="btn-rate btn btn-warning btn-sm"  data-post_id ="<?= $post_id ?>" data-post_rate="<?=$row->getPostRating?>"><i class="fa fa-star-o"></i> rating <span><?=(isset($row->getRatePercent) && !empty($row->getRatePercent))?$row->getRatePercent:''?></span></a>
+								<a href="" class="btn-rate btn btn-warning btn-sm"  data-post_id ="<?= $post_id ?>" data-post_rate="<?=$row->getPostRating?>"><i class="fa fa-star-o"></i> <span><small><?=(isset($row->getRatePercent) && !empty($row->getRatePercent))?$row->getRatePercent.' out of 5':''?></small></span></a>
+							<?php if ($row->getPostRating =="1"){
+
+							}?>
 							</span>
 						</div>
 						<div class="comment p-2 cursor col-md-4 pr-0" id="comment_id_<?= $post_id ?>"

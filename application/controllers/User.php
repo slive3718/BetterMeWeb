@@ -625,22 +625,57 @@ $image_arr = array();
    
      $result=$this->db->insert("profile_post", $int_array);
     exit;
-
-        // // print_r($dataInfo);
-        // foreach ($dataInfo as $info){
-        //     print_r($info['file_name']);
-        //      $image_info = array(
-        //         'image_name' =>($info['file_name']),
-        //         'post_id'=>"",
-        //         'user_id'=>$id,
-        //         'date_created'=> date('Y-m-d'),
-        //     );
-        //      $result=$this->db->insert("tblimages", $image_info);
-        // }
-       
-
  }
+	public function do_upload_video(){
+		$post = $this->input->post();
+		$id=$this->session->userdata('id');
+		$config['upload_path']          = './uploads/profile_video';
+		$config['allowed_types']        = 'avi|mp4|';
+		$config['max_size']             = 100000;
+		$config['max_width']            = 100000;
+		$config['max_height']           = 100000;
+		// $config['overwrite']           = true;
+		// $config['file_name']           = 'profile'.$id;
 
+
+		$datestring = "%Y-%m-%d %h:%i:%s";
+		// $date_picuploaded =mdate($datestring);
+
+		$dataInfo = array();
+		$files = $_FILES;
+		$cpt = count($_FILES['userfile']['name']);
+		$cpt = count($_FILES['userfile']['name']);
+		for($i=0; $i<$cpt; $i++)
+		{
+			$_FILES['userfile']['name']= $files['userfile']['name'][$i];
+			$_FILES['userfile']['type']= $files['userfile']['type'][$i];
+			$_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+			$_FILES['userfile']['error']= $files['userfile']['error'][$i];
+			$_FILES['userfile']['size']= $files['userfile']['size'][$i];
+
+			$this->upload->initialize($config);
+			$this->upload->do_upload();
+			$dataInfo[] = $this->upload->data();
+		}
+		$image_arr = array();
+		foreach ($dataInfo as $info) {
+			$image_name=($info['file_name']);
+			array_push($image_arr,$image_name);
+		}
+
+		// print_r(implode('/',$image_arr));
+		// exit;
+
+		$int_array = array(
+			'content' => $post['content'],
+			'user_id'=>$id,
+			'date'=> date('Y-m-d'),
+			'image_name'=>implode('/',$image_arr),
+		);
+
+		$result=$this->db->insert("profile_video", $int_array);
+		exit;
+	}
 
  public function visit_profile($profile_id){
     $userid=$this->session->userdata('id');
@@ -693,7 +728,7 @@ public function add_new_post(){
         $post = $this->input->post();
         $id=$this->session->userdata('id');
         $config['upload_path']          = './uploads/profile_posts';
-        $config['allowed_types']        = 'jpg|png|jpeg|gif|';
+        $config['allowed_types']        = 'jpg|png|jpeg|gif|mp4|avi|';
         $config['max_size']             = 100000;
         $config['max_width']            = 100000;
         $config['max_height']           = 100000;

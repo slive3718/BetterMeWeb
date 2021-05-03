@@ -154,18 +154,9 @@
 								type="file"
 								name="userfile[]"
 								size="20"
-								multiple="multiple"/><span class="fa fa-image">Upload Images</span>
+								multiple="multiple"/><span class="fa fa-image">Upload Image or Video</span>
 						</div>
-						<div class="form-inline btn btn-outline-secondary btn-sm">
-							<input
-									id="video_upload"
-									accept="video/3gpp,video/mp4"
-									style="left:70px;width:100px"
-									type="file"
-									name="videofile[]"
-									size="20"
-									multiple="multiple"/><span class="fa fa-video-camera">Upload Videos</span>
-						</div>
+
 
 						<input
 								type="submit"
@@ -246,16 +237,29 @@
 									<div class="d-flex justify-content-center">
 
 										<a href="#" class="">
-											<div class="container">
+											<div class="container justify-content-center">
 
 												<?php
 												foreach ($val->getAllProfilePost as $pp) {
 													foreach ($pp->post_images as $each_post_images) {
-														if ($each_post_images->post_id == $post->post_id) { ?>
+														if ($each_post_images->post_id == $post->post_id) {
+															$getExtension = explode('.',$each_post_images->image_name);
+															if(end($getExtension)== "mp4" || end($getExtension)== "mp4") {
+																?>
 
+																<video width="320" height="240" controls class="align-self-center m-auto">
+																	<source src="<?=base_url() .'/uploads/profile_posts/'.$each_post_images->image_name?>" type="video/mp4">
+																	<source src="movie.ogg" type="video/ogg">
+																	Your browser does not support the video tag.
+																</video>
+																
+																<?php
+															}
+															else{
+															?>
 															<img src="<?= base_url() . './uploads/profile_posts/' . $each_post_images->image_name ?>">
 															<?php
-														}
+														}}
 													}
 												}
 												?>
@@ -336,7 +340,7 @@
 		})
 	});
 
-	let supportedImages = ['jpg', 'png', 'gif' , 'jpeg', 'JPG', 'PNG', 'JPEG'];
+	let supportedImages = ['jpg', 'png', 'gif' , 'jpeg', 'JPG', 'PNG', 'JPEG','mp4', 'MP4', '3GP', '3gp', 'mov', 'flv', 'fmv'];
 	let supportedVideos = ['mp4', 'MP4', '3GP', '3gp', 'mov', 'flv', 'fmv'];
 	$(document).ready(function(){
 		$('#image_upload').on('change',function(){
@@ -364,17 +368,19 @@
 
 
 		$('#video_upload').on('change',function(){
-			Swal.fire({
-				icon: 'warning',
-				title: 'This feature is unavailable <br> Under Development',
+			// Swal.fire({
+			// 	icon: 'warning',
+			// 	title: 'This feature is unavailable <br> Under Development',
+			//
+			// }).then((result)=>{
+			// 	if(result.isConfirmed){
+			// 		return false;
+			// 	}
+			// });
+			// $("#video_upload").val('');
+			// return false;
 
-			}).then((result)=>{
-				if(result.isConfirmed){
-					return false;
-				}
-			});
-			$("#video_upload").val('');
-			return false;
+
 			let fileName = ($('#video_upload').val()).replace(/^.*[\\\/]/, '');
 			let fileExtension = fileName.substr(fileName.lastIndexOf('.')+1);
 			console.log(fileExtension);
