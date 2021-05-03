@@ -204,7 +204,7 @@ section{
 							 style="cursor: pointer; <?= (isset($like) && !empty($like) == 1) ? 'color:blue' : '' ?>; "
 							 data-post_id="<?= $post_id ?>">
 							<i class="fa fa-thumbs-o-up"></i>
-							<span class="ml-1"> Like</span>
+							<span style="font-size: 12px; font-weight: bold;" class="ml-1"> Like</span>
 							<span><?= (isset($row->getLikeCount) && ($row->getLikeCount) != 0) ? $row->getLikeCount : '' ?></span>
 						</div>
 						<div class="rating col-md-4 p-0 mt-2">
@@ -219,7 +219,7 @@ section{
 							 style="cursor: pointer;"
 							 data-post_id="<?= $post_id ?>">
 							<i class="fa fa-comment-o"></i>
-							<span style="font-size: 12px; font-weight: bold;" class="ml-1"><a href="<?= base_url('user/viewFullDiet/' . $post_id) ?>"> Comments </a> </span> <span style="font-size: 12px;"><?=(isset($row->getCommentCount) && ($row->getCommentCount)!=0)?$row->getCommentCount:''?></span>
+							<span style="font-size: 12px; font-weight: bold;" class="ml-1"><a href="<?= base_url('user/viewFullDiet/' . $post_id) ?>"> Comments </a> </span> <span style="font-size: 12px; font-weight: bold;"><?=(isset($row->getCommentCount) && ($row->getCommentCount)!=0)?$row->getCommentCount:''?></span>
 						</div>
 					</div>
 				</div>
