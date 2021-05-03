@@ -111,7 +111,7 @@ a.design:hover{
 						<a class="txt2" style="font-size: 12px;">
 							Check here to indicate that you have read and agree to our </a>
 						<a class="design" style="font-size: 12px; color: blue;"
-						href="<?=base_url()?>">Terms & Conditions.
+						href="#">Terms & Conditions.
 						</a>
 					</div>
 					<div class="container-login100-form-btn">
