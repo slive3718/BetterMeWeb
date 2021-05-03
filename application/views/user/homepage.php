@@ -216,7 +216,7 @@ section{
 							</span>
 						</div>
 						<div class="comment p-2 cursor col-md-4 pr-0" id="comment_id_<?= $post_id ?>"
-							 style="cursor: pointer; margin-right: 5px"
+							 style="cursor: pointer; margin-right: 20px;"
 							 data-post_id="<?= $post_id ?>">
 							<i class="fa fa-comment-o"></i>
 							<span class="ml-1"><a href="<?= base_url('user/viewFullDiet/' . $post_id) ?>"> Comments </a> </span> <span><?=(isset($row->getCommentCount) && ($row->getCommentCount)!=0)?$row->getCommentCount:''?></span>
