@@ -394,6 +394,12 @@ $current_user = $this->session->userdata('id');
 
 
 		});
+		
+		$('#myModal').modal({
+    	backdrop: 'static',
+    	keyboard: false
+		});
+
 		$(document).ready(function(){
 			
 			$('#report-post').on('click',function() {
