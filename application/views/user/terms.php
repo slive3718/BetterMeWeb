@@ -57,8 +57,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 }
 .main {
   padding: 20px;
-  margin-top: 50px;
-  height: 200px; /* Used in this example to enable scrolling */
+  margin-top: 70px;
+  height: 2000px; /* Used in this example to enable scrolling */
 }
 
 </style>
