@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</title>
 
 
-<div class="navbar">
+<div>
     <nav class="navbar navbar-expand-md navbar-light bg-success">
         <a href="<?php echo base_url('user/homepage') ?>">
 		<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a>
