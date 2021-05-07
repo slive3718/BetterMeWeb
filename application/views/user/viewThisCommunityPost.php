@@ -242,9 +242,6 @@ $current_user = $this->session->userdata('id');
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">Report Thread</h5>
-				<button type="button" class="close modal-close" data-dismiss="modal-report" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
 			</div>
 			<div class="modal-body">
 
