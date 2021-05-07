@@ -270,7 +270,7 @@ $current_user = $this->session->userdata('id');
            	$("#modal-report-post").modal('hide');
         	});
 		})
-	});
+
 
 		$('.modal-body').on('click','.btn-report',function(){
 			let report_url = "<?=base_url().'user/report_post_json'?>";
@@ -308,6 +308,5 @@ $current_user = $this->session->userdata('id');
 
 
 		});
-
-
+    });
 </script>
