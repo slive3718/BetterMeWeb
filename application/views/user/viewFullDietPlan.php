@@ -400,7 +400,7 @@ $current_user = $this->session->userdata('id');
 				var userId = $(this).data("session-id");
 				var postId = $(this).data("post_id");
 				$('#modal-report-post').modal('show');
-				$('#modal-report-post .modal-body').html('<label>Reason</label><textarea style="resize: none" rows="5" class="report-reason form-control" required></textarea><br><br><button type="button" data-report_id ="'+userId+'" data-post_id ="'+postId+'" class="btn btn-warning form-control btn-report">Send report</button>');
+				$('#modal-report-post .modal-body').html('<label>Reason</label><textarea style="resize: none" rows="5" class="report-reason form-control"></textarea><br><br><button type="button" data-report_id ="'+userId+'" data-post_id ="'+postId+'" class="btn btn-warning form-control btn-report">Send report</button>');
 
 			})
 
