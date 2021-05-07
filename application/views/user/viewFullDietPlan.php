@@ -266,7 +266,7 @@ $current_user = $this->session->userdata('id');
 
 	</div>
 		<!-- Modal -->
-		<div class="modal fade" id="modal-report-post" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+		<div class="modal fade" id="modal-report-post" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -402,6 +402,10 @@ $current_user = $this->session->userdata('id');
 				$('#modal-report-post').modal('show');
 				$('#modal-report-post .modal-body').html('<label>Reason</label><textarea style="resize: none" rows="5" class="report-reason form-control"></textarea><br><br><button type="button" data-report_id ="'+userId+'" data-post_id ="'+postId+'" class="btn btn-warning form-control btn-report">Send report</button>');
 
+			})
+			$('#modal-report-post').modal({
+    		backdrop: 'static',
+    		keyboard: false
 			})
 
 			$('.modal-body').on('click','.btn-report',function(){
