@@ -100,12 +100,11 @@ li a.design:hover {
    
     <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href=""></a>
+                <a class="nav-link"  style="font-weight: bold; font-size: 15px;" href="<?php echo base_url('user/viewSignUp') ?>">Register</a>
                 </li>
                 
                 <li class="nav-item">
                     <a class="nav-link"  style="font-weight: bold; font-size: 15px;" href="<?php echo base_url('user/viewLogin') ?>">Login</a>
-                    <a class="nav-link"  style="font-weight: bold; font-size: 15px;" href="<?php echo base_url('user/viewSignUp') ?>">Register</a>
                 </li>
                
             </ul>
