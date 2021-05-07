@@ -52,7 +52,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   overflow: hidden;
   background-color: #333;
   position: fixed;
+  top: 0;
   width: 100%;
+}
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px; /* Used in this example to enable scrolling */
 }
 
 </style>
@@ -62,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</title>
 
 
-<div id="" class="">
+<div class="navbar">
     <nav class="navbar navbar-expand-md navbar-light bg-success">
         <a href="<?php echo base_url('user/homepage') ?>">
 		<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a>
@@ -86,6 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	
     </head>
 <body>
+<div class="main">
 <h1>Terms and Conditions</h1>
 <p>Last updated: May 07, 2021</p>
 <p>Please read these terms and conditions carefully before using Our Service.</p>
@@ -173,6 +180,7 @@ You agree that the original English text shall prevail in the case of a dispute.
 <p>By phone number: 09971787108</p>
 </li>
 </ul>
+</div>
 
 </body>
 </html>
