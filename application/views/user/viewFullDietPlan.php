@@ -276,12 +276,7 @@ $current_user = $this->session->userdata('id');
 
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" 
-						data-toggle="collapse"
-						aria-expanded="true"
-						aria-controls="collapse-1"
-						href="#collapse-1"
-						data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
 					</div>
 				</div>
