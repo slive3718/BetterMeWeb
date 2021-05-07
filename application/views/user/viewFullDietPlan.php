@@ -403,10 +403,6 @@ $current_user = $this->session->userdata('id');
 				$('#modal-report-post .modal-body').html('<label>Reason</label><textarea style="resize: none" rows="5" class="report-reason form-control"></textarea><br><br><button type="button" data-report_id ="'+userId+'" data-post_id ="'+postId+'" class="btn btn-warning form-control btn-report">Send report</button>');
 
 			})
-			$('#modal-report-post').modal({
-    		backdrop: 'static',
-    		keyboard: false
-			})
 
 			$('.modal-body').on('click','.btn-report',function(){
 					let report_url = "<?=base_url().'user/report_post_json'?>";
