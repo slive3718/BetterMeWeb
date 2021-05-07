@@ -5,7 +5,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>BetterMe-Terms & Conditions</title>
+    <title>BetterMe-Terms & Conditions</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="<?= base_url();?>assets/images/Smile.png">
+
+
+
+
+
+
 
 </head>
 <body>
