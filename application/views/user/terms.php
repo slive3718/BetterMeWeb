@@ -52,7 +52,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   overflow: hidden;
   background-color: #333;
   position: fixed;
-  top: 0;
   width: 100%;
 }
 
