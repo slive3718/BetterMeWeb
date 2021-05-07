@@ -150,7 +150,7 @@ $current_user = $this->session->userdata('id');
 
                     <div class="bg-white p-2">
 
-						<?=($current_user == $community_post_user)?'':'<a href="" id="report-post" data-toggle:modal-report style="float: right; right: 0px; cursor: pointer" class="">Report</a>'?>
+						<?=($current_user == $community_post_user)?'':'<a href="" id="report-post" data-toggle:modal-report data-target="#modal-report-post" style="float: right; right: 0px; cursor: pointer" class="">Report</a>'?>
 
                         <div class="d-flex flex-row fs-12">
                             <div
