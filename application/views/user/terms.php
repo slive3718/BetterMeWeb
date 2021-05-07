@@ -95,7 +95,6 @@ li a.design:hover {
     <nav class="navbar navbar-expand-md navbar-light bg-success">
         <a href="<?php echo base_url('user/homepage') ?>">
 		<img src="<?= base_url()?>uploads/files/logo.png" style="width:200px;height:70px;"></a>
-    <li class="li-design" style="font-weight: bold;"><a class="design" href="<?php echo base_url('user/homepage') ?>">Home</a></li>
             <ul class="navbar-nav mr-auto">
             </ul>
    
@@ -106,6 +105,7 @@ li a.design:hover {
                 
                 <li class="nav-item">
                     <a class="nav-link"  style="font-weight: bold; font-size: 15px;" href="<?php echo base_url('user/viewLogin') ?>">Login</a>
+                    <a class="nav-link"  style="font-weight: bold; font-size: 15px;" href="<?php echo base_url('user/viewSignUp') ?>">Register</a>
                 </li>
                
             </ul>
