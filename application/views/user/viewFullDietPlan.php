@@ -73,7 +73,7 @@ $current_user = $this->session->userdata('id');
 			<div class="card-body">
 				<span style="" class="btn btn-success form-control"><span style="float:left">
 						<h6 class="card-title"> <?= (isset($post_from) && !empty($post_from))?'Posted by: '.$post_from:''?></h6>
-					</span>	<button id="report-post" data-toggle="modal" data-target="#modal-report-post" data-session_id = "<?=$post_id?>" data-post_user_id = "<?=$post_user_id?>" data-post_type = "diet_plan"  style="float: right; margin-left: 30px; border-radius: 50%; cursor: pointer" class="fa fa-times-circle btn-danger btn-sm"></button>
+					</span>	<button id="report-post" data-toggle="modal" data-session_id = "<?=$post_id?>" data-post_user_id = "<?=$post_user_id?>" data-post_type = "diet_plan"  style="float: right; margin-left: 30px; border-radius: 50%; cursor: pointer" class="fa fa-times-circle btn-danger btn-sm"></button>
 <span style="float:right"><?= (isset($date_posted) && !empty($date_posted))?'Date: '.$date_posted:''?> </span>
 				</span><br>
 
