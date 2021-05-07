@@ -442,6 +442,6 @@ $current_user = $this->session->userdata('id');
 						});
 			});
 
-		})
+		});
 	</script>
 
