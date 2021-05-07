@@ -64,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </style>
 
 
-	<title> BetterMe
+	<title> BetterMe-Terms & Conditions
 	</title>
 
 
