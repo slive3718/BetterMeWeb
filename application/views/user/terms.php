@@ -48,40 +48,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css"/>
 	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
 <style>
-.btn-group-xs > .btn, .btn-xs {
-  padding: .25rem .4rem;
-  font-size: .8rem;
-  line-height: .5;
-  border-radius: .2rem;
-}
-ul.ul-design {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.navbar{
   overflow: hidden;
-
-}
-li.li-design{
-  list-style-type: none;
-  font-size: 13px;
-  float: left;
-  margin: 5px;
-}
-li a.design {
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 10px;
-  text-decoration: none;
-  border-radius: 50px;
-  background-color: #32CD32;
-
-
-}
-
-li a.design:hover {
-  background-color: #00FF00;
-  border-radius: 50px;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 </style>
@@ -100,11 +72,11 @@ li a.design:hover {
    
     <ul class="navbar-nav">
                 <li class="nav-item">
-                <a class="nav-link"  style="font-weight: bold; font-size: 15px;" href="<?php echo base_url('user/viewSignUp') ?>">Register</a>
+                <a class="nav-link"  style="font-weight: bold; font-size: 15px;" href="<?php echo base_url('user/viewLogin') ?>">Login</a>
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link"  style="font-weight: bold; font-size: 15px;" href="<?php echo base_url('user/viewLogin') ?>">Login</a>
+                <a class="nav-link"  style="font-weight: bold; font-size: 15px;" href="<?php echo base_url('user/viewSignUp') ?>">Register</a>
                 </li>
                
             </ul>
