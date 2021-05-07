@@ -34,6 +34,11 @@ class User extends CI_Controller
         $this->load->view('user/login');
     }
 
+    public function viewTerms()
+    {
+        $this->load->view('user/terms');
+    }
+
 
      
     
