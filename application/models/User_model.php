@@ -992,7 +992,7 @@ class User_model extends CI_Model
 					$val->rating  = (round(($total_rate / $total_post_count),2));
 					$return_array[] = $val;
 				}else{
-					return '';
+					$val->rating = '';
 				}
 			}
 			return $return_array;
