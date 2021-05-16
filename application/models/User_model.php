@@ -971,7 +971,7 @@ class User_model extends CI_Model
 
 	function getAllMentorRate()
 	{
-		$this->db->select('CONCAT (first_name," ",last_name) as mentor_name, COUNT(r.post_id)  as count_post, SUM(rate) as total_rate')
+		$this->db->select('CONCAT (first_name," ",last_name) as mentor_name, COUNT(p.post_id)  as count_post, SUM(rate) as total_rate')
 
 			->from('tblposts p')
 			->join('tblusers u', 'u.userId=p.post_user_id', 'left')
