@@ -968,6 +968,7 @@ class User_model extends CI_Model
 			return '';
 		}
 	}
+
 	function getAllMentorRate()
 	{
 		$this->db->select('CONCAT (first_name," ",last_name) as mentor_name, COUNT(r.post_id)  as count_post, SUM(rate) as total_rate')
@@ -987,7 +988,6 @@ class User_model extends CI_Model
 
 				$total_rate = $val->total_rate;
 				$total_post_count = $val->count_post;
-				$mentor_name = $val->mentor_name;
 				if($total_post_count){
 					$val->rating  = (round(($total_rate / $total_post_count),2));
 					$return_array[] = $val;
