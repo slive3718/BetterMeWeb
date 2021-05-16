@@ -273,11 +273,13 @@ section{
 
 						<?php if(isset($mentor_rating) && !empty($mentor_rating)){
 							foreach ($mentor_rating as $rating){
+								if($rating->rating > 0){
 								?> <div class="card">
 									<div class="card-body">
 										<span class="float-left"><?=$rating->mentor_name;?></span> <span class="float-right"><b>Rating</b><i class="fa fa-star" style="color:yellow"></i><?=$rating->rating;?></span>
 									</div>
 								</div><?php
+							}
 							}
 						} ?>
 					</div>
