@@ -156,7 +156,9 @@ section{
 							<img style="width:2rem;height:2rem"
 								 src="<?= base_url() . './uploads/profilepic/profile' . $post_user_id ?>.jpg"
 								 class="img-circle img-responsive"
-								 alt=""/> Posted by: <?= ucfirst($posts_user_name) ?></div>
+								 alt=""/> Posted by: <?= ucfirst($posts_user_name) ?>
+						<span style="color: yellow" class="fa fa-star-o"><?=(isset($row->getMentorRate) && !empty($row->getMentorRate))?$row->getMentorRate:''?></span>
+						</div>
 						<?php
 						} ?>
 						<div style="font-size: 10px; font-weight: bold;">Date Posted: <?= $date_posted ?></div>
@@ -262,6 +264,23 @@ section{
 					} ?>
 					</tbody>
 				</table>
+
+				<div class="card">
+					<div class="card-header bg-success">
+						<h5> Mentor Ratings</h5>
+					</div>
+					<div class="card-body">
+						<?php if(isset($mentor_rating) && !empty($mentor_rating)){
+							foreach ($mentor_rating as $rating){
+								?> <div class="card">
+									<div class="card-body">
+										<span class="float-left"><?=$rating->mentor_name;?></span> <span class="float-right"><b>Rating</b><i class="fa fa-star" style="color:yellow"></i><?=$rating->rating;?></span>
+									</div>
+								</div><?php
+							}
+						} ?>
+					</div>
+				</div>
 				<div class="card-body">
 					<div class="font-header">
 						THREAD SECTION

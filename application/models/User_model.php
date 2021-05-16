@@ -110,6 +110,8 @@ class User_model extends CI_Model
 				$val->getCommentCount = $this->getCommentCount($val->post_id);
 				$val->getPostRating = $this->getPostRating($val->post_id);
 				$val->getRatePercent = $this->getRatePercent($val->post_id);
+				$val->getMentorRate = $this->getMentorRate($val->post_id);
+//				$val->getMentorRate = $this->getMentorRate($val->post_id, $val->userId);
 			}
 
 		}
@@ -935,6 +937,65 @@ class User_model extends CI_Model
 				else $avg =0;
 
 			return $avg;
+		}else{
+			return '';
+		}
+	}
+//
+	function getMentorRate($post_id)
+	{
+		$this->db->select('CONCAT (first_name," ",last_name) as mentor_name, COUNT(r.post_id)  as count_post, SUM(rate) as total_rate')
+
+			->from('tblposts p')
+			->join('tblusers u', 'u.userId=p.post_user_id', 'left')
+			->join('rating r', 'r.post_id= p.post_id', 'left')
+			->group_by('u.userId')
+			->where('p.post_id',$post_id)
+		;
+		$qstr = $this->db->get();
+		if ($qstr->num_rows() > 0) {
+				$total_rate = $qstr->result()[0]->total_rate;
+				$total_post_count =  $qstr->result()[0]->count_post;
+				$mentor_name =$qstr->result()[0]->mentor_name;
+			if($total_post_count){
+				$mentor_rating = ($total_rate / $total_post_count);
+				return $mentor_rating;
+			}else{
+				$mentor_rating='';
+			}
+
+		}else{
+			return '';
+		}
+	}
+	function getAllMentorRate()
+	{
+		$this->db->select('CONCAT (first_name," ",last_name) as mentor_name, COUNT(r.post_id)  as count_post, SUM(rate) as total_rate')
+
+			->from('tblposts p')
+			->join('tblusers u', 'u.userId=p.post_user_id', 'left')
+			->join('rating r', 'r.post_id= p.post_id', 'left')
+			->group_by('u.userId')
+			->limit(10)
+			->order_by('total_rate')
+
+		;
+		$qstr = $this->db->get();
+		if ($qstr->num_rows() > 0) {
+			$return_array = array();
+			foreach ($qstr->result() as $val){
+
+				$total_rate = $val->total_rate;
+				$total_post_count = $val->count_post;
+				$mentor_name = $val->mentor_name;
+				if($total_post_count){
+					$val->rating  = (round(($total_rate / $total_post_count),2));
+					$return_array[] = $val;
+				}else{
+					return '';
+				}
+			}
+			return $return_array;
 		}else{
 			return '';
 		}

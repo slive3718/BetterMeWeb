@@ -167,7 +167,8 @@ class User extends CI_Controller
 		$data['getTopDiets'] = $this->user_model->getTopDiets();
 
         $data['page_title']= "Homepage";
-
+		$data['mentor_rating'] = $this->user_model->getAllMentorRate();
+//		print_r($data['mentor_rating'] );exit;
         $this->load->view('user/templates/header_homepage', $data);
 		$this->load->view('user/chat', $data);
         $this->load->view('user/homepage', $data);
@@ -1059,9 +1060,9 @@ public function add_new_post(){
 		$this->db->select('*,c.date_time');
 		$this->db->from('chat c');
 		$this->db->join('tblusers u','u.userId = c.chat_from');
-		$this->db->where('c.chat_to',$userId);
-		$this->db->where('c.chat_from',$post['chat_from']);
-		$this->db->or_where('c.chat_to',$post['chat_from']);
+		$this->db->where('c.chat_to', $userId);
+		$this->db->where('c.chat_from', $post['chat_from']);
+		$this->db->or_where('c.chat_to', $post['chat_from']);
 
 		$this->db->order_by('c.date_time','ascfetch_chat_list');
 		$result = $this->db->get();
@@ -1159,6 +1160,11 @@ public function add_new_post(){
 		}else{
 			echo '0';
 		}
+
+	}
+
+	public function getAllMentorRate(){
+    	$return = $this->user_model->getAllMentorRate();
 
 	}
 }
