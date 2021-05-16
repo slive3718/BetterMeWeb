@@ -270,7 +270,7 @@ section{
 						<h5> Mentor Ratings</h5>
 					</div>
 					<div class="card-body">
-						<?=print_r($mentor_rating);?>
+
 						<?php if(isset($mentor_rating) && !empty($mentor_rating)){
 							foreach ($mentor_rating as $rating){
 								?> <div class="card">
