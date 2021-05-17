@@ -209,6 +209,32 @@ if ($myInfo){
 								  </div>
 							  </div>
 						  </div>
+									<?php
+
+									$weight_kg = ($weight/2.20462);
+									$height_meter = ($height/100);
+									$height_meter_sq = $height_meter * $height_meter;
+									$bmi = $weight_kg/$height_meter_sq;
+									?>
+						  <div class="form-group">
+							  <div class=" col-xs-6">
+								  <label for="Height"><h4>BMI</h4></label>
+								  <div class="input-group">
+									  <input type="text" name="height" class="form-control" id="inputGroupSuccess2" aria-describedby="" disabled value="<?=$bmi	?>">
+									 <?php
+										  if ($bmi <= 18.5)
+										  	echo ' <span class="input-group-addon bg-warning text-white">Underweight';
+										  if ($bmi >= 18.5 && $bmi<= 24.9)
+										  	echo ' <span class="input-group-addon bg-success text-white">Normal';
+										  if ($bmi >= 25 && $bmi<= 29.9)
+										  	echo '<span class="input-group-addon bg-warning text-white">Overweight';
+										  if ($bmi >= 30)
+										  	echo '<span class="input-group-addon bg-danger text-white">Obese';
+
+										  ?></>
+								  </div>
+							  </div>
+						  </div>
 
 
 						  <div class="form-group">
