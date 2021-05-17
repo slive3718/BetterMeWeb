@@ -290,6 +290,8 @@ class User extends CI_Controller
             $city=$this->input->post('city');
             $province=$this->input->post('province');
             $contact=$this->input->post('contact_no');
+			$weight=$this->input->post('weight');
+			$height=$this->input->post('height');
             // $weight=$this->input->post('weight');
             // $height=$this->input->post('height');
  
@@ -306,6 +308,8 @@ class User extends CI_Controller
         'city'=>$city,
         'province'=>$province,
         'contact'=>$contact,
+				'weight'=>$weight,
+				'height'=>$height
      );
             $result = $this->user_model->updateMyProfileInfo($field, $id);
 

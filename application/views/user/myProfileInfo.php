@@ -189,9 +189,29 @@ if ($myInfo){
                                   <input type="email" class="form-control" name="email" readonly id="email" value="<?php if($email){echo $email;}?>" placeholder="you@email.com" title="enter your email.">
                               </div>
                           </div>
-                      
-                       
-                      <div class="form-group">
+
+						  <div class="form-group">
+							  <div class=" col-xs-6">
+								  <label for="Weight"><h4>Weight</h4></label>
+								  <div class="input-group">
+									  <input type="text" name= "weight" class="form-control" id="inputGroupSuccess2" aria-describedby="" disabled value="<?php if($weight){echo $weight;}?>">
+									  <span class="input-group-addon">lbs.</span>
+								  </div>
+							  </div>
+						  </div>
+
+						  <div class="form-group">
+							  <div class=" col-xs-6">
+								  <label for="Height"><h4>Height</h4></label>
+								  <div class="input-group">
+									  <input type="text" name="height" class="form-control" id="inputGroupSuccess2" aria-describedby="" disabled value="<?php if($height){echo $height;}?>">
+									  <span class="input-group-addon">cm.</span>
+								  </div>
+							  </div>
+						  </div>
+
+
+						  <div class="form-group">
                           
                           <div class="col-xs-6">
                          
