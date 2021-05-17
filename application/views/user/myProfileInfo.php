@@ -209,8 +209,9 @@ if ($myInfo){
 								  </div>
 							  </div>
 						  </div>
-									<?php
 
+									<?php
+									if(isset($weight,$height) && !empty($weight) && !empty($height)){
 									$weight_kg = ($weight/2.20462);
 									$height_meter = ($height/100);
 									$height_meter_sq = $height_meter * $height_meter;
@@ -236,6 +237,7 @@ if ($myInfo){
 							  </div>
 						  </div>
 
+									<?php }?>
 
 						  <div class="form-group">
                           
