@@ -218,7 +218,7 @@ if ($myInfo){
 									$bmi = $weight_kg/$height_meter_sq;
 									?>
 						  <div class="form-group">
-							  <div class=" col-xs-6">
+							  <div class=" col-xs-12">
 								  <label for="Height"><h4>BMI</h4></label>
 								  <div class="input-group">
 									  <input type="text" name="height" class="form-control" id="inputGroupSuccess2" aria-describedby="" disabled value="<?=$bmi	?>">
