@@ -978,7 +978,7 @@ class User_model extends CI_Model
 			->join('rating r', 'r.post_id= p.post_id', 'left')
 			->group_by('u.userId')
 			->limit(10)
-			->order_by('total_rate','count_post')
+			->order_by('total_rate','desc')
 
 		;
 		$qstr = $this->db->get();
