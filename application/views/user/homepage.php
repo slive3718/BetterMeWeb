@@ -276,7 +276,8 @@ section{
 								if($rating->rating > 0){
 								?> <div class="card">
 									<div class="card-body">
-										<span class="float-left"><?=$rating->mentor_name;?></span> <span class="float-right"><b>Rating</b><i class="fa fa-star" style="color:yellow"></i><?=$rating->rating;?></span>
+										<span class="float-left"><?=$rating->mentor_name;?></span> <span class="float-right"><small><b>Rating</b><i class="fa fa-star" style="color:yellow"></i><?=$rating->rating;?></small></span>
+										<br><span class="text-right float-right"><small><?=$rating->count_post?>Posts</small></span>
 									</div>
 								</div><?php
 							}
