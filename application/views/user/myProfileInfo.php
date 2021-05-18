@@ -216,6 +216,12 @@ if ($myInfo){
 									$height_meter = ($height/100);
 									$height_meter_sq = $height_meter * $height_meter;
 									$bmi = $weight_kg/$height_meter_sq;
+
+									$bmr_weight = ($weight_kg *10);
+									$bmr_height = (6.25 * $height);
+									$bmr_age = (5* $age);
+									$bmr_for_men = (($bmr_weight+$bmr_height)-($bmr_age))+5;
+										$bmr_for_women = (($bmr_weight+$bmr_height)-($bmr_age))-161;
 									?>
 						  <div class="form-group">
 							  <div class=" col-xs-12">
@@ -232,11 +238,22 @@ if ($myInfo){
 										  if ($bmi >= 30)
 										  	echo '<span class="input-group-addon bg-danger text-white">Obese';
 
-										  ?></>
+										  ?>
 								  </div>
 							  </div>
 						  </div>
 
+						  <div class="form-group">
+							  <div class=" col-xs-12">
+								  <label for="Height"><h4>BMR</h4></label>
+								  <div class="input-group">
+									  <input type="text" name="height" class="form-control" id="inputGroupSuccess2" aria-describedby="" disabled value="<?=(!isset($sex ) || empty($sex))?'':(isset($sex) && !empty($sex) && $sex=="Male")?$bmr_for_men:$bmr_for_women?>">
+									  <?php
+									  echo ' <span class="input-group-addon bg-warning text-white">Calories per Day';
+									  ?>
+							  </div>
+						  </div>
+					  </div>
 									<?php }?>
 
 						  <div class="form-group">
